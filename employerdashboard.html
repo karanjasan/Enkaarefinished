@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="/employerd.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://kit.fontawesome.com/3192a96bdf.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 
+     let fname= document.querySelector("#sfirstname");
+  let sname =document.querySelector("#slastname");
+  fname.value=firstnameee;
+  sname.value=lastnameeee;   
+    -->
+
+
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+</head>
+<body onload="candidates();sendb();setprofile();checkempcomplete()" class="body">
+   
+
+  <div class="invitesec">
+    <span onclick="invitecancel()"  id="suucanncel">&#x1F5D9;</span>
+    <div class="invitesecrealsec">
+        <div class="invitesecloader">
+            
+        </div>
+     
+        <div id="quiz-container">
+            <h3 id="question"></h3>
+            <form id="answer-form">
+                <div id="answer-options">
+
+                  
+
+
+
+
+                </div>
+                <button  onclick="invitesubmit()" type="button" id="submit-btn">Submit</button>
+            </form>
+            <p id="result"></p>
+        </div>
+    
+       
+       
+    </div>
+
+  </div>
+
+
+
+    
+    <div class="contactsupport">
+        <div class="loader1"></div>
+        <span onclick="tsupportcancel()" id="suucanncel">&#x1F5D9;</span>
+        <div class="innersupport">
+            <section class="innersupport1">
+                <h1>Contact an enkaare<br> recruiter</h1>
+                <div class="deco">
+                    <img src="/images/send-data.png" alt="">
+                 
+                 
+                   
+                  
+
+                </div>
+              
+
+            </section>
+            <div class="innersupport2">
+                <h2>Contact us</h2>
+
+
+                <form class="suuform" action="">
+                    <input type="text" id="subject" placeholder="Subject" required>
+                    <textarea name="" id="sumessage" cols="30" rows="10" placeholder="Message" required></textarea>
+                    <input type="submit" id="susubmitb" value="Send">
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    <div class="loader"></div>
+
+
+    
+    <div class="main">
+        <div class="navbar">
+            <img src="/images/enkari logo.jpg" alt="">
+            <div onmouseover="hidepoptions()" class="status">
+                
+                <button onclick="postjobbutton()"><img src="/images/add.png" alt=""> Post a Job</button>
+             
+             <span id="ebeta">Beta</span>
+            </div>
+            <div onmouseover="checkempcompletecancel();displaypoptions()" class="profile navhv" id="myprofile">
+                <section class="img">
+
+                </section>
+                <p id="ppname"></p>
+                <span class="gt">
+                    <img src="/images/greater-than-symbol (1).png" alt="">
+                </span>
+
+            </div>
+            <div onmouseover="hidepoptions()" class="balance navhv">
+             <img src="/images/wallet.png" alt="">
+             <p id="pb">Balance</p>
+
+             <p id="bp">$0.0</p>
+            
+                
+                
+
+            </div>
+            <a href="/emnotifications.html">
+                <div class="notification navhv">
+                    <img src="/images/bell.png" alt="">
+                    <p id="pb">Notifications</p>
+       
+                    <p id="np"></p>
+                   
+                       
+                       
+       
+                   </div>
+            </a>
+
+
+              <a href="/candidates.html">
+                <div onmouseover="hidepoptions()" class="aorders navhv">
+                    <img src="/images/profile.png" alt="">
+                    <p id="pb">Candidates</p>
+       
+                    
+                   
+                       
+                       
+       
+                   </div>
+              </a>
+
+
+               <a href="/myjoposts.html">
+                <div onclick="orderd()" id="vague2" class="mbids navhv">
+                    <img src="/images/order-now.png" alt="">
+                    <p id="pb">My posted jobs</p>
+       
+       
+                   </div>
+               </a>
+
+
+     
+
+               <div onclick="chats()"  class="chats navhv">
+                <img src="/images/chat.png" alt="">
+                <p id="pb">Chats</p>
+                <p id="ac"></p>
+   
+               </div>
+           <!-- onclick="support('support','Support')"-->
+               <div onclick="tsupport();suuemployer('employer_profile')" class="hcentre navhv">
+                <img src="/images/support.png" alt="">
+                <p id="pb">Support</p>
+               
+   
+   
+               </div>
+               <div class="rules navhv">
+                <img src="/images/guidelines.png" alt="">
+                <p id="rb">Rules & guidelines</p>
+   
+   
+               </div>
+
+        </div>
+        <div onmouseleave="hidepoptions()" class="poptions">
+          <a href="/e-myprofile.html">
+            <section class="myprofile">
+                <img src="/images/user.png" alt="">
+                <p>My profile</p>
+    
+               </section>
+          </a>
+           <a href="/e-setting.html">
+            <section class="myprofile">
+                <img src="/images/settings.png" alt="">
+                <p>Settings</p>
+    
+               </section>
+           </a>
+           <section onclick="logout()" class="myprofile">
+            <img src="/images/logout.png" alt="">
+            <p>Logout</p>
+
+           </section>
+        </div>
+
+
+
+
+
+
+        <div class="iframe" >
+
+
+
+
+
+
+
+
+
+
+            
+           
+            
+           
+            
+            <div class="avbody">
+                <h1  class="aordersh1">
+                    Candidates
+                </h1>
+                 <div class="ordersnav">
+                    <h3 class="h31">All Candidates</h3>
+                   
+            
+                 </div>
+
+                 
+
+
+
+                 <div class="incompleteprofile">
+                    <section class="horizontal-section">
+                        <div class="arrow-container">
+                            <div class="arrow" id="arrow"></div>
+                        </div>
+
+
+                        <div class="item">My Profile</div>
+                        <div class="item arrow1">➜</div>
+                        <div class="item">Edit</div>
+                        <div onclick="checkempcompletecancel()" class="cancel-icon"><i class="fas fa-times"></i></div>
+                    </section>
+                    <div class="message-popout">
+                       
+                        <p class="emoji">😄</p>
+                        <p class="messagepp">Complete your profile to unlock the power of posting your first job and finding the perfect candindates!</p>
+                    </div>
+                  
+                    <script>
+
+                    </script>
+
+                 </div>
+
+
+
+
+
+
+
+
+
+                 <div class="searchbar">
+                    <label for="sort">Sort by: </label>
+                    <select name="sorts" id="sort">
+            
+                        <option value="New_order">Candidate Rating</option>
+                        <option value="random">Pay</option>
+                    </select>
+                    <div class="search">
+                      <img src="/images/search-interface-symbol.png" alt="">
+                      <input type="text" name="" id="" placeholder="Search">
+                
+                     </div>
+            
+                 </div>
+            
+                 <div class="candidatelist">
+
+                   
+
+
+                     <!-- 
+                    <div class="candidatecarrier">
+                        <section class="cadpsec">
+                          <div class="cadprfmain">
+                            
+                            <div class="divprfshow">
+                                <div class="cadprofile">
+
+                                    <section class="online">
+                                      
+                                    </section>
+      
+                                  </div>
+    
+                                  <div class="js">
+                                    <h3 id="cadph3">Lilian W</h3>
+                                  <p id="cadp">Online</p>
+                                  </div>
+
+                            </div>
+
+                       
+
+                              <div class="approvalr">
+                                <h3 id="aprateh3">100%</h3>
+                                <p>Aprroval Rate</p>
+                              </div>
+                          </div>
+                          
+
+                        </section>
+                        <section class="cadabout">
+                               <div class="cadaboutag">
+                                <h3>About Candidate:</h3>
+                                <p id="cadaboutp">Graphics designer</p>
+
+                               </div>
+                           
+                            <button>Invite to Job</button>
+
+                        </section>
+
+                    </div>
+
+                    -->
+                   
+
+            
+                 </div>
+                
+                </div>
+
+
+
+
+
+
+
+
+
+            <div class="message" >
+                <div class="topchat">
+                    <div class="canceldiv">
+                        <section onclick="messageboxdis()" class="cancelbutton">
+                            &#128473;
+                        </section>
+                    </div>
+                    <h3 id="messageheeader">Chats!</h3>
+                </div>
+ 
+
+               <div class="messagethreads" id="messagethreads">
+               <!--
+                <div class="thread">
+                    <section class="imgpart">
+                     
+                        <section class="mesimg" id="mesimg">
+
+                        </section>
+                     </section>
+                     <section class="namemes">
+                        <p class="mesp" id="mesp">Karanja  G</p>
+                        <p id="threadp2">One of the thing i really love....</p>
+
+                     </section>
+                     <section class="times">
+                         <div class="threadnoti" >
+                            2
+
+                         </div>
+                         <p class="thtimestamp">
+                            8:20pm
+                         </p>
+                     </section>
+                </div>
+            -->
+
+
+
+
+             
+               
+                
+               </div>
+
+
+
+               <div class="wholemescontainer" id="wholemescontainer">
+
+              
+
+                <div class="messagerecep">
+                    <section class="mesimg">
+
+                    </section>
+                    <p class="mesp" id="mesp1"></p>
+
+                </div>
+                <div id="messagecarrier" class="messagecarrier">
+                  <!-- 
+                    <div class="sendmessage mainel">
+                 <p class="sendmp">Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me  </p>
+                 <p class="timefmp sendstyle">5:00pm</p>
+                
+                    </div>
+                    <div class="receivemessage mainel">
+                        <p class="receivmp">Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me  </p>
+                        <p class="timefmp restyle">5:00pm</p>
+                           </div>
+
+                           */
+                           -->
+                    
+                </div>
+                <form action="" id="form">
+                    <textarea name="" id="text" cols="30" rows="10" placeholder=" Start typying..."></textarea>
+                    <div class="sendicons">
+                   <button type="submit"><img class="sendic" src="/images/paper-plane.png" alt=""></button>
+
+                    </div>
+                </form>
+                
+            </div>
+
+
+
+
+
+
+                
+            </div>
+        </div>
+     
+       
+      
+
+    </div>
+</body>
+
+<script src="/employerp.js"></script>
+
+
+</html>
