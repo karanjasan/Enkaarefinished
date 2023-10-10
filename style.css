@@ -449,6 +449,12 @@ header{
     color: hsl(188,47%,20%);
     border-radius: 0.1vw;
 }
+.bakcolor{
+    background-color: whitesmoke;
+}
+
+
+
 .recruitp{
     height: 35vw;
    
@@ -531,7 +537,7 @@ header{
 
     .remotep{
         font-family: 'Roboto', sans-serif;
-        margin-top: 5vw;
+        padding-top: 5vw;
         display: flex;
         height: 35vw;
     }
@@ -1652,7 +1658,7 @@ header{
     .remotep{
        
         font-family: 'Roboto', sans-serif;
-        margin-top: 18vw;
+        padding-top: 18vw;
         display: block;
         height: 125vw;
     }
