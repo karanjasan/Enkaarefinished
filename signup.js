@@ -378,8 +378,8 @@ document.getElementById("form").addEventListener('submit', (e) =>{
     };
    // https://half-geode-roundworm.glitch.me/api'
     
-    let f= fetch('http://127.0.0.1:3890/vcode',options).catch(err =>{
-      /*http://127.0.0.1:3890/api*/
+    let f= fetch('https://yielding-dented-amusement.glitch.me/vcode',options).catch(err =>{
+      /*https://yielding-dented-amusement.glitch.me/api*/
   });
 
 
@@ -505,7 +505,7 @@ verificationInputs.forEach((input, index) => {
 
        //https://half-geode-roundworm.glitch.me/api
         
-        let f= fetch('http://127.0.0.1:3890/register',options).catch(err =>{
+        let f= fetch('https://yielding-dented-amusement.glitch.me/register',options).catch(err =>{
           
     
     });
@@ -637,8 +637,8 @@ let resend=()=>{
     };
    // https://half-geode-roundworm.glitch.me/api'
     
-    let f= fetch('http://127.0.0.1:3890/vcode',options).catch(err =>{
-      /*http://127.0.0.1:3890/api*/
+    let f= fetch('https://yielding-dented-amusement.glitch.me/vcode',options).catch(err =>{
+      /*https://yielding-dented-amusement.glitch.me/api*/
   });
   vbloader[0].classList.add("adddedbloader");
   f.then(res => res.json()).then(d =>{
@@ -704,8 +704,8 @@ if(email.value===""){
     };
    // https://half-geode-roundworm.glitch.me/api'
     
-    let f= fetch('http://127.0.0.1:3890/vcode',options).catch(err =>{
-      /*http://127.0.0.1:3890/api*/
+    let f= fetch('https://yielding-dented-amusement.glitch.me/vcode',options).catch(err =>{
+      /*https://yielding-dented-amusement.glitch.me/api*/
   });
   vbloader[0].classList.add("adddedbloader");
   f.then(res => res.json()).then(d =>{

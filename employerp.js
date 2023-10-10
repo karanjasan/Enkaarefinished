@@ -20,7 +20,7 @@ const options ={
 
 //https://half-geode-roundworm.glitch.me/api
 
-let f= fetch('http://127.0.0.1:3890/session',options).catch(err =>{
+let f= fetch('https://yielding-dented-amusement.glitch.me/session',options).catch(err =>{
   
 
 });
@@ -76,7 +76,7 @@ const options ={
 
 //https://half-geode-roundworm.glitch.me/api
 
-let f= fetch('http://127.0.0.1:3890/logout',options).catch(err =>{
+let f= fetch('https://yielding-dented-amusement.glitch.me/logout',options).catch(err =>{
   
 
 });
@@ -124,7 +124,7 @@ let setprofile=()=>{
          body:formdata
      }
  
-     let f =fetch("http://127.0.0.1:3890/enotimessprofile",options).catch(err=>{
+     let f =fetch("https://yielding-dented-amusement.glitch.me/enotimessprofile",options).catch(err=>{
          console.log(err)
      })
      f.then(res=>res.json()).then(d=>{
@@ -168,7 +168,7 @@ let candidates=()=>{
         body: formdata
     }
 
-let f=fetch("http://127.0.0.1:3890/allcandidates",options).catch(err=>{
+let f=fetch("https://yielding-dented-amusement.glitch.me/allcandidates",options).catch(err=>{
     console.log(err);
 });
 
@@ -395,7 +395,7 @@ f.then(res=>res.json()).then(d=>{
                 body:getformdata
             }
             inloader.style.display="flex";
-            let f=fetch("http://127.0.0.1:3890/getinvitejobs",options1).catch(err=>{
+            let f=fetch("https://yielding-dented-amusement.glitch.me/getinvitejobs",options1).catch(err=>{
                 console.log(err)
             });
 
@@ -483,7 +483,7 @@ let checkempcomplete=()=>{
         body:formdata
      }
 
-     let f=fetch("http://127.0.0.1:3890/checkepcomplete",options).catch(err=>{
+     let f=fetch("https://yielding-dented-amusement.glitch.me/checkepcomplete",options).catch(err=>{
         console.log(err)
     });
 
@@ -542,7 +542,7 @@ function invitesubmit(){
             body:fdata
         }
 
-        let f=fetch("http://127.0.0.1:3890/sendinvite",options).catch(err=>{
+        let f=fetch("https://yielding-dented-amusement.glitch.me/sendinvite",options).catch(err=>{
             console.log(err)
         })
 
@@ -611,7 +611,7 @@ let eprofload =()=>{
        body:formdata
     }
     
-    let f=fetch("http://127.0.0.1:3890/eprofiledata",options).catch(err=>{
+    let f=fetch("https://yielding-dented-amusement.glitch.me/eprofiledata",options).catch(err=>{
        console.log(err);
     })
     loader[0].classList.add("addedloader");
@@ -698,7 +698,7 @@ let eprofload =()=>{
         }
      
      })
-     let jf=fetch("http://127.0.0.1:3890/jprofilejobs",options).catch(err=>{
+     let jf=fetch("https://yielding-dented-amusement.glitch.me/jprofilejobs",options).catch(err=>{
         console.log(err);
      })
 
@@ -846,7 +846,7 @@ let urltoFile=(url)=>{
        body:formdata
    }
 
-   let f=fetch("http://127.0.0.1:3890/eimageupload",options).catch(err=>{
+   let f=fetch("https://yielding-dented-amusement.glitch.me/eimageupload",options).catch(err=>{
        console.log(err);
    })
 
@@ -914,7 +914,7 @@ form.addEventListener('submit',(e)=>{
            body:formdata
        }
 
-       let f=fetch("http://127.0.0.1:3890/editep",options).catch(err=>{
+       let f=fetch("https://yielding-dented-amusement.glitch.me/editep",options).catch(err=>{
            console.log(err)
        })
        loader1.style.display="flex";
@@ -961,7 +961,7 @@ let profileeditbutton=()=>{
     body:formdata
  }
  
- let f=fetch("http://127.0.0.1:3890/geteeditdata",options).catch(err=>{
+ let f=fetch("https://yielding-dented-amusement.glitch.me/geteeditdata",options).catch(err=>{
     console.log(err);
  })
  
@@ -1459,7 +1459,7 @@ let orderdetails=()=>{
 
    //https://half-geode-roundworm.glitch.me/api
     
-    let f= fetch('http://127.0.0.1:3890/sedetails',options).catch(err =>{
+    let f= fetch('https://yielding-dented-amusement.glitch.me/sedetails',options).catch(err =>{
       
 
 });
@@ -1517,7 +1517,7 @@ loader[0].classList.add("addedloader");
 
    //https://half-geode-roundworm.glitch.me/api
     
-    let sf= fetch('http://127.0.0.1:3890/sedetails',soptions).catch(err =>{
+    let sf= fetch('https://yielding-dented-amusement.glitch.me/sedetails',soptions).catch(err =>{
       
 
 });
@@ -1770,7 +1770,7 @@ formdata.append("q","many");
 
 //https://half-geode-roundworm.glitch.me/api
 
-let f= fetch('http://127.0.0.1:3890/mjpost',options).catch(err =>{
+let f= fetch('https://yielding-dented-amusement.glitch.me/mjpost',options).catch(err =>{
   
 
 });
@@ -2131,7 +2131,7 @@ cbutton(sessionStorage.getItem('value'));
 
 //https://half-geode-roundworm.glitch.me/api
 
-let f= fetch('http://127.0.0.1:3890/mjpost',options).catch(err =>{
+let f= fetch('https://yielding-dented-amusement.glitch.me/mjpost',options).catch(err =>{
   
 
 });
@@ -2199,7 +2199,7 @@ shortlistsum();
 
 //https://half-geode-roundworm.glitch.me/api
 
-let f= fetch('http://127.0.0.1:3890/viewbids',options).catch(err =>{
+let f= fetch('https://yielding-dented-amusement.glitch.me/viewbids',options).catch(err =>{
   
 
 });
@@ -2500,7 +2500,7 @@ f.then(res=>res.json()).then(d=>{
             
             //https://half-geode-roundworm.glitch.me/api
             
-            let f= fetch('http://127.0.0.1:3890/addshortlist',options).catch(err =>{
+            let f= fetch('https://yielding-dented-amusement.glitch.me/addshortlist',options).catch(err =>{
               
             
             });
@@ -2554,7 +2554,7 @@ f.then(res=>res.json()).then(d=>{
          
          //https://half-geode-roundworm.glitch.me/api
          
-         let f= fetch('http://127.0.0.1:3890/requistinterview',options).catch(err =>{
+         let f= fetch('https://yielding-dented-amusement.glitch.me/requistinterview',options).catch(err =>{
            
          
          });
@@ -2604,7 +2604,7 @@ f.then(res=>res.json()).then(d=>{
             
             //https://half-geode-roundworm.glitch.me/api
             
-            let f= fetch('http://127.0.0.1:3890/addshortlist',options).catch(err =>{
+            let f= fetch('https://yielding-dented-amusement.glitch.me/addshortlist',options).catch(err =>{
               
             
             });
@@ -2673,7 +2673,7 @@ f.then(res=>res.json()).then(d=>{
 
 //https://half-geode-roundworm.glitch.me/api
 
-let f= fetch('http://127.0.0.1:3890/shortlist',options).catch(err =>{
+let f= fetch('https://yielding-dented-amusement.glitch.me/shortlist',options).catch(err =>{
   
 
 });
@@ -3095,7 +3095,7 @@ if(d[i].invitedexist===1 ||d[i].slotsexist ===1){
            
            //https://half-geode-roundworm.glitch.me/api
            
-           let f= fetch('http://127.0.0.1:3890/removeshortlist',options).catch(err =>{
+           let f= fetch('https://yielding-dented-amusement.glitch.me/removeshortlist',options).catch(err =>{
              
            
            });
@@ -3147,7 +3147,7 @@ if(d[i].invitedexist===1 ||d[i].slotsexist ===1){
         
         //https://half-geode-roundworm.glitch.me/api
         
-        let f= fetch('http://127.0.0.1:3890/requistinterview',options).catch(err =>{
+        let f= fetch('https://yielding-dented-amusement.glitch.me/requistinterview',options).catch(err =>{
           
         
         });
@@ -3229,7 +3229,7 @@ let invites=()=>{
        
     };
         
-     let f=fetch("http://127.0.0.1:3890/einvites",options).catch(err=>{
+     let f=fetch("https://yielding-dented-amusement.glitch.me/einvites",options).catch(err=>{
         console.log(err);
      }) 
 
@@ -3742,7 +3742,7 @@ function addMinutesToTime(inputTime, minutesToAdd) {
             }
 
 
-            let f=fetch("http://127.0.0.1:3890/interviewslots",options).catch(err=>{
+            let f=fetch("https://yielding-dented-amusement.glitch.me/interviewslots",options).catch(err=>{
                console.log(err);
              });
             timeInput.value="";
@@ -3823,7 +3823,7 @@ function addMinutesToTime(inputTime, minutesToAdd) {
         body:formdata
     }
 
-    let f=fetch("http://127.0.0.1:3890/allintervieslots",options).catch(err=>{
+    let f=fetch("https://yielding-dented-amusement.glitch.me/allintervieslots",options).catch(err=>{
        console.log(err);
      });
      document.getElementsByClassName("slotloader")[0].classList.add("addedslotloader");
@@ -3927,7 +3927,7 @@ function addMinutesToTime(inputTime, minutesToAdd) {
                         body:formdata2
                     }
                 
-                    let f=fetch("http://127.0.0.1:3890/deleteinslot",options2).catch(err=>{
+                    let f=fetch("https://yielding-dented-amusement.glitch.me/deleteinslot",options2).catch(err=>{
                        console.log(err);
                      });
                      document.getElementsByClassName("slotloader")[0].classList.add("addedslotloader");
@@ -4008,7 +4008,7 @@ let allinterviess=()=>{
    }
 
 
-   let f=fetch("http://127.0.0.1:3890/takeninterviews",options).catch(err=>{
+   let f=fetch("https://yielding-dented-amusement.glitch.me/takeninterviews",options).catch(err=>{
       console.log(err);
     });
     document.querySelector(".interviewploader").style.display="flex";
@@ -4155,7 +4155,7 @@ let terminateinterviews=(interviewid)=>{
    }
 
 
-   let f=fetch("http://127.0.0.1:3890/terminateinterview",options).catch(err=>{
+   let f=fetch("https://yielding-dented-amusement.glitch.me/terminateinterview",options).catch(err=>{
       console.log(err);
     });
       hideConfirmation();
@@ -4189,7 +4189,7 @@ let interviewasums=()=>{
     }
  
  
-    let f=fetch("http://127.0.0.1:3890/interviewsums",options).catch(err=>{
+    let f=fetch("https://yielding-dented-amusement.glitch.me/interviewsums",options).catch(err=>{
        console.log(err);
      });
 
@@ -4222,7 +4222,7 @@ let shortlistsum=()=>{
     }
  
  
-    let f=fetch("http://127.0.0.1:3890/shortlistsum",options).catch(err=>{
+    let f=fetch("https://yielding-dented-amusement.glitch.me/shortlistsum",options).catch(err=>{
        console.log(err);
      });
 
@@ -4266,7 +4266,7 @@ let shortlistsum=()=>{
         body: formdata
    }
 
-   let f=fetch("http://127.0.0.1:3890/candidateprofile",options).catch(err=>{
+   let f=fetch("https://yielding-dented-amusement.glitch.me/candidateprofile",options).catch(err=>{
     console.log(err);
    });
    
@@ -4399,7 +4399,7 @@ let requestintervieb=()=>{
             body:formdata
         }
 
-        let f=fetch("http://127.0.0.1:3890/enquire",options).catch(err=>{
+        let f=fetch("https://yielding-dented-amusement.glitch.me/enquire",options).catch(err=>{
             console.log(err);
            });
         let sending=document.querySelector(".sedingidi");
@@ -4464,7 +4464,7 @@ let postjobform=()=>{
 
     }
 
-    let f= fetch('http://127.0.0.1:3890/companyname',optionsa).catch(err =>{
+    let f= fetch('https://yielding-dented-amusement.glitch.me/companyname',optionsa).catch(err =>{
          console.log(err)    
        
 });
@@ -4685,7 +4685,7 @@ f.then(res=>res.json()).then(d=>{
    
           //https://half-geode-roundworm.glitch.me/api
            
-           let f= fetch('http://127.0.0.1:3890/postjob',options).catch(err =>{
+           let f= fetch('https://yielding-dented-amusement.glitch.me/postjob',options).catch(err =>{
              
        
        });
@@ -4741,7 +4741,7 @@ f.then(res=>res.json()).then(d=>{
    
           //https://half-geode-roundworm.glitch.me/api
            
-           let f= fetch('http://127.0.0.1:3890/postjob',options).catch(err =>{
+           let f= fetch('https://yielding-dented-amusement.glitch.me/postjob',options).catch(err =>{
              
        
        });
@@ -4923,7 +4923,7 @@ let editp=()=>{
  
     //https://half-geode-roundworm.glitch.me/api
      
-     let f= fetch('http://127.0.0.1:3890/sedetails',options).catch(err =>{
+     let f= fetch('https://yielding-dented-amusement.glitch.me/sedetails',options).catch(err =>{
        
  
  });
@@ -4963,7 +4963,7 @@ let editp=()=>{
 
 //https://half-geode-roundworm.glitch.me/api
  
- let sf= fetch('http://127.0.0.1:3890/sedetails',soptions).catch(err =>{
+ let sf= fetch('https://yielding-dented-amusement.glitch.me/sedetails',soptions).catch(err =>{
    
 
 });
@@ -5041,7 +5041,7 @@ let similar=()=>{
  
     //https://half-geode-roundworm.glitch.me/api
      
-     let f= fetch('http://127.0.0.1:3890/sedetails',options).catch(err =>{
+     let f= fetch('https://yielding-dented-amusement.glitch.me/sedetails',options).catch(err =>{
        
  
  });
@@ -5081,7 +5081,7 @@ let similar=()=>{
 
 //https://half-geode-roundworm.glitch.me/api
  
- let sf= fetch('http://127.0.0.1:3890/sedetails',soptions).catch(err =>{
+ let sf= fetch('https://yielding-dented-amusement.glitch.me/sedetails',soptions).catch(err =>{
    
 
 });
@@ -5403,7 +5403,7 @@ let ssavename=()=>{
                         body:formdata
                     }
                     
-                    let f= fetch("http://127.0.0.1:3890/changeename",options).catch(err=>{
+                    let f= fetch("https://yielding-dented-amusement.glitch.me/changeename",options).catch(err=>{
                             console.log(err)
                         })
                    loader.style.display="flex";
@@ -5469,7 +5469,7 @@ function sverifyPassword() {
                body:formdata
            }
            
-           let f= fetch("http://127.0.0.1:3890/changeepassword",options).catch(err=>{
+           let f= fetch("https://yielding-dented-amusement.glitch.me/changeepassword",options).catch(err=>{
                    console.log(err)
                });
                passvalue="";
@@ -5541,7 +5541,7 @@ let sverifypass=()=>{
         }
 
 
-        let f= fetch("http://127.0.0.1:3890/changeemployeremail",options).catch(err=>{
+        let f= fetch("https://yielding-dented-amusement.glitch.me/changeemployeremail",options).catch(err=>{
             console.log(err)
         })
      loader.style.display="flex";
@@ -5665,7 +5665,7 @@ function validateEmail() {
         body:formdata
     }
     
-    let f= fetch("http://127.0.0.1:3890/changeemployeremail",options).catch(err=>{
+    let f= fetch("https://yielding-dented-amusement.glitch.me/changeemployeremail",options).catch(err=>{
             console.log(err)
         })
         loader.style.display="flex";
@@ -5716,7 +5716,7 @@ function validateEmail() {
                         body:formdata
                     }
                     
-                    let f= fetch("http://127.0.0.1:3890/changeemployeremail",options).catch(err=>{
+                    let f= fetch("https://yielding-dented-amusement.glitch.me/changeemployeremail",options).catch(err=>{
                             console.log(err)
                         })
                     f.then(res=>res.json()).then(d=>{
@@ -5768,7 +5768,7 @@ function validateEmail() {
         method:"POST",
         body:formdata
     }
-    let f= fetch("http://127.0.0.1:3890/esettingdata",options).catch(err=>{
+    let f= fetch("https://yielding-dented-amusement.glitch.me/esettingdata",options).catch(err=>{
         console.log(err)
     })
 
@@ -5835,7 +5835,7 @@ let tsupport=()=>{
             body:formdata
         }
 
-        let f= fetch("http://127.0.0.1:3890/supporttalk",options).catch(err=>{
+        let f= fetch("https://yielding-dented-amusement.glitch.me/supporttalk",options).catch(err=>{
             console.log(err)
         });
         loader1[0].classList.add("addedloader1");
