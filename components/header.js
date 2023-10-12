@@ -4,7 +4,7 @@ class Navmenu extends HTMLElement{
 
     }
     connectedCallback(){
-        this.innerHTML=`  <img src="/images/enkari logo.jpg" alt="">
+        this.innerHTML=`  <a href="https://www.enkaare.com"><img src="/images/enkari logo.jpg" alt=""></a>
         <div onmouseover="hidepoptions()" class="status">
             
         <button onclick="postjobbutton()"><img src="/images/add.png" alt=""> Post a Job</button><span id="ebeta">Beta</span>
@@ -125,7 +125,7 @@ class CandidateNavmenu extends HTMLElement{
         super();
     }
     connectedCallback(){
-        this.innerHTML=` <img src="/images/enkari logo.jpg" alt="">
+        this.innerHTML=` <a href="https://www.enkaare.com"><img src="/images/enkari logo.jpg" alt=""></a>
         <div onmouseover="hidepoptions()" class="status">
             <p>Acount status </p>
             <button id="statusbuton"></button>

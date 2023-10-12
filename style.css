@@ -132,7 +132,7 @@ header{
 .navbar2 a{
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
-    color: white;
+    color: black;
     font-size: 1.2vw;
     font-weight: 600;
 }
@@ -140,7 +140,7 @@ header{
     margin-left: 1vw;
 }
 .navbar2 a:hover{
-    color: blue;
+    color: hsl(40,26%,68%);
 }
 .signup{
     margin-left: 1vw;
