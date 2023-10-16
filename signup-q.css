@@ -1,0 +1,168 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+h2{
+    border: 1px solid black;
+    font-size: 2.7vw;
+    margin: auto;
+    width: 73%;
+    margin-top: 7vw;
+    height: 10vw;
+    line-height: 4vw;
+    border-radius: 1vw;
+    color: hsl(188,47%,20%);
+    box-shadow: 0 0.5vw 6px  hsl(188,47%,20%);
+    text-align: center;
+}
+form{
+    border: 1px solid black;
+    margin: auto;
+    width: 50%;
+    margin-top: 3vw;
+    height: 25vw;
+    background-color: hsl(188,47%,20%);
+    
+}
+form div{
+  
+    height: 3vw;
+  
+}
+.firstin{
+    margin-top: 4vw;
+   
+}
+span{
+    font-size: 1.2vw;
+    font-weight: 600;
+    color: white;
+    display: block;
+   
+    margin-top: -1.3vw;
+    margin-left: 10%;
+   
+}
+.submit{
+    height: 2.5vw;
+    width: 20vw;
+    margin-left: 29%;
+    margin-top: 6vw;
+    
+    border-radius: 10vw;
+    font-weight: 700;
+    font-size: 1.3vw;
+    color: hsl(188,47%,20%);
+    border: 1px solid white;
+}
+.submit:hover{
+    background-color: hsl(40,26%,68%);
+}
+.input{
+    margin-left: 6%;
+}
+.loginquiz{
+    color: white;
+    font-size: 1vw;
+    font-weight: 700;
+    margin-left: 30%;
+    margin-top: 3vw;
+}
+.loginquiz a{
+    color: white;
+    font-size: 1vw;
+    cursor: pointer;
+    border: 1px solid white;
+    text-decoration: none;
+    padding: 0.3vw;
+    border-radius: 0.3vw;
+}
+
+@media (max-width:500px){
+    h2{
+        border: 1px solid black;
+        font-size: 3.3vw;
+        margin: auto;
+        width: 90%;
+        margin-top: 25vw;
+        height: 15vw;
+        line-height: 5vw;
+        border-radius: 1vw;
+        color: hsl(188,47%,20%);
+        box-shadow: 0 0.5vw 6px  hsl(188,47%,20%);
+    }
+    form{
+        border: 1px solid black;
+        margin: auto;
+        width: 80%;
+        margin-top: 3vw;
+        height: 45vw;
+        background-color: hsl(188,47%,20%);
+        
+    }
+    form div{
+      
+        height: 10vw;
+      
+      
+    }
+    .firstin{
+        margin-top: 4vw;
+       
+    }
+    span{
+        font-size: 2.6vw;
+        font-weight: 600;
+        color: white;
+        
+       
+        display: block;
+        
+   
+        margin-top: -4.3vw;
+        margin-left: 13%;
+
+    }
+    .submit{
+        height: 6vw;
+        width: 40vw;
+        margin-left: 25%;
+        margin-top: 6vw;
+        
+        border-radius: 10vw;
+        font-weight: 700;
+        font-size: 4vw;
+        color: hsl(188,47%,20%);
+        border: 1px solid white;
+    }
+    .submit:hover{
+        background-color: hsl(40,26%,68%);
+    }
+    .input{
+        margin-left: 6%;
+        margin-top: 4vw;
+        border: 1px solid yellow;
+       
+    }
+    #freelancer{
+        border: 1px solid yellow;
+    }
+    .loginquiz{
+        color: white;
+        font-size: 2.3vw;
+        font-weight: 700;
+        margin-left: 30%;
+        margin-top: 3vw;
+    }
+    .loginquiz a{
+        color: white;
+        font-size: 2vw;
+        cursor: pointer;
+        border: 1px solid white;
+        text-decoration: none;
+        padding: 1vw;
+        border-radius: 0.3vw;
+    }
+}

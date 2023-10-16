@@ -1,0 +1,789 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+
+}
+.emailvericationdivi{
+    
+    height: 0vh;
+    width: 0vw;
+    background-color: hsla(0,0%,100%, 0.9);
+    position: absolute;
+    margin-top: -0vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    overflow: hidden;
+    opacity: 0;
+    
+}
+#sentemail{
+    color: blue;
+}
+/*/
+.emailvericationdivi:hover{
+    height: 90vh;
+    width: 100vw;
+
+}*/
+.emailvericationdivi.addedcodep{
+    height: 90vh;
+    width: 100vw;
+    opacity: 1;
+}
+.codeinputsec{
+    border: 1px solid hsla(4,0%,0%,0.4);
+    height: 40vw;
+    width: 60vw;
+    
+}
+.ccinputs{
+    margin: auto;
+   
+    display: flex;
+    margin-top: 10vw;
+    width: 42vw;
+    
+}
+.codes{
+    width: 5vw;
+    height: 7vw;
+    border:  1px solid hsla(4,0%,0%,0.5);
+    font-size: 1.3vw;
+}
+.vermaessage{
+    font-family: 'Roboto', sans-serif;
+    margin-left: 15%;
+    font-size: 1.3vw;
+    margin-top: 2vw;
+    
+     
+}
+.codeinputsec button{
+    height: 2.5vw;
+    width: 7vw;
+    font-size: 1.2vw;
+    font-weight: 700;
+    color: white;
+    background-color: hsla(188,47%,20%,1);
+    border: 1px solid hsl(188,47%,20%);
+    border-radius: 0.3vw;
+    cursor: pointer;
+    margin-left: 80%;
+    margin-top: 10vw;
+}
+.codeinputsec button:hover{
+    background-color: white;
+    color: hsla(188,47%,20%,1);
+    
+}
+#scancelb{
+    margin-left: 90%;
+    position: absolute;
+    margin-top: -40vw;
+    cursor: pointer;
+    color: hsla(4,0%,0%,0.5);
+}
+#scancelb:hover{
+    color: red;
+}
+form{
+    width: 60vw;
+    border: 1px solid black;
+    height: 45.5vw;
+    margin: auto;
+    margin-top: 4vw;
+     font-family: 'Roboto', sans-serif;
+}
+h2{
+    font-size: 2.5vw;
+   
+    margin: auto;
+    width: 90%;
+    text-align: center;
+    margin-top: 2vw;
+    color: hsl(188,47%,20%);
+}
+.loginquiz{
+ 
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2vw;
+}
+.loginquiz a{
+    border: 1px solid hsl(188,47%,20%);
+    padding: 0.1vw;
+    border-radius: 0.3vw;
+    color: white;
+    background-color: hsl(188,47%,20%);
+}
+.input{
+    display: block;
+
+}
+input{
+    width: 25vw;
+    height: 2.5vw;
+    margin-top: 2.5vw;
+    margin-left: 6%;
+    font-size: 1.2vw;
+    border: 1px solid black;
+    border-radius: 0.3vw;
+    text-align: center;
+}
+input:focus{
+    outline-width: 0vw;
+}
+
+.checki{
+    margin-left: 0%;
+    width: 1vw;
+   
+    height: 1vw;
+    margin-top: 0%;
+    background-color: hsl(188,47%,20%);
+    color: hsl(188,47%,20%);;
+    border: 1px solid red;
+    
+}
+.checki:checked{
+    background-color: green;
+}
+.check{
+   
+    width: 65%;
+    margin-left: 6%;
+    margin-top: 3vw;
+  
+    
+}
+#checklabel{
+   
+   /* border: 1px solid black;*/
+    font-size: 1vw;
+    display: block;
+    margin-top: -1.3vw;
+    margin-left: 4%;
+}
+select{
+    width: 25vw;
+    height: 2.5vw;
+    margin-top: 2.5vw;
+    margin-left: 6%;
+    font-size: 1.2vw;
+    border-radius: 0.3;
+  
+}
+form a{
+    text-decoration: none;
+    color: hsl(188,47%,20%);
+}
+form a:hover{
+    color: brown;
+}
+.submit{
+    width: 30vw;
+    font-weight: 600;
+    margin-left: 23%;
+    margin-top: 4vw;
+    height: 3vw;
+    border-radius: 15vw;
+    background-color: hsl(188,47%,20%);
+    color: white;
+    border: 1px solid hsl(188,47%,20%);
+}
+.submit:hover{
+    background-color: hsla(188,47%,20%,0.8);
+    border: 1px solid hsla(188,47%,20%,0.8);
+}
+
+.emacountry{
+   
+   display: flex;
+}
+#emai{
+    margin-left: 14%;
+}
+
+.seleccounti{
+   /* border: 1px solid black;*/
+    margin-left: 10%;
+}
+.sec2{
+  
+    width: 14vw;
+   
+    display: flex;
+}
+
+.span2{
+    margin-left: 2%;
+    font-size: 1.2vw;
+    margin-top: 5%;
+}
+.span1{
+    color: hsl(188,47%,20%);
+}
+.spanpass{
+    display: block;
+    font-size: 1vw;
+    color: red;
+}
+.passmess{
+    display: block;
+    margin-left: 12%;
+    margin-top: 0.5vw;
+    font-size: 1vw;
+    color: hsl(188,47%,20%);
+}
+#spancountry{
+    display: block;
+    font-size: 1vw;
+    margin-left: 40%;
+    margin-top: 1vw;
+    color: red;
+
+}
+.emailverify span{
+    font-size: 0.9vw;
+}
+.fa{
+   margin-left: 27%;
+   margin-top: 3.3vw;
+   position: absolute;
+   color: gray;
+   height: 1vw;
+   opacity: 1;
+}
+.fa.addedfa{
+    opacity: 0.1;
+}
+
+.button.addbutton{
+    opacity: 0.3;
+}
+.code{
+    opacity: 1;
+}
+.code.addedcode{
+    opacity: 0.3;
+}
+.emailverify .button p{
+margin-top: 4.5%;
+}
+.emailverify .button:hover{
+    background-color: hsla(188,47%,20%,0.8);
+    border: 1px solid hsla(188,47%,20%,0.8);
+}
+
+.emailv,#dmatchspan{
+    position: absolute;
+  
+    margin-left: 13%;
+    font-size: 0.9vw;
+    margin-top: 0.3vw;
+    color: red;
+}
+.pass1phonenumberdiv{
+    
+    display: flex;
+}
+.pass1div{
+   
+    width: 55%;
+}
+#pass1{
+    margin-left: 11%;
+}
+.phonendiv{
+    
+    width: 45%;
+}
+.phonecode{
+    border: 1px solid black;
+    height: 2.6vw;
+    margin-top: 2.5vw;
+    width: 24.8vw;
+    display: flex;
+}
+.realpcode{
+    
+    width: 5vw;
+    height: 2vw;
+    margin-top: 0.3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2vw;
+    color:  hsla(4,0%,0%,0.6);
+
+}
+#phonenumberin{
+    margin-top: 0.3vw;
+    height: 1.8vw;
+    margin-left: 0.0vw;
+    text-align: left;
+    border: transparent;
+}
+
+
+/****************************/
+.bloader{
+   background-color: hsla(44,0%,100%,0.4);
+   position: fixed;
+   width: 6.9vw;
+   height: 2.49vw;
+   align-items: center;
+    justify-content: center;
+    display: none;
+    border: 1px solid black;
+    margin-left: 48%;
+    margin-top: 10vw;
+    border-radius: 0.3vw;
+
+}
+.bloader.adddedbloader{
+    display: flex;
+    opacity: 1;
+}
+.bloader::after{
+    content: "";
+    width: 1vw;
+    height: 1vw;
+    border: 0.1vw solid hsl(188,47%,20%);
+    border-top: 0.1vw solid white;
+    border-radius: 50%;
+    animation: loading 0.7s ease infinite;
+    opacity: 1;
+    
+
+}
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: hsla(188,47%,20%,0.3);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+   
+
+}
+.loader::after{
+    content: "";
+    width: 5vw;
+    height: 5vw;
+    border: 0.8vw solid white;
+    border-top: 0.8vw solid hsl(188,47%,20%);
+    border-radius: 50%;
+    animation: loading 0.7s ease infinite;
+    opacity: 1;
+    
+   
+}
+.loader.addedloader{
+    display: flex;
+    opacity: 1;
+}
+@keyframes loading {
+    from{transform: rotate(0turn);}
+    to{transform: rotate(1turn);}
+}
+
+@media (max-width:500px){
+
+    .emailvericationdivi{
+    
+        height: 0vh;
+        width: 0vw;
+        background-color: hsla(0,0%,100%, 0.9);
+        position: absolute;
+        margin-top: -0vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        overflow: hidden;
+        opacity: 0;
+        
+        
+    }
+    #sentemail{
+        color: blue;
+    }
+    /*/
+    .emailvericationdivi:hover{
+        height: 90vh;
+        width: 100vw;
+    
+    }*/
+    .emailvericationdivi.addedcodep{
+        height: 90vh;
+        width: 100vw;
+        opacity: 1;
+    }
+    .codeinputsec{
+        border: 1px solid hsla(4,0%,0%,0.4);
+        height: 100vw;
+        width: 90vw;
+        
+    }
+    .ccinputs{
+        margin: auto;
+      
+        display: flex;
+        margin-top: 30vw;
+        width: 80vw;
+        
+    }
+    .codes{
+        width: 7vw;
+        height: 10vw;
+        border:  1px solid hsla(4,0%,0%,0.5);
+        font-size: 4vw;
+        margin-left: 6.1vw;
+    }
+    .vermaessage{
+        font-family: 'Roboto', sans-serif;
+        margin-left: 15%;
+        font-size: 3vw;
+        margin-top: 7vw;
+        
+         
+    }
+    .codeinputsec button{
+        height: 7vw;
+        width: 25vw;
+        font-size: 3.8vw;
+        font-weight: 700;
+        color: white;
+        background-color: hsla(188,47%,20%,1);
+        border: 1px solid hsl(188,47%,20%);
+        border-radius: 0.3vw;
+        cursor: pointer;
+        margin-left: 68%;
+        margin-top: 25vw;
+    }
+    .codeinputsec button:hover{
+        background-color: white;
+        color: hsla(188,47%,20%,1);
+        
+    }
+    #scancelb{
+        margin-left: 80%;
+        position: absolute;
+        margin-top: -140vw;
+        cursor: pointer;
+        color: hsla(4,0%,0%,0.5);
+        font-size: 5vw;
+       
+        width: 7vw;
+        height: 8vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #scancelb:hover{
+        color: red;
+    }
+    form{
+        width: 90vw;
+        border: 1px solid black;
+        height: 160vw;
+        margin: auto;
+        margin-top: 10vw;
+         font-family: 'Roboto', sans-serif;
+    }
+    h2{
+        font-size: 5vw;
+       
+        margin: auto;
+        width: 90%;
+        text-align: center;
+        margin-top: 4vw;
+        color: hsl(188,47%,20%);
+    }
+    .input{
+        display: block;
+    
+    }
+    .loginquiz{
+        font-size: 3vw;
+    }
+    input{
+        width: 68vw;
+        height: 6.5vw;
+        margin-top: 6vw;
+        margin-left: 10%;
+        font-size: 3vw;
+        border: 1px solid black;
+        border-radius: 0.3vw;
+        text-align: center;
+    }
+    .inputl{
+        display: block;
+    }
+    input:focus{
+        outline-width: 0vw;
+    }
+    
+    .checki{
+        margin-left: 2%;
+        width: 7vw;
+       
+        height: 3vw;
+        margin-top: 7%;
+        background-color: hsl(188,47%,20%);
+        color: hsl(188,47%,20%);;
+        border: 1px solid red;
+        
+    }
+    .checki:checked{
+        background-color: green;
+    }
+    .check{
+       
+        width: 93%;
+        margin-left: 6%;
+        margin-top: 20vw;
+          
+    }
+    #checklabel{
+       
+       margin-left: 0%;
+        font-size: 2vw;
+        display: block;
+        margin-top: -3.5vw;
+        margin-left: 10%;
+    }
+    select{
+        width: 68vw;
+        height: 8vw;
+        margin-top: 7vw;
+        margin-left: 10%;
+        font-size: 3.8vw;
+        border-radius: 0.3;
+        border: 1px solid black;
+      
+    }
+    form a{
+        text-decoration: none;
+        color: hsl(188,47%,20%);
+    }
+    form a:hover{
+        color: brown;
+    }
+    .submit{
+        font-size: 4vw;
+        width: 65vw;
+        font-weight: 600;
+        margin-left: 13%;
+        margin-top: 10vw;
+        height: 10vw;
+        border-radius: 15vw;
+        background-color: hsl(188,47%,20%);
+        color: white;
+        border: 1px solid hsl(188,47%,20%);
+    }
+    .submit:hover{
+        background-color: hsla(188,47%,20%,0.8);
+        border: 1px solid hsla(188,47%,20%,0.8);
+    }
+    .emailverify{
+      /*border: 1px solid black;*/
+        display: flex;
+        width: 80vw;
+        height: 9vw;
+        position: absolute;
+        margin-left: 7%;
+        margin-top: 20vw;
+        cursor: pointer;
+    }
+    #pass1{
+        margin-top: 5vw;
+        margin-left: 18%;
+    }
+    .sec2{
+      
+        width: 40vw;
+      /* border: 1px solid blue;*/
+        display: flex;
+    }
+    .emailverify input{
+        display: block;
+        width: 30vw;
+        height: 7vw;
+        margin-top: 0%;
+    }
+    .span2{
+        margin-left: 2%;
+         
+        margin-top: 5%;
+    }
+    #span2{
+        font-size: 3vw;
+    }
+  
+    .span1{
+        color: hsl(188,47%,20%);
+        font-size: 3vw;
+    }
+    #span1{
+        font-size: 2vw;
+        margin-left: 5%;
+    }
+    .spanpass{
+        display: block;
+        font-size: 1vw;
+        color: red;
+    }
+    .passmess{
+        display: block;
+        margin-left: 23%;
+        margin-top: 2vw;
+        font-size: 2.5vw;
+        color: hsl(188,47%,20%);
+        
+        width: 70vw;
+    }
+    #spancountry{
+        display: block;
+        font-size: 2vw;
+        margin-left: 15%;
+        margin-top: 1.5vw;
+        color: red;
+    
+    }
+    .emailverify span{
+        font-size: 0.9vw;
+    }
+    .fa{
+       margin-left: 72%;
+       margin-top: 27vw;
+       position: absolute;
+       color: gray;
+    }
+    .emailverify .button{
+        width: 27vw;
+        height: 7vw;
+        font-size: 3.5vw;
+        background-color: hsl(188,47%,20%);
+        color: white;
+        border: 1px solid hsl(188,47%,20%);
+        border-radius: 0.3vw;
+        margin-left: 14%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+   
+    .emailverify .button p{
+    margin-top: 4.5%;
+    }
+    .emailverify .button:hover{
+        background-color: hsla(188,47%,20%,0.8);
+        border: 1px solid hsla(188,47%,20%,0.8);
+    }
+   
+    .emailv{
+        position: absolute;
+      
+        margin-left: 40%;
+        font-size: 2.5vw;
+        margin-top: 0.3vw;
+        color: red;
+    }
+
+    .bloader{
+        
+        height: 6.8vw;
+        width: 25vw;
+        margin-left: 60.9%;
+        margin-top: 24.8vw;
+     
+     }
+     .bloader::after{
+       
+        width: 4vw;
+        height: 4vw;
+      
+        
+    
+    }
+    .emacountry{
+        display: block;
+    }
+    .pass1phonenumberdiv{
+        display: block;
+    }
+    #emai{
+        margin-left: 10%;
+    }
+    #country{
+        margin-left: 0%;
+        width: 69.5vw;
+    }
+    #country:focus{
+        outline: none;
+    }
+  
+   .pass1phonenumberdiv{
+        border: 1px solid transparent;
+        height: 23vw;
+
+    }
+    .phonecode{
+        width: 69.4vw;
+        height: 7.5vw;
+        margin-top: 22vw;
+        margin-left: 9.9%;
+        font-size: 3vw;
+      /*  border: 1px solid green;*/
+        border-radius: 0.3vw;
+        text-align: center;
+    }
+    
+    #phonenumberin{
+      
+        height: 6.2vw;
+        margin-top: 0.1vw;
+        margin-left: 0%;
+        width: 100vw;
+        font-size: 3.5vw;
+       /* border: 1px solid black;*/
+        
+    }
+    
+    .realpcode{
+        width: 25vw;
+        height: 7vw;
+        font-size: 3.5vw;
+       
+
+
+    }
+    #pass2{
+        margin-top: 1vw;
+    }
+    #dmatchspan{
+       
+        font-size: 3vw;
+        margin-left: 30%;
+        margin-top: 1vw;
+    }
+    .phonendiv{
+       
+        width: 88vw;
+    }
+    .fa{
+        margin-top: 7vw;
+    }
+    
+}

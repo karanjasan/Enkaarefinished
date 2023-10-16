@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <script src="/components/header.js"></script>
+   <link rel="stylesheet" href="/employerd.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://kit.fontawesome.com/3192a96bdf.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+</head>
+<body onload="viewjobsapplications();setprofile();sendb()" class="body">
+   
+   
+
+
+   <div class="prompt">
+    <div id="prompt-container">
+        <p id="messagepp"></p>
+        <button id="okay-button">Okay</button>
+    </div>
+    <script>
+        // JavaScript to handle the "Okay" button click
+        const okayButton = document.getElementById("okay-button");
+        const promptContainer = document.getElementsByClassName("prompt")[0];
+
+        // Function to hide the prompt
+        function hidePrompt() {
+            promptContainer.style.display = "none";
+        }
+
+        okayButton.addEventListener("click", hidePrompt);
+    </script>
+   </div>
+
+    <div class="contactsupport">
+        <div class="loader1"></div>
+        <span onclick="tsupportcancel()" id="suucanncel">&#x1F5D9;</span>
+        <div class="innersupport">
+            <section class="innersupport1">
+                <h1>Contact an enkaare<br> recruiter</h1>
+                <div class="deco">
+                    <img src="/images/send-data.png" alt="">
+                 
+                 
+                   
+                  
+
+                </div>
+              
+
+            </section>
+            <div class="innersupport2">
+                <h2>Contact us</h2>
+
+
+                <form class="suuform" action="">
+                    <input type="text" id="subject" placeholder="Subject" required>
+                    <textarea name="" id="sumessage" cols="30" rows="10" placeholder="Message" required></textarea>
+                    <input type="submit" id="susubmitb" value="Send">
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    <div class="loader"></div>
+
+    <div class="main">
+       
+        <div class="navbar">
+            
+        <nav-menu></nav-menu>
+ 
+        </div>
+    
+
+        <div onmouseleave="hidepoptions()" class="poptions">
+            <profile-options></profile-options>
+        
+        </div>
+
+        
+
+        <div class="iframe" >
+
+
+
+
+
+
+
+
+
+
+            
+            
+            
+            <div class="avbody">
+                <br>
+              <div class="bidtopbar">
+                <h1 id="bidsh1">Job <span id="jbappsid"></span></h1>
+
+                <div onclick="allinterviess()" class="icominginte">
+                    <p>Interviews</p>
+                     <span class="numbersecd">
+                        
+                        
+                     </span>
+
+                     <span ><img class="intergr1" src="/images/greater-than-symbol (1).png" alt=""></span>
+                </div>
+
+                <div onclick="selectslots()"  class="interviewdates">
+                    <img src="/images/calenderdate.png" alt="">
+                    <p>Select Interview Dates</p>
+                    <span ><img id="intergr2" class="intergr2" src="/images/greater-than-symbol (1).png" alt=""></span>
+                </div>
+
+                <div onclick="interviewsl()" class="avaislots">
+                    <img src="/images/llists.png" alt="">
+                    <p>Interview slots</p>
+                    <span ><img id= "intergr3" class="intergr3" src="/images/greater-than-symbol (1).png" alt=""></span>
+                </div>
+
+                <div onclick="editpost()"  class="bidsedit">
+                    <img src="/images/pen.png" alt="">
+
+                </div>
+              <a href="/emp-orderdetails.html">
+                <div  class="bidsdetails">
+                    <img src="/images/card.png" alt="">
+                    <p>View Details</p>
+                </div>
+              </a>
+              </div>
+
+              
+
+              
+
+              <div class="slotmain">
+
+                
+
+                <div  class="interviewspart" id="interviewspart">
+      
+                    <!-- 
+                  <div class="interviewscarrier">
+
+                        <span class="intcjbId">
+                            45454
+        
+                         </span>
+
+                    <div class="intervjnamep">
+                        <h3 class="intcname">
+                            Candindate Name
+                        </h3>
+                        <p class="intfnmae">
+                            Georgina
+                        </p>
+                        <p class="intsname">
+                            N
+                        </p>
+
+                    </div>
+
+
+                    <div class="startdppart">
+                        <h3 class="intcname">
+                            Start Time
+                        </h3>
+                        <p>Mon Aug 28 2023 06:24:12</p>
+                        
+
+                    </div>
+
+
+                    <div class="startdppart">
+                        <h3 class="intcname">
+                            End Time
+                        </h3>
+                        <p>Mon Aug 28 2023 06:24:12</p>
+                        
+
+                    </div>
+
+                    <button class="intcancelBtn">
+                        Terminate
+                    </button>
+
+
+
+
+
+
+                  </div>
+                -->
+
+                <div class="fff">
+
+                </div>
+
+                </div>
+                <div class="interviewploader">
+                    
+                </div>
+
+
+                <div id="confirmation-container">
+                    <div id="confirmation-box">
+                        
+                      <p>Are you sure you want to terminate this incoming interview?</p>
+                      <div id="confirmation-buttons">
+                        <button id="cancel-button">Cancel</button>
+                        <button id="continue-button"> Continue</button>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+
+              <div class="slotsdisplay" id="slotsdisplay">
+
+
+
+
+               <!-- 
+                   
+                
+                <div class="slotdcarrier">
+                    <span class="slotid">21321321</span>
+                    <div class="slotdcarrier1">
+                        <span class="slotcancel">
+                            &#x1F5D9;
+                        </span>
+                    <p class="sttime">
+                        Start time:  Mon Aug 28 2023 06:24:12
+                    </p>
+                    <span class="slotstatus">open</span>
+                    <style>
+                        .slotstatus{
+                            background-color: green;
+                            
+                        }
+                        .slotcancel{
+                            display: none;
+                        }
+                    </style>
+
+
+                    <p class="edtime">
+                        Start time:  Mon Aug 28 2023 06:24:12 
+                    </p>
+                  
+
+                    </div>
+                </div>
+            -->
+               
+                
+
+              </div>
+             
+                <div class="error-box">
+                    <h2>Oops! Unable to complete the request.</h2>
+                    <p id="errbmess"></p>
+                    <button onclick="removeerrorbox()" class="close-button">Close</button>
+                  </div>
+
+            
+
+              <div class="slotloader"></div>
+            </div>
+
+              <div class="datesselect">
+              
+                <div class="calendar">
+                      
+
+                    <div class="header">
+                        <button id="prevMonth">Previous</button>
+                        <h2 id="monthYear"></h2>
+                        <button id="nextMonth">Next</button>
+                    </div>
+                    <div class="days" id="days"></div>
+                </div>
+                <div class="time">
+                    <label for="time">Select Start Time:</label>
+                    <input oninput="calenderundo()" type="time" id="time" min="00:00" max="23:59">
+                    <span id="wrongtime"></span>
+                </div>
+                <div class="time">
+                    <label for="timeEnd">End time: (Once you select start time,an auto 30 minutes slot is selected for you, you can proceed to "Add interview slot" 
+                        or select minutes up to 1hour and not less than the current 30 minutes slot)</label>
+                    <input oninput="calenderundo()" type="time" id="timeEnd" min="00:00" max="23:59" disabled>
+                    <span id="endwarn"></span>
+                    
+                </div>
+                
+              
+                <button id="submitBtn" class="submitBtn">Add Interview Slot</button>
+              
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="jobspcarrier2">
+                <section class="jbtitle">
+                    <div class="titlej">
+                        <div class="animeb">
+
+                        </div>
+                        <p id="jbtitlep1"></p>
+
+                    </div>
+                    <p id="jbordrid">34534</p>
+
+                </section>
+                <section class="jbstatus">
+                    <button>
+                        Open to Applications
+                    </button>
+                    
+                </section>
+                <section class="jbbids">
+                    <div class="jbremin">
+                        <p class="jbp1" id="bidsap"><span id="numberofapp"></span> Applications</p>
+                        <p class="jbp2">Expires in <span id="daysremaining"></span> days</p>
+
+                    </div>
+                    <div class="jb3bs">
+                        <div class="bscarrier">
+                           <section></section>
+                           <section></section>
+                           <section></section>
+
+                        </div>
+                        <div class="jbquicklinks">
+                            <div class="jbwd">
+                                <img src="/images/cancel.png" alt="">
+                                <p>Cancel Job</p>
+                             
+                            </div>
+
+                            <div onclick="createsimilarjob()" class="jbwd">
+                                <img src="/images/copy.png" alt="">
+                                <p>Create Similar Job</p>
+                             
+                            </div>
+                           <a href="/candidates.html">
+                            <div class="jbwd">
+                                <img src="/images/invite.png" alt="">
+                                <p>Invite candidates</p>
+                             
+                            </div>
+                           </a>
+
+                        </div>
+
+                    </div>
+                    
+                </section>
+
+            </div>
+
+              
+               
+                 <div class="ordersnav">
+                    
+                    <h3 onclick="viewallaplicants()" class="h32" id="allappli">All Applications</h3>
+
+                    <h3 onclick="shortlist()"  class="h32" id="shortlist">Shortlisted</h3>
+
+                    <span class="numbersecdshort">
+                        
+                    </span>
+                    <h3 onclick="invites()" class="h32" id="invites">Invitations</h3>
+                    <!-- 
+                        <h3  class="h32" id="invites">Recommended</h3>
+
+                    -->
+                    
+            
+                 </div>
+                 <div class="searchbar">
+                    <label for="sort">Sort by: </label>
+                    <select name="sorts" id="sort">
+            
+                        <option value="New_order">Candidate Rating</option>
+                        <option value="random">Pay</option>
+                    </select>
+                    <div class="search">
+                      <img src="/images/search-interface-symbol.png" alt="">
+                      <input type="text" name="" id="" placeholder="Search">
+                
+                     </div>
+            
+                 </div>
+
+            
+                
+            
+                 <div class="candidatelist" id="candidatelist">
+                  
+                
+        <!---->
+        <!-- 
+
+                    <div class="candidatecarrier">
+                        <section class="cadpsec">
+                          <div class="cadprfmain">
+                            
+                            <div class="divprfshow">
+                                <div id="profileid">2323</div>
+                               
+
+                                <div class="cadprofile">
+                                    <img src="/images/user.png" alt="">
+                                    <section class="online">
+                                      
+                                    </section>
+      
+                                  </div>
+    
+                                  <div class="js">
+                                    <h3 id="cadph3">Lilian W</h3>
+                                  <p id="cadp">Online</p>
+                                  </div>
+
+                            </div>
+
+                       
+
+                              <div class="approvalr">
+                                <h3 id="aprateh3">100%</h3>
+                                <p>Aprroval Rate</p>
+                              </div>
+                          </div>
+                          
+
+                        </section>
+                        <section class="cadabout">
+                               <div class="cadaboutag">
+                                 <div class="startchat"><h3>About Candidate:</h3>
+                                    <div id="startcb">Start Chat</div>
+                                </div>
+                                <p id="cadaboutp">Graphics designer</p>
+
+                               </div>
+                           
+                              <div class="bidshiresec">
+                                
+                                <div class="hirethreebuttons">
+                                    <section></section>
+                                    <section></section>
+                                    <section></section>
+                                    
+                                </div>
+                                <div class="canclejobsec">
+                                    <div class="cancelappl">
+                                        <img src="/images/cancel.png" alt="">
+                                        <p>Decline</p>
+
+                                    </div>
+                                    <div class="cancelappl">
+                                        <img src="/images/add-to-favorites.png" alt="">
+                                        <p>Add to Shortlist</p>
+
+                                    </div>
+                                    
+                                </div>
+                                <div class="hirepart">
+                                    <p id="hirepp">$35/hr</p>
+                                    <div class="hirebutton">
+                                        Hire
+                                    </div>
+
+                                </div>
+
+                              </div>
+                              
+
+                        </section>
+
+                    </div>
+-->
+                    <!---->
+
+                    
+                   
+
+            
+                 </div>
+                
+                </div>
+
+
+
+            <div class="message" >
+                <div class="topchat">
+                    <div class="canceldiv">
+                        <section onclick="messageboxdis()" class="cancelbutton">
+                            &#128473;
+                        </section>
+                    </div>
+                    <h3 id="messageheeader">Chats!</h3>
+                </div>
+ 
+
+               <div class="messagethreads" id="messagethreads">
+               <!--
+                <div class="thread">
+                    <section class="imgpart">
+                     
+                        <section class="mesimg" id="mesimg">
+
+                        </section>
+                     </section>
+                     <section class="namemes">
+                        <p class="mesp" id="mesp">Karanja  G</p>
+                        <p id="threadp2">One of the thing i really love....</p>
+
+                     </section>
+                     <section class="times">
+                         <div class="threadnoti" >
+                            2
+
+                         </div>
+                         <p class="thtimestamp">
+                            8:20pm
+                         </p>
+                     </section>
+                </div>
+            -->
+
+
+
+
+             
+               
+                
+               </div>
+
+
+
+               <div class="wholemescontainer" id="wholemescontainer">
+
+              
+
+                <div class="messagerecep">
+                    <section class="mesimg">
+
+                    </section>
+                    <p class="mesp" id="mesp1"></p>
+
+                </div>
+                <div id="messagecarrier" class="messagecarrier">
+                  <!-- 
+                    <div class="sendmessage mainel">
+                 <p class="sendmp">Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me  </p>
+                 <p class="timefmp sendstyle">5:00pm</p>
+                
+                    </div>
+                    <div class="receivemessage mainel">
+                        <p class="receivmp">Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me  </p>
+                        <p class="timefmp restyle">5:00pm</p>
+                           </div>
+
+                           */
+                           -->
+                    
+                </div>
+                <form action="" id="form">
+                    <textarea name="" id="text" cols="30" rows="10" placeholder=" Start typying..."></textarea>
+                    <div class="sendicons">
+                   <button  type="submit"><img class="sendic" src="/images/paper-plane.png" alt=""></button>
+
+                    </div>
+                </form>
+                
+            </div>
+
+
+
+
+
+
+                
+            </div>
+        </div>
+     
+       
+      
+
+    </div>
+</body>
+
+<script src="/employerp.js"></script>
+
+
+</html>
