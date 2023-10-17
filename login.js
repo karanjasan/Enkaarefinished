@@ -9,8 +9,13 @@ const formdata = new FormData();
      method: 'POST',
 
      headers:{
+
+
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+       "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "GET,POST,DELETE,PUT,OPTIONS",
          "Acces-Control-Allow-Credentials":true,
-         "Access-Control-Allow-Origin": "https://calm-gingersnap-fdb8ce.netlify.app",
+       
          withCredentials:true
 
      },
@@ -90,10 +95,16 @@ form.addEventListener("submit",(e)=>{
         method: 'POST',
         
         headers:{
-            "Acces-Control-Allow-Credentials":true,
-            withCredentials:true
 
-        },
+
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+           "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "GET,POST,DELETE,PUT,OPTIONS",
+             "Acces-Control-Allow-Credentials":true,
+           
+             withCredentials:true
+    
+         },
        credentials: 'include',
    
         body: formdata,
