@@ -10,7 +10,7 @@ const formdata = new FormData();
 
      headers:{
 
-
+//fgdfgdfgdfg
         "Access-Control-Allow-Origin": "https://www.enkaare.com",
        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "GET,POST,DELETE,PUT,OPTIONS",
