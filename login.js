@@ -7,10 +7,9 @@ const formdata = new FormData();
  const options ={
 
      method: 'POST',
-
      
      headers:{
-        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Credentials":true,
         "Access-Control-Allow-Origin": "https://www.enkaare.com",
         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -92,7 +91,7 @@ form.addEventListener("submit",(e)=>{
         method: 'POST',
         
         headers:{
-            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Credentials":true,
             "Access-Control-Allow-Origin": "https://www.enkaare.com",
             "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
             "Access-Control-Allow-Methods": "POST",
