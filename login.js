@@ -115,7 +115,7 @@ form.addEventListener("submit",(e)=>{
 loader[0].classList.add("addedloader");
 
 f.then(res => res.json()).then(d =>{
-    console.log("Response sucess")
+    console.log("Response success")
     
    /*
   const{ verytype,usertype,userid,firstname,secondname}=d;
