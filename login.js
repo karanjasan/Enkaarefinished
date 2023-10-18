@@ -116,7 +116,7 @@ loader[0].classList.add("addedloader");
 
 f.then(res => res.json()).then(d =>{
     
-   
+   /*
   const{ verytype,usertype,userid,firstname,secondname}=d;
 
 
@@ -140,7 +140,7 @@ f.then(res => res.json()).then(d =>{
         loader[0].classList.remove("addedloader");
     }
    
-    
+    */
     
     }).catch(err =>{
     
