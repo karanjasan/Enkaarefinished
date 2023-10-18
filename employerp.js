@@ -4,8 +4,16 @@ const options ={
     method: 'POST',
 
     headers:{
-        "Access-Control-Allow-Credentials":true,
-        "Access-Control-Allow-Origin": "https://calm-gingersnap-fdb8ce.netlify.app",
+        headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
         withCredentials:true
 
     },
@@ -62,9 +70,14 @@ const options ={
 
     headers:{
         "Acces-Control-Allow-Credentials":true,
-        withCredentials:true
-
-    },
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+   
+   
    credentials: 'include',
 
 
@@ -121,6 +134,16 @@ let setprofile=()=>{
  
      const options={
          method:"POST",
+         headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
          body:formdata
      }
  
@@ -165,6 +188,16 @@ let candidates=()=>{
 
     const options={
         method: "POST",
+        headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
         body: formdata
     }
 
@@ -392,6 +425,16 @@ f.then(res=>res.json()).then(d=>{
             const question = "Select Jobs to invite candindate to apply";
             const options1={
                 method:"POST",
+                headers:{
+                    "Acces-Control-Allow-Credentials":true,
+                    "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                    "Access-Control-Allow-Methods": "POST",
+                       withCredentials:true
+               
+                   },
+                  credentials: 'include',
+               
                 body:getformdata
             }
             inloader.style.display="flex";
@@ -480,6 +523,16 @@ let checkempcomplete=()=>{
 
      const options={
         method:"POST",
+        headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
         body:formdata
      }
 
@@ -539,6 +592,16 @@ function invitesubmit(){
 
         const options={
             method:"POST",
+            headers:{
+                "Acces-Control-Allow-Credentials":true,
+                "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                "Access-Control-Allow-Methods": "POST",
+                   withCredentials:true
+           
+               },
+              credentials: 'include',
+           
             body:fdata
         }
 
@@ -606,6 +669,16 @@ let eprofload =()=>{
     
     const options={
        method:"POST",
+       headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+      credentials: 'include',
+   
        
     
        body:formdata
@@ -843,6 +916,16 @@ let urltoFile=(url)=>{
 
    const options={
        method:"POST",
+       headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+      credentials: 'include',
+   
        body:formdata
    }
 
@@ -911,6 +994,16 @@ form.addEventListener('submit',(e)=>{
 
        const options={
            method:'POST',
+           headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
            body:formdata
        }
 
@@ -956,6 +1049,16 @@ let profileeditbutton=()=>{
  
  const options={
     method:"POST",
+    headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+      credentials: 'include',
+   
     
  
     body:formdata
@@ -1451,6 +1554,16 @@ let orderdetails=()=>{
     const options ={
 
         method: 'POST',
+        headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
    
         body: formdata,
        
@@ -1509,6 +1622,16 @@ loader[0].classList.add("addedloader");
     const soptions ={
 
         method: 'POST',
+        headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
    
         body: sformdata,
        
@@ -1762,6 +1885,16 @@ formdata.append("q","many");
  const options ={
 
     method: 'POST',
+    headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+      credentials: 'include',
+   
 
     body: formdata,
    
@@ -2123,6 +2256,16 @@ cbutton(sessionStorage.getItem('value'));
  const options ={
 
     method: 'POST',
+    headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+      credentials: 'include',
+   
 
     body: formdata,
    
@@ -2191,6 +2334,16 @@ shortlistsum();
  const options ={
 
     method: 'POST',
+    headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+      credentials: 'include',
+   
 
     body: formdata,
    
@@ -2492,6 +2645,16 @@ f.then(res=>res.json()).then(d=>{
              const options ={
             
                 method: 'POST',
+                headers:{
+                    "Acces-Control-Allow-Credentials":true,
+                    "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                    "Access-Control-Allow-Methods": "POST",
+                       withCredentials:true
+               
+                   },
+                  credentials: 'include',
+               
             
                 body: formdata,
                
@@ -2546,6 +2709,16 @@ f.then(res=>res.json()).then(d=>{
           const options ={
          
              method: 'POST',
+             headers:{
+                "Acces-Control-Allow-Credentials":true,
+                "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                "Access-Control-Allow-Methods": "POST",
+                   withCredentials:true
+           
+               },
+              credentials: 'include',
+           
          
              body: formdata,
             
@@ -2596,6 +2769,16 @@ f.then(res=>res.json()).then(d=>{
              const options ={
             
                 method: 'POST',
+                headers:{
+                    "Acces-Control-Allow-Credentials":true,
+                    "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                    "Access-Control-Allow-Methods": "POST",
+                       withCredentials:true
+               
+                   },
+                  credentials: 'include',
+               
             
                 body: formdata,
                
@@ -2665,6 +2848,16 @@ f.then(res=>res.json()).then(d=>{
  const options ={
 
     method: 'POST',
+    headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+      credentials: 'include',
+   
 
     body: formdata,
    
@@ -3087,6 +3280,16 @@ if(d[i].invitedexist===1 ||d[i].slotsexist ===1){
             const options ={
            
                method: 'POST',
+               headers:{
+                "Acces-Control-Allow-Credentials":true,
+                "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                "Access-Control-Allow-Methods": "POST",
+                   withCredentials:true
+           
+               },
+              credentials: 'include',
+           
            
                body: formdata,
               
@@ -3224,6 +3427,16 @@ let invites=()=>{
      const options ={
     
         method: 'POST',
+        headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
     
         body: formdata,
        
@@ -3738,6 +3951,16 @@ function addMinutesToTime(inputTime, minutesToAdd) {
 
             const options={
                 method:"POST",
+                headers:{
+                    "Acces-Control-Allow-Credentials":true,
+                    "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                    "Access-Control-Allow-Methods": "POST",
+                       withCredentials:true
+               
+                   },
+                  credentials: 'include',
+               
                 body:formdata
             }
 
@@ -3820,6 +4043,16 @@ function addMinutesToTime(inputTime, minutesToAdd) {
    
     const options={
         method:"POST",
+        headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
         body:formdata
     }
 
@@ -4004,6 +4237,16 @@ let allinterviess=()=>{
 
    const options={
        method:"POST",
+       headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+      credentials: 'include',
+   
        body:formdata
    }
 
@@ -4151,6 +4394,16 @@ let terminateinterviews=(interviewid)=>{
 
    const options={
        method:"POST",
+       headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+      credentials: 'include',
+   
        body:formdata
    }
 
@@ -4185,6 +4438,16 @@ let interviewasums=()=>{
  
     const options={
         method:"POST",
+        headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
         body:formdata
     }
  
@@ -4218,6 +4481,16 @@ let shortlistsum=()=>{
  
     const options={
         method:"POST",
+        headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
         body:formdata
     }
  
@@ -4262,6 +4535,16 @@ let shortlistsum=()=>{
 
    const options={
        method: 'POST',
+       headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+      credentials: 'include',
+   
                        
         body: formdata
    }
@@ -4396,6 +4679,16 @@ let requestintervieb=()=>{
 
         const options={
             method:"POST",
+            headers:{
+                "Acces-Control-Allow-Credentials":true,
+                "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                "Access-Control-Allow-Methods": "POST",
+                   withCredentials:true
+           
+               },
+              credentials: 'include',
+           
             body:formdata
         }
 
@@ -4460,6 +4753,16 @@ let postjobform=()=>{
 
     let optionsa={
         method: "POST",
+        headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
         body:formdat
 
     }
@@ -4677,6 +4980,16 @@ f.then(res=>res.json()).then(d=>{
            const options ={
 
                method: 'POST',
+               headers:{
+                "Acces-Control-Allow-Credentials":true,
+                "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                "Access-Control-Allow-Methods": "POST",
+                   withCredentials:true
+           
+               },
+              credentials: 'include',
+           
           
                body: formdata,
               
@@ -4733,6 +5046,16 @@ f.then(res=>res.json()).then(d=>{
            const options ={
 
                method: 'POST',
+               headers:{
+                "Acces-Control-Allow-Credentials":true,
+                "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                "Access-Control-Allow-Methods": "POST",
+                   withCredentials:true
+           
+               },
+              credentials: 'include',
+           
           
                body: formdata,
               
@@ -4915,6 +5238,16 @@ let editp=()=>{
      const options ={
  
          method: 'POST',
+         headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
     
          body: formdata,
         
@@ -4955,6 +5288,16 @@ let editp=()=>{
  const soptions ={
 
      method: 'POST',
+     headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+      credentials: 'include',
+   
 
      body: sformdata,
     
@@ -5033,6 +5376,16 @@ let similar=()=>{
      const options ={
  
          method: 'POST',
+         headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
     
          body: formdata,
         
@@ -5073,6 +5426,16 @@ let similar=()=>{
  const soptions ={
 
      method: 'POST',
+     headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+           withCredentials:true
+   
+       },
+      credentials: 'include',
+   
 
      body: sformdata,
     
@@ -5400,6 +5763,16 @@ let ssavename=()=>{
                 
                     const options={
                         method:"POST",
+                        headers:{
+                            "Acces-Control-Allow-Credentials":true,
+                            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                            "Access-Control-Allow-Methods": "POST",
+                               withCredentials:true
+                       
+                           },
+                          credentials: 'include',
+                       
                         body:formdata
                     }
                     
@@ -5466,6 +5839,16 @@ function sverifyPassword() {
        
            const options={
                method:"POST",
+               headers:{
+                "Acces-Control-Allow-Credentials":true,
+                "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                "Access-Control-Allow-Methods": "POST",
+                   withCredentials:true
+           
+               },
+              credentials: 'include',
+           
                body:formdata
            }
            
@@ -5537,6 +5920,16 @@ let sverifypass=()=>{
 
         const options={
             method:"POST",
+            headers:{
+                "Acces-Control-Allow-Credentials":true,
+                "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                "Access-Control-Allow-Methods": "POST",
+                   withCredentials:true
+           
+               },
+              credentials: 'include',
+           
             body:formdata
         }
 
@@ -5662,6 +6055,16 @@ function validateEmail() {
 
     const options={
         method:"POST",
+        headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
         body:formdata
     }
     
@@ -5713,6 +6116,16 @@ function validateEmail() {
                 
                     const options={
                         method:"POST",
+                        headers:{
+                            "Acces-Control-Allow-Credentials":true,
+                            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                            "Access-Control-Allow-Methods": "POST",
+                               withCredentials:true
+                       
+                           },
+                          credentials: 'include',
+                       
                         body:formdata
                     }
                     
@@ -5766,6 +6179,16 @@ function validateEmail() {
 
     const options={
         method:"POST",
+        headers:{
+            "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
+               withCredentials:true
+       
+           },
+          credentials: 'include',
+       
         body:formdata
     }
     let f= fetch("https://yielding-dented-amusement.glitch.me/esettingdata",options).catch(err=>{
@@ -5832,6 +6255,16 @@ let tsupport=()=>{
 
         const options={
             method:"POST",
+            headers:{
+                "Acces-Control-Allow-Credentials":true,
+                "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                "Access-Control-Allow-Methods": "POST",
+                   withCredentials:true
+           
+               },
+              credentials: 'include',
+           
             body:formdata
         }
 

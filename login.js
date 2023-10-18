@@ -8,15 +8,16 @@ const formdata = new FormData();
 
      method: 'POST',
 
+     
      headers:{
+        "Acces-Control-Allow-Credentials":true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+        withCredentials:true
 
-        
-         "Acces-Control-Allow-Credentials":true,
-         "Access-Control-Allow-Origin": "https://calm-gingersnap-fdb8ce.netlify.app",
-         withCredentials:true
-
-     },
-    credentials: 'include',
+    },
+   credentials: 'include',
 
     
 
@@ -25,11 +26,10 @@ const formdata = new FormData();
  };
 // https://1ed2-105-231-144-76.ngrok.io/api'
 
-//https://yielding-dented-amusement.glitch.me
+//https://half-geode-roundworm.glitch.me/api
  
  let f= fetch('https://yielding-dented-amusement.glitch.me/get',options).catch(err =>{
-   
-
+   console.log("There is error fetching data: ", err)
 });
 
 loader[0].classList.add("addedloader");
@@ -40,9 +40,9 @@ const{auth,dashboard}=d;
 
 if(auth==="yes"){
     if(dashboard==="candidate"){
-        window.location.href="/workerdashboard"
+        window.location.href="/workerdashboard.html"
     }else{
-        window.location.href="/employerdashboard"
+        window.location.href="/employerdashboard.html"
     }
 }
 
@@ -93,6 +93,9 @@ form.addEventListener("submit",(e)=>{
         
         headers:{
             "Acces-Control-Allow-Credentials":true,
+            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+            "Access-Control-Allow-Methods": "POST",
             withCredentials:true
 
         },
@@ -104,7 +107,7 @@ form.addEventListener("submit",(e)=>{
    // https://1ed2-105-231-144-76.ngrok.io/api'
 
    //https://half-geode-roundworm.glitch.me/api
-   //http://127.0.0.1:3890
+   //https://yielding-dented-amusement.glitch.me
     
     let f= fetch('https://yielding-dented-amusement.glitch.me/login',options).catch(err =>{
       
@@ -126,11 +129,11 @@ f.then(res => res.json()).then(d =>{
         if(usertype==="client"){
             loader[0].classList.remove("addedloader");
             form.reset()
-          window.location.href="/employerdashboard"
+          window.location.href="/employerdashboard.html"
         }else if(usertype==="candidate"){
             loader[0].classList.remove("addedloader");
             form.reset()
-           window.location.href="/workerdashboard";
+           window.location.href="/workerdashboard.html";
             
         }
     }else{

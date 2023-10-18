@@ -497,6 +497,14 @@ verificationInputs.forEach((input, index) => {
         const options ={
 
             method: 'POST',
+            headers:{
+              "Acces-Control-Allow-Credentials":true,
+              "Access-Control-Allow-Origin": "https://www.enkaare.com",
+              "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+              "Access-Control-Allow-Methods": "POST",
+              withCredentials:true
+      
+          },
        
             body: formdata,
            
@@ -631,6 +639,14 @@ let resend=()=>{
     const options ={
   
         method: 'POST',
+        headers:{
+          "Acces-Control-Allow-Credentials":true,
+          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+          "Access-Control-Allow-Methods": "POST",
+          withCredentials:true
+  
+      },
    
         body: formdata,
        
@@ -698,6 +714,14 @@ if(email.value===""){
     const options ={
   
         method: 'POST',
+        headers:{
+          "Acces-Control-Allow-Credentials":true,
+          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+          "Access-Control-Allow-Methods": "POST",
+          withCredentials:true
+  
+      },
    
         body: formdata,
        
