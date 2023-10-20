@@ -1,166 +1,148 @@
-
-let loader =document.getElementsByClassName("loader");
-
+let loader = document.getElementsByClassName("loader");
 
 const formdata = new FormData();
 
- const options ={
+const options = {
+  method: "POST",
 
-     method: 'POST',
-     
-     headers:{
-        "Access-Control-Allow-Credentials":true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-        "Access-Control-Allow-Methods": "POST",
-        withCredentials:true
-
-    },
-   credentials: 'include',
-
-    
-
-     
-    
- };
+  headers: {
+    "Access-Control-Allow-Credentials": true,
+    "Access-Control-Allow-Origin": "http://127.0.0.1:5500",
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept, authorization",
+    "Access-Control-Allow-Methods": "POST",
+    withCredentials: true,
+  },
+  credentials: "include",
+};
 // https://1ed2-105-231-144-76.ngrok.io/api'
 
 //https://half-geode-roundworm.glitch.me/api
- 
- let f= fetch('https://yielding-dented-amusement.glitch.me/get',options).catch(err =>{
-   console.log("There is error fetching data: ", err)
+
+let f = fetch("http://127.0.0.1:3890/get", options).catch((err) => {
+  console.log("There is error fetching data: ", err);
 });
 
 loader[0].classList.add("addedloader");
 
-f.then(res => res.json()).then(d =>{
+f.then((res) => res.json())
+  .then((d) => {
+    console.log("this is D: ", d);
     loader[0].classList.remove("addedloader");
-const{auth,dashboard}=d;
+    const {auth, dashboard} = d;
 
-if(auth==="yes"){
-    if(dashboard==="candidate"){
-        window.location.href="/workerdashboard.html"
-    }else{
-        window.location.href="/employerdashboard.html"
+    if (auth === "yes") {
+      if (dashboard === "candidate") {
+        window.location.href = "/workerdashboard.html";
+        console.log("This is the: ", dashboard);
+      } else {
+        window.location.href = "/employerdashboard.html";
+      }
     }
-}
-
-
-
-
-}).catch(err =>{
-
-console.log(err);
-if(err){
-// yes();
-//  alert("Not sent.........the server is down!");
-
-}else{
-
-}
-});
-
-
-
-
-
-
+  })
+  .catch((err) => {
+    console.log(err);
+    if (err) {
+      // yes();
+      //  alert("Not sent.........the server is down!");
+    } else {
+    }
+  });
 
 let form = document.getElementById("loginform");
-let email= document.getElementById("username");
-let password=document.getElementById("password");
-let check =document.getElementById("check");
+let email = document.getElementById("username");
+let password = document.getElementById("password");
+let check = document.getElementById("check");
 
-let alert= document.getElementsByClassName("invalidnot");
+let alert = document.getElementsByClassName("invalidnot");
 
-form.addEventListener("submit",(e)=>{
-    e.preventDefault();
-    
-    
-    
-    const formdata = new FormData();
-    
-    
-    formdata.append("email", email.value);
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-    formdata.append("password",password.value);
-    formdata.append("check", check.checked);
- 
-    const options ={
+  const formdata = new FormData();
 
-        method: 'POST',
-        
-        headers:{
-            "Access-Control-Allow-Credentials":true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-            "Access-Control-Allow-Methods": "POST",
-            withCredentials:true
+  formdata.append("email", email.value);
 
-        },
-       credentials: 'include',
-   
-        body: formdata,
-       
-    };
-   // https://1ed2-105-231-144-76.ngrok.io/api'
+  formdata.append("password", password.value);
+  formdata.append("check", check.checked);
 
-   //https://half-geode-roundworm.glitch.me/api
-   //https://yielding-dented-amusement.glitch.me
-    
-    let f= fetch('https://yielding-dented-amusement.glitch.me/login',options).catch(err =>{
-      
+  const options = {
+    method: "POST",
 
-});
-loader[0].classList.add("addedloader");
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://127.0.0.1:5500",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      "Access-Control-Allow-Methods": "POST",
+      withCredentials: true,
+    },
+    credentials: "include",
 
-f.then(res => res.json()).then(d =>{
-    console.log("Response success")
-    
-   /*
-  const{ verytype,usertype,userid,firstname,secondname}=d;
+    body: formdata,
+  };
+  // https://1ed2-105-231-144-76.ngrok.io/api'
 
+  //https://half-geode-roundworm.glitch.me/api
+  //https://yielding-dented-amusement.glitch.me
 
-    if(verytype==="valid"){
-        localStorage.setItem("pfname",firstname);
-        localStorage.setItem("psname",secondname);
-        localStorage.setItem("userloged",userid);
-        localStorage.setItem("usertype",usertype);
-        if(usertype==="client"){
-            loader[0].classList.remove("addedloader");
-            form.reset()
-          window.location.href="/employerdashboard.html"
-        }else if(usertype==="candidate"){
-            loader[0].classList.remove("addedloader");
-            form.reset()
-           window.location.href="/workerdashboard.html";
-            
+  let f = fetch("http://127.0.0.1:3890/login", options).catch((err) => {});
+  loader[0].classList.add("addedloader");
+
+  f.then((res) => res.json())
+    .then((d) => {
+      console.log("Response success: ", d);
+
+      const {verytype, usertype, userid, firstname, secondname} = d;
+
+      if (verytype === "valid") {
+        // Function to set a subdomain cookie
+        function setCookie(cname, cvalue, exdays) {
+          const d = new Date();
+          d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+          let expires = "expires=" + d.toUTCString();
+          document.cookie =
+            cname +
+            "=" +
+            encodeURIComponent(cvalue) +
+            ";" +
+            expires +
+            ";path=/";
         }
-    }else{
-        alert[0].style.display="block";
+
+        // Set Cookies
+        setCookie("pfname", firstname, 7);
+        setCookie("psname", secondname, 7);
+        setCookie("userloged", userid, 7);
+        setCookie("usertype", usertype, 7);
+
+        // localStorage.setItem("pfname", firstname);
+        // localStorage.setItem("psname", secondname);
+        // localStorage.setItem("userloged", userid);
+        // localStorage.setItem("usertype", usertype);
+        if (usertype === "client") {
+          loader[0].classList.remove("addedloader");
+          form.reset();
+          window.location.href = "././employerdashboard.html";
+        } else if (usertype === "candidate") {
+          loader[0].classList.remove("addedloader");
+          form.reset();
+          window.location.href = "././workerdashboard.html";
+        }
+      } else {
+        alert[0].style.display = "block";
         loader[0].classList.remove("addedloader");
-    }
-   
-    */
-    
-    }).catch(err =>{
-    
-    console.log(err);
-     if(err){
-    // yes();
-    //  alert("Not sent.........the server is down!");
-    
-     }else{
-    
-     }
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      if (err) {
+        // yes();
+        //  alert("Not sent.........the server is down!");
+      } else {
+      }
     });
-
-
-   
-    
-    
 });
-let removealert=()=>{
-    alert[0].style.display="none";
-}
-
+let removealert = () => {
+  alert[0].style.display = "none";
+};
