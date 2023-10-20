@@ -30,11 +30,11 @@ app.use(function(req, res, next) {
 })
 const options ={
   connectionLimit: 10,
-  host:"containers-us-west-129.railway.app",
- user: "root",
- password: "2bNrpxf2hwdaNOXYMFkQ",
- database: "railway",
- port: "5749",
+  host:process.env.DB_HOSTNAME,
+ user: process.env.DB_USERNAME,
+ password: process.env.DB_PASSWORD,
+ database: process.env.DB_NAME,
+ port: process.env.DB_PORT,
   createDatabaseTable: true
   
 }
