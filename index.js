@@ -96,6 +96,8 @@ const pool = createPool({
 
 // a variable to save a session
 
+// a variable to save a session
+
 app.post("/login", async (request, response) => {
   const {email, password, check} = request.body;
   if (check === true) {
