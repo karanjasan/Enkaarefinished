@@ -1,166 +1,184 @@
+const baseUrl = "http://127.0.0.1:3890";
+let formdata = new FormData();
+const options = {
+  method: "POST",
 
-const options ={
-
-    method: 'POST',
-
-    headers:{
-           "Access-Control-Allow-Credentials":true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-            "Access-Control-Allow-Methods": "POST",
-        withCredentials:true
-
-    },
-   credentials: 'include',
-
-   
-
-    
-   
+  headers: {
+    "Access-Control-Allow-Credentials": true,
+    "Access-Control-Allow-Origin": baseUrl,
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept, authorization",
+    "Access-Control-Allow-Methods": "POST",
+    withCredentials: true,
+  },
+  credentials: "include",
 };
+
+const optionWithFormData = {
+  method: "POST",
+  headers: {
+    "Access-Control-Allow-Credentials": true,
+    "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept, authorization",
+    "Access-Control-Allow-Methods": "POST",
+    withCredentials: true,
+  },
+  credentials: "include",
+
+  body: formdata,
+};
+
+// Function to set a subdomain cookie
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  let expires = "expires=" + d.toUTCString();
+  document.cookie =
+    cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+}
+
+// Function to retrieve a cookie value
+const getCookie = (name) => {
+  const cookieName = `${name}=`;
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookieArray = decodedCookie.split(";");
+  for (let i = 0; i < cookieArray.length; i++) {
+    let cookie = cookieArray[i];
+    while (cookie.charAt(0) === " ") {
+      cookie = cookie.substring(1);
+    }
+    if (cookie.indexOf(cookieName) === 0) {
+      return cookie.substring(cookieName.length, cookie.length);
+    }
+  }
+  return "";
+};
+
+// Function to delete a cookie
+function deleteCookie(name) {
+  const domain = `.http://127.0.0.1:5500`; // Replace with your root domain preceded by a dot
+  document.cookie = `${name}=; expires=Thu, 20 Oct 2023 00:00:00 UTC; path=/; domain=${domain}`;
+}
+
 // https://1ed2-105-231-144-76.ngrok.io/api'
 
 //https://half-geode-roundworm.glitch.me/api
 
-let f= fetch('https://yielding-dented-amusement.glitch.me/session',options).catch(err =>{
+let f = fetch(`${baseUrl}/session`, options).catch((err) => {
   console.log("There is an error fetching data: ", err);
-
 });
 
-
-
-f.then(res => res.json()).then(d =>{
-const{auth}=d;
-if(auth==="no"){
-   localStorage.removeItem("userloged");
-       localStorage.removeItem("pfname");
-       localStorage.removeItem("psname");
-   window.location.href="/login.html";
-}else{
-//
-}
-
-
-}).catch(err =>{
-
-console.log(err);
-if(err){
-// yes();
-//  alert("Not sent.........the server is down!");
-
-}else{
-
-}
-});
-
-
-
-
-
-
-
-let logout=()=>{
-
-   
-   const options ={
-   
-       method: 'POST',
-   
-       headers:{
-        "Access-Control-Allow-Credentials":true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-        "Access-Control-Allow-Methods": "POST",
-           withCredentials:true
-   
-       },
-      credentials: 'include',
-   
-   
-       
-      
-   };
-   // https://1ed2-105-231-144-76.ngrok.io/api'
-   
-   //https://half-geode-roundworm.glitch.me/api
-
-   let f= fetch('https://yielding-dented-amusement.glitch.me/logout',options).catch(err =>{
-     
-   
-   });
-   f.then(res=>res.json()).then(d=>{
-       const{okay}=d;
-       if(okay){
-           localStorage.removeItem("userloged");
-           localStorage.removeItem("pfname");
-           localStorage.removeItem("psname");
-           window.location.href="/login.html";
-       }    })
-   }
-
-
-
-
-let setprofile=()=>{
-    candinddateaccountstatus()
-   let namediv=document.getElementById("ppname");
-let firstnmae=localStorage.getItem("pfname");
-let secname=localStorage.getItem("psname");
-
-namediv.innerHTML=firstnmae+"  "+secname.slice(0,1);
-
-
-    /*infomation for profile picture notificaations and messanges*/
-
-    let userd=localStorage.getItem("userloged");
-
-    let formdata =new FormData()
-    formdata.append("userid",userd)
-
-    const options={
-        method:"POST",
-        body:formdata
+f.then((res) => res.json())
+  .then((d) => {
+    const {auth} = d;
+    if (auth === "no") {
+      //   localStorage.removeItem("userloged");
+      //   localStorage.removeItem("pfname");
+      //   localStorage.removeItem("psname");
+      deleteCookie("userloged");
+      deleteCookie("pfname");
+      deleteCookie("psname");
+      window.location.href = "/login.html";
+    } else {
+      //
     }
+  })
+  .catch((err) => {
+    console.log(err);
+    if (err) {
+      // yes();
+      //  alert("Not sent.........the server is down!");
+    } else {
+    }
+  });
 
-    let f =fetch("https://yielding-dented-amusement.glitch.me/cnotimessprofile",options).catch(err=>{
-        console.log(err)
+let logout = () => {
+  //   const options = {
+  //     method: "POST",
+
+  //     headers: {
+  //       "Access-Control-Allow-Credentials": true,
+  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
+  //       "Access-Control-Allow-Headers":
+  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+  //       "Access-Control-Allow-Methods": "POST",
+  //       withCredentials: true,
+  //     },
+  //     credentials: "include",
+  //   };
+  // https://1ed2-105-231-144-76.ngrok.io/api'
+
+  //https://half-geode-roundworm.glitch.me/api
+
+  let f = fetch(`${baseUrl}/logout`, options).catch((err) => {});
+  f.then((res) => res.json()).then((d) => {
+    const {okay} = d;
+    if (okay) {
+      //  localStorage.removeItem("userloged");
+      //  localStorage.removeItem("pfname");
+      //  localStorage.removeItem("psname");
+      deleteCookie("userloged");
+      deleteCookie("pfname");
+      deleteCookie("psname");
+      window.location.href = "././login.html";
+    }
+  });
+};
+
+let setprofile = () => {
+  candinddateaccountstatus();
+  let namediv = document.getElementById("ppname");
+  //   let firstnmae = localStorage.getItem("pfname");
+  //   let secname = localStorage.getItem("psname");
+  let firstnmae = getCookie("pfname");
+  let secname = getCookie("psname");
+
+  namediv.innerHTML = firstnmae + "  " + secname.slice(0, 1);
+
+  /*infomation for profile picture notificaations and messanges*/
+
+  //   let userd = localStorage.getItem("userloged");
+  let userd = getCookie("userloged");
+
+  let formdata = new FormData();
+  formdata.append("userid", userd);
+
+  const options = {
+    method: "POST",
+    body: formdata,
+  };
+
+  let f = fetch(`${baseUrl}/cnotimessprofile`, options).catch((err) => {
+    console.log(err);
+  });
+  f.then((res) => res.json())
+    .then((d) => {
+      console.log(d);
+      if (d[0].file === "noprofile") {
+      } else {
+        const imageex = "data:image/png;base64,";
+        let ppimage = document.getElementsByClassName("img");
+        ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
+      }
     })
-    f.then(res=>res.json()).then(d=>{
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
-       
-        if(d[0].file==="noprofile"){
-           
-
-        }else{
-         const imageex="data:image/png;base64,";
-         let ppimage=document.getElementsByClassName("img");
-         ppimage[0].style.backgroundImage=`url('${imageex+d[0].file}')`
-        }
-
-    }).catch(err=>{
-        console.log(err);
-    })
-
-  
-    
-
-}
-
-
-
-let candinddateaccountstatus=()=>{
+let candinddateaccountstatus = () => {
+  sessionStorage.getItem("accountstatus");
+  document.getElementById("statusbuton").innerHTML =
     sessionStorage.getItem("accountstatus");
-    document.getElementById("statusbuton").innerHTML=sessionStorage.getItem("accountstatus");
-}
+};
 
 let setvalue;
-let setid=(vr)=>{
-   setvalue=vr;
-   
-   console.log(setvalue);
-}
+let setid = (vr) => {
+  setvalue = vr;
 
-
+  console.log(setvalue);
+};
 
 //AVAILABLE ORDERS START HERE
 
@@ -204,125 +222,109 @@ order.innerHTML=orderitems;
 orderlist.append(order);
 */
 
-
 /************************/
-let availableorders =()=>{
-    invitedcount()
-    suminter()
+let availableorders = () => {
+  invitedcount();
+  suminter();
 
-     let thelist= document.querySelector(".orderslist");
+  let thelist = document.querySelector(".orderslist");
 
-     while(thelist.hasChildNodes()){
-        thelist.firstChild.remove()
-     }
-    let all= document.querySelector("#h3all");
-    let invite=document.querySelector("#h3invite");
-        invite.style.borderBottom="3px solid transparent"
-      all.style.borderBottom="3px solid hsl(188,47%,20%)"
+  while (thelist.hasChildNodes()) {
+    thelist.firstChild.remove();
+  }
+  let all = document.querySelector("#h3all");
+  let invite = document.querySelector("#h3invite");
+  invite.style.borderBottom = "3px solid transparent";
+  all.style.borderBottom = "3px solid hsl(188,47%,20%)";
 
+  let loader = document.getElementsByClassName("loader");
 
-   let loader =document.getElementsByClassName("loader");
-   
-   let firstnmae=localStorage.getItem("pfname");
-   let logedid =localStorage.getItem("userloged");
+  //   let firstnmae = localStorage.getItem("pfname");
+  //   let logedid = localStorage.getItem("userloged");
+  let firstnmae = getCookie("pfname");
+  let logedid = getCookie("userloged");
 
+  const formdata = new FormData();
 
+  formdata.append("firstname", firstnmae);
+  formdata.append("logedid", logedid);
 
-   const formdata = new FormData();
-       
-   
-  
-  formdata.append("firstname",firstnmae);
-  formdata.append("logedid",logedid);
- 
+  //   const options = {
+  //     method: "POST",
 
-   const options ={
+  //     headers: {
+  //       "Access-Control-Allow-Credentials": true,
+  //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+  //       "Access-Control-Allow-Headers":
+  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+  //       "Access-Control-Allow-Methods": "POST",
+  //       withCredentials: true,
+  //     },
 
-       method: 'POST',
-       
-       headers:{
-        "Access-Control-Allow-Credentials":true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-        "Access-Control-Allow-Methods": "POST",
-           withCredentials:true
-   
-       },
-  
-       body: formdata,
-      
-   };
+  //     body: formdata,
+  //   };
   // https://1ed2-105-231-144-76.ngrok.io/api'
 
   //https://half-geode-roundworm.glitch.me/api
-   
-   let f= fetch('https://yielding-dented-amusement.glitch.me/allorders',options).catch(err =>{
-     
 
-});
-loader[0].classList.add("addedloader");
+  let f = fetch(`${baseUrl}/allorders`, optionWithFormData).catch((err) => {});
+  loader[0].classList.add("addedloader");
 
-f.then(res=>res.json()).then(d=>{
+  f.then((res) => res.json()).then((d) => {
+    const {pnotcomplte} = d;
 
-const{pnotcomplte}=d
-
-if(pnotcomplte){
-    let orderlist = document.getElementsByClassName("orderslist")[0];
-    var order = document.createElement('div');
-    var orderitems=`<div class="empty-message">
+    if (pnotcomplte) {
+      let orderlist = document.getElementsByClassName("orderslist")[0];
+      var order = document.createElement("div");
+      var orderitems = `<div class="empty-message">
     <div class="empty-icon">&#128533;</div>
     <div class="empty-text">Oops! No Results Found</div>
-    `
-    order.innerHTML=orderitems;
-    orderlist.append(order);
+    `;
+      order.innerHTML = orderitems;
+      orderlist.append(order);
 
+      sessionStorage.setItem("accountstatus", "Inactive");
+      document.getElementById("statusbuton").innerHTML = "Inactive";
 
-    sessionStorage.setItem("accountstatus","Inactive")
-    document.getElementById("statusbuton").innerHTML="Inactive";
+      setTimeout(() => {
+        document
+          .getElementsByClassName("incompleteprofile")[0]
+          .classList.add("adddincompleteprofile");
+      }, 700);
+      loader[0].classList.remove("addedloader");
+    } else {
+      let orderarray = d;
+      sessionStorage.setItem("accountstatus", "Active");
+      document.getElementById("statusbuton").innerHTML = "Active";
 
-    setTimeout(()=>{
-        document.getElementsByClassName("incompleteprofile")[0].classList.add("adddincompleteprofile");
-    },700)
-    loader[0].classList.remove("addedloader");
-}else{
-    let orderarray =d
-    sessionStorage.setItem("accountstatus","Active")
-    document.getElementById("statusbuton").innerHTML="Active";
+      for (let i = 0; i < orderarray.length; i++) {
+        let title = orderarray[i].job_title;
+        let name = orderarray[i].company_name;
+        let city = orderarray[i].city;
+        let country = orderarray[i].country;
+        let bids = orderarray[i].submits;
+        let type = orderarray[i].job_type;
+        let pays = orderarray[i].pay.split(",");
 
-   for(let i=0;i<orderarray.length;i++){
-       let title=orderarray[i].job_title;
-       let name= orderarray[i].company_name;
-       let city= orderarray[i].city;
-       let country=orderarray[i].country;
-       let bids=orderarray[i].submits;
-       let type=orderarray[i].job_type;
-       let pays=orderarray[i].pay.split(",");
-    
-       let order_id=orderarray[i].job_id;
+        let order_id = orderarray[i].job_id;
 
-       if(type==="Remote contract"){
-           src="/images/self-employed.png";
+        if (type === "Remote contract") {
+          src = "/images/self-employed.png";
+        } else if (type === "On-site Contract") {
+          src = "/images/parttime.png";
+        } else if (type === "On-site Permanent") {
+          src = "/images/fulltime.png";
+        } else if (type === "Remote Temporary") {
+          src = "/images/temporary.png";
+        } else if (type === "Hybrid Permanent") {
+          src = "/images/hybridpermanent.png";
+        } else if (type === "Hybrid Contract") {
+          src = "/images/hybridtemporary.png";
+        }
 
-       } else  if(type==="On-site Contract"){
-           src="/images/parttime.png";
-
-       } else if(type==="On-site Permanent"){
-           src="/images/fulltime.png";
-
-       } else if(type==="Remote Temporary"){
-           src="/images/temporary.png";
-       } else if(type==="Hybrid Permanent"){
-        src="/images/hybridpermanent.png"
-       }else if(type==="Hybrid Contract"){
-        src="/images/hybridtemporary.png"
-       }
-
-
-
-
-       let orderlist = document.getElementsByClassName("orderslist")[0];
-       var order = document.createElement('div');
-       var orderitems=` <div class="order orderhover">
+        let orderlist = document.getElementsByClassName("orderslist")[0];
+        var order = document.createElement("div");
+        var orderitems = ` <div class="order orderhover">
        <div class="orderinid">${order_id}</div>
        <section class="orderp1">
           
@@ -348,7 +350,7 @@ if(pnotcomplte){
            
        </section>
        <section class="orderp3">
-           <p class="ordp3p">${pays[0]+pays[1]+pays[2]}</p>
+           <p class="ordp3p">${pays[0] + pays[1] + pays[2]}</p>
            <button class="orderbutton" id="orderbutton">See Job</button>
            
        
@@ -356,222 +358,187 @@ if(pnotcomplte){
        
        
        </div>`;
-       order.innerHTML=orderitems;
-       orderlist.append(order);
+        order.innerHTML = orderitems;
+        orderlist.append(order);
+      }
+      loader[0].classList.remove("addedloader");
+      //here is the code for seeorder
+      let buttonclicked = document.getElementsByClassName("orderbutton");
+      for (let i = 0; i < buttonclicked.length; i++) {
+        let button = buttonclicked[i];
+        button.addEventListener("click", (e) => {
+          let varbutton = e.target;
+          let value =
+            varbutton.parentElement.parentElement.firstElementChild.innerHTML;
 
+          //   sessionStorage.setItem("clickedorderid", value);
+          //   sessionStorage.setItem("seeorderbuttonvalue", "Apply");
+          sessionStorage.setCookie("clickedorderid", value, 7);
+          sessionStorage.setCookie("seeorderbuttonvalue", "Apply", 7);
 
-     
-
-
-   }
-   loader[0].classList.remove("addedloader");
-   //here is the code for seeorder
-   let buttonclicked= document.getElementsByClassName("orderbutton");
-   for(let i=0;i<buttonclicked.length;i++){
-       let button=buttonclicked[i]
-       button.addEventListener('click',(e)=>{
-           let varbutton =e.target
-           let value=varbutton.parentElement.parentElement.firstElementChild.innerHTML;
-         
-      
-          sessionStorage.setItem('clickedorderid',value);
-          sessionStorage.setItem('seeorderbuttonvalue','Apply');
-           
-        window.location.href="/orderdetails.html";
-   
-        
-       })
-       
-       
-   }
-
-}
-
-
-})
-
-
-  
-}
-
-let invitedcount=()=>{
-    let logedid=localStorage.getItem("userloged");
-    let formdata= new FormData()
-    formdata.append("logedid",logedid);
-    
-   
-    const options ={
- 
-        method: 'POST',
-   
-        body: formdata,
-       
-    };
-   // https://1ed2-105-231-144-76.ngrok.io/api'
- 
-   //https://half-geode-roundworm.glitch.me/api
-    
-    let f= fetch('https://yielding-dented-amusement.glitch.me/councadinvites',options).catch(err =>{
-      console.log(err)
- 
- });
- f.then(res=>res.json()).then(d=>{
-    const{sum}=d
-    let sumdiv=document.querySelector(".invitecount");
-    if(sum===0){
-
-    }else{
-        sumdiv.style.display="flex"
-        sumdiv.innerHTML=sum;
-        
+          window.location.href = "/orderdetails.html";
+        });
+      }
     }
+  });
+};
 
+let invitedcount = () => {
+  //   let logedid = localStorage.getItem("userloged");
+  let logedid = getCookie("userloged");
+  let formdata = new FormData();
+  formdata.append("logedid", logedid);
 
-    
- })
+  const options = {
+    method: "POST",
 
-}
+    body: formdata,
+  };
+  // https://1ed2-105-231-144-76.ngrok.io/api'
 
-let suminter=()=>{
-    let logedid=localStorage.getItem("userloged");
-    let formdata= new FormData()
-    formdata.append("logedid",logedid);
-    
-   
-    const options ={
- 
-        method: 'POST',
+  //https://half-geode-roundworm.glitch.me/api
 
-        headers:{
-            "Access-Control-Allow-Credentials":true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-            "Access-Control-Allow-Methods": "POST",
-               withCredentials:true
-       
-           },
-          credentials: 'include',
-       
-   
-        body: formdata,
-       
-    };
-   // https://1ed2-105-231-144-76.ngrok.io/api'
- 
-   //https://half-geode-roundworm.glitch.me/api
-    
-    let f= fetch('https://yielding-dented-amusement.glitch.me/suminterr',options).catch(err =>{
-      console.log(err)
- 
- });
- f.then(res=>res.json()).then(d=>{
-    const{sum}=d
-    let sumdiv=document.querySelector(".suminter");
-    if(sum===0){
-
-    }else{
-        sumdiv.style.display="flex"
-        sumdiv.innerHTML=sum;
-        
+  let f = fetch(`${baseUrl}/councadinvites`, options).catch((err) => {
+    console.log(err);
+  });
+  f.then((res) => res.json()).then((d) => {
+    const {sum} = d;
+    let sumdiv = document.querySelector(".invitecount");
+    if (sum === 0) {
+    } else {
+      sumdiv.style.display = "flex";
+      sumdiv.innerHTML = sum;
     }
+  });
+};
 
+let suminter = () => {
+  //let logedid = localStorage.getItem("userloged");
+  let logedid = getCookie("userloged");
+  let formdata = new FormData();
+  formdata.append("logedid", logedid);
 
-    
- })
+  //   const options = {
+  //     method: "POST",
 
-}
+  //     headers: {
+  //       "Access-Control-Allow-Credentials": true,
+  //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+  //       "Access-Control-Allow-Headers":
+  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+  //       "Access-Control-Allow-Methods": "POST",
+  //       withCredentials: true,
+  //     },
+  //     credentials: "include",
 
+  //     body: formdata,
+  //   };
+  // https://1ed2-105-231-144-76.ngrok.io/api'
 
+  //https://half-geode-roundworm.glitch.me/api
 
+  let f = fetch(`${baseUrl}/suminterr`, optionWithFormData).catch((err) => {
+    console.log(err);
+  });
+  f.then((res) => res.json()).then((d) => {
+    const {sum} = d;
+    let sumdiv = document.querySelector(".suminter");
+    if (sum === 0) {
+    } else {
+      sumdiv.style.display = "flex";
+      sumdiv.innerHTML = sum;
+    }
+  });
+};
 
+let displainterviewslots = () => {
+  document
+    .getElementsByClassName("intergreter")[0]
+    .classList.toggle("addedinter");
+  document
+    .getElementsByClassName("interview-container")[0]
+    .classList.toggle("addedintervconta");
 
+  //   let logedid = localStorage.getItem("userloged");
+  let logedid = getCookie("userloged");
+  let formdata = new FormData();
+  formdata.append("logedid", logedid);
 
-let displainterviewslots=()=>{
-    document.getElementsByClassName("intergreter")[0].classList.toggle("addedinter");
-    document.getElementsByClassName("interview-container")[0].classList.toggle("addedintervconta");
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       "Access-Control-Allow-Credentials": true,
+  //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+  //       "Access-Control-Allow-Headers":
+  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+  //       "Access-Control-Allow-Methods": "POST",
+  //       withCredentials: true,
+  //     },
+  //     credentials: "include",
 
-    let logedid=localStorage.getItem("userloged");
-    let formdata= new FormData()
-    formdata.append("logedid",logedid);
-    
-   
-    const options ={
- 
-        method: 'POST',
-        headers:{
-            "Access-Control-Allow-Credentials":true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-            "Access-Control-Allow-Methods": "POST",
-               withCredentials:true
-       
-           },
-          credentials: 'include',
-       
-   
-        body: formdata,
-       
-    };
-   // https://1ed2-105-231-144-76.ngrok.io/api'
- 
-   //https://half-geode-roundworm.glitch.me/api
-    
-    let f= fetch('https://yielding-dented-amusement.glitch.me/callinterviews',options).catch(err =>{
-      console.log(err)
- 
- });
+  //     body: formdata,
+  //   };
+  // https://1ed2-105-231-144-76.ngrok.io/api'
 
-// document.querySelector(".interloader").style.display="flex";
+  //https://half-geode-roundworm.glitch.me/api
 
- f.then(res=>res.json()).then(d=>{
-      const{nointer}=d;
-     // document.querySelector(".interloader").style.display="none";
+  let f = fetch(`${baseUrl}/callinterviews`, optionWithFormData).catch(
+    (err) => {
+      console.log(err);
+    }
+  );
 
-      if(nointer){
-        let interviewcontainer=document.getElementsByClassName("interview-container")[0];
+  // document.querySelector(".interloader").style.display="flex";
 
-        while(interviewcontainer.hasChildNodes()){
-            interviewcontainer.firstChild.remove()
-        }
+  f.then((res) => res.json()).then((d) => {
+    const {nointer} = d;
+    // document.querySelector(".interloader").style.display="none";
 
-        let content=`<div class="result-container">
+    if (nointer) {
+      let interviewcontainer = document.getElementsByClassName(
+        "interview-container"
+      )[0];
+
+      while (interviewcontainer.hasChildNodes()) {
+        interviewcontainer.firstChild.remove();
+      }
+
+      let content = `<div class="result-container">
         Oops! No result found
-    </div>`
-    let div =document.createElement('div');
-    div.innerHTML=content;
-    interviewcontainer.append(div);
+    </div>`;
+      let div = document.createElement("div");
+      div.innerHTML = content;
+      interviewcontainer.append(div);
+    } else {
+      let interviewcontainer = document.getElementsByClassName(
+        "interview-container"
+      )[0];
 
-      }else{
+      while (interviewcontainer.hasChildNodes()) {
+        interviewcontainer.firstChild.remove();
+      }
 
-        let interviewcontainer=document.getElementsByClassName("interview-container")[0];
+      for (let i = 0; i < d.length; i++) {
+        function removeTimezone(dateString) {
+          const date = new Date(dateString);
+          const options = {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          };
 
-        while(interviewcontainer.hasChildNodes()){
-            interviewcontainer.firstChild.remove()
+          // Format the date without timezone information
+          const formattedDate = date.toLocaleDateString("en-US", options);
+
+          return formattedDate;
         }
 
-        for(let i=0;i<d.length; i++){
+        let div = document.createElement("div");
 
-              function removeTimezone(dateString) {
-                const date = new Date(dateString);
-                const options = {
-                  year: 'numeric',
-                  month: 'short',
-                  day: 'numeric',
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  second: '2-digit'
-                };
-              
-                // Format the date without timezone information
-                const formattedDate = date.toLocaleDateString('en-US', options);
-              
-                return formattedDate;
-              }
-
-
-              let div =document.createElement('div');
-
-              let content=`
+        let content = `
               <div class="rowscarrier">
                            
               <p class="slotid">${d[i].job_id}</p>
@@ -606,261 +573,213 @@ let displainterviewslots=()=>{
 
                         </div>`;
 
-                        div.innerHTML=content;
-                        interviewcontainer.append(div);
+        div.innerHTML = content;
+        interviewcontainer.append(div);
 
+        let slot_container =
+          document.getElementsByClassName("slots-container")[i];
 
-                       let slot_container=document.getElementsByClassName("slots-container")[i];
-
-                        for(let f=0;f<d[i].slots.length;f++){
-
-                            function removeTimezone(dateString) {
-                                const date = new Date(dateString);
-                                const options = {
-                                  year: 'numeric',
-                                  month: 'short',
-                                  day: 'numeric',
-                                  hour: '2-digit',
-                                  minute: '2-digit',
-                                  second: '2-digit'
-                                };
-                              
-                                // Format the date without timezone information
-                                const formattedDate = date.toLocaleDateString('en-US', options);
-                              
-                                return formattedDate;
-                              }
-
-                              let div2= document.createElement('div')
-                              let content2=`<div class="slot">
-                              <p class="slotid">${d[i].slots[f].slot_id}</p>
-                              <span class="endtimest">Start Time: ${removeTimezone(d[i].slots[f].start_time)}</span>
-                              <span class="endtimest">End Time:  ${removeTimezone
-                                (d[i].slots[f].end_time)}</span>
-                              <button class="buttonS select-slot">Select Slot</button>
-                          </div>`
-
-                          div2.innerHTML=content2;
-                          slot_container.append(div2);
-
-                            
-
-                        }
-
-
-
-
-
-        }
-
-          //code to listean to events
-          
-
-          const slotsContainer = document.getElementsByClassName("slots-container");
-    const viewSlotsButtons = document.querySelectorAll(".view-slots");
-    let greterthan=document.getElementsByClassName("greaterthan");
-    let slots=document.getElementsByClassName("slot");
-
-    for(let i=0; i<viewSlotsButtons.length;i++){
-
-        let clickedviewslotB=viewSlotsButtons[i];
-        clickedviewslotB.addEventListener('click',()=>{
-            slotsContainer[i].classList.toggle("addedslots-container");
-            greterthan[i].classList.toggle("addedgreaterthan");
-
-        })
-    }
-       
-    for(let i=0; i<slots.length; i++){
-        let clickedslots=slots[i];
-
-        clickedslots.addEventListener('click',()=>{
-            let slotid= clickedslots.firstElementChild.innerHTML;
-            let jbId=clickedslots.parentElement.parentElement.parentElement.firstElementChild.innerHTML;
-            
-           
-
-            let slotparent=clickedslots;
-            const startTime = slotparent.querySelector("span:nth-child(2)").textContent.trim();
-            const endTime = slotparent.querySelector("span:nth-child(3)").textContent.trim();
-
-
-
-            let logedid=localStorage.getItem("userloged");
-            let formdata= new FormData()
-            formdata.append("logedid",logedid);
-            formdata.append("slot_id",slotid);
-            formdata.append("job_id",jbId);
-            
-            
-            
-           
-            const options ={
-         
-                method: 'POST',
-                headers:{
-                    "Access-Control-Allow-Credentials":true,
-                    "Access-Control-Allow-Origin": "https://www.enkaare.com",
-                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-                    "Access-Control-Allow-Methods": "POST",
-                       withCredentials:true
-               
-                   },
-                  credentials: 'include',
-               
-           
-                body: formdata,
-               
+        for (let f = 0; f < d[i].slots.length; f++) {
+          function removeTimezone(dateString) {
+            const date = new Date(dateString);
+            const options = {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
             };
-           // https://1ed2-105-231-144-76.ngrok.io/api'
-         
-           //https://half-geode-roundworm.glitch.me/api
-            
-            let f= fetch('https://yielding-dented-amusement.glitch.me/selectslot',options).catch(err =>{
-              console.log(err)
-         
-         });
-         document.querySelector(".interloader").style.display="flex"
-         f.then(res=>res.json()).then(d=>{
-            document.querySelector(".interloader").style.display="none"
-            const{sent}=d
-            if(sent){
-                clickedslots.parentElement.parentElement.parentElement.remove()
-            }
-         }).catch(err=>{
-            console.log(err)
-         })
 
-            
-        })
-    }
+            // Format the date without timezone information
+            const formattedDate = date.toLocaleDateString("en-US", options);
 
+            return formattedDate;
+          }
 
+          let div2 = document.createElement("div");
+          let content2 = `<div class="slot">
+                              <p class="slotid">${d[i].slots[f].slot_id}</p>
+                              <span class="endtimest">Start Time: ${removeTimezone(
+                                d[i].slots[f].start_time
+                              )}</span>
+                              <span class="endtimest">End Time:  ${removeTimezone(
+                                d[i].slots[f].end_time
+                              )}</span>
+                              <button class="buttonS select-slot">Select Slot</button>
+                          </div>`;
 
-
-
-
-
-
+          div2.innerHTML = content2;
+          slot_container.append(div2);
+        }
       }
- })
 
+      //code to listean to events
 
-    
+      const slotsContainer = document.getElementsByClassName("slots-container");
+      const viewSlotsButtons = document.querySelectorAll(".view-slots");
+      let greterthan = document.getElementsByClassName("greaterthan");
+      let slots = document.getElementsByClassName("slot");
 
-}
+      for (let i = 0; i < viewSlotsButtons.length; i++) {
+        let clickedviewslotB = viewSlotsButtons[i];
+        clickedviewslotB.addEventListener("click", () => {
+          slotsContainer[i].classList.toggle("addedslots-container");
+          greterthan[i].classList.toggle("addedgreaterthan");
+        });
+      }
 
+      for (let i = 0; i < slots.length; i++) {
+        let clickedslots = slots[i];
 
+        clickedslots.addEventListener("click", () => {
+          let slotid = clickedslots.firstElementChild.innerHTML;
+          let jbId =
+            clickedslots.parentElement.parentElement.parentElement
+              .firstElementChild.innerHTML;
 
+          let slotparent = clickedslots;
+          const startTime = slotparent
+            .querySelector("span:nth-child(2)")
+            .textContent.trim();
+          const endTime = slotparent
+            .querySelector("span:nth-child(3)")
+            .textContent.trim();
 
+          //   let logedid = localStorage.getItem("userloged");
+          let logedid = getCookie("userloged");
+          let formdata = new FormData();
+          formdata.append("logedid", logedid);
+          formdata.append("slot_id", slotid);
+          formdata.append("job_id", jbId);
 
+          //   const options = {
+          //     method: "POST",
+          //     headers: {
+          //       "Access-Control-Allow-Credentials": true,
+          //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+          //       "Access-Control-Allow-Headers":
+          //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+          //       "Access-Control-Allow-Methods": "POST",
+          //       withCredentials: true,
+          //     },
+          //     credentials: "include",
 
+          //     body: formdata,
+          //   };
+          // https://1ed2-105-231-144-76.ngrok.io/api'
 
-function invitedorders(){
-    let thelist= document.querySelector(".orderslist");
-    
-    while(thelist.hasChildNodes()){
-        thelist.firstChild.remove()
-     }
-    let all= document.querySelector("#h3all");
-    let invite=document.querySelector("#h3invite");
-        invite.style.borderBottom="3px solid hsl(188,47%,20%)"
-      all.style.borderBottom="3px solid transparent"
+          //https://half-geode-roundworm.glitch.me/api
 
+          let f = fetch(`${baseUrl}/selectslot`, optionWithFormData).catch(
+            (err) => {
+              console.log(err);
+            }
+          );
+          document.querySelector(".interloader").style.display = "flex";
+          f.then((res) => res.json())
+            .then((d) => {
+              document.querySelector(".interloader").style.display = "none";
+              const {sent} = d;
+              if (sent) {
+                clickedslots.parentElement.parentElement.parentElement.remove();
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        });
+      }
+    }
+  });
+};
 
+function invitedorders() {
+  let thelist = document.querySelector(".orderslist");
 
-      let loader =document.getElementsByClassName("loader");
-   
-      let firstnmae=localStorage.getItem("pfname");
-      let logedid =localStorage.getItem("userloged");
-   
-   
-   
-      const formdata = new FormData();
-          
-      
-     
-     formdata.append("firstname",firstnmae);
-     formdata.append("logedid",logedid);
-    
-   
-      const options ={
-   
-          method: 'POST',
-          headers:{
-            "Access-Control-Allow-Credentials":true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-            "Access-Control-Allow-Methods": "POST",
-               withCredentials:true
-       
-           },
-          credentials: 'include',
-       
-     
-          body: formdata,
-         
-      };
-     // https://1ed2-105-231-144-76.ngrok.io/api'
-   
-     //https://half-geode-roundworm.glitch.me/api
-      
-      let f= fetch('https://yielding-dented-amusement.glitch.me/cinvites',options).catch(err =>{
-        
-   
-   });
-   loader[0].classList.add("addedloader");
-   
-   f.then(res=>res.json()).then(d=>{
-   
-   
-   let orderarray =d
+  while (thelist.hasChildNodes()) {
+    thelist.firstChild.remove();
+  }
+  let all = document.querySelector("#h3all");
+  let invite = document.querySelector("#h3invite");
+  invite.style.borderBottom = "3px solid hsl(188,47%,20%)";
+  all.style.borderBottom = "3px solid transparent";
 
-   if(d.length===0){
-    let orderlist = document.getElementsByClassName("orderslist")[0];
-          var order = document.createElement('div');
-          var orderitems=`<div class="empty-message">
+  let loader = document.getElementsByClassName("loader");
+
+  //   let firstnmae = localStorage.getItem("pfname");
+  //   let logedid = localStorage.getItem("userloged");
+  let firstnmae = getCookie("pfname");
+  let logedid = getCookie("userloged");
+
+  const formdata = new FormData();
+
+  formdata.append("firstname", firstnmae);
+  formdata.append("logedid", logedid);
+
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       "Access-Control-Allow-Credentials": true,
+  //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+  //       "Access-Control-Allow-Headers":
+  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+  //       "Access-Control-Allow-Methods": "POST",
+  //       withCredentials: true,
+  //     },
+  //     credentials: "include",
+
+  //     body: formdata,
+  //   };
+  // https://1ed2-105-231-144-76.ngrok.io/api'
+
+  //https://half-geode-roundworm.glitch.me/api
+
+  let f = fetch(`${baseUrl}/cinvites`, optionWithFormData).catch((err) => {});
+  loader[0].classList.add("addedloader");
+
+  f.then((res) => res.json()).then((d) => {
+    let orderarray = d;
+
+    if (d.length === 0) {
+      let orderlist = document.getElementsByClassName("orderslist")[0];
+      var order = document.createElement("div");
+      var orderitems = `<div class="empty-message">
           <div class="empty-icon">&#128533;</div>
           <div class="empty-text">Oops! No Results Found</div>
-          `
-          order.innerHTML=orderitems;
-          orderlist.append(order);
-   }
-   
-      for(let i=0;i<orderarray.length;i++){
-          let title=orderarray[i].job_title;
-          let name= orderarray[i].company_name;
-          let city= orderarray[i].city;
-          let country=orderarray[i].country;
-          let bids=orderarray[i].submits;
-          let type=orderarray[i].job_type;
-          let pays=orderarray[i].pay.split(",");
-       
-          let order_id=orderarray[i].job_id;
-   
-          if(type==="Remote contract"){
-              src="/images/self-employed.png";
-   
-          } else  if(type==="On-site Contract"){
-              src="/images/parttime.png";
-   
-          } else if(type==="On-site Permanent"){
-              src="/images/fulltime.png";
-   
-          } else if(type==="Remote Temporary"){
-              src="/images/temporary.png";
-          } else if(type==="Hybrid Permanent"){
-           src="/images/hybridpermanent.png"
-          }else if(type==="Hybrid Contract"){
-           src="/images/hybridtemporary.png"
-          }
-   
-   
-   
-   
-          let orderlist = document.getElementsByClassName("orderslist")[0];
-          var order = document.createElement('div');
-          var orderitems=` <div class="order orderhover">
+          `;
+      order.innerHTML = orderitems;
+      orderlist.append(order);
+    }
+
+    for (let i = 0; i < orderarray.length; i++) {
+      let title = orderarray[i].job_title;
+      let name = orderarray[i].company_name;
+      let city = orderarray[i].city;
+      let country = orderarray[i].country;
+      let bids = orderarray[i].submits;
+      let type = orderarray[i].job_type;
+      let pays = orderarray[i].pay.split(",");
+
+      let order_id = orderarray[i].job_id;
+
+      if (type === "Remote contract") {
+        src = "/images/self-employed.png";
+      } else if (type === "On-site Contract") {
+        src = "/images/parttime.png";
+      } else if (type === "On-site Permanent") {
+        src = "/images/fulltime.png";
+      } else if (type === "Remote Temporary") {
+        src = "/images/temporary.png";
+      } else if (type === "Hybrid Permanent") {
+        src = "/images/hybridpermanent.png";
+      } else if (type === "Hybrid Contract") {
+        src = "/images/hybridtemporary.png";
+      }
+
+      let orderlist = document.getElementsByClassName("orderslist")[0];
+      var order = document.createElement("div");
+      var orderitems = ` <div class="order orderhover">
           <div class="orderinid">${order_id}</div>
           <section class="orderp1">
              
@@ -886,7 +805,7 @@ function invitedorders(){
               
           </section>
           <section class="orderp3">
-              <p class="ordp3p">${pays[0]+pays[1]+pays[2]}</p>
+              <p class="ordp3p">${pays[0] + pays[1] + pays[2]}</p>
               <button class="orderbutton" id="orderbutton">See Job</button>
               
           
@@ -894,206 +813,175 @@ function invitedorders(){
           
           
           </div>`;
-          order.innerHTML=orderitems;
-          orderlist.append(order);
-   
-   
-        
-   
-   
-      }
-      loader[0].classList.remove("addedloader");
-      //here is the code for seeorder
-      let buttonclicked= document.getElementsByClassName("orderbutton");
-      for(let i=0;i<buttonclicked.length;i++){
-          let button=buttonclicked[i]
-          button.addEventListener('click',(e)=>{
-              let varbutton =e.target
-              let value=varbutton.parentElement.parentElement.firstElementChild.innerHTML;
-            
-         
-             sessionStorage.setItem('clickedorderid',value);
-             sessionStorage.setItem('seeorderbuttonvalue','Accept');
-              
-           window.location.href="/orderdetails.html";
-      
-           
-          })
-          
-          
-      }
-   })
-   
+      order.innerHTML = orderitems;
+      orderlist.append(order);
+    }
+    loader[0].classList.remove("addedloader");
+    //here is the code for seeorder
+    let buttonclicked = document.getElementsByClassName("orderbutton");
+    for (let i = 0; i < buttonclicked.length; i++) {
+      let button = buttonclicked[i];
+      button.addEventListener("click", (e) => {
+        let varbutton = e.target;
+        let value =
+          varbutton.parentElement.parentElement.firstElementChild.innerHTML;
 
+        // sessionStorage.setItem("clickedorderid", value);
+        // sessionStorage.setItem("seeorderbuttonvalue", "Accept");
+        sessionStorage.setCookie("clickedorderid", value, 7);
+        sessionStorage.setCookie("seeorderbuttonvalue", "Accept", 7);
+
+        window.location.href = "/orderdetails.html";
+      });
+    }
+  });
 }
 
-let incompltepopmes=()=>{
-    document.getElementsByClassName("incompleteprofile")[0].classList.remove("adddincompleteprofile"); 
-}
-
+let incompltepopmes = () => {
+  document
+    .getElementsByClassName("incompleteprofile")[0]
+    .classList.remove("adddincompleteprofile");
+};
 
 /*PROFILE JS START HERE*/
 
-let displaypoptions =()=>{
- try {
-    document.getElementsByClassName("incompleteprofile")[0].classList.remove("adddincompleteprofile");
- } catch (error) {
-    
- }
+let displaypoptions = () => {
+  try {
+    document
+      .getElementsByClassName("incompleteprofile")[0]
+      .classList.remove("adddincompleteprofile");
+  } catch (error) {}
 
-let poptions = document.getElementsByClassName("poptions");
-poptions[0].classList.add("addpoptions");
-}
-let hidepoptions=()=>{
-   let poptions = document.getElementsByClassName("poptions");
-poptions[0].classList.remove("addpoptions");
-}
+  let poptions = document.getElementsByClassName("poptions");
+  poptions[0].classList.add("addpoptions");
+};
+let hidepoptions = () => {
+  let poptions = document.getElementsByClassName("poptions");
+  poptions[0].classList.remove("addpoptions");
+};
 
-let experincesarray=[];
-let profload =()=>{
-   let loader1 =document.getElementsByClassName("loader1");
-   let loader =document.getElementsByClassName("loader");
-   let userid=localStorage.getItem("userloged");
-   let firstn=localStorage.getItem("pfname");
+let experincesarray = [];
+let profload = () => {
+  let loader1 = document.getElementsByClassName("loader1");
+  let loader = document.getElementsByClassName("loader");
+  //   let userid = localStorage.getItem("userloged");
+  //   let firstn = localStorage.getItem("pfname");
+  let userid = getCookie("userloged");
+  let firstn = getCookie("pfname");
 
-   let formdata=new FormData();
+  let formdata = new FormData();
 
-   formdata.append("first_name",firstn);
-   formdata.append("user_id",userid);
+  formdata.append("first_name", firstn);
+  formdata.append("user_id", userid);
 
-  const options={
-      method: 'POST',
-      headers:{
-        "Access-Control-Allow-Credentials":true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-        "Access-Control-Allow-Methods": "POST",
-           withCredentials:true
-   
-       },
-      credentials: 'include',
-   
-                      
-       body: formdata
-  }
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       "Access-Control-Allow-Credentials": true,
+  //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+  //       "Access-Control-Allow-Headers":
+  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+  //       "Access-Control-Allow-Methods": "POST",
+  //       withCredentials: true,
+  //     },
+  //     credentials: "include",
 
-  let f=fetch("https://yielding-dented-amusement.glitch.me/candidateprofile",options).catch(err=>{
-   console.log(err);
-  });
+  //     body: formdata,
+  //   };
+
+  let f = fetch(`${baseUrl}/candidateprofile`, optionWithFormData).catch(
+    (err) => {
+      console.log(err);
+    }
+  );
   loader[0].classList.add("addedloader");
 
-   
-  f.then(res=>res.json()).then(d=>{
-
-
-   
-
-   
-   
-   const{first_name,last_name,country,no_complete,user_id}=d[1]
-   if(no_complete){
-
-    try {
-        if(d[0].file==="noprofilepic"){
-
-        }else{
-         const imageex="data:image/png;base64,";
-         let ppimage=document.getElementsByClassName("pp");
-         ppimage[0].style.backgroundImage=`url('${imageex+d[0].file}')`
+  f.then((res) => res.json()).then((d) => {
+    const {first_name, last_name, country, no_complete, user_id} = d[1];
+    if (no_complete) {
+      try {
+        if (d[0].file === "noprofilepic") {
+        } else {
+          const imageex = "data:image/png;base64,";
+          let ppimage = document.getElementsByClassName("pp");
+          ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
         }
-        
-        
-    } catch (error) {
-        console.log(err)
-    }
+      } catch (error) {
+        console.log(err);
+      }
 
-    
-       let firstname = document.getElementById("nh21");
-   let secondname = document.getElementById("nh22");
-   let location = document.getElementById("location");
-   let id = document.getElementById("id");
+      let firstname = document.getElementById("nh21");
+      let secondname = document.getElementById("nh22");
+      let location = document.getElementById("location");
+      let id = document.getElementById("id");
 
-   id.innerHTML=user_id;
+      id.innerHTML = user_id;
 
-   firstname.innerHTML=first_name;
-   secondname.innerHTML=last_name;
-   location.innerHTML=country;
+      firstname.innerHTML = first_name;
+      secondname.innerHTML = last_name;
+      location.innerHTML = country;
 
-
-   loader[0].classList.remove("addedloader");
-
-   }  else if(d.length>2){
-    try {
-        if(d[0].file==="noprofilepic"){
-
-        }else{
-         const imageex="data:image/png;base64,";
-         let ppimage=document.getElementsByClassName("pp");
-         ppimage[0].style.backgroundImage=`url('${imageex+d[0].file}')`
+      loader[0].classList.remove("addedloader");
+    } else if (d.length > 2) {
+      try {
+        if (d[0].file === "noprofilepic") {
+        } else {
+          const imageex = "data:image/png;base64,";
+          let ppimage = document.getElementsByClassName("pp");
+          ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
         }
-    } catch (error) {
-        
-    }
-    let payr=d[1].pay_rate.split(',');
+      } catch (error) {}
+      let payr = d[1].pay_rate.split(",");
 
-    let id = document.getElementById("id");
-    let firstname = document.getElementById("nh21");
-    let secondname = document.getElementById("nh22");
-    let jobtitle = document.getElementById("jtitle");
-    let payrate = document.getElementById("payrate");
-    let payrate1 = document.getElementById("payrate1");
+      let id = document.getElementById("id");
+      let firstname = document.getElementById("nh21");
+      let secondname = document.getElementById("nh22");
+      let jobtitle = document.getElementById("jtitle");
+      let payrate = document.getElementById("payrate");
+      let payrate1 = document.getElementById("payrate1");
 
-   
-    let location = document.getElementById("location");
-    let  experience = document.getElementById("experience");
-    let aboutme = document.getElementById("abme");
-    let workh = document.getElementById("workh");
-   
-    id.innerHTML=userid;
-    firstname.innerHTML=d[1].first_name;
-    secondname.innerHTML=d[1].last_name;
-    jobtitle.innerHTML=d[1].professional_title;
-    payrate.innerHTML=payr[1]+"/h";
-    payrate1.innerHTML=payr[1]+"/hour";
+      let location = document.getElementById("location");
+      let experience = document.getElementById("experience");
+      let aboutme = document.getElementById("abme");
+      let workh = document.getElementById("workh");
 
-   
-    location.innerHTML=d[1].city+","+d[1].country;
-    experience.innerHTML=d[1].experience_in_years +" years";
-    aboutme.innerHTML=d[1].about;
-    workh.innerHTML=d[1].availability;
+      id.innerHTML = userid;
+      firstname.innerHTML = d[1].first_name;
+      secondname.innerHTML = d[1].last_name;
+      jobtitle.innerHTML = d[1].professional_title;
+      payrate.innerHTML = payr[1] + "/h";
+      payrate1.innerHTML = payr[1] + "/hour";
 
+      location.innerHTML = d[1].city + "," + d[1].country;
+      experience.innerHTML = d[1].experience_in_years + " years";
+      aboutme.innerHTML = d[1].about;
+      workh.innerHTML = d[1].availability;
 
+      let jobexperience = document.getElementsByClassName("experience")[0];
 
+      loader[0].classList.remove("addedloader");
 
-    let jobexperience=document.getElementsByClassName("experience")[0];
-    
-    loader[0].classList.remove("addedloader");
-  
-    for(let i=0;i<d[2].length;i++){
-      positiont=d[2][i].job_title;
-      start=d[2][i].start_date;
-      end=d[2][i].end_date;
-      cname=d[2][i].company_name;
-      summary=d[2][i].achievement;
-  
-  
-  
-      var expecarrier = document.createElement('div');
-     var expeitems=`<div class="expecarrier">
+      for (let i = 0; i < d[2].length; i++) {
+        positiont = d[2][i].job_title;
+        start = d[2][i].start_date;
+        end = d[2][i].end_date;
+        cname = d[2][i].company_name;
+        summary = d[2][i].achievement;
+
+        var expecarrier = document.createElement("div");
+        var expeitems = `<div class="expecarrier">
      <h3 id="expech3">${positiont}</h3>
      <p id="expecp">${start}-${end}</p>
      <h3 id="expech31">${cname}</h3>
      <p class="expeplast">${summary}</p>
   
   
-  </div>`
-  
-  expecarrier.innerHTML= expeitems;
-  jobexperience.append(expecarrier);
-    }
+  </div>`;
 
-
-   }/*else{
+        expecarrier.innerHTML = expeitems;
+        jobexperience.append(expecarrier);
+      }
+    } /*else{
        let payr=d[0].pay_rate.split(',');
 
    
@@ -1161,345 +1049,309 @@ let profload =()=>{
 
   
 */
-
   });
 
- 
+  const WIDTH = 150;
+  let input = document.getElementById("input");
+  input.addEventListener("change", (e) => {
+    let image_file = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(image_file);
 
-const WIDTH=150;
-let input =document.getElementById("input");
-input.addEventListener('change',(e)=>{
-   let image_file=e.target.files[0]
-   let reader= new FileReader()
-   reader.readAsDataURL(image_file);
+    reader.onload = (e) => {
+      let image_url = e.target.result;
 
-  
-   
-   reader.onload=(e)=>{
-       let image_url=e.target.result;
-      
-       let image=document.createElement("img");
-       image.src=image_url;
+      let image = document.createElement("img");
+      image.src = image_url;
 
-       image.onload=(e)=>{
-           let canvas=document.createElement("canvas");
-           let ratio=WIDTH/e.target.width;
-           canvas.width=WIDTH;
-           canvas.height=e.target.height*ratio;
+      image.onload = (e) => {
+        let canvas = document.createElement("canvas");
+        let ratio = WIDTH / e.target.width;
+        canvas.width = WIDTH;
+        canvas.height = e.target.height * ratio;
 
-           const context=canvas.getContext("2d");
-           context.drawImage(image,0,0,canvas.width,canvas.height);
+        const context = canvas.getContext("2d");
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-           let new_url=context.canvas.toDataURL("image/jpg",100);
-           let new_image=document.createElement("img");
-           new_image.src=new_url;
+        let new_url = context.canvas.toDataURL("image/jpg", 100);
+        let new_image = document.createElement("img");
+        new_image.src = new_url;
 
-           /*console.log(new_url);*/
-          /* document.getElementsByClassName("wrapper")[0].style.backgroundImage=`url(${image_url})`*/
+        /*console.log(new_url);*/
+        /* document.getElementsByClassName("wrapper")[0].style.backgroundImage=`url(${image_url})`*/
 
-       urltoFile(new_url);
-
-
-       }
+        urltoFile(new_url);
+      };
 
       // document.getElementsByClassName("wrapper")[0].style.backgroundImage=`url(${image_url})`
-   }
-});
-let urltoFile=(url)=>{
-   let arr=url.split(",");
-   let name=arr[0].match(/:(.*?);/)[1];
-   let data=arr[1];
+    };
+  });
+  let urltoFile = (url) => {
+    let arr = url.split(",");
+    let name = arr[0].match(/:(.*?);/)[1];
+    let data = arr[1];
 
-   let todString= atob(data);
-   let n=todString.length;
-   let dataarr= new Uint8Array(n);
-   while(n--){
-       dataarr[n]=todString.charCodeAt(n)
-   }
-   let useid=localStorage.getItem("userloged");
-   let firstname=localStorage.getItem("pfname");
-  
-   let file=new File([dataarr],firstname+useid+'.png',{type:name});
-   
-
-
-
-   let formdata=new FormData();
-   formdata.append("file",file);
-   formdata.append("user_id",useid);
-
-
-   const options={
-       method:"POST",
-
-       headers:{
-        "Access-Control-Allow-Credentials":true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-        "Access-Control-Allow-Methods": "POST",
-           withCredentials:true
-   
-       },
-      credentials: 'include',
-   
-       body:formdata
-   }
-
-   let f=fetch("https://yielding-dented-amusement.glitch.me/imageupload",options).catch(err=>{
-       console.log(err);
-   })
-
-   f.then(res=>res.json()).then(d=>{
-       const{file}=d;
-
-   
-
-
-      let datatype="data:image/png;base64,"
-      let imageurl=datatype+file;
-
-      document.getElementsByClassName("wrapper")[0].style.backgroundImage=`url(${imageurl})`
-
-
-   })
-   //here is where you will upload your profile picture
-
-
-}
-
-let form=document.getElementById("eeditform");
-
-form.addEventListener('submit',(e)=>{
-   e.preventDefault();
-   console.log(e);
-   let scrolldiv=document.getElementById("profileedit");
-
-   let fname=document.getElementById("efirstname");
-   let lnamme=document.getElementById("esecondname");
-   let ptitle =document.getElementById("etitle");
-   let avail=document.getElementById("eavailability");
-   let countr=document.getElementById("ecountry");
-   let ecity=document.getElementById("ecity");
-   let currency=document.getElementById("ecurrency");
-   let pae=document.getElementById("epay");
-   let achive=document.getElementById("eabout");
-   let years_experience=document.getElementById("eexperinence")
-
-   if(avail.value===""){
-       avail.style.border="1px solid red";
-       scrolldiv.scroll({
-           top:0,
-           behavior:"smooth"
-       });
-   }else if(countr.value===""){
-       countr.style.border="1px solid red";
-       scrolldiv.scroll({
-           top:0,
-           behavior:"smooth"
-       });
-   }else if(currency.value===""){
-       currency.style.border="1px solid red";
-       scrolldiv.scroll({
-           top:0,
-           behavior:"smooth"
-       });
-   }else{
-       
-       let formdata= new FormData();
-       let id=localStorage.getItem("userloged");
-       formdata.append("user_id",id);
-       formdata.append("firstname",fname.value);
-       formdata.append("secondname",lnamme.value);
-       formdata.append("professional_title",ptitle.value);
-       formdata.append("country",countr.value);
-       formdata.append("city",ecity.value);
-       formdata.append("pay_rate",currency.value+","+pae.value);
-       formdata.append("about",achive.value);
-       formdata.append("avilability",avail.value);
-       formdata.append("years_experience",years_experience.value)
-
-       formdata.append("experience",JSON.stringify(experincesarray));
-    
-
-       const options={
-           method:'POST',
-           headers:{
-            "Access-Control-Allow-Credentials":true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-            "Access-Control-Allow-Methods": "POST",
-               withCredentials:true
-       
-           },
-          credentials: 'include',
-       
-           body:formdata
-       }
-
-       let f=fetch("https://yielding-dented-amusement.glitch.me/editcp",options).catch(err=>{
-           console.log(err)
-       })
-       
-       document.getElementsByClassName("editpload")[0].style.display="flex";
-       
-   f.then(res=>res.json()).then(d=>{
-       const{sucess}=d;
-       if(sucess){
-        document.getElementsByClassName("editpload")[0].style.display="none";
-           form.reset()
-           location.reload()
-       }
-   }).catch(err=>{
-       console.log(err);
-   })
-
-   }
-
-   
-   
-})
-
-
-}
-let profileeditbutton=()=>{
-   let loader1 =document.getElementsByClassName("loader1");
-   let editpage=document.getElementsByClassName("profileedit");
-
-
-editpage[0].classList.add("addedprofileedit");
-let theid =localStorage.getItem("userloged");
-let formdata = new FormData();
-
-formdata.append("user_id",theid)
-
-const options={
-   method:"POST",
-   headers:{
-    "Access-Control-Allow-Credentials":true,
-    "Access-Control-Allow-Origin": "https://www.enkaare.com",
-    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-    "Access-Control-Allow-Methods": "POST",
-       withCredentials:true
-
-   },
-  credentials: 'include',
-
-   
-
-   body:formdata
-}
-
-let f=fetch("https://yielding-dented-amusement.glitch.me/geteditdata",options).catch(err=>{
-   console.log(err);
-})
-
-document.getElementsByClassName("editpload")[0].style.display="flex";
-
-
-
-f.then(res=>res.json()).then(d=>{
-   const{user_id,first_name,last_name,country,no_complete}=d[1];
-  
-
-
-
-
-  
-   if(no_complete){
-    try {
-        if(d[0].file==="noprofilepic"){
-    
-        }else{
-         const imageex="data:image/png;base64,";
-         let ppimage=document.getElementsByClassName("wrapper");
-         ppimage[0].style.backgroundImage=`url('${imageex+d[0].file}')`
-        }
-    } catch (error) {
-        console.log(error)
+    let todString = atob(data);
+    let n = todString.length;
+    let dataarr = new Uint8Array(n);
+    while (n--) {
+      dataarr[n] = todString.charCodeAt(n);
     }
-    
-       let fname=document.getElementById("efirstname");
-       let lnamme=document.getElementById("esecondname"); 
-       let countr=document.getElementById("ecountry");
+    // let useid = localStorage.getItem("userloged");
+    // let firstname = localStorage.getItem("pfname");
+    let useid = getCookie("userloged");
+    let firstname = getCookie("pfname");
 
-       fname.value=first_name;
-       lnamme.value=last_name;
-       countr.value=country;
+    let file = new File([dataarr], firstname + useid + ".png", {type: name});
 
-       document.getElementsByClassName("editpload")[0].style.display="none";
-       
+    let formdata = new FormData();
+    formdata.append("file", file);
+    formdata.append("user_id", useid);
 
-   }else if(d.length>2){
-     try {
-       
+    // const options = {
+    //   method: "POST",
 
-    if(d[0].file==="noprofilepic"){
+    //   headers: {
+    //     "Access-Control-Allow-Credentials": true,
+    //     "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+    //     "Access-Control-Allow-Headers":
+    //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
+    //     "Access-Control-Allow-Methods": "POST",
+    //     withCredentials: true,
+    //   },
+    //   credentials: "include",
 
-    }else{
-     const imageex="data:image/png;base64,";
-     let ppimage=document.getElementsByClassName("wrapper");
-     ppimage[0].style.backgroundImage=`url('${imageex+d[0].file}')`
-    } 
-     } catch (error) {
-        console.log(error)
-     }
+    //   body: formdata,
+    // };
 
+    let f = fetch(`${baseUrl}/imageupload`, optionWithFormData).catch((err) => {
+      console.log(err);
+    });
 
-    let payr=d[1].pay_rate.split(',');
+    f.then((res) => res.json()).then((d) => {
+      const {file} = d;
 
-       let fname=document.getElementById("efirstname");
-       let lnamme=document.getElementById("esecondname");
-       let ptitle =document.getElementById("etitle");
-       let avail=document.getElementById("eavailability");
-       let countr=document.getElementById("ecountry");
-       let ecity=document.getElementById("ecity");
-       let currency=document.getElementById("ecurrency");
-       let pae=document.getElementById("epay");
-       let achive=document.getElementById("eabout");
-       let years_experience=document.getElementById("eexperinence");
+      let datatype = "data:image/png;base64,";
+      let imageurl = datatype + file;
 
-       fname.value=d[1].first_name;
-       lnamme.value=d[1].last_name;
-       ptitle.value=d[1].professional_title;
-       avail.value=d[1].availability;
-       countr.value=d[1].country;
-       ecity.value=d[1].city;
-       currency.value=payr[0];
-       pae.value=payr[1];
-       achive.value=d[1].about;
+      document.getElementsByClassName(
+        "wrapper"
+      )[0].style.backgroundImage = `url(${imageurl})`;
+    });
+    //here is where you will upload your profile picture
+  };
 
-       years_experience.value=d[1].experience_in_years;
+  let form = document.getElementById("eeditform");
 
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log(e);
+    let scrolldiv = document.getElementById("profileedit");
 
-       experincesarray=experincesarray.concat(d[2]);
+    let fname = document.getElementById("efirstname");
+    let lnamme = document.getElementById("esecondname");
+    let ptitle = document.getElementById("etitle");
+    let avail = document.getElementById("eavailability");
+    let countr = document.getElementById("ecountry");
+    let ecity = document.getElementById("ecity");
+    let currency = document.getElementById("ecurrency");
+    let pae = document.getElementById("epay");
+    let achive = document.getElementById("eabout");
+    let years_experience = document.getElementById("eexperinence");
 
-       document.getElementsByClassName("editpload")[0].style.display="none";
+    if (avail.value === "") {
+      avail.style.border = "1px solid red";
+      scrolldiv.scroll({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else if (countr.value === "") {
+      countr.style.border = "1px solid red";
+      scrolldiv.scroll({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else if (currency.value === "") {
+      currency.style.border = "1px solid red";
+      scrolldiv.scroll({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      let formdata = new FormData();
+      //   let id = localStorage.getItem("userloged");
+      let id = getCookie("userloged");
+      formdata.append("user_id", id);
+      formdata.append("firstname", fname.value);
+      formdata.append("secondname", lnamme.value);
+      formdata.append("professional_title", ptitle.value);
+      formdata.append("country", countr.value);
+      formdata.append("city", ecity.value);
+      formdata.append("pay_rate", currency.value + "," + pae.value);
+      formdata.append("about", achive.value);
+      formdata.append("avilability", avail.value);
+      formdata.append("years_experience", years_experience.value);
 
-       let carrier =document.getElementsByClassName("eexperiencedisplay")[0];
-       let ex=document.getElementById("eexperiencedisplay")
-       while(ex.hasChildNodes()){
-           ex.firstChild.remove()
-       }
-       for(let i=0;i<experincesarray.length;i++){
-          let id=experincesarray[i].id;
-          let compn=experincesarray[i].company_name;
-          let jbt=experincesarray[i].job_title;
-          let stdat=experincesarray[i].start_date;
-          let eddate=experincesarray[i].end_date;
-          let contry=experincesarray[i].country;
-          let state=experincesarray[i].state;
-          let city=experincesarray[i].city;
-          let achive=experincesarray[i].achievement;
-          
+      formdata.append("experience", JSON.stringify(experincesarray));
 
-          let contediv=document.createElement('div');
-          let conte=`<div class="eexpecarrier">
+      //   const options = {
+      //     method: "POST",
+      //     headers: {
+      //       "Access-Control-Allow-Credentials": true,
+      //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      //       "Access-Control-Allow-Headers":
+      //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      //       "Access-Control-Allow-Methods": "POST",
+      //       withCredentials: true,
+      //     },
+      //     credentials: "include",
+
+      //     body: formdata,
+      //   };
+
+      let f = fetch(`${baseUrl}/editcp`, optionWithFormData).catch((err) => {
+        console.log(err);
+      });
+
+      document.getElementsByClassName("editpload")[0].style.display = "flex";
+
+      f.then((res) => res.json())
+        .then((d) => {
+          const {sucess} = d;
+          if (sucess) {
+            document.getElementsByClassName("editpload")[0].style.display =
+              "none";
+            form.reset();
+            location.reload();
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  });
+};
+let profileeditbutton = () => {
+  let loader1 = document.getElementsByClassName("loader1");
+  let editpage = document.getElementsByClassName("profileedit");
+
+  editpage[0].classList.add("addedprofileedit");
+  //   let theid = localStorage.getItem("userloged");
+  let theid = getCookie("userloged");
+  let formdata = new FormData();
+
+  formdata.append("user_id", theid);
+
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       "Access-Control-Allow-Credentials": true,
+  //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+  //       "Access-Control-Allow-Headers":
+  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+  //       "Access-Control-Allow-Methods": "POST",
+  //       withCredentials: true,
+  //     },
+  //     credentials: "include",
+
+  //     body: formdata,
+  //   };
+
+  let f = fetch(`${baseUrl}/geteditdata`, optionWithFormData).catch((err) => {
+    console.log(err);
+  });
+
+  document.getElementsByClassName("editpload")[0].style.display = "flex";
+
+  f.then((res) => res.json()).then((d) => {
+    const {user_id, first_name, last_name, country, no_complete} = d[1];
+
+    if (no_complete) {
+      try {
+        if (d[0].file === "noprofilepic") {
+        } else {
+          const imageex = "data:image/png;base64,";
+          let ppimage = document.getElementsByClassName("wrapper");
+          ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
+      let fname = document.getElementById("efirstname");
+      let lnamme = document.getElementById("esecondname");
+      let countr = document.getElementById("ecountry");
+
+      fname.value = first_name;
+      lnamme.value = last_name;
+      countr.value = country;
+
+      document.getElementsByClassName("editpload")[0].style.display = "none";
+    } else if (d.length > 2) {
+      try {
+        if (d[0].file === "noprofilepic") {
+        } else {
+          const imageex = "data:image/png;base64,";
+          let ppimage = document.getElementsByClassName("wrapper");
+          ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
+      let payr = d[1].pay_rate.split(",");
+
+      let fname = document.getElementById("efirstname");
+      let lnamme = document.getElementById("esecondname");
+      let ptitle = document.getElementById("etitle");
+      let avail = document.getElementById("eavailability");
+      let countr = document.getElementById("ecountry");
+      let ecity = document.getElementById("ecity");
+      let currency = document.getElementById("ecurrency");
+      let pae = document.getElementById("epay");
+      let achive = document.getElementById("eabout");
+      let years_experience = document.getElementById("eexperinence");
+
+      fname.value = d[1].first_name;
+      lnamme.value = d[1].last_name;
+      ptitle.value = d[1].professional_title;
+      avail.value = d[1].availability;
+      countr.value = d[1].country;
+      ecity.value = d[1].city;
+      currency.value = payr[0];
+      pae.value = payr[1];
+      achive.value = d[1].about;
+
+      years_experience.value = d[1].experience_in_years;
+
+      experincesarray = experincesarray.concat(d[2]);
+
+      document.getElementsByClassName("editpload")[0].style.display = "none";
+
+      let carrier = document.getElementsByClassName("eexperiencedisplay")[0];
+      let ex = document.getElementById("eexperiencedisplay");
+      while (ex.hasChildNodes()) {
+        ex.firstChild.remove();
+      }
+      for (let i = 0; i < experincesarray.length; i++) {
+        let id = experincesarray[i].id;
+        let compn = experincesarray[i].company_name;
+        let jbt = experincesarray[i].job_title;
+        let stdat = experincesarray[i].start_date;
+        let eddate = experincesarray[i].end_date;
+        let contry = experincesarray[i].country;
+        let state = experincesarray[i].state;
+        let city = experincesarray[i].city;
+        let achive = experincesarray[i].achievement;
+
+        let contediv = document.createElement("div");
+        let conte = `<div class="eexpecarrier">
           <div class="eojectid">${id}</div>
           <span class="eecancelb">&#x2715;</span>
           <h3 id="eexpech3">${jbt}</h3>
           
-          <p class="eexpecp">${contry+" "+state+" "+city}</p>
-          <p class="eexpecp">${stdat+"-"+eddate}</p>
+          <p class="eexpecp">${contry + " " + state + " " + city}</p>
+          <p class="eexpecp">${stdat + "-" + eddate}</p>
           <h3 id="eexpech31">${compn}</h3>
           <p class="expeplast">${achive}</p>
                 
@@ -1507,138 +1359,115 @@ f.then(res=>res.json()).then(d=>{
 
       </div>`;
 
-      contediv.innerHTML=conte;
-      carrier.append(contediv);
-       }
+        contediv.innerHTML = conte;
+        carrier.append(contediv);
+      }
+    }
+  });
+};
 
+let profileeditcancel = () => {
+  let editpage = document.getElementsByClassName("profileedit");
+  editpage[0].classList.remove("addedprofileedit");
+};
 
+let adexperience = () => {
+  let wholecarrier = document.getElementById("expe1");
+  let ejbtitle = document.getElementById("role");
+  let ecompanyname = document.getElementById("ecompany");
+  let startdate = document.getElementById("smonthYearInput");
+  let enddate = document.getElementById("emonthYearInput");
+  let country = document.getElementById("eecountry");
+  let state = document.getElementById("eestate");
+  let city = document.getElementById("eecity");
+  let achivements = document.getElementById("eesumarry");
+  let satartdinavalid = document.getElementsByClassName("dateivalid");
+  let dcarrier = document.getElementsByClassName("sadindiv");
 
+  var monthYearPattern = /^(0[1-9]|1[0-2])\/\d{4}$/;
+  if (ecompanyname.value === "") {
+    ecompanyname.style.borderBottom = "1px solid red";
+  } else if (ejbtitle.value === "") {
+    ejbtitle.style.borderBottom = "1px solid red";
+  } else if (!monthYearPattern.test(startdate.value)) {
+    satartdinavalid[0].style.display = "block";
+    dcarrier[0].style.borderBottom = "1px solid red";
 
+    wholecarrier.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else if (!monthYearPattern.test(enddate.value)) {
+    satartdinavalid[1].style.display = "block";
+    dcarrier[1].style.borderBottom = "1px solid red";
 
-   }
+    wholecarrier.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else if (country.value === "") {
+    country.style.borderBottom = "1px solid red";
+  } else if (state.value === "") {
+    state.style.borderBottom = "1px solid red";
+  } else if (city.value === "") {
+    city.style.borderBottom = "1px solid red";
+  } else if (achivements.value === "") {
+    achivements.style.border = "1px solid red";
+    wholecarrier.scroll({
+      top: wholecarrier.scrollHeight,
+      behavior: "smooth",
+    });
+  } else {
+    var randomstring = "";
+    randomstring += Math.random();
 
-})
+    let expeobject = {
+      experience_id: randomstring,
+      company_name: ecompanyname.value,
+      job_title: ejbtitle.value,
+      start_date: startdate.value,
+      end_date: enddate.value,
+      country: country.value,
+      state: state.value,
+      city: city.value,
+      achievement: achivements.value,
+    };
 
+    experincesarray.push(expeobject);
 
+    console.log(experincesarray);
+    ecompanyname.value = "";
+    ejbtitle.value = "";
+    startdate.value = "";
+    enddate.value = "";
+    country.value = "";
+    state.value = "";
+    city.value = "";
+    achivements.value = "";
+    let carrier = document.getElementsByClassName("eexperiencedisplay")[0];
+    let ex = document.getElementById("eexperiencedisplay");
+    while (ex.hasChildNodes()) {
+      ex.firstChild.remove();
+    }
+    for (let i = 0; i < experincesarray.length; i++) {
+      let id = experincesarray[i].id;
+      let compn = experincesarray[i].company_name;
+      let jbt = experincesarray[i].job_title;
+      let stdat = experincesarray[i].start_date;
+      let eddate = experincesarray[i].end_date;
+      let contry = experincesarray[i].country;
+      let state = experincesarray[i].state;
+      let city = experincesarray[i].city;
+      let achive = experincesarray[i].achievement;
 
-
-}
-
-let profileeditcancel=()=>{
-   let editpage=document.getElementsByClassName("profileedit");
-editpage[0].classList.remove("addedprofileedit");
-}
-
-let adexperience=()=>{
-   let wholecarrier=document.getElementById("expe1");
-   let ejbtitle=document.getElementById("role");
-   let ecompanyname=document.getElementById("ecompany");
-   let startdate=document.getElementById("smonthYearInput");
-   let enddate=document.getElementById("emonthYearInput");
-   let country=document.getElementById("eecountry");
-   let state=document.getElementById("eestate");
-   let city=document.getElementById("eecity");
-   let achivements=document.getElementById("eesumarry");
-   let satartdinavalid=document.getElementsByClassName("dateivalid");
-   let dcarrier=document.getElementsByClassName("sadindiv");
-
-   
-   var monthYearPattern = /^(0[1-9]|1[0-2])\/\d{4}$/;
-   if(ecompanyname.value===""){
-      
-       ecompanyname.style.borderBottom="1px solid red"
-       
-       
-   }else  if(ejbtitle.value===""){
-       ejbtitle.style.borderBottom="1px solid red";
-   }else 
-
-       if (!monthYearPattern.test(startdate.value)) {
-           satartdinavalid[0].style.display="block";
-           dcarrier[0].style.borderBottom="1px solid red";
-           
-           
-           wholecarrier.scroll({
-               top:0,
-               behavior:"smooth"
-           });
-         } else if (!monthYearPattern.test(enddate.value)) {
-           satartdinavalid[1].style.display="block";
-           dcarrier[1].style.borderBottom="1px solid red";
-           
-           wholecarrier.scroll({
-               top:0,
-               behavior:"smooth"
-           });
-
-         } else if(country.value===""){
-           country.style.borderBottom="1px solid red";
-       }else if(state.value===""){
-           state.style.borderBottom="1px solid red";
-       }else if(city.value===""){
-           city.style.borderBottom="1px solid red";
-       }else if(achivements.value===""){
-           achivements.style.border="1px solid red";
-           wholecarrier.scroll({
-               top:wholecarrier.scrollHeight,
-               behavior: "smooth"
-           });
-       }else{
-
-           var randomstring =""
-               randomstring+= Math.random();
-
-           let expeobject={
-               experience_id:randomstring,
-               company_name:ecompanyname.value,
-               job_title:ejbtitle.value,
-               start_date:startdate.value,
-               end_date:enddate.value,
-               country:country.value,
-               state:state.value,
-               city:city.value,
-               achievement:achivements.value
-           }
-
-           
-
-       
-           experincesarray.push(expeobject);
-
-           console.log(experincesarray)
-          ecompanyname.value="";
-           ejbtitle.value="";
-           startdate.value="";
-           enddate.value="";
-           country.value="";
-           state.value="";
-           city.value="";
-           achivements.value="";
-        let carrier =document.getElementsByClassName("eexperiencedisplay")[0];
-        let ex=document.getElementById("eexperiencedisplay")
-   while(ex.hasChildNodes()){
-       ex.firstChild.remove()
-   }
-        for(let i=0;i<experincesarray.length;i++){
-           let id=experincesarray[i].id;
-           let compn=experincesarray[i].company_name;
-           let jbt=experincesarray[i].job_title;
-           let stdat=experincesarray[i].start_date;
-           let eddate=experincesarray[i].end_date;
-           let contry=experincesarray[i].country;
-           let state=experincesarray[i].state;
-           let city=experincesarray[i].city;
-           let achive=experincesarray[i].achievement;
-           
-
-           let contediv=document.createElement('div');
-           let conte=`<div class="eexpecarrier">
+      let contediv = document.createElement("div");
+      let conte = `<div class="eexpecarrier">
            <div class="eojectid">${id}</div>
            <span class="eecancelb">&#x2715;</span>
            <h3 id="eexpech3">${jbt}</h3>
            
-           <p class="eexpecp">${contry+" "+state+" "+city}</p>
-           <p class="eexpecp">${stdat+"-"+eddate}</p>
+           <p class="eexpecp">${contry + " " + state + " " + city}</p>
+           <p class="eexpecp">${stdat + "-" + eddate}</p>
            <h3 id="eexpech31">${compn}</h3>
            <p class="expeplast">${achive}</p>
                  
@@ -1646,160 +1475,136 @@ let adexperience=()=>{
 
        </div>`;
 
-       contediv.innerHTML=conte;
-       carrier.append(contediv);
-        }
-       
+      contediv.innerHTML = conte;
+      carrier.append(contediv);
+    }
+  }
 
-        
-           
-       }
-  
-   
-       let expecancel =document.getElementsByClassName("eecancelb");
+  let expecancel = document.getElementsByClassName("eecancelb");
 
-       for(let i=0;i<expecancel.length;i++){
-           let clickedelement=expecancel[i]
-           clickedelement.addEventListener('click',()=>{
-               let objectid=clickedelement.parentElement.children[0].innerHTML;
-               
-               const index = experincesarray.findIndex(object => {
-                   return object.id === objectid;
-                 })
-                 experincesarray.splice(index,1);
-                 clickedelement.parentElement.remove();
-           });
-       }
+  for (let i = 0; i < expecancel.length; i++) {
+    let clickedelement = expecancel[i];
+    clickedelement.addEventListener("click", () => {
+      let objectid = clickedelement.parentElement.children[0].innerHTML;
 
-   
-}
+      const index = experincesarray.findIndex((object) => {
+        return object.id === objectid;
+      });
+      experincesarray.splice(index, 1);
+      clickedelement.parentElement.remove();
+    });
+  }
+};
 
-let editpartinput_reset=()=>{
-   let currency=document.getElementById("ecurrency");
-   let avail=document.getElementById("eavailability");
-   let countr=document.getElementById("ecountry");
-   let ejbtitle=document.getElementById("role");
-   let companyname=document.getElementById("ecompany");
-   let startdate=document.getElementById("smonthYearInput");
-   let enddate=document.getElementById("emonthYearInput");
-   let country=document.getElementById("eecountry");
-   let state=document.getElementById("eestate");
-   let city=document.getElementById("eecity");
-   let achivements=document.getElementById("eesumarry");
-   let satartdinavalid=document.getElementsByClassName("dateivalid");
-   let dcarrier=document.getElementsByClassName("sadindiv");
+let editpartinput_reset = () => {
+  let currency = document.getElementById("ecurrency");
+  let avail = document.getElementById("eavailability");
+  let countr = document.getElementById("ecountry");
+  let ejbtitle = document.getElementById("role");
+  let companyname = document.getElementById("ecompany");
+  let startdate = document.getElementById("smonthYearInput");
+  let enddate = document.getElementById("emonthYearInput");
+  let country = document.getElementById("eecountry");
+  let state = document.getElementById("eestate");
+  let city = document.getElementById("eecity");
+  let achivements = document.getElementById("eesumarry");
+  let satartdinavalid = document.getElementsByClassName("dateivalid");
+  let dcarrier = document.getElementsByClassName("sadindiv");
 
+  satartdinavalid[0].style.display = "none";
+  dcarrier[0].style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
+  satartdinavalid[1].style.display = "none";
+  dcarrier[1].style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
+  companyname.style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
+  ejbtitle.style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
+  country.style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
+  state.style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
+  city.style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
+  achivements.style.border = "1px solid hsla(4,0%,0%,0.5)";
 
-       satartdinavalid[0].style.display="none";
-       dcarrier[0].style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
-       satartdinavalid[1].style.display="none";
-       dcarrier[1].style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
-       companyname.style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
-       ejbtitle.style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
-       country.style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
-       state.style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
-       city.style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
-       achivements.style.border="1px solid hsla(4,0%,0%,0.5)";
-       
-       countr.style.border="1px solid hsla(4,0%,0%,0.5)";
-       currency.style.border="1px solid hsla(4,0%,0%,0.5)";
-       avail.style.border="1px solid hsla(4,0%,0%,0.5)";
-
-}
-
-
-   
+  countr.style.border = "1px solid hsla(4,0%,0%,0.5)";
+  currency.style.border = "1px solid hsla(4,0%,0%,0.5)";
+  avail.style.border = "1px solid hsla(4,0%,0%,0.5)";
+};
 
 /*MESSENGER START HERE*/
-let mainchats_count=document.getElementById("ac");
-let main_message_box= document.getElementsByClassName("message");
-let message_thread_container=document.getElementById("messagethreads");
-let messageh=document.getElementById("messageheeader");
-let thcontainer=document.getElementsByClassName("messagethreads");
-let real_thread=document.getElementsByClassName("thread");
-let wholechatscarrier=document.getElementById("wholemescontainer");
+let mainchats_count = document.getElementById("ac");
+let main_message_box = document.getElementsByClassName("message");
+let message_thread_container = document.getElementById("messagethreads");
+let messageh = document.getElementById("messageheeader");
+let thcontainer = document.getElementsByClassName("messagethreads");
+let real_thread = document.getElementsByClassName("thread");
+let wholechatscarrier = document.getElementById("wholemescontainer");
 
+let chats = () => {
+  message_thread_container.style.display = "block";
+  wholechatscarrier.style.display = "none";
 
-let chats=()=>{
-   
-message_thread_container.style.display="block";
-wholechatscarrier.style.display="none";
+  messageh.innerHTML = "Chats!";
 
-messageh.innerHTML="Chats!"
+  main_message_box[0].classList.add("addmessage");
+  let message_p_icon = document.getElementById("mesimg");
+  let threads = [
+    {
+      message_id: "0001",
+      sender_name: "Karanja G",
+      message_body:
+        "Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me",
+      sender_prof:
+        "url('/images/financial-manager-job-description-4000x2667-20201114.jpeg')",
+      message_state: "new",
+      thread_id: "karg",
+      time_stamp: "8:40pm",
+      count: 2,
+    },
+    {
+      message_id: "0002",
+      sender_name: "Samantha K",
+      message_body: "This is a second thread a trial on threads functionality",
+      sender_prof: "url('/images/model-g07596919e_1280.jpg')",
+      message_state: "new",
+      time_stamp: "9:30pm",
+      thread_id: "samk",
+      count: 1,
+    },
+    {
+      message_id: "0003",
+      sender_name: "Kato M",
+      message_body: "This is a third thread a trial on threads functionality",
+      sender_prof: "url('/images/mentor-ga06c0b8e3_1280.jpg')",
+      message_state: "new",
+      thread_id: "katm",
+      time_stamp: "2:15am",
+      count: 4,
+    },
+    {
+      message_id: "0004",
+      sender_name: "Support",
+      message_body: "What is wrong with your order?",
+      sender_prof: "url('/images/mentor-ga06c0b8e3_1280.jpg')",
+      message_state: "new",
+      thread_id: "support",
+      time_stamp: "2:15am",
+      count: 4,
+    },
+  ];
 
+  if (real_thread.length > 0) {
+    for (let i = 0; i < threads.length; i++) {
+      real_thread[0].remove();
+    }
+  }
 
+  for (let i = 0; i < threads.length; i++) {
+    let name = threads[i].sender_name;
+    let time = threads[i].time_stamp;
+    let message = threads[i].message_body.slice(0, 30);
+    let count = threads[i].count;
+    let thrid = threads[i].thread_id;
+    var threadc = document.createElement("div");
+    var mesthreads = document.getElementsByClassName("messagethreads")[0];
 
- main_message_box[0].classList.add("addmessage");
- let message_p_icon=document.getElementById("mesimg");
- let threads=[
-   {message_id:"0001",
-    sender_name:"Karanja G",
-    message_body:"Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me",
-    sender_prof:"url('/images/financial-manager-job-description-4000x2667-20201114.jpeg')",
-    message_state:"new",
-    thread_id:"karg",
-    time_stamp:"8:40pm",
-    count:2
-    
-   },
-   {message_id:"0002",
-   sender_name:"Samantha K",
-   message_body:"This is a second thread a trial on threads functionality",
-   sender_prof:"url('/images/model-g07596919e_1280.jpg')",
-   message_state:"new",
-   time_stamp:"9:30pm",
-   thread_id:"samk",
-   count:1
-   
-  },
-  {message_id:"0003",
-  sender_name:"Kato M",
-  message_body:"This is a third thread a trial on threads functionality",
-  sender_prof:"url('/images/mentor-ga06c0b8e3_1280.jpg')",
-  message_state:"new",
-  thread_id:"katm",
-  time_stamp:"2:15am",
-  count:4
-  
- }
- ,
- {message_id:"0004",
- sender_name:"Support",
- message_body:"What is wrong with your order?",
- sender_prof:"url('/images/mentor-ga06c0b8e3_1280.jpg')",
- message_state:"new",
- thread_id:"support",
- time_stamp:"2:15am",
- count:4
- 
-}
-];
-
-if(real_thread.length>0){
-  
-
-   for(let i=0;i<threads.length;i++){
-     
-       real_thread[0].remove();
-       
-   }
-  
-}
-
-
-
-for(let i=0; i<threads.length;i++){
-
-   let name=threads[i].sender_name;
-   let time=threads[i].time_stamp;
-   let message=threads[i].message_body.slice(0,30);
-   let count=threads[i].count;
-   let thrid=threads[i].thread_id
-   var threadc=document.createElement('div');
-   var mesthreads=document.getElementsByClassName("messagethreads")[0];
- 
- 
-   let thread_content=` <div class="thread">
+    let thread_content = ` <div class="thread">
    <section class="imgpart">
    <p class="messagethreadid">${thrid}</p>
 
@@ -1809,7 +1614,7 @@ for(let i=0; i<threads.length;i++){
     </section>
     <section class="namemes">
        <p class="mesp" id="mesp">${name}</p>
-       <p id="threadp2">${message+"...."}</p>
+       <p id="threadp2">${message + "...."}</p>
   
     </section>
     <section class="times">
@@ -1822,243 +1627,214 @@ for(let i=0; i<threads.length;i++){
         </p>
     </section>
   </div>`;
- 
-threadc.innerHTML=thread_content;
-mesthreads.append(threadc);
-let sender_ppicture=document.getElementById("mesimg");
-sender_ppicture.style.backgroundImage= threads[i].sender_prof;
 
+    threadc.innerHTML = thread_content;
+    mesthreads.append(threadc);
+    let sender_ppicture = document.getElementById("mesimg");
+    sender_ppicture.style.backgroundImage = threads[i].sender_prof;
+  }
 
+  let threaddiv = document.getElementsByClassName("thread");
 
-}
+  for (var i = 0; i < threaddiv.length; i++) {
+    let clickedthread = threaddiv[i];
+    clickedthread.addEventListener("click", () => {
+      let clickedthread_id =
+        clickedthread.firstElementChild.firstElementChild.innerHTML;
+      let thread_name = clickedthread.children[1].children[0].innerHTML;
 
+      chatbox(clickedthread_id, thread_name);
 
-let threaddiv=document.getElementsByClassName("thread");
+      message_thread_container.style.display = "none";
+    });
+  }
+};
 
-for(var i=0; i<threaddiv.length;i++){
- let clickedthread=threaddiv[i];
- clickedthread.addEventListener('click',()=>{
-   let clickedthread_id=clickedthread.firstElementChild.firstElementChild.innerHTML;
-  let thread_name=clickedthread.children[1].children[0].innerHTML;
-  
-   chatbox(clickedthread_id,thread_name);
+let messageboxdis = () => {
+  main_message_box[0].classList.remove("addmessage");
+};
 
-  message_thread_container.style.display="none";
+let chatbox = (letcaht_id, name) => {
+  wholechatscarrier.style.display = "block";
 
- })
-  
-}
+  let p_iname = document.getElementById("mesp1");
+  p_iname.innerHTML = name;
 
-}
+  let karg = [
+    {
+      message_id: 1003,
+      message_type: "send",
+      time_stamp: "8:30pm",
+      body: "I would be more than happy if i get the opportunity to work with you",
+    },
+    {
+      message_id: 1003,
+      message_type: "receive",
+      time_stamp: "5:40pm",
+      body: "This sounds great what is your qulifications?",
+    },
+  ];
+  let samk = [
+    {
+      message_id: 103,
+      message_type: "send",
+      time_stamp: "1:30am",
+      body: "Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me ",
+    },
+    {
+      message_id: 1003,
+      message_type: "receive",
+      time_stamp: "12:00pm",
+      body: "it was great learning about you ",
+    },
+  ];
 
+  let katm = [
+    {
+      message_id: 1003,
+      message_type: "send",
+      time_stamp: "2:30am",
+      body: "Im looking to be hired in a position of nurse administration",
+    },
+    {
+      message_id: 1003,
+      message_type: "receive",
+      time_stamp: "8:30pm",
+      body: "wow wonderful to hear that for how long have you been a software developer ",
+    },
+  ];
 
-let messageboxdis=()=>{
-   main_message_box[0].classList.remove("addmessage");
+  let support = [
+    {
+      message_id: 10001,
+      message_type: "send",
+      time_stamp: "2:30am",
+      body: "I want help with order 4007",
+    },
+    {
+      message_id: 1003,
+      message_type: "receive",
+      time_stamp: "8:30pm",
+      body: "What's wrong with the otrder?",
+    },
+  ];
 
-}
+  let messagesarray = [];
+  if (letcaht_id === "karg") {
+    messagesarray.length = 0;
+    messagesarray = messagesarray.concat(karg);
+  } else if (letcaht_id === "katm") {
+    messagesarray.length = 0;
+    messagesarray = messagesarray.concat(katm);
+  } else if (letcaht_id === "samk") {
+    messagesarray.length = 0;
+    messagesarray = messagesarray.concat(samk);
+  } else if (letcaht_id === "support") {
+    messagesarray.length = 0;
+    messagesarray = messagesarray.concat(support);
+  }
 
-let chatbox=(letcaht_id,name)=>{
-  wholechatscarrier.style.display="block";
-  
-  let p_iname=document.getElementById("mesp1");
-  p_iname.innerHTML=name; 
+  //extra removecodes
+  let car = document.getElementById("messagecarrier");
+  while (car.hasChildNodes()) {
+    car.firstChild.remove();
+  }
 
+  for (let i = 0; i < messagesarray.length; i++) {
+    let type = messagesarray[i].message_type;
+    let ts = messagesarray[i].time_stamp;
+    let mbody = messagesarray[i].body;
 
-   let karg =[
-       {
-           message_id:1003,
-           message_type:"send",
-           time_stamp:"8:30pm",
-           body:"I would be more than happy if i get the opportunity to work with you"
-       },
-       {
-           message_id:1003,
-           message_type:"receive",
-           time_stamp:"5:40pm",
-           body:"This sounds great what is your qulifications?"
-       }
-
-   ];
-   let samk =[
-       {
-           message_id:103,
-           message_type:"send",
-           time_stamp:"1:30am",
-           body:"Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me "
-       },
-       {
-           message_id:1003,
-           message_type:"receive",
-           time_stamp:"12:00pm",
-           body:"it was great learning about you "
-       } 
-   ]
-
-   let katm =[
-       {
-           message_id:1003,
-           message_type:"send",
-           time_stamp:"2:30am",
-           body:"Im looking to be hired in a position of nurse administration"
-       },
-       {
-           message_id:1003,
-           message_type:"receive",
-           time_stamp:"8:30pm",
-           body:"wow wonderful to hear that for how long have you been a software developer "
-       }
-   ];
-
-   let support=[
-       {
-           message_id:10001,
-           message_type:"send",
-           time_stamp:"2:30am",
-           body:"I want help with order 4007"
-       },
-       {
-           message_id:1003,
-           message_type:"receive",
-           time_stamp:"8:30pm",
-           body:"What's wrong with the otrder?"
-       }
-   ]
-
-   
-   let messagesarray=[];
-   if(letcaht_id==="karg"){
-       messagesarray.length=0;
-       messagesarray=messagesarray.concat(karg);
-       
-   }else if(letcaht_id==="katm"){
-       messagesarray.length=0;
-       messagesarray=messagesarray.concat(katm);
-      
-
-   }else if(letcaht_id==="samk"){
-       messagesarray.length=0;
-       messagesarray=messagesarray.concat(samk);
-      
-
-   }else if(letcaht_id==="support"){
-       messagesarray.length=0;
-       messagesarray=messagesarray.concat(support);
-      
-
-   }
-  
-
- //extra removecodes
- let car=document.getElementById("messagecarrier");
- while(car.hasChildNodes()){
-  car.firstChild.remove()
- }
-
-
-
-   for(let i=0;i<messagesarray.length;i++){
-      
-       let type=messagesarray[i].message_type;
-       let ts=messagesarray[i].time_stamp;
-       let mbody=messagesarray[i].body;
-
-
-       let chatscarrier= document.getElementsByClassName("messagecarrier")[0];
-       let messdiv=document.createElement('div');
-       let mess_content;
-       if(type==="send"){
-          
-           mess_content=`<div class="sendmessage">
+    let chatscarrier = document.getElementsByClassName("messagecarrier")[0];
+    let messdiv = document.createElement("div");
+    let mess_content;
+    if (type === "send") {
+      mess_content = `<div class="sendmessage">
            <p class="sendmp">${mbody}</p>
            <p class="timefmp sendstyle">${ts}</p>
           
               </div>`;
-       }else if(type==="receive"){
-
-           mess_content=`<div class="receivemessage">
+    } else if (type === "receive") {
+      mess_content = `<div class="receivemessage">
            <p class="receivmp">${mbody}</p>
            <p class="timefmp restyle">${ts}</p>
               </div>`;
-   
-       }
-       
-       messdiv.innerHTML=mess_content;
-       chatscarrier.append(messdiv);
-   }
+    }
 
-  
-      
-}
+    messdiv.innerHTML = mess_content;
+    chatscarrier.append(messdiv);
+  }
+};
 
+let sendb = () => {
+  let form = document.getElementById("form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let text = document.getElementById("text");
+    const tstamp = new Date().toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
+    let chatscarrier = document.getElementsByClassName("messagecarrier")[0];
+    let messdiv = document.createElement("div");
 
-
-let sendb=()=>{
-   let form =document.getElementById("form");
-   form.addEventListener('submit',(e)=>{
-       e.preventDefault();
-       let text=document.getElementById("text");
-       const tstamp=new Date().toLocaleString('en-US',{hour:'numeric',minute:'numeric',hour12:true});
-       let chatscarrier= document.getElementsByClassName("messagecarrier")[0];
-       let messdiv=document.createElement('div');
-   
-       let  mess_content=`<div class="sendmessage">
+    let mess_content = `<div class="sendmessage">
        <p class="sendmp">${text.value}</p>
        <p class="timefmp sendstyle">${tstamp}</p>
       
           </div>`;
-          messdiv.innerHTML=mess_content;
-           chatscarrier.append(messdiv);
-      
-       form.reset()
-   });
-}
+    messdiv.innerHTML = mess_content;
+    chatscarrier.append(messdiv);
 
-let support=(id,nam)=>{
- messageh.innerHTML="Hey!<br>How can we help you?";
-   main_message_box[0].classList.add("addmessage");
-   message_thread_container.style.display="none";
-   chatbox(id,nam);
-}
+    form.reset();
+  });
+};
 
-
+let support = (id, nam) => {
+  messageh.innerHTML = "Hey!<br>How can we help you?";
+  main_message_box[0].classList.add("addmessage");
+  message_thread_container.style.display = "none";
+  chatbox(id, nam);
+};
 
 //NOTIFICATIONS JAVASCRIPT START HERE
-let notiload=()=>{
-   let noticarrier= document.getElementsByClassName("noticarrier")[0];
-   let notiarray=[
-       {noti_id:1003,
-       noti_title:"Job",
-       order_id:98989,
-       body:"application has been accepted.",
-       time_stamp:"Feb 24, 2022, 4:11 PM",
-       img_type:"/images/customer-service.png"
+let notiload = () => {
+  let noticarrier = document.getElementsByClassName("noticarrier")[0];
+  let notiarray = [
+    {
+      noti_id: 1003,
+      noti_title: "Job",
+      order_id: 98989,
+      body: "application has been accepted.",
+      time_stamp: "Feb 24, 2022, 4:11 PM",
+      img_type: "/images/customer-service.png",
+    },
+    {
+      noti_id: 1003,
+      noti_title: "Job",
+      order_id: 98989,
+      body: "application has been accepted.",
+      time_stamp: "Feb 24, 2022, 4:11 PM",
+      img_type: "/images/customer-service.png",
+    },
+    {
+      noti_id: 1003,
+      noti_title: "Job",
+      order_id: 98989,
+      body: "application has been accepted.",
+      time_stamp: "Feb 24, 2022, 4:11 PM",
+      img_type: "/images/customer-service.png",
+    },
+  ];
+  for (let i = 0; i < notiarray.length; i++) {
+    let noti_t = notiarray[i].noti_title;
+    let order_id = notiarray[i].order_id;
+    let body = notiarray[i].body;
+    let tms = notiarray[i].time_stamp;
+    let noti_icon = notiarray[i].img_type;
 
-       },
-       {noti_id:1003,
-           noti_title:"Job",
-           order_id:98989,
-           body:"application has been accepted.",
-           time_stamp:"Feb 24, 2022, 4:11 PM",
-           img_type:"/images/customer-service.png"
-   
-           },
-           {noti_id:1003,
-               noti_title:"Job",
-               order_id:98989,
-               body:"application has been accepted.",
-               time_stamp:"Feb 24, 2022, 4:11 PM",
-               img_type:"/images/customer-service.png"
-       
-               }
-   ];
-   for(let i=0;i<notiarray.length;i++){
-       let noti_t=notiarray[i].noti_title;
-       let  order_id=notiarray[i].order_id;
-       let body=notiarray[i].body;
-       let tms=notiarray[i].time_stamp;
-       let noti_icon=notiarray[i].img_type;
-
-       let noticontent=`<div class="noti">
+    let noticontent = `<div class="noti">
        <section class="notimage">
      <img src="${noti_icon}" alt="">
        </section>
@@ -2070,79 +1846,63 @@ let notiload=()=>{
            </p>
        </section>
 
-   </div>`
+   </div>`;
 
-
-   let notidiv=document.createElement('div');
-   notidiv.innerHTML=noticontent;
-   noticarrier.append(notidiv)
-   }
-
-
-  
-
-}
-
+    let notidiv = document.createElement("div");
+    notidiv.innerHTML = noticontent;
+    noticarrier.append(notidiv);
+  }
+};
 
 /*ORDERS DETAILS START HERE*/
 
-let orderdetails=(order_id)=>{
-   let loader =document.getElementsByClassName("loader");
-   ;
-  
-   let jbid= sessionStorage.getItem("clickedorderid");
- 
+let orderdetails = (order_id) => {
+  let loader = document.getElementsByClassName("loader");
+  let jbid = sessionStorage.getItem("clickedorderid");
 
-   let jobtitle=document.getElementById("odh6");
-   let name=document.getElementById("odp");
-   let city=document.getElementById("citysta");
-   let country=document.getElementById("countrysta");
-   let time_posted=document.getElementById("postedt");
-   let pay_rate=document.getElementById("payrate");
-   let benefits=document.getElementById("benefits");
-   let type=document.getElementById("ttype");
-   let about=document.getElementById("aboutj");
-   let responsibilities=document.getElementById("tasksres");
-   let poster =document.getElementsByClassName("postername");
-   let depart=document.getElementsByClassName("depart");
+  let jobtitle = document.getElementById("odh6");
+  let name = document.getElementById("odp");
+  let city = document.getElementById("citysta");
+  let country = document.getElementById("countrysta");
+  let time_posted = document.getElementById("postedt");
+  let pay_rate = document.getElementById("payrate");
+  let benefits = document.getElementById("benefits");
+  let type = document.getElementById("ttype");
+  let about = document.getElementById("aboutj");
+  let responsibilities = document.getElementById("tasksres");
+  let poster = document.getElementsByClassName("postername");
+  let depart = document.getElementsByClassName("depart");
 
-   const formdata= new FormData();
-   formdata.append("job_id",jbid);
-   formdata.append("type","or");
-   const options ={
+  const formdata = new FormData();
+  formdata.append("job_id", jbid);
+  formdata.append("type", "or");
+  const options = {
+    method: "POST",
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      "Access-Control-Allow-Methods": "POST",
+      withCredentials: true,
+    },
+    credentials: "include",
 
-       method: 'POST',
-       headers:{
-        "Access-Control-Allow-Credentials":true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-        "Access-Control-Allow-Methods": "POST",
-           withCredentials:true
-   
-       },
-      credentials: 'include',
-   
-  
-       body: formdata,
-      
-   };
+    body: formdata,
+  };
   // https://1ed2-105-231-144-76.ngrok.io/api'
 
   //https://half-geode-roundworm.glitch.me/api
-   
-   let f= fetch('https://yielding-dented-amusement.glitch.me/sedetails',options).catch(err =>{
-      
 
-});
-loader[0].classList.add("addedloader");
+  let f = fetch(`${baseUrl}/sedetails`, optionWithFormData).catch((err) => {});
+  loader[0].classList.add("addedloader");
 
-f.then(res=>res.json()).then(d=>{
+  f.then((res) => res.json())
+    .then((d) => {
+      let orderarray = d;
 
-   
-   let orderarray =d
-  
-   let time;
- /*  if(parseInt(orderarray[0].time_posted) >60){
+      let time;
+      /*  if(parseInt(orderarray[0].time_posted) >60){
        time=Math.trunc(parseInt(orderarray[0].time_posted )/60)+" hours";
        
 
@@ -2154,233 +1914,197 @@ f.then(res=>res.json()).then(d=>{
        
    }*/
 
+      if (parseInt(orderarray[0].time_posted) >= 1440) {
+        const days = Math.floor(parseInt(orderarray[0].time_posted) / 1440); // Calculate days
+        time = days + " days";
+      } else if (parseInt(orderarray[0].time_posted) >= 60) {
+        const hours = Math.floor(parseInt(orderarray[0].time_posted) / 60); // Calculate hours
+        time = hours + " hours";
+      } else {
+        time = orderarray[0].time_posted + " minutes";
+      }
 
+      let payy = orderarray[0].pay.split(",");
+      jobtitle.innerHTML = orderarray[0].job_title;
+      /* name.innerHTML=orderarray[0].company_name;*/
+      city.innerHTML = orderarray[0].state_province + " " + orderarray[0].city;
+      time_posted.innerHTML = time;
+      country.innerHTML = orderarray[0].country;
+      pay_rate.innerHTML = payy[0] + payy[1] + payy[2];
+      benefits.innerHTML = orderarray[0].benefit;
+      type.innerHTML = orderarray[0].job_type;
+      about.innerHTML = orderarray[0].summary;
+      responsibilities.innerHTML = orderarray[0].responsibilities;
+      poster[0].innerHTML = orderarray[0].first_name + ",";
+      depart[0].innerHTML = orderarray[0].department;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
+  const sformdata = new FormData();
+  sformdata.append("job_id", jbid);
+  sformdata.append("type", "any");
+  //   const soptions = {
+  //     method: "POST",
+  //     headers: {
+  //       "Access-Control-Allow-Credentials": true,
+  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
+  //       "Access-Control-Allow-Headers":
+  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+  //       "Access-Control-Allow-Methods": "POST",
+  //       withCredentials: true,
+  //     },
+  //     credentials: "include",
 
-   if (parseInt(orderarray[0].time_posted)>= 1440) {
-    const days = Math.floor(parseInt(orderarray[0].time_posted) / 1440); // Calculate days
-   time=days +" days"
-  } else if (parseInt(orderarray[0].time_posted) >= 60) {
-    const hours = Math.floor(parseInt(orderarray[0].time_posted) / 60); // Calculate hours
-   time= hours +" hours"
-  } else {
-    time=orderarray[0].time_posted+" minutes";
-  }
-
-   let payy=orderarray[0].pay.split(",");
-   jobtitle.innerHTML=orderarray[0].job_title;
-  /* name.innerHTML=orderarray[0].company_name;*/
-   city.innerHTML=orderarray[0].state_province+" "+orderarray[0].city;
-   time_posted.innerHTML=time;
-   country.innerHTML=orderarray[0].country;
-   pay_rate.innerHTML=payy[0]+payy[1]+payy[2];
-   benefits.innerHTML=orderarray[0].benefit;
-   type.innerHTML=orderarray[0].job_type;
-   about.innerHTML=orderarray[0].summary;
-   responsibilities.innerHTML=orderarray[0].responsibilities;
-   poster[0].innerHTML=orderarray[0].first_name +",";
-   depart[0].innerHTML=orderarray[0].department;
-
-}).catch(err=>{
-   console.log(err);
-});
-
-   
-const sformdata= new FormData();
-   sformdata.append("job_id",jbid);
-   sformdata.append("type","any");
-   const soptions ={
-
-       method: 'POST',
-       headers:{
-        "Access-Control-Allow-Credentials":true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-        "Access-Control-Allow-Methods": "POST",
-           withCredentials:true
-   
-       },
-      credentials: 'include',
-   
-  
-       body: sformdata,
-      
-   };
+  //     body: sformdata,
+  //   };
   // https://1ed2-105-231-144-76.ngrok.io/api'
 
   //https://half-geode-roundworm.glitch.me/api
-   
-   let sf= fetch('https://yielding-dented-amusement.glitch.me/sedetails',soptions).catch(err =>{
-     
 
-});
-sf.then(res=>res.json()).then(d=>{
+  let sf = fetch(`${baseUrl}/sedetails`, soptions).catch((err) => {});
+  sf.then((res) => res.json()).then((d) => {
+    let skillsarray = d;
 
-
-   let skillsarray=d
-  
-   for(values in skillsarray[0]){
-       if(skillsarray[0][values]!=null){
-           let skill=skillsarray[0][values];
-           let skillcarier=document.getElementsByClassName("skillst")[0];
-           let skilldiv=document.createElement('div');
-           let skill_content=`<section class="skillcarrier">
+    for (values in skillsarray[0]) {
+      if (skillsarray[0][values] != null) {
+        let skill = skillsarray[0][values];
+        let skillcarier = document.getElementsByClassName("skillst")[0];
+        let skilldiv = document.createElement("div");
+        let skill_content = `<section class="skillcarrier">
              ${skill}        
            </section>`;
-           skilldiv.innerHTML=skill_content;
-           skillcarier.append(skilldiv)
-       
-   
-       }
-       
-   }
-   loader[0].classList.remove("addedloader");
-});
-
-let appbutton =document.getElementById('odbutton');
-
-appbutton.addEventListener('click',(e)=>{
-    if(e.target.innerHTML==='Apply'){
-        let logged=localStorage.getItem("userloged")
-    let formdata=new FormData()
-    formdata.append("job_id",jbid);
-    formdata.append("user_id",logged);
-    formdata.append("action","apply")
-
-
-    const options={
-        method:"POST",
-        headers:{
-            "Access-Control-Allow-Credentials":true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-            "Access-Control-Allow-Methods": "POST",
-               withCredentials:true
-       
-           },
-          credentials: 'include',
-       
-        body:formdata
-    }
-
-    let f=fetch("https://yielding-dented-amusement.glitch.me/apply",options).catch(err=>{
-        console.log(err)
-    })
-    loader[0].classList.add("addedloader");
-    f.then(res=>res.json()).then(d=>{
-      
-      const{affectedrows}=d;
-
-      if(affectedrows){
-        
-        window.location.href="/availableorders.html";
-        loader[0].classList.remove("addedloader");
-
-      }else{
-        window.location.href="/availableorders.html";
-        loader[0].classList.remove("addedloader");
+        skilldiv.innerHTML = skill_content;
+        skillcarier.append(skilldiv);
       }
-    })
-
-    }else if(e.target.innerHTML==='Cancel'){
-
-        let logged=localStorage.getItem("userloged")
-        let formdata=new FormData()
-        formdata.append("job_id",jbid);
-        formdata.append("user_id",logged);
-        formdata.append("action","cancel")
-    
-    
-        const options={
-            method:"POST",
-            headers:{
-                "Access-Control-Allow-Credentials":true,
-                "Access-Control-Allow-Origin": "https://www.enkaare.com",
-                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-                "Access-Control-Allow-Methods": "POST",
-                   withCredentials:true
-           
-               },
-              credentials: 'include',
-           
-            body:formdata
-        }
-    
-        let f=fetch("https://yielding-dented-amusement.glitch.me/apply",options).catch(err=>{
-            console.log(err)
-        })
-        loader[0].classList.add("addedloader");
-
-        f.then(res=>res.json()).then(d=>{
-            const{affectedrows}=d;
-            if(affectedrows){
-        
-                window.location.href="/myorders.html";
-                loader[0].classList.remove("addedloader");
-        
-              }else{
-                window.location.href="/myorders.html";
-                loader[0].classList.remove("addedloader");
-              }
-        })
-        
-    }else if(e.target.innerHTML==='Accept'){
-        let logged=localStorage.getItem("userloged")
-        let formdata=new FormData()
-        formdata.append("job_id",jbid);
-        formdata.append("user_id",logged);
-        
-    
-    
-        const options={
-            method:"POST",
-            headers:{
-                "Access-Control-Allow-Credentials":true,
-                "Access-Control-Allow-Origin": "https://www.enkaare.com",
-                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-                "Access-Control-Allow-Methods": "POST",
-                   withCredentials:true
-           
-               },
-              credentials: 'include',
-           
-            body:formdata
-        }
-    
-        let f=fetch("https://yielding-dented-amusement.glitch.me/acceptinvite",options).catch(err=>{
-
-           console.log(err)
-             
-        })
-        loader[0].classList.add("addedloader");
-        f.then(res=>res.json()).then(d=>{
-            const{done}=d
-
-            if(done){
-                loader[0].classList.remove("addedloader");
-                window.location.href="/availableorders.html";
-            }
-        })
-
     }
-})
+    loader[0].classList.remove("addedloader");
+  });
 
-}
+  let appbutton = document.getElementById("odbutton");
+
+  appbutton.addEventListener("click", (e) => {
+    if (e.target.innerHTML === "Apply") {
+      //   let logged = localStorage.getItem("userloged");
+      let logged = getCookie("userloged");
+      let formdata = new FormData();
+      formdata.append("job_id", jbid);
+      formdata.append("user_id", logged);
+      formdata.append("action", "apply");
+
+      //   const options = {
+      //     method: "POST",
+      //     headers: {
+      //       "Access-Control-Allow-Credentials": true,
+      //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      //       "Access-Control-Allow-Headers":
+      //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      //       "Access-Control-Allow-Methods": "POST",
+      //       withCredentials: true,
+      //     },
+      //     credentials: "include",
+
+      //     body: formdata,
+      //   };
+
+      let f = fetch(`${baseUrl}/apply`, optionWithFormData).catch((err) => {
+        console.log(err);
+      });
+      loader[0].classList.add("addedloader");
+      f.then((res) => res.json()).then((d) => {
+        const {affectedrows} = d;
+
+        if (affectedrows) {
+          window.location.href = "/availableorders.html";
+          loader[0].classList.remove("addedloader");
+        } else {
+          window.location.href = "/availableorders.html";
+          loader[0].classList.remove("addedloader");
+        }
+      });
+    } else if (e.target.innerHTML === "Cancel") {
+      //   let logged = localStorage.getItem("userloged");
+      let logged = getCookie("userloged");
+      let formdata = new FormData();
+      formdata.append("job_id", jbid);
+      formdata.append("user_id", logged);
+      formdata.append("action", "cancel");
+
+      //   const options = {
+      //     method: "POST",
+      //     headers: {
+      //       "Access-Control-Allow-Credentials": true,
+      //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      //       "Access-Control-Allow-Headers":
+      //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      //       "Access-Control-Allow-Methods": "POST",
+      //       withCredentials: true,
+      //     },
+      //     credentials: "include",
+
+      //     body: formdata,
+      //   };
+
+      let f = fetch(`${baseUrl}/apply`, optionWithFormData).catch((err) => {
+        console.log(err);
+      });
+      loader[0].classList.add("addedloader");
+
+      f.then((res) => res.json()).then((d) => {
+        const {affectedrows} = d;
+        if (affectedrows) {
+          window.location.href = "/myorders.html";
+          loader[0].classList.remove("addedloader");
+        } else {
+          window.location.href = "/myorders.html";
+          loader[0].classList.remove("addedloader");
+        }
+      });
+    } else if (e.target.innerHTML === "Accept") {
+      //   let logged = localStorage.getItem("userloged");
+      let logged = getCookie("userlogged");
+      let formdata = new FormData();
+      formdata.append("job_id", jbid);
+      formdata.append("user_id", logged);
+
+      //   const options = {
+      //     method: "POST",
+      //     headers: {
+      //       "Access-Control-Allow-Credentials": true,
+      //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      //       "Access-Control-Allow-Headers":
+      //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      //       "Access-Control-Allow-Methods": "POST",
+      //       withCredentials: true,
+      //     },
+      //     credentials: "include",
+
+      //     body: formdata,
+      //   };
+
+      let f = fetch(`${baseUrl}/acceptinvite`, optionWithFormData).catch(
+        (err) => {
+          console.log(err);
+        }
+      );
+      loader[0].classList.add("addedloader");
+      f.then((res) => res.json()).then((d) => {
+        const {done} = d;
+
+        if (done) {
+          loader[0].classList.remove("addedloader");
+          window.location.href = "/availableorders.html";
+        }
+      });
+    }
+  });
+};
 let orderdetailsvalue;
-let orderdetailsvalueupdate=(vr)=>{
-   orderdetailsvalue=vr;
+let orderdetailsvalueupdate = (vr) => {
+  orderdetailsvalue = vr;
   /* console.log(orderdetailsvalue)*/
-  
-   
-
-   
-   
-  
-
-   
-}
-
-
+};
 
 /*
 let ordervalue=()=>{
@@ -2389,100 +2113,79 @@ orderdetails(2);
   
 }*/
 
+let seeorder = () => {
+  cbutton(sessionStorage.getItem("seeorderbuttonvalue"));
 
-let seeorder=()=>{
-   cbutton(sessionStorage.getItem('seeorderbuttonvalue'));
-   
-  let v=sessionStorage.getItem("clickedorderid");
+  let v = sessionStorage.getItem("clickedorderid");
   orderdetails(v);
-}
-
-
+};
 
 //MY APPLICATION START HERE
 //*********************************************************************************** */
 
-let myapporders=()=>{
-  
-  let loader =document.getElementsByClassName("loader");
-   
-  let firstnmae=localStorage.getItem("pfname");
-  let logedid =localStorage.getItem("userloged");
+let myapporders = () => {
+  let loader = document.getElementsByClassName("loader");
 
-
+  //   let firstnmae = localStorage.getItem("pfname");
+  //   let logedid = localStorage.getItem("userloged");
+  let firstnmae = getCookie("pfnname");
+  let logedid = getCookie("userloged");
 
   const formdata = new FormData();
-      
-  
- 
- formdata.append("firstname",firstnmae);
- formdata.append("logedid",logedid);
 
+  formdata.append("firstname", firstnmae);
+  formdata.append("logedid", logedid);
 
-  const options ={
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       "Access-Control-Allow-Credentials": true,
+  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
+  //       "Access-Control-Allow-Headers":
+  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+  //       "Access-Control-Allow-Methods": "POST",
+  //       withCredentials: true,
+  //     },
+  //     credentials: "include",
 
-      method: 'POST',
-      headers:{
-        "Access-Control-Allow-Credentials":true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-        "Access-Control-Allow-Methods": "POST",
-           withCredentials:true
-   
-       },
-      credentials: 'include',
-   
- 
-      body: formdata,
-     
-  };
- // https://1ed2-105-231-144-76.ngrok.io/api'
+  //     body: formdata,
+  //   };
+  // https://1ed2-105-231-144-76.ngrok.io/api'
 
- //https://half-geode-roundworm.glitch.me/api
-  
-  let f= fetch('https://yielding-dented-amusement.glitch.me/cmyjobs',options).catch(err =>{
-    
+  //https://half-geode-roundworm.glitch.me/api
 
-});
-loader[0].classList.add("addedloader");
-f.then(res=>res.json()).then(d=>{
+  let f = fetch(`${baseUrl}/cmyjobs`, optionWithFormData).catch((err) => {});
+  loader[0].classList.add("addedloader");
+  f.then((res) => res.json()).then((d) => {
     loader[0].classList.remove("addedloader");
-    if(d.length===0){
+    if (d.length === 0) {
+    } else {
+      let orderarray = d;
 
-    }else{
-        let orderarray =d
+      for (let i = 0; i < orderarray.length; i++) {
+        let title = orderarray[i].job_title;
+        let name = orderarray[i].company_name;
+        let city = orderarray[i].city;
+        let country = orderarray[i].country;
+        let bids = orderarray[i].submits;
+        let type = orderarray[i].job_type;
+        let pays = orderarray[i].pay.split(",");
 
-        for(let i=0;i<orderarray.length;i++){
-            let title=orderarray[i].job_title;
-            let name= orderarray[i].company_name;
-            let city= orderarray[i].city;
-            let country=orderarray[i].country;
-            let bids=orderarray[i].submits;
-            let type=orderarray[i].job_type;
-            let pays=orderarray[i].pay.split(",");
-         
-            let order_id=orderarray[i].job_id;
-     
-            if(type==="Remote contract"){
-                src="/images/self-employed.png";
-     
-            } else  if(type==="Temporary Contract"){
-                src="/images/parttime.png";
-     
-            } else if(type==="Parmanent Contract"){
-                src="/images/fulltime.png";
-     
-            } else if(type==="Remote Temporary"){
-                src="/images/temporary.png";
-            }
-     
-     
-     
-     
-     
-            let orderlist = document.getElementsByClassName("jobsappcarrier")[0];
-            var order = document.createElement('div');
-            var orderitems=`<div class="order orderhover">
+        let order_id = orderarray[i].job_id;
+
+        if (type === "Remote contract") {
+          src = "/images/self-employed.png";
+        } else if (type === "Temporary Contract") {
+          src = "/images/parttime.png";
+        } else if (type === "Parmanent Contract") {
+          src = "/images/fulltime.png";
+        } else if (type === "Remote Temporary") {
+          src = "/images/temporary.png";
+        }
+
+        let orderlist = document.getElementsByClassName("jobsappcarrier")[0];
+        var order = document.createElement("div");
+        var orderitems = `<div class="order orderhover">
             <div class="orderinid">${order_id}</div>
             <section class="orderp1">
                
@@ -2508,7 +2211,7 @@ f.then(res=>res.json()).then(d=>{
                 
             </section>
             <section class="orderp3">
-                <p class="ordp3p">${pays[0]+pays[1]+pays[2]}</p>
+                <p class="ordp3p">${pays[0] + pays[1] + pays[2]}</p>
                 <button class="orderbuttonp" id="orderbutton">See Job</button>
                 
             
@@ -2516,92 +2219,70 @@ f.then(res=>res.json()).then(d=>{
             
             
             </div>`;
-            order.innerHTML=orderitems;
-            orderlist.append(order);
-     
-     
-          
-     
-     
-        }
+        order.innerHTML = orderitems;
+        orderlist.append(order);
+      }
 
-        let buttonclicked= document.getElementsByClassName("orderbuttonp");
-        for(let i=0;i<buttonclicked.length;i++){
-            let button=buttonclicked[i]
-            button.addEventListener('click',(e)=>{
-                let varbutton =e.target
-                let value=varbutton.parentElement.parentElement.firstElementChild.innerHTML;
-              
-           
-               sessionStorage.setItem('clickedorderid',value);
-               sessionStorage.setItem('seeorderbuttonvalue','Cancel');
-               
-                
-             window.location.href="/orderdetails.html";
-             
-        
-               
-            })
-            
-            
-        }
+      let buttonclicked = document.getElementsByClassName("orderbuttonp");
+      for (let i = 0; i < buttonclicked.length; i++) {
+        let button = buttonclicked[i];
+        button.addEventListener("click", (e) => {
+          let varbutton = e.target;
+          let value =
+            varbutton.parentElement.parentElement.firstElementChild.innerHTML;
+
+          //   sessionStorage.setItem("clickedorderid", value);
+          //   sessionStorage.setItem("seeorderbuttonvalue", "Cancel");
+          sessionStorage.setCookie("clickedorderid", value, 7);
+          sessionStorage.setCookie("seeorderbuttonvalue", "Cancel", 7);
+
+          window.location.href = "/orderdetails.html";
+        });
+      }
     }
-   
+  });
 
-})
-   
-   //here is the code for seeorder
-  
-}
-
+  //here is the code for seeorder
+};
 
 //accepted job start here
-let acceptedjobs=()=>{
-   let appsarray =[
-       {
-           title:"Web design/developer",
-           name:"Munene",
-           city:"Nairobi",
-           country:"Kenya",
-           bids:"19",
-           type: "Freelancer",
-           pay: "600",
-           order_id:0
-       }
- 
-   ];
+let acceptedjobs = () => {
+  let appsarray = [
+    {
+      title: "Web design/developer",
+      name: "Munene",
+      city: "Nairobi",
+      country: "Kenya",
+      bids: "19",
+      type: "Freelancer",
+      pay: "600",
+      order_id: 0,
+    },
+  ];
 
+  for (let i = 0; i < appsarray.length; i++) {
+    let title = appsarray[i].title;
+    let name = appsarray[i].name;
+    let city = appsarray[i].city;
+    let country = appsarray[i].country;
+    let bids = appsarray[i].bids;
+    let type = appsarray[i].type;
+    let pay = appsarray[i].pay;
+    let order_id = appsarray[i].order_id;
 
+    if (type === "Freelancer") {
+      src = "/images/self-employed.png";
+    } else if (type === "Part time") {
+      src = "/images/parttime.png";
+    } else if (type === "Full time") {
+      src = "/images/fulltime.png";
+    } else if (type === "Temporary") {
+      src = "/images/temporary.png";
+    }
 
-   for(let i=0;i<appsarray.length;i++){
-       let title=appsarray[i].title;
-       let name= appsarray[i].name;
-       let city= appsarray[i].city;
-       let country=appsarray[i].country;
-       let bids=appsarray[i].bids;
-       let type=appsarray[i].type;
-       let pay=appsarray[i].pay;
-       let order_id=appsarray[i].order_id;
-
-       if(type==="Freelancer"){
-           src="/images/self-employed.png";
-
-       } else  if(type==="Part time"){
-           src="/images/parttime.png";
-
-       } else if(type==="Full time"){
-           src="/images/fulltime.png";
-
-       } else if(type==="Temporary"){
-           src="/images/temporary.png";
-       }
-
-
-
-
-       let orderlist = document.getElementsByClassName("jobsacceptedcarr")[0];
-       var order = document.createElement('div');
-       var orderitems=` <div class="order orderhover">
+    let orderlist = document.getElementsByClassName("jobsacceptedcarr")[0];
+    var order = document.createElement("div");
+    var orderitems = ` <div class="order orderhover">
        <div class="orderinid">${order_id}</div>
        <section class="orderp1">
           
@@ -2635,121 +2316,98 @@ let acceptedjobs=()=>{
        
        
        </div>`;
-       order.innerHTML=orderitems;
-       orderlist.append(order);
+    order.innerHTML = orderitems;
+    orderlist.append(order);
+  }
 
+  /*There are  there types of see order my jobs,available and accepted jobs
+   each update the see order button according to where its clicked from  */
+  //here is the code for seeorder from my job
+  let buttonclicked = document.getElementsByClassName("orderbuttonpa");
+  for (let i = 0; i < buttonclicked.length; i++) {
+    let button = buttonclicked[i];
+    button.addEventListener("click", (e) => {
+      let varbutton = e.target;
+      let value =
+        varbutton.parentElement.parentElement.firstElementChild.innerHTML;
 
-     
+      //   sessionStorage.setItem("clickedorderid", value);
+      //   sessionStorage.setItem("seeorderbuttonvalue", "Terminate");
+      sessionStorage.setCookie("clickedorderid", value, 7);
+      sessionStorage.setCookie("seeorderbuttonvalue", "Terminate", 7);
 
+      window.location.href = "/orderdetails.html";
+    });
+  }
+};
 
-   }
-
-   /*There are  there types of see order my jobs,available and accepted jobs
-   each update the see order button according to where its clicked from  */ 
-   //here is the code for seeorder from my job
-   let buttonclicked= document.getElementsByClassName("orderbuttonpa");
-   for(let i=0;i<buttonclicked.length;i++){
-       let button=buttonclicked[i]
-       button.addEventListener('click',(e)=>{
-           let varbutton =e.target
-           let value=varbutton.parentElement.parentElement.firstElementChild.innerHTML;
-         
-      
-          sessionStorage.setItem('clickedorderid',value);
-          sessionStorage.setItem('seeorderbuttonvalue','Terminate');
-          
-           
-        window.location.href="/orderdetails.html";
-       
-          
-       })
-       
-       
-   }
-
-}
-
-let cbutton=(vr)=>{
-   let cancelbutton = document.getElementById("odbutton");
-   cancelbutton.innerHTML=vr;
-
-}
-
+let cbutton = (vr) => {
+  let cancelbutton = document.getElementById("odbutton");
+  cancelbutton.innerHTML = vr;
+};
 
 //EPLOYER PROFILE START HERE
 
-let eprofload =()=>{
-  
-   let profarray=[
-       {
-           worker_id:"1789",
-           first_name:"Karanjs",
-           second_name:"Gacuca",
-           job_title:"Head Of human Resource",
-           city:"Ajax",
-           country:"Ontario",
-           numberof_jobs:1,
-           summary:`We give your business the opportunity to work with talented 
+let eprofload = () => {
+  let profarray = [
+    {
+      worker_id: "1789",
+      first_name: "Karanjs",
+      second_name: "Gacuca",
+      job_title: "Head Of human Resource",
+      city: "Ajax",
+      country: "Ontario",
+      numberof_jobs: 1,
+      summary: `We give your business the opportunity to work with talented 
            professionals who can perfom work remotely either on a project-by-project
             basis or through onb- -oarding onto your corporate platforms and embedding 
             with internal teams for the duration of the project.`,
+    },
+  ];
 
-       }
-   ]
+  let firstname = document.getElementById("epfirstname");
+  let secondname = document.getElementById("epsecondname");
+  let jobtitle = document.getElementById("epp");
 
-   
-   let firstname = document.getElementById("epfirstname");
-   let secondname = document.getElementById("epsecondname");
-   let jobtitle = document.getElementById("epp");
-    
-   
-   let city = document.getElementById("ecity1");
- 
-   let  country = document.getElementById("estate");
-   let summary = document.getElementById("epsp");
-   
-  
+  let city = document.getElementById("ecity1");
 
+  let country = document.getElementById("estate");
+  let summary = document.getElementById("epsp");
 
-   firstname.innerHTML=profarray[0].first_name;
-   secondname.innerHTML=profarray[0].second_name;
-   jobtitle.innerHTML=profarray[0].job_title;
-  
+  firstname.innerHTML = profarray[0].first_name;
+  secondname.innerHTML = profarray[0].second_name;
+  jobtitle.innerHTML = profarray[0].job_title;
 
-   city.innerHTML=profarray[0].city;
-   country.innerHTML=profarray[0].country;
+  city.innerHTML = profarray[0].city;
+  country.innerHTML = profarray[0].country;
 
-   summary.innerHTML=profarray[0].summary;
-   noofjobs.innerHTML=profarray[0].numberof_jobs;
-   
- let lastjobs=[
-   {
-       order_id:23232,
-       date:"Feb 23, 2023, 05:15 PM",
-       status:"In Progress",
-       applications:2
-       
-   },
-   {
-       order_id:23233,
-       date:"Feb 24, 2023, 06:15 AM",
-       status:"In Progress",
-       applications:10
-   }
-  
- ]
-   
+  summary.innerHTML = profarray[0].summary;
+  noofjobs.innerHTML = profarray[0].numberof_jobs;
 
- for(let i=0;i<lastjobs.length;i++){
-       let order=lastjobs[i].order_id;
-       let date=lastjobs[i].date;
-       let status=lastjobs[i].status;
-       let number=lastjobs[i].applications;
+  let lastjobs = [
+    {
+      order_id: 23232,
+      date: "Feb 23, 2023, 05:15 PM",
+      status: "In Progress",
+      applications: 2,
+    },
+    {
+      order_id: 23233,
+      date: "Feb 24, 2023, 06:15 AM",
+      status: "In Progress",
+      applications: 10,
+    },
+  ];
 
+  for (let i = 0; i < lastjobs.length; i++) {
+    let order = lastjobs[i].order_id;
+    let date = lastjobs[i].date;
+    let status = lastjobs[i].status;
+    let number = lastjobs[i].applications;
 
-  let lastsj=document.getElementsByClassName("elsediv")[0];
-   let lcdiv=document.createElement('div');
-  var lastsitems=`<div class="ltmain">
+    let lastsj = document.getElementsByClassName("elsediv")[0];
+    let lcdiv = document.createElement("div");
+    var lastsitems = `<div class="ltmain">
   <p class="ltmorder">${order}</p>
   <p class="ltmdate">${date}</p>
   <button class="ltmbutton">${status}</button>
@@ -2761,18 +2419,11 @@ let eprofload =()=>{
 
   </section>
 
-</div>`
-lcdiv.innerHTML=lastsitems;
-lastsj.append(lcdiv);
-
-
-
-
-
- }
-
-  
-}
+</div>`;
+    lcdiv.innerHTML = lastsitems;
+    lastsj.append(lcdiv);
+  }
+};
 
 /**************************************/
 
@@ -2780,21 +2431,20 @@ lastsj.append(lcdiv);
 let semail;
 let firstnameee;
 let lastnameeee;
-let generalsetting=()=>{
-    let setcarrier=document.getElementById("loginsecurityset");
+let generalsetting = () => {
+  let setcarrier = document.getElementById("loginsecurityset");
 
-    while(setcarrier.hasChildNodes()){
-        setcarrier.firstChild.remove()
+  while (setcarrier.hasChildNodes()) {
+    setcarrier.firstChild.remove();
+  }
 
-    }
-
-    let genset=document.getElementsByClassName("h31");
-    genset[0].style.borderBottom="3px solid hsl(188,47%,20%)";
-    let loginse =document.getElementsByClassName("h32");
-    loginse[0].style.borderBottom="transparent";
-    let generalset=document.getElementsByClassName("loginsecurityset")[0];
-    let elem=document.createElement('div');
-    let content=` <div class="setting1">
+  let genset = document.getElementsByClassName("h31");
+  genset[0].style.borderBottom = "3px solid hsl(188,47%,20%)";
+  let loginse = document.getElementsByClassName("h32");
+  loginse[0].style.borderBottom = "transparent";
+  let generalset = document.getElementsByClassName("loginsecurityset")[0];
+  let elem = document.createElement("div");
+  let content = ` <div class="setting1">
     <h3>Email</h3>
      <div class="semail">
         <section>
@@ -2855,31 +2505,29 @@ let generalsetting=()=>{
 
   </div>`;
 
-  elem.innerHTML=content;
+  elem.innerHTML = content;
   generalset.append(elem);
-  let fname= document.querySelector("#sfirstname");
-  let sname =document.querySelector("#slastname");
-  fname.value=firstnameee;
-  sname.value=lastnameeee; 
-}
+  let fname = document.querySelector("#sfirstname");
+  let sname = document.querySelector("#slastname");
+  fname.value = firstnameee;
+  sname.value = lastnameeee;
+};
 
-let logigset=()=>{
-    let setcarrier=document.getElementById("loginsecurityset");
+let logigset = () => {
+  let setcarrier = document.getElementById("loginsecurityset");
 
-    while(setcarrier.hasChildNodes()){
-        setcarrier.firstChild.remove()
+  while (setcarrier.hasChildNodes()) {
+    setcarrier.firstChild.remove();
+  }
+  let loginse = document.getElementsByClassName("h32");
+  loginse[0].style.borderBottom = "3px solid hsl(188,47%,20%)";
 
-    }
-    let loginse =document.getElementsByClassName("h32");
-    loginse[0].style.borderBottom="3px solid hsl(188,47%,20%)";
+  let genset = document.getElementsByClassName("h31");
+  genset[0].style.borderBottom = "transparent";
 
-    let genset=document.getElementsByClassName("h31");
-    genset[0].style.borderBottom="transparent";
-
-
-    let generalset=document.getElementsByClassName("loginsecurityset")[0];
-    let elem=document.createElement('div');
-    let content=`       <div class="settingloginset">
+  let generalset = document.getElementsByClassName("loginsecurityset")[0];
+  let elem = document.createElement("div");
+  let content = `       <div class="settingloginset">
     <div class="diactive">
         <h3>Account</h3>
         <button>Deactivate account</button>
@@ -2953,636 +2601,596 @@ let logigset=()=>{
     
  </div>`;
 
-  elem.innerHTML=content;
+  elem.innerHTML = content;
   generalset.append(elem);
-
-}
+};
 //function to make setting disappear
-let settingdisplycancelb=()=>{
-    let dis=document.querySelector(".sdynamicdiv1")
-    let dis1=document.querySelector(".sdynamicdiv2");
-    let dis2=document.querySelector(".sdynamicdiv3")
-    let dis3=document.querySelector(".sdynamicdiv4");
-    let dis4=document.querySelector(".sdynamicdiv5")
+let settingdisplycancelb = () => {
+  let dis = document.querySelector(".sdynamicdiv1");
+  let dis1 = document.querySelector(".sdynamicdiv2");
+  let dis2 = document.querySelector(".sdynamicdiv3");
+  let dis3 = document.querySelector(".sdynamicdiv4");
+  let dis4 = document.querySelector(".sdynamicdiv5");
 
-    dis.style.display="none";
-    dis1.style.display="none"
-    dis2.style.display="none"
-    dis3.style.display="none";
-    dis4.style.display="none";
-    let setdisplay= document.getElementsByClassName("passworinputdisplay");
-    setdisplay[0].classList.remove("addedpasinput");
-    
-    
-  
-}
+  dis.style.display = "none";
+  dis1.style.display = "none";
+  dis2.style.display = "none";
+  dis3.style.display = "none";
+  dis4.style.display = "none";
+  let setdisplay = document.getElementsByClassName("passworinputdisplay");
+  setdisplay[0].classList.remove("addedpasinput");
+};
 
 let whatsettingchange;
-let wemailchange=()=>{
-    whatsettingchange="email"
-}
-let wnamechange=()=>{
-    whatsettingchange="name"
-}
-let wpasschange=()=>{
-    whatsettingchange="password"
-}
+let wemailchange = () => {
+  whatsettingchange = "email";
+};
+let wnamechange = () => {
+  whatsettingchange = "name";
+};
+let wpasschange = () => {
+  whatsettingchange = "password";
+};
 
-let emailchange=()=>{
-    let changetype=document.querySelector(".changetype");
-    let setdisplay= document.getElementsByClassName("passworinputdisplay");
-    let emaildis=document.querySelector(".sdynamicdiv1");
+let emailchange = () => {
+  let changetype = document.querySelector(".changetype");
+  let setdisplay = document.getElementsByClassName("passworinputdisplay");
+  let emaildis = document.querySelector(".sdynamicdiv1");
 
-    setdisplay[0].classList.add("addedpasinput");
-    emaildis.style.display="block";
-    changetype.innerHTML="Change email";
+  setdisplay[0].classList.add("addedpasinput");
+  emaildis.style.display = "block";
+  changetype.innerHTML = "Change email";
 
+  const togglePassword = document.querySelector("#togglePassword");
+  const password = document.querySelector("#spass1");
 
-    const togglePassword = document.querySelector('#togglePassword');
-  const password = document.querySelector('#spass1');
-
-  togglePassword.addEventListener('click', function (e) {
+  togglePassword.addEventListener("click", function (e) {
     // toggle the type attribute
-    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-    password.setAttribute('type', type);
+    const type =
+      password.getAttribute("type") === "password" ? "text" : "password";
+    password.setAttribute("type", type);
     // toggle the eye slash icon
-    this.classList.toggle('fa-eye-slash');
-});
-}
-let namechange=()=>{
-    let changetype=document.querySelector(".changetype");
-    let setdisplay= document.getElementsByClassName("passworinputdisplay");
-    let emaildis=document.querySelector(".sdynamicdiv1");
+    this.classList.toggle("fa-eye-slash");
+  });
+};
+let namechange = () => {
+  let changetype = document.querySelector(".changetype");
+  let setdisplay = document.getElementsByClassName("passworinputdisplay");
+  let emaildis = document.querySelector(".sdynamicdiv1");
 
-    setdisplay[0].classList.add("addedpasinput");
-    emaildis.style.display="block";
-    changetype.innerHTML="Change Name";  
-}
-let passwordchange=()=>{
-    let changetype=document.querySelector(".changetype");
-    let setdisplay= document.getElementsByClassName("passworinputdisplay");
-    let emaildis=document.querySelector(".sdynamicdiv1");
+  setdisplay[0].classList.add("addedpasinput");
+  emaildis.style.display = "block";
+  changetype.innerHTML = "Change Name";
+};
+let passwordchange = () => {
+  let changetype = document.querySelector(".changetype");
+  let setdisplay = document.getElementsByClassName("passworinputdisplay");
+  let emaildis = document.querySelector(".sdynamicdiv1");
 
-    setdisplay[0].classList.add("addedpasinput");
-    emaildis.style.display="block";
-    changetype.innerHTML="Change Password";  
-}
-let activatepassnext=()=>{
-    let passnextbutton=document.querySelector(".spassnext");
-    passnextbutton.disabled=false;
-    passnextbutton.style.color="white";
-    passnextbutton.style.backgroundColor="hsl(207,52%,44%)";
-    passnextbutton.style.border="hsl(207,52%,44%)";
-    passnextbutton.style.cursor="pointer"
-  
-   
-   
+  setdisplay[0].classList.add("addedpasinput");
+  emaildis.style.display = "block";
+  changetype.innerHTML = "Change Password";
+};
+let activatepassnext = () => {
+  let passnextbutton = document.querySelector(".spassnext");
+  passnextbutton.disabled = false;
+  passnextbutton.style.color = "white";
+  passnextbutton.style.backgroundColor = "hsl(207,52%,44%)";
+  passnextbutton.style.border = "hsl(207,52%,44%)";
+  passnextbutton.style.cursor = "pointer";
+};
+let ssavename = () => {
+  let loader = document.querySelector(".loaderps");
+  let firstname = document.querySelector("#sfname");
+  let secondname = document.querySelector("#slname");
 
-}
-let ssavename=()=>{
-    let loader=document.querySelector(".loaderps")
-    let firstname=document.querySelector("#sfname");
-    let secondname=document.querySelector("#slname");
+  let vfirsname = firstname.value;
+  let vsecondname = secondname.value;
+  if (vfirsname === "") {
+    firstname.style.border = "1px solid red";
+  } else if (vsecondname === "") {
+    secondname.style.border = "1px solid red";
+  } else {
+    let formdata = new FormData();
+    formdata.append("firstname", vfirsname);
+    formdata.append("lastname", vsecondname);
+    // formdata.append("userid", localStorage.getItem("userloged"));
+    formdata.append("userid", getCookie("userloged"));
 
-    let vfirsname=firstname.value;
-    let vsecondname =secondname.value;
-    if(vfirsname===""){
-        firstname.style.border="1px solid red";
-        
-    }else if(vsecondname===""){
-         secondname.style.border="1px solid red";
-    }else{
-        let formdata =new FormData()
-                    formdata.append("firstname",vfirsname);
-                    formdata.append("lastname",vsecondname);
-                    formdata.append("userid",localStorage.getItem("userloged"));
-                  
-                    
-                
-                    const options={
-                        method:"POST",
-                        headers:{
-                            "Access-Control-Allow-Credentials":true,
-                            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-                            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-                            "Access-Control-Allow-Methods": "POST",
-                               withCredentials:true
-                       
-                           },
-                          credentials: 'include',
-                       
-                        body:formdata
-                    }
-                    
-                    let f= fetch("https://yielding-dented-amusement.glitch.me/changecname",options).catch(err=>{
-                            console.log(err)
-                        })
-                   loader.style.display="flex";
-                   firstname.value="";
-                   secondname.value=""
+    // const options = {
+    //   method: "POST",
+    //   headers: {
+    //     "Access-Control-Allow-Credentials": true,
+    //     "Access-Control-Allow-Origin": "https://www.enkaare.com",
+    //     "Access-Control-Allow-Headers":
+    //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
+    //     "Access-Control-Allow-Methods": "POST",
+    //     withCredentials: true,
+    //   },
+    //   credentials: "include",
 
-                        f.then(res=>res.json()).then(d=>{
-                            const{affectedrows}=d;
-                            if(affectedrows){
-        
-                                window.location.reload()
+    //   body: formdata,
+    // };
 
-                                
-                            }
+    let f = fetch(`${baseUrl}/changecname`, optionWithFormData).catch((err) => {
+      console.log(err);
+    });
+    loader.style.display = "flex";
+    firstname.value = "";
+    secondname.value = "";
 
-
-                        }).catch(err=>{
-                            console.log(err);
-                        })
-
-    }
-}
+    f.then((res) => res.json())
+      .then((d) => {
+        const {affectedrows} = d;
+        if (affectedrows) {
+          window.location.reload();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+};
 
 function sverifyPassword() {
-    let loader=document.querySelector(".loaderps")
-    let pasdoest=document.querySelector(".smatch")
-    let confirmpass=document.querySelector(".sconfirmpassword");
-    var passwordi = document.querySelector(".sspassword");
-    let warningerr=document.querySelector(".sprequirement")
-    let password=passwordi.value;
-    let confirmpassvalue=confirmpass.value;
-    let passvalue=passwordi.value;
+  let loader = document.querySelector(".loaderps");
+  let pasdoest = document.querySelector(".smatch");
+  let confirmpass = document.querySelector(".sconfirmpassword");
+  var passwordi = document.querySelector(".sspassword");
+  let warningerr = document.querySelector(".sprequirement");
+  let password = passwordi.value;
+  let confirmpassvalue = confirmpass.value;
+  let passvalue = passwordi.value;
 
-    // Define the regular expressions for the conditions
-    const hasNumber = /\d/;
-    const hasLowercase = /[a-z]/;
-    const hasUppercase = /[A-Z]/;
-    const hasSpecialChar = /[!@#$%^&*]/;
-  
-    // Verify the conditions
-    if (
-      password.length >= 8 &&
-      hasNumber.test(password) &&
-      hasLowercase.test(password) &&
-      hasUppercase.test(password) &&
-      hasSpecialChar.test(password)
-    ) {
-        warningerr.style.color="green"
-        if(confirmpassvalue===""){
-            confirmpass.style.border="1px solid red";
-        }else
-        if(passvalue !=confirmpassvalue){
-            passwordi.style.border="1px solid red";
-            confirmpass.style.border="1px solid red";
-            pasdoest.innerHTML="Passwords doesn't match!"
-        }else{
-           // submit pasword for update
-           let formdata =new FormData()
-           formdata.append("userid",localStorage.getItem("userloged"));
-           formdata.append("password",password)
-         
-           
-       
-           const options={
-               method:"POST",
-               body:formdata
-           }
-           
-           let f= fetch("https://yielding-dented-amusement.glitch.me/changecpassword",options).catch(err=>{
-                   console.log(err)
-               });
-               passvalue="";
-               confirmpassvalue=""
-               loader.style.display="flex";
+  // Define the regular expressions for the conditions
+  const hasNumber = /\d/;
+  const hasLowercase = /[a-z]/;
+  const hasUppercase = /[A-Z]/;
+  const hasSpecialChar = /[!@#$%^&*]/;
 
-               f.then(res=>res.json()).then(d=>{
-                loader.style.display="none";
-                const{affectedrows}=d;
-                if(affectedrows){
-                    window.location.reload()
-                }
-
-
-            }).catch(err=>{
-                console.log(err);
-            })
-
-        }
-      
+  // Verify the conditions
+  if (
+    password.length >= 8 &&
+    hasNumber.test(password) &&
+    hasLowercase.test(password) &&
+    hasUppercase.test(password) &&
+    hasSpecialChar.test(password)
+  ) {
+    warningerr.style.color = "green";
+    if (confirmpassvalue === "") {
+      confirmpass.style.border = "1px solid red";
+    } else if (passvalue != confirmpassvalue) {
+      passwordi.style.border = "1px solid red";
+      confirmpass.style.border = "1px solid red";
+      pasdoest.innerHTML = "Passwords doesn't match!";
     } else {
-      // Password does not meet all the conditions
-      warningerr.style.color="red"
-      // Prevent form submission
-      
+      // submit pasword for update
+      let formdata = new FormData();
+      //   formdata.append("userid", localStorage.getItem("userloged"));
+      formdata.append("userid", getCookie("userloged"));
+      formdata.append("password", password);
+
+      const options = {
+        method: "POST",
+        body: formdata,
+      };
+
+      let f = fetch(`${baseUrl}/changecpassword`, options).catch((err) => {
+        console.log(err);
+      });
+      passvalue = "";
+      confirmpassvalue = "";
+      loader.style.display = "flex";
+
+      f.then((res) => res.json())
+        .then((d) => {
+          loader.style.display = "none";
+          const {affectedrows} = d;
+          if (affectedrows) {
+            window.location.reload();
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
+  } else {
+    // Password does not meet all the conditions
+    warningerr.style.color = "red";
+    // Prevent form submission
   }
-let ssavepassword=()=>{
-
-    let password=document.querySelector(".sspassword");
-    let confirmpass=document.querySelector(".sconfirmpassword");
- 
-    let passvalue=password.value;
-    let confirmpassvalue=confirmpass.value;
-
-    if(passvalue===""){
-        password.style.border="1px solid red";
-
-    }else{
-        sverifyPassword()  
-    }
-  
-
 }
+let ssavepassword = () => {
+  let password = document.querySelector(".sspassword");
+  let confirmpass = document.querySelector(".sconfirmpassword");
 
-let sverifypass=()=>{
-    let passdis=document.querySelector(".sdynamicdiv5")
-    let namec=document.querySelector(".sdynamicdiv4");
-    let passarea=document.querySelector(".sinputc");
-    let erro=document.querySelector("#spasserr");
-    let loader=document.querySelector(".loaderps")
-    let password=document.querySelector("#spass1");
-    let emaildis=document.querySelector(".sdynamicdiv1");
-    let emaildis2=document.querySelector(".sdynamicdiv2");
-    if(password.value===""){
-        let passarea=document.querySelector(".sinputc");
-        passarea.style.border="1px solid red";
-    }else{
-        
-        let formdata =new FormData()
-        formdata.append("requesttype","verifypass");
-        formdata.append("userid",localStorage.getItem("userloged"));
-        formdata.append("userpassword",password.value);
-        formdata.append("lastname",localStorage.getItem("psname"));
+  let passvalue = password.value;
+  let confirmpassvalue = confirmpass.value;
 
-        const options={
-            method:"POST",
-            headers:{
-                "Access-Control-Allow-Credentials":true,
-                "Access-Control-Allow-Origin": "https://www.enkaare.com",
-                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-                "Access-Control-Allow-Methods": "POST",
-                   withCredentials:true
-           
-               },
-              credentials: 'include',
-           
-            body:formdata
+  if (passvalue === "") {
+    password.style.border = "1px solid red";
+  } else {
+    sverifyPassword();
+  }
+};
+
+let sverifypass = () => {
+  let passdis = document.querySelector(".sdynamicdiv5");
+  let namec = document.querySelector(".sdynamicdiv4");
+  let passarea = document.querySelector(".sinputc");
+  let erro = document.querySelector("#spasserr");
+  let loader = document.querySelector(".loaderps");
+  let password = document.querySelector("#spass1");
+  let emaildis = document.querySelector(".sdynamicdiv1");
+  let emaildis2 = document.querySelector(".sdynamicdiv2");
+  if (password.value === "") {
+    let passarea = document.querySelector(".sinputc");
+    passarea.style.border = "1px solid red";
+  } else {
+    let formdata = new FormData();
+    formdata.append("requesttype", "verifypass");
+    // formdata.append("userid", localStorage.getItem("userloged"));
+    formdata.append("userid", getCookie("userloged"));
+    formdata.append("userpassword", password.value);
+    // formdata.append("lastname", localStorage.getItem("psname"));
+    formdata.append("lastname", getCookie("psname"));
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+        withCredentials: true,
+      },
+      credentials: "include",
+
+      body: formdata,
+    };
+
+    let f = fetch(`${baseUrl}/changecandidateemail`, optionWithFormData).catch(
+      (err) => {
+        console.log(err);
+      }
+    );
+    loader.style.display = "flex";
+    f.then((res) => res.json())
+      .then((d) => {
+        loader.style.display = "none";
+        const {verytype} = d;
+        if (verytype === "valid") {
+          password.value = "";
+          emaildis.style.display = "none";
+          if (whatsettingchange === "email") {
+            emaildis2.style.display = "block";
+          } else if (whatsettingchange === "name") {
+            namec.style.display = "block";
+          } else if ((whatsettingchange = "password")) {
+            passdis.style.display = "block";
+          }
+        } else {
+          password.value = "";
+          erro.innerHTML = "Invalid password!";
+          passarea.style.border = "1px solid red";
         }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+};
 
+let undo = () => {
+  let pasdoest = document.querySelector(".smatch");
+  let confirmpass = document.querySelector(".sconfirmpassword");
+  var passwordi = document.querySelector(".sspassword");
+  let err3 = document.querySelector("#spasserr3");
+  let firstname = document.querySelector("#sfname");
+  let secondname = document.querySelector("#slname");
 
-        let f= fetch("https://yielding-dented-amusement.glitch.me/changecandidateemail",options).catch(err=>{
-            console.log(err)
-        })
-     loader.style.display="flex";
-        f.then(res=>res.json()).then(d=>{
-            loader.style.display="none"
-            const{verytype}=d;
-            if(verytype==="valid"){
-                password.value="";
-                emaildis.style.display="none";
-                if(whatsettingchange==="email"){
-                    emaildis2.style.display="block";
-                }else if(whatsettingchange==="name"){
-                    namec.style.display="block";
-                }else if(whatsettingchange="password"){
-                    passdis.style.display="block"
+  let passarea = document.querySelector(".sinputc");
+  let erro = document.querySelector("#spasserr");
+  let codeinput = document.querySelectorAll(".verification-input");
 
-                }
+  codeinput[0].style.border = "1px solid hsla(4,0%,0%,0.3)";
+  codeinput[1].style.border = "1px solid hsla(4,0%,0%,0.3)";
+  codeinput[2].style.border = "1px solid hsla(4,0%,0%,0.3)";
+  codeinput[3].style.border = "1px solid hsla(4,0%,0%,0.3)";
 
-
-                
-
-            }else{
-                password.value="" ; 
-                erro.innerHTML="Invalid password!";
-                passarea.style.border="1px solid red";
-
-            }
-
-        }).catch(err=>{
-            console.log(err)
-        })
-    }
-}
-
-let undo=()=>{
-    let pasdoest=document.querySelector(".smatch")
-    let confirmpass=document.querySelector(".sconfirmpassword");
-    var passwordi = document.querySelector(".sspassword");
-    let err3=document.querySelector("#spasserr3");
-    let firstname=document.querySelector("#sfname");
-    let secondname=document.querySelector("#slname");
-
-    let passarea=document.querySelector(".sinputc");
-    let erro=document.querySelector("#spasserr");
-    let codeinput=document.querySelectorAll(".verification-input");
-
-
-
-    codeinput[0].style.border="1px solid hsla(4,0%,0%,0.3)";
-    codeinput[1].style.border="1px solid hsla(4,0%,0%,0.3)";
-    codeinput[2].style.border="1px solid hsla(4,0%,0%,0.3)";
-    codeinput[3].style.border="1px solid hsla(4,0%,0%,0.3)";
-
-        pasdoest.innerHTML=""
-        erro.innerHTML="";
-        err3.innerHTML=""
-        passarea.style.border="1px solid hsla(4,0%,0%,0.3)";
-        secondname.style.border="1px solid hsla(4,0%,0%,0.3)";
-        firstname.style.border="1px solid hsla(4,0%,0%,0.3)";
-        confirmpass.style.border="1px solid hsla(4,0%,0%,0.3)";
-        passwordi.style.border="1px solid hsla(4,0%,0%,0.3)";
-
-}
+  pasdoest.innerHTML = "";
+  erro.innerHTML = "";
+  err3.innerHTML = "";
+  passarea.style.border = "1px solid hsla(4,0%,0%,0.3)";
+  secondname.style.border = "1px solid hsla(4,0%,0%,0.3)";
+  firstname.style.border = "1px solid hsla(4,0%,0%,0.3)";
+  confirmpass.style.border = "1px solid hsla(4,0%,0%,0.3)";
+  passwordi.style.border = "1px solid hsla(4,0%,0%,0.3)";
+};
 
 function validateEmail() {
-    let emailnextbut=document.querySelector(".sbdiv2b2");
-    var email = document.getElementById("emailInput").value;
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-    if (emailRegex.test(email)) {
-        document.querySelector(".sinputc2").style.border="1px solid hsla(4,0%,0%,0.3)";
-        document.querySelector(".spasserr2").innerHTML = "";
-       
-        emailnextbut.disabled=false;
-        emailnextbut.style.color="white";
-    emailnextbut.style.backgroundColor="hsl(207,52%,44%)";
-    emailnextbut.style.border="1px solid hsl(207,52%,44%)";
-    emailnextbut.style.cursor="pointer"
-    
-        
+  let emailnextbut = document.querySelector(".sbdiv2b2");
+  var email = document.getElementById("emailInput").value;
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  if (emailRegex.test(email)) {
+    document.querySelector(".sinputc2").style.border =
+      "1px solid hsla(4,0%,0%,0.3)";
+    document.querySelector(".spasserr2").innerHTML = "";
 
-    } else {
-        document.querySelector(".spasserr2").innerHTML = "Invalid email address";
-        document.querySelector(".sinputc2").style.border="1px solid red"
-        emailnextbut.disabled=true;
-        emailnextbut.style.cursor="default"
-        emailnextbut.style.color="hsla(4,0%,0%,0.3)";
-        emailnextbut.style.backgroundColor="hsla(207,52%,44%,0.1)";
-        emailnextbut.style.border="1px solid hsla(207,52%,44%,0.1)";
-
-    
-    }
-
-
+    emailnextbut.disabled = false;
+    emailnextbut.style.color = "white";
+    emailnextbut.style.backgroundColor = "hsl(207,52%,44%)";
+    emailnextbut.style.border = "1px solid hsl(207,52%,44%)";
+    emailnextbut.style.cursor = "pointer";
+  } else {
+    document.querySelector(".spasserr2").innerHTML = "Invalid email address";
+    document.querySelector(".sinputc2").style.border = "1px solid red";
+    emailnextbut.disabled = true;
+    emailnextbut.style.cursor = "default";
+    emailnextbut.style.color = "hsla(4,0%,0%,0.3)";
+    emailnextbut.style.backgroundColor = "hsla(207,52%,44%,0.1)";
+    emailnextbut.style.border = "1px solid hsla(207,52%,44%,0.1)";
   }
-  let emailcode=()=>{
-    let emaildis2=document.querySelector(".sdynamicdiv2");
-    let emaildis3=document.querySelector(".sdynamicdiv3");
-    let loader=document.querySelector(".loaderps")
-    let email=document.querySelector("#emailInput");
-    let random=(min=1000, max =9999)=>{
-        let dif= max-min;
-        let rad= Math.random();
-        rad=Math.floor(rad * dif);
-        rad =rad +min;
-        return rad
+}
+let emailcode = () => {
+  let emaildis2 = document.querySelector(".sdynamicdiv2");
+  let emaildis3 = document.querySelector(".sdynamicdiv3");
+  let loader = document.querySelector(".loaderps");
+  let email = document.querySelector("#emailInput");
+  let random = (min = 1000, max = 9999) => {
+    let dif = max - min;
+    let rad = Math.random();
+    rad = Math.floor(rad * dif);
+    rad = rad + min;
+    return rad;
+  };
+
+  let formdata = new FormData();
+  let code = random();
+  let emaili = email.value.trim();
+
+  formdata.append("email", email.value.trim());
+  formdata.append("requesttype", "emailcode");
+  formdata.append("code", code);
+
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       "Access-Control-Allow-Credentials": true,
+  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
+  //       "Access-Control-Allow-Headers":
+  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+  //       "Access-Control-Allow-Methods": "POST",
+  //       withCredentials: true,
+  //     },
+  //     credentials: "include",
+
+  //     body: formdata,
+  //   };
+
+  let f = fetch(`${baseUrl}/changecandidateemail`, optionWithFormData).catch(
+    (err) => {
+      console.log(err);
     }
-     
-    let formdata =new FormData();
-    let code =random();
-    let emaili=email.value.trim()
+  );
+  loader.style.display = "flex";
+  f.then((res) => res.json()).then((d) => {
+    loader.style.display = "none";
+    email.value = "";
+    const {sent} = d;
+    if (sent) {
+      emaildis2.style.display = "none";
+      emaildis3.style.display = "block";
 
-    formdata.append("email",email.value.trim());
-    formdata.append("requesttype","emailcode");
-    formdata.append("code",code)
-    
+      /******************************** */
+      const verificationInputs = document.querySelectorAll(
+        ".verification-input"
+      );
+      const maxLength = 1;
 
-    const options={
-        method:"POST",
-        headers:{
-            "Access-Control-Allow-Credentials":true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-            "Access-Control-Allow-Methods": "POST",
-               withCredentials:true
-       
-           },
-          credentials: 'include',
-       
-        body:formdata
-    }
-    
-    let f= fetch("https://yielding-dented-amusement.glitch.me/changecandidateemail",options).catch(err=>{
-            console.log(err)
-        })
-        loader.style.display="flex";
-        f.then(res=>res.json()).then(d=>{
-            loader.style.display="none";
-            email.value=""
-            const{sent}=d;
-            if(sent){
-                emaildis2.style.display="none";
-                emaildis3.style.display="block";
+      verificationInputs.forEach((input, index) => {
+        input.addEventListener("input", (event) => {
+          const value = event.target.value;
 
-                /******************************** */
-                const verificationInputs = document.querySelectorAll('.verification-input');
-        const maxLength = 1;
-    
-        verificationInputs.forEach((input, index) => {
-          input.addEventListener('input', (event) => {
-            const value = event.target.value;
-    
-            if (value.length >= maxLength) {
-              if (index < verificationInputs.length - 1) {
-                verificationInputs[index + 1].focus();
+          if (value.length >= maxLength) {
+            if (index < verificationInputs.length - 1) {
+              verificationInputs[index + 1].focus();
+            } else {
+              // Last input reached, you can perform any action here (e.g., submit the form)
+
+              if (code != getVerificationCode()) {
+                let err3 = document.querySelector("#spasserr3");
+                let codeinput = document.querySelectorAll(
+                  ".verification-input"
+                );
+
+                codeinput[0].style.border = "1px solid red";
+                codeinput[1].style.border = "1px solid red";
+                codeinput[2].style.border = "1px solid red";
+                codeinput[3].style.border = "1px solid red";
+
+                err3.innerHTML = "Invalid code!";
               } else {
-                // Last input reached, you can perform any action here (e.g., submit the form)
+                loader.style.display = "flex";
+                let formdata = new FormData();
+                formdata.append("email", emaili);
+                formdata.append("requesttype", "update");
+                // formdata.append("userid", localStorage.getItem("userloged"));
+                formdata.append("userid", getCookie("userloged"));
 
-                
-                 if(code != getVerificationCode()){
-                    let err3=document.querySelector("#spasserr3");
-                    let codeinput=document.querySelectorAll(".verification-input");
+                // const options = {
+                //   method: "POST",
+                //   headers: {
+                //     "Access-Control-Allow-Credentials": true,
+                //     "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                //     "Access-Control-Allow-Headers":
+                //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                //     "Access-Control-Allow-Methods": "POST",
+                //     withCredentials: true,
+                //   },
+                //   credentials: "include",
 
-                    codeinput[0].style.border="1px solid red";
-                    codeinput[1].style.border="1px solid red";
-                    codeinput[2].style.border="1px solid red";
-                    codeinput[3].style.border="1px solid red";
+                //   body: formdata,
+                // };
 
+                let f = fetch(
+                  `${baseUrl}/changecandidateemail`,
+                  optionWithFormData
+                ).catch((err) => {
+                  console.log(err);
+                });
+                f.then((res) => res.json()).then((d) => {
+                  const {affectedrows} = d;
 
-                    err3.innerHTML="Invalid code!"
-                 }else{
-                    loader.style.display="flex";
-                    let formdata =new FormData()
-                    formdata.append("email",emaili);
-                    formdata.append("requesttype","update");
-                    formdata.append("userid",localStorage.getItem("userloged"));
-                  
-                    
-                
-                    const options={
-                        method:"POST",
-                        headers:{
-                            "Access-Control-Allow-Credentials":true,
-                            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-                            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-                            "Access-Control-Allow-Methods": "POST",
-                               withCredentials:true
-                       
-                           },
-                          credentials: 'include',
-                       
-                        body:formdata
-                    }
-                    
-                    let f= fetch("https://yielding-dented-amusement.glitch.me/changecandidateemail",options).catch(err=>{
-                            console.log(err)
-                        })
-                    f.then(res=>res.json()).then(d=>{
-                        const{affectedrows}=d;
-                        
-
-                        if(affectedrows){
-                            loader.style.display="none";
-                            window.location.reload()
-                        }
-                    })
-
-                 }
+                  if (affectedrows) {
+                    loader.style.display = "none";
+                    window.location.reload();
+                  }
+                });
               }
             }
-          });
-    
-          input.addEventListener('keydown', (event) => {
-            const BACKSPACE_KEY_CODE = 8;
-    
-            if (event.keyCode === BACKSPACE_KEY_CODE && index > 0 && input.value.length === 0) {
-              verificationInputs[index - 1].focus();
-            }
-          });
+          }
         });
-    
-        function getVerificationCode() {
-          let code = '';
-          verificationInputs.forEach((input) => {
-            code += input.value;
-          });
-          return code;
-        }
-            }
-        })
 
-  }
+        input.addEventListener("keydown", (event) => {
+          const BACKSPACE_KEY_CODE = 8;
 
-  let cancelemailc=()=>{
-    window.location.reload()
-  }
+          if (
+            event.keyCode === BACKSPACE_KEY_CODE &&
+            index > 0 &&
+            input.value.length === 0
+          ) {
+            verificationInputs[index - 1].focus();
+          }
+        });
+      });
 
-  let settingdata=()=>{
-    let formdata =new FormData()
-    formdata.append("userid",localStorage.getItem("userloged"));
-
-
-    const options={
-        method:"POST",
-        headers:{
-            "Access-Control-Allow-Credentials":true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-            "Access-Control-Allow-Methods": "POST",
-               withCredentials:true
-       
-           },
-          credentials: 'include',
-       
-        body:formdata
+      function getVerificationCode() {
+        let code = "";
+        verificationInputs.forEach((input) => {
+          code += input.value;
+        });
+        return code;
+      }
     }
-    let f= fetch("https://yielding-dented-amusement.glitch.me/csettingdata",options).catch(err=>{
-        console.log(err)
-    })
+  });
+};
 
-    f.then(res=>res.json()).then(d=>{
-        const{first_name,last_name,email}=d
-        let emailsec=document.querySelector("#set1email");
+let cancelemailc = () => {
+  window.location.reload();
+};
 
-        let fname= document.querySelector("#sfirstname");
-        let sname =document.querySelector("#slastname");
-        fname.value=first_name;
-        sname.value=last_name;
-         let logsecurityeamil=document.querySelector(".sfirstp1");
-        emailsec.innerHTML=email;
-        semail=email;
-        firstnameee=first_name;
-        lastnameeee=last_name;
-        localStorage.setItem("pfname",first_name);
-        localStorage.setItem("psname",last_name);
-        setprofile();
+let settingdata = () => {
+  let formdata = new FormData();
+  //   formdata.append("userid", localStorage.getItem("userloged"));
+  formdata.append("userid", getCookie("userloged"));
 
-    })
-  }
-let setting=()=>{
-    generalsetting();
-    settingdata()
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       "Access-Control-Allow-Credentials": true,
+  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
+  //       "Access-Control-Allow-Headers":
+  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+  //       "Access-Control-Allow-Methods": "POST",
+  //       withCredentials: true,
+  //     },
+  //     credentials: "include",
 
+  //     body: formdata,
+  //   };
+  let f = fetch(`${baseUrl}/csettingdata`, optionWithFormData).catch((err) => {
+    console.log(err);
+  });
 
+  f.then((res) => res.json()).then((d) => {
+    const {first_name, last_name, email} = d;
+    let emailsec = document.querySelector("#set1email");
 
-}
-
-
-
+    let fname = document.querySelector("#sfirstname");
+    let sname = document.querySelector("#slastname");
+    fname.value = first_name;
+    sname.value = last_name;
+    let logsecurityeamil = document.querySelector(".sfirstp1");
+    emailsec.innerHTML = email;
+    semail = email;
+    firstnameee = first_name;
+    lastnameeee = last_name;
+    // localStorage.setItem("pfname", first_name);
+    // localStorage.setItem("psname", last_name);
+    setCookie("pfname", first_name, 7);
+    setCookie("psname", last_name, 7);
+    setprofile();
+  });
+};
+let setting = () => {
+  generalsetting();
+  settingdata();
+};
 
 //CODE FOR SUUPORT
 
 let whatprofile;
 
-let suuemployer=(profile)=>{
-    whatprofile=profile;
-    
-}
+let suuemployer = (profile) => {
+  whatprofile = profile;
+};
 
+let tsupport = () => {
+  let loader1 = document.getElementsByClassName("loader1");
 
-let tsupport=()=>{
-    let loader1 =document.getElementsByClassName("loader1");
-    
-    var audio= new Audio('/images/shooting-sound-fx-159024.mp3');
-    audio.play();
+  var audio = new Audio("/images/shooting-sound-fx-159024.mp3");
+  audio.play();
 
-    document.querySelector(".contactsupport").classList.add("addedhove");
-    let form=document.querySelector(".suuform");
-    
-    form.addEventListener('submit',(e)=>{
-        e.preventDefault()
-        let userid= localStorage.getItem("userloged");
-        let subject=document.querySelector("#subject");
-        let message = document.querySelector("#sumessage");
+  document.querySelector(".contactsupport").classList.add("addedhove");
+  let form = document.querySelector(".suuform");
 
-        let formdata=new FormData();
-        formdata.append("user_id",userid)
-        formdata.append("subject",subject.value);
-        formdata.append("message",message.value);
-        formdata.append("profile",whatprofile);
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    // let userid = localStorage.getItem("userloged");
+    let userid = getCookie("userloged");
+    let subject = document.querySelector("#subject");
+    let message = document.querySelector("#sumessage");
 
-        const options={
-            method:"POST",
-            headers:{
-                "Access-Control-Allow-Credentials":true,
-                "Access-Control-Allow-Origin": "https://www.enkaare.com",
-                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
-                "Access-Control-Allow-Methods": "POST",
-                   withCredentials:true
-           
-               },
-              credentials: 'include',
-           
-            body:formdata
-        }
+    let formdata = new FormData();
+    formdata.append("user_id", userid);
+    formdata.append("subject", subject.value);
+    formdata.append("message", message.value);
+    formdata.append("profile", whatprofile);
 
-        let f= fetch("https://yielding-dented-amusement.glitch.me/supporttalk",options).catch(err=>{
-            console.log(err)
-        });
-        loader1[0].classList.add("addedloader1");
+    // const options = {
+    //   method: "POST",
+    //   headers: {
+    //     "Access-Control-Allow-Credentials": true,
+    //     "Access-Control-Allow-Origin": "https://www.enkaare.com",
+    //     "Access-Control-Allow-Headers":
+    //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
+    //     "Access-Control-Allow-Methods": "POST",
+    //     withCredentials: true,
+    //   },
+    //   credentials: "include",
 
-        f.then(res=>res.json()).then(d=>{
-            const{sent}=d;
+    //   body: formdata,
+    // };
 
-            if(sent){
-                form.reset()
-                loader1[0].classList.remove("addedloader1");
-                tsupportcancel();
+    let f = fetch(`${baseUrl}/supporttalk`, optionWithFormData).catch((err) => {
+      console.log(err);
+    });
+    loader1[0].classList.add("addedloader1");
 
-            }
-        })
+    f.then((res) => res.json()).then((d) => {
+      const {sent} = d;
 
-    })
-
-}
-let tsupportcancel=()=>{
-    document.querySelector(".contactsupport").classList.remove("addedhove")
-
-}
+      if (sent) {
+        form.reset();
+        loader1[0].classList.remove("addedloader1");
+        tsupportcancel();
+      }
+    });
+  });
+};
+let tsupportcancel = () => {
+  document.querySelector(".contactsupport").classList.remove("addedhove");
+};
