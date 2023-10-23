@@ -121,13 +121,15 @@ form.addEventListener("submit", (e) => {
         // localStorage.setItem("userloged", userid);
         // localStorage.setItem("usertype", usertype);
         if (usertype === "client") {
-          loader[0].classList.remove("addedloader");
+          console.log("Yessssss client")
+         /* loader[0].classList.remove("addedloader");
           form.reset();
-          window.location.href = "././employerdashboard.html";
+          window.location.href = "././employerdashboard.html";*/
         } else if (usertype === "candidate") {
-          loader[0].classList.remove("addedloader");
+          console.log("YESS employer")
+         /* loader[0].classList.remove("addedloader");
           form.reset();
-          window.location.href = "././workerdashboard.html";
+          window.location.href = "././workerdashboard.html";*/
         }
       } else {
         alert[0].style.display = "block";

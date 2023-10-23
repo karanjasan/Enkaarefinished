@@ -16,7 +16,7 @@ const app = express();
 app.use(cookiepar());
 
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+  res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5501");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, authorization"
@@ -59,7 +59,7 @@ app.use(
 app.use(
   cors({
     credentials: true,
-    origin: "http://127.0.0.1:5500",
+    origin: "http://127.0.0.1:5501",
   })
 );
 /*origin:'https://calm-gingersnap-fdb8ce.netlify.app'*/
