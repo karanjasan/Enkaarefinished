@@ -27,7 +27,6 @@ loader[0].classList.add("addedloader");
 
 f.then((res) => res.json())
   .then((d) => {
-    console.log("this is D: ", d);
     loader[0].classList.remove("addedloader");
     const {auth, dashboard} = d;
 
@@ -97,24 +96,25 @@ form.addEventListener("submit", (e) => {
 
       if (verytype === "valid") {
         // Function to set a subdomain cookie
-        function setCookie(cname, cvalue, exdays) {
-          const d = new Date();
-          d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-          let expires = "expires=" + d.toUTCString();
-          document.cookie =
-            cname +
-            "=" +
-            encodeURIComponent(cvalue) +
-            ";" +
-            expires +
-            ";path=/";
+        function setCookie(cname, cvalue, exdays = null) {
+          const domain = ".127.0.0.1:5500";
+          let expires = exdays
+            ? `expires=${new Date(
+                new Date().getTime() + exdays * 1000 * 60 * 30
+              ).toUTCString()}`
+            : "";
+          console.log("expires: ", expires);
+          document.cookie = `${cname}=${encodeURIComponent(
+            cvalue
+          )}; expires=${expires}; path=/; domain=${domain}`;
+          console.log(document.cookie);
         }
 
         // Set Cookies
-        setCookie("pfname", firstname, 7);
-        setCookie("psname", secondname, 7);
-        setCookie("userloged", userid, 7);
-        setCookie("usertype", usertype, 7);
+        setCookie("pfname", firstname);
+        setCookie("psname", secondname);
+        setCookie("userloged", userid);
+        setCookie("usertype", usertype);
 
         // localStorage.setItem("pfname", firstname);
         // localStorage.setItem("psname", secondname);

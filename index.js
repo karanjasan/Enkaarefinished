@@ -46,7 +46,7 @@ app.use(
     rolling: true,
     saveUninitialized: false,
     cookie: {
-      httpOnly: true,
+      httpOnly: false,
       maxAge: 1000 * 60 * 30,
       /*secure:true,*/
 
@@ -183,12 +183,11 @@ so the search continue to the candidate side
 
           if (match) {
             request.session.authorized = true;
-            console.log(request.session.authorized);
             request.session.userid = {
               useremail,
               userpassword,
             };
-            console.log(request.session.userid);
+            // console.log(request.session.userid);
 
             response.json({
               firstname: firstn,
@@ -210,8 +209,21 @@ so the search continue to the candidate side
 });
 
 app.post("/logout", (request, response) => {
-  request.session.destroy();
-  response.json({okay: "okay"});
+  try {
+    request.session.destroy((err) => {
+      if (err) {
+        console.error("Error destroying session:", err);
+        return response.status(500).send("Error destroying session"); // Send an error response
+      }
+      // Clear the session cookie
+      response.clearCookie("connect.sid", {path: "/"});
+      // console.log("success: ", response.json({Okey: "okey"}));
+      response.json({okay: "okay"});
+    });
+  } catch (error) {
+    console.log("There is an error fetching logout: ", error);
+    response.status(500).send("Error destroying session"); // Send an error response
+  }
 });
 
 app.post("/get", (request, response) => {
