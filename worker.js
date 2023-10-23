@@ -57,7 +57,7 @@ const getCookie = (name) => {
 
 // Function to delete a cookie
 function deleteCookie(name) {
-  const domain = `.http://127.0.0.1:5500`; // Replace with your root domain preceded by a dot
+  const domain = `.http://127.0.0.1:5501`; // Replace with your root domain preceded by a dot
   document.cookie = `${name}=; expires=Thu, 20 Oct 2023 00:00:00 UTC; path=/; domain=${domain}`;
 }
 
@@ -79,7 +79,7 @@ f.then((res) => res.json())
       deleteCookie("userloged");
       deleteCookie("pfname");
       deleteCookie("psname");
-      window.location.href = "/login.html";
+      window.location.href = "/Enkari/login.html";
     } else {
       //
     }
