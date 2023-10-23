@@ -1,5 +1,5 @@
 const baseUrl = "http://127.0.0.1:3890";
-let formdata = new FormData();
+// let formdata = new FormData();
 const options = {
   method: "POST",
 
@@ -14,20 +14,20 @@ const options = {
   credentials: "include",
 };
 
-const optionWithFormData = {
-  method: "POST",
-  headers: {
-    "Access-Control-Allow-Credentials": true,
-    "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
-    "Access-Control-Allow-Headers":
-      "Origin, X-Requested-With, Content-Type, Accept, authorization",
-    "Access-Control-Allow-Methods": "POST",
-    withCredentials: true,
-  },
-  credentials: "include",
+// const optionWithFormData = {
+//   method: "POST",
+//   headers: {
+//     "Access-Control-Allow-Credentials": true,
+//     "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+//     "Access-Control-Allow-Headers":
+//       "Origin, X-Requested-With, Content-Type, Accept, authorization",
+//     "Access-Control-Allow-Methods": "POST",
+//     withCredentials: true,
+//   },
+//   credentials: "include",
 
-  body: formdata,
-};
+//   body: formdata,
+// };
 
 // Function to set a subdomain cookie
 function setCookie(cname, cvalue, exdays) {
@@ -249,20 +249,20 @@ let availableorders = () => {
   formdata.append("firstname", firstnmae);
   formdata.append("logedid", logedid);
 
-  //   const options = {
-  //     method: "POST",
+  const optionWithFormData = {
+    method: "POST",
 
-  //     headers: {
-  //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
-  //       "Access-Control-Allow-Headers":
-  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-  //       "Access-Control-Allow-Methods": "POST",
-  //       withCredentials: true,
-  //     },
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      "Access-Control-Allow-Methods": "POST",
+      withCredentials: true,
+    },
 
-  //     body: formdata,
-  //   };
+    body: formdata,
+  };
   // https://1ed2-105-231-144-76.ngrok.io/api'
 
   //https://half-geode-roundworm.glitch.me/api
@@ -418,21 +418,21 @@ let suminter = () => {
   let formdata = new FormData();
   formdata.append("logedid", logedid);
 
-  //   const options = {
-  //     method: "POST",
+  const optionWithFormData = {
+    method: "POST",
 
-  //     headers: {
-  //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
-  //       "Access-Control-Allow-Headers":
-  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-  //       "Access-Control-Allow-Methods": "POST",
-  //       withCredentials: true,
-  //     },
-  //     credentials: "include",
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      "Access-Control-Allow-Methods": "POST",
+      withCredentials: true,
+    },
+    credentials: "include",
 
-  //     body: formdata,
-  //   };
+    body: formdata,
+  };
   // https://1ed2-105-231-144-76.ngrok.io/api'
 
   //https://half-geode-roundworm.glitch.me/api
@@ -464,20 +464,20 @@ let displainterviewslots = () => {
   let formdata = new FormData();
   formdata.append("logedid", logedid);
 
-  //   const options = {
-  //     method: "POST",
-  //     headers: {
-  //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
-  //       "Access-Control-Allow-Headers":
-  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-  //       "Access-Control-Allow-Methods": "POST",
-  //       withCredentials: true,
-  //     },
-  //     credentials: "include",
+  const optionWithFormData = {
+    method: "POST",
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      "Access-Control-Allow-Methods": "POST",
+      withCredentials: true,
+    },
+    credentials: "include",
 
-  //     body: formdata,
-  //   };
+    body: formdata,
+  };
   // https://1ed2-105-231-144-76.ngrok.io/api'
 
   //https://half-geode-roundworm.glitch.me/api
@@ -653,20 +653,20 @@ let displainterviewslots = () => {
           formdata.append("slot_id", slotid);
           formdata.append("job_id", jbId);
 
-          //   const options = {
-          //     method: "POST",
-          //     headers: {
-          //       "Access-Control-Allow-Credentials": true,
-          //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
-          //       "Access-Control-Allow-Headers":
-          //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-          //       "Access-Control-Allow-Methods": "POST",
-          //       withCredentials: true,
-          //     },
-          //     credentials: "include",
+          const optionWithFormData = {
+            method: "POST",
+            headers: {
+              "Access-Control-Allow-Credentials": true,
+              "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+              "Access-Control-Allow-Headers":
+                "Origin, X-Requested-With, Content-Type, Accept, authorization",
+              "Access-Control-Allow-Methods": "POST",
+              withCredentials: true,
+            },
+            credentials: "include",
 
-          //     body: formdata,
-          //   };
+            body: formdata,
+          };
           // https://1ed2-105-231-144-76.ngrok.io/api'
 
           //https://half-geode-roundworm.glitch.me/api
@@ -874,20 +874,20 @@ let profload = () => {
   formdata.append("first_name", firstn);
   formdata.append("user_id", userid);
 
-  //   const options = {
-  //     method: "POST",
-  //     headers: {
-  //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
-  //       "Access-Control-Allow-Headers":
-  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-  //       "Access-Control-Allow-Methods": "POST",
-  //       withCredentials: true,
-  //     },
-  //     credentials: "include",
+  const optionWithFormData = {
+    method: "POST",
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      "Access-Control-Allow-Methods": "POST",
+      withCredentials: true,
+    },
+    credentials: "include",
 
-  //     body: formdata,
-  //   };
+    body: formdata,
+  };
 
   let f = fetch(`${baseUrl}/candidateprofile`, optionWithFormData).catch(
     (err) => {
@@ -1108,21 +1108,21 @@ let profload = () => {
     formdata.append("file", file);
     formdata.append("user_id", useid);
 
-    // const options = {
-    //   method: "POST",
+    const optionWithFormData = {
+      method: "POST",
 
-    //   headers: {
-    //     "Access-Control-Allow-Credentials": true,
-    //     "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
-    //     "Access-Control-Allow-Headers":
-    //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
-    //     "Access-Control-Allow-Methods": "POST",
-    //     withCredentials: true,
-    //   },
-    //   credentials: "include",
+      headers: {
+        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+        withCredentials: true,
+      },
+      credentials: "include",
 
-    //   body: formdata,
-    // };
+      body: formdata,
+    };
 
     let f = fetch(`${baseUrl}/imageupload`, optionWithFormData).catch((err) => {
       console.log(err);
@@ -1194,20 +1194,20 @@ let profload = () => {
 
       formdata.append("experience", JSON.stringify(experincesarray));
 
-      //   const options = {
-      //     method: "POST",
-      //     headers: {
-      //       "Access-Control-Allow-Credentials": true,
-      //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
-      //       "Access-Control-Allow-Headers":
-      //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-      //       "Access-Control-Allow-Methods": "POST",
-      //       withCredentials: true,
-      //     },
-      //     credentials: "include",
+      const optionWithFormData = {
+        method: "POST",
+        headers: {
+          "Access-Control-Allow-Credentials": true,
+          "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+          "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept, authorization",
+          "Access-Control-Allow-Methods": "POST",
+          withCredentials: true,
+        },
+        credentials: "include",
 
-      //     body: formdata,
-      //   };
+        body: formdata,
+      };
 
       let f = fetch(`${baseUrl}/editcp`, optionWithFormData).catch((err) => {
         console.log(err);
@@ -1242,20 +1242,20 @@ let profileeditbutton = () => {
 
   formdata.append("user_id", theid);
 
-  //   const options = {
-  //     method: "POST",
-  //     headers: {
-  //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
-  //       "Access-Control-Allow-Headers":
-  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-  //       "Access-Control-Allow-Methods": "POST",
-  //       withCredentials: true,
-  //     },
-  //     credentials: "include",
+  const optionWithFormData = {
+    method: "POST",
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      "Access-Control-Allow-Methods": "POST",
+      withCredentials: true,
+    },
+    credentials: "include",
 
-  //     body: formdata,
-  //   };
+    body: formdata,
+  };
 
   let f = fetch(`${baseUrl}/geteditdata`, optionWithFormData).catch((err) => {
     console.log(err);
@@ -1876,7 +1876,7 @@ let orderdetails = (order_id) => {
   const formdata = new FormData();
   formdata.append("job_id", jbid);
   formdata.append("type", "or");
-  const options = {
+  const optionWithFormData = {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
@@ -1993,20 +1993,20 @@ let orderdetails = (order_id) => {
       formdata.append("user_id", logged);
       formdata.append("action", "apply");
 
-      //   const options = {
-      //     method: "POST",
-      //     headers: {
-      //       "Access-Control-Allow-Credentials": true,
-      //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
-      //       "Access-Control-Allow-Headers":
-      //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-      //       "Access-Control-Allow-Methods": "POST",
-      //       withCredentials: true,
-      //     },
-      //     credentials: "include",
+      const optionWithFormData = {
+        method: "POST",
+        headers: {
+          "Access-Control-Allow-Credentials": true,
+          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept, authorization",
+          "Access-Control-Allow-Methods": "POST",
+          withCredentials: true,
+        },
+        credentials: "include",
 
-      //     body: formdata,
-      //   };
+        body: formdata,
+      };
 
       let f = fetch(`${baseUrl}/apply`, optionWithFormData).catch((err) => {
         console.log(err);
@@ -2031,20 +2031,20 @@ let orderdetails = (order_id) => {
       formdata.append("user_id", logged);
       formdata.append("action", "cancel");
 
-      //   const options = {
-      //     method: "POST",
-      //     headers: {
-      //       "Access-Control-Allow-Credentials": true,
-      //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
-      //       "Access-Control-Allow-Headers":
-      //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-      //       "Access-Control-Allow-Methods": "POST",
-      //       withCredentials: true,
-      //     },
-      //     credentials: "include",
+      const optionWithFormData = {
+        method: "POST",
+        headers: {
+          "Access-Control-Allow-Credentials": true,
+          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept, authorization",
+          "Access-Control-Allow-Methods": "POST",
+          withCredentials: true,
+        },
+        credentials: "include",
 
-      //     body: formdata,
-      //   };
+        body: formdata,
+      };
 
       let f = fetch(`${baseUrl}/apply`, optionWithFormData).catch((err) => {
         console.log(err);
@@ -2068,20 +2068,20 @@ let orderdetails = (order_id) => {
       formdata.append("job_id", jbid);
       formdata.append("user_id", logged);
 
-      //   const options = {
-      //     method: "POST",
-      //     headers: {
-      //       "Access-Control-Allow-Credentials": true,
-      //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
-      //       "Access-Control-Allow-Headers":
-      //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-      //       "Access-Control-Allow-Methods": "POST",
-      //       withCredentials: true,
-      //     },
-      //     credentials: "include",
+      const optionWithFormData = {
+        method: "POST",
+        headers: {
+          "Access-Control-Allow-Credentials": true,
+          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept, authorization",
+          "Access-Control-Allow-Methods": "POST",
+          withCredentials: true,
+        },
+        credentials: "include",
 
-      //     body: formdata,
-      //   };
+        body: formdata,
+      };
 
       let f = fetch(`${baseUrl}/acceptinvite`, optionWithFormData).catch(
         (err) => {
@@ -2136,20 +2136,20 @@ let myapporders = () => {
   formdata.append("firstname", firstnmae);
   formdata.append("logedid", logedid);
 
-  //   const options = {
-  //     method: "POST",
-  //     headers: {
-  //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
-  //       "Access-Control-Allow-Headers":
-  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-  //       "Access-Control-Allow-Methods": "POST",
-  //       withCredentials: true,
-  //     },
-  //     credentials: "include",
+  const optionWithFormData = {
+    method: "POST",
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      "Access-Control-Allow-Methods": "POST",
+      withCredentials: true,
+    },
+    credentials: "include",
 
-  //     body: formdata,
-  //   };
+    body: formdata,
+  };
   // https://1ed2-105-231-144-76.ngrok.io/api'
 
   //https://half-geode-roundworm.glitch.me/api
@@ -2697,20 +2697,20 @@ let ssavename = () => {
     // formdata.append("userid", localStorage.getItem("userloged"));
     formdata.append("userid", getCookie("userloged"));
 
-    // const options = {
-    //   method: "POST",
-    //   headers: {
-    //     "Access-Control-Allow-Credentials": true,
-    //     "Access-Control-Allow-Origin": "https://www.enkaare.com",
-    //     "Access-Control-Allow-Headers":
-    //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
-    //     "Access-Control-Allow-Methods": "POST",
-    //     withCredentials: true,
-    //   },
-    //   credentials: "include",
+    const optionWithFormData = {
+      method: "POST",
+      headers: {
+        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+        withCredentials: true,
+      },
+      credentials: "include",
 
-    //   body: formdata,
-    // };
+      body: formdata,
+    };
 
     let f = fetch(`${baseUrl}/changecname`, optionWithFormData).catch((err) => {
       console.log(err);
@@ -2835,7 +2835,7 @@ let sverifypass = () => {
     // formdata.append("lastname", localStorage.getItem("psname"));
     formdata.append("lastname", getCookie("psname"));
 
-    const options = {
+    const optionWithFormData = {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
@@ -2955,20 +2955,20 @@ let emailcode = () => {
   formdata.append("requesttype", "emailcode");
   formdata.append("code", code);
 
-  //   const options = {
-  //     method: "POST",
-  //     headers: {
-  //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
-  //       "Access-Control-Allow-Headers":
-  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-  //       "Access-Control-Allow-Methods": "POST",
-  //       withCredentials: true,
-  //     },
-  //     credentials: "include",
+  const optionWithFormData = {
+    method: "POST",
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      "Access-Control-Allow-Methods": "POST",
+      withCredentials: true,
+    },
+    credentials: "include",
 
-  //     body: formdata,
-  //   };
+    body: formdata,
+  };
 
   let f = fetch(`${baseUrl}/changecandidateemail`, optionWithFormData).catch(
     (err) => {
@@ -3020,20 +3020,20 @@ let emailcode = () => {
                 // formdata.append("userid", localStorage.getItem("userloged"));
                 formdata.append("userid", getCookie("userloged"));
 
-                // const options = {
-                //   method: "POST",
-                //   headers: {
-                //     "Access-Control-Allow-Credentials": true,
-                //     "Access-Control-Allow-Origin": "https://www.enkaare.com",
-                //     "Access-Control-Allow-Headers":
-                //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
-                //     "Access-Control-Allow-Methods": "POST",
-                //     withCredentials: true,
-                //   },
-                //   credentials: "include",
+                const optionWithFormData = {
+                  method: "POST",
+                  headers: {
+                    "Access-Control-Allow-Credentials": true,
+                    "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                    "Access-Control-Allow-Headers":
+                      "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                    "Access-Control-Allow-Methods": "POST",
+                    withCredentials: true,
+                  },
+                  credentials: "include",
 
-                //   body: formdata,
-                // };
+                  body: formdata,
+                };
 
                 let f = fetch(
                   `${baseUrl}/changecandidateemail`,
@@ -3087,20 +3087,20 @@ let settingdata = () => {
   //   formdata.append("userid", localStorage.getItem("userloged"));
   formdata.append("userid", getCookie("userloged"));
 
-  //   const options = {
-  //     method: "POST",
-  //     headers: {
-  //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
-  //       "Access-Control-Allow-Headers":
-  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-  //       "Access-Control-Allow-Methods": "POST",
-  //       withCredentials: true,
-  //     },
-  //     credentials: "include",
+  const optionWithFormData = {
+    method: "POST",
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      "Access-Control-Allow-Methods": "POST",
+      withCredentials: true,
+    },
+    credentials: "include",
 
-  //     body: formdata,
-  //   };
+    body: formdata,
+  };
   let f = fetch(`${baseUrl}/csettingdata`, optionWithFormData).catch((err) => {
     console.log(err);
   });
@@ -3160,20 +3160,20 @@ let tsupport = () => {
     formdata.append("message", message.value);
     formdata.append("profile", whatprofile);
 
-    // const options = {
-    //   method: "POST",
-    //   headers: {
-    //     "Access-Control-Allow-Credentials": true,
-    //     "Access-Control-Allow-Origin": "https://www.enkaare.com",
-    //     "Access-Control-Allow-Headers":
-    //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
-    //     "Access-Control-Allow-Methods": "POST",
-    //     withCredentials: true,
-    //   },
-    //   credentials: "include",
+    const optionWithFormData = {
+      method: "POST",
+      headers: {
+        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept, authorization",
+        "Access-Control-Allow-Methods": "POST",
+        withCredentials: true,
+      },
+      credentials: "include",
 
-    //   body: formdata,
-    // };
+      body: formdata,
+    };
 
     let f = fetch(`${baseUrl}/supporttalk`, optionWithFormData).catch((err) => {
       console.log(err);
