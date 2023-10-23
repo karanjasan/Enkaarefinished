@@ -1,11 +1,11 @@
-const baseUrl = "http://127.0.0.1:3890";
+const baseUrl = "https://yielding-dented-amusement.glitch.me";
 // let formdata = new FormData();
 const options = {
   method: "POST",
 
   headers: {
     "Access-Control-Allow-Credentials": true,
-    "Access-Control-Allow-Origin": baseUrl,
+    "Access-Control-Allow-Origin": "https://www.enkaare.com",
     "Access-Control-Allow-Headers":
       "Origin, X-Requested-With, Content-Type, Accept, authorization",
     "Access-Control-Allow-Methods": "POST",
@@ -18,7 +18,7 @@ const options = {
 //   method: "POST",
 //   headers: {
 //     "Access-Control-Allow-Credentials": true,
-//     "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+//     "Access-Control-Allow-Origin": "https://www.enkaare.com",
 //     "Access-Control-Allow-Headers":
 //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
 //     "Access-Control-Allow-Methods": "POST",
@@ -56,11 +56,15 @@ const getCookie = (name) => {
 };
 
 // Function to delete a cookie
-function deleteCookie(name) {
-  const domain = `.http://127.0.0.1:5501`; // Replace with your root domain preceded by a dot
-  document.cookie = `${name}=; expires=Thu, 20 Oct 2023 00:00:00 UTC; path=/; domain=${domain}`;
-}
 
+
+function deleteCookie(name) {
+  // Set the expiration date to a date in the past
+  const pastDate = new Date(0).toUTCString();
+
+  const domain = `.https://www.enkaare.com`; // Replace with your root domain preceded by a dot
+  document.cookie = `${name}=; expires=${pastDate}; path=/; domain=${domain}`;
+}
 // https://1ed2-105-231-144-76.ngrok.io/api'
 
 //https://half-geode-roundworm.glitch.me/api
@@ -254,7 +258,7 @@ let availableorders = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      "Access-Control-Allow-Origin": "https://www.enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -423,7 +427,7 @@ let suminter = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      "Access-Control-Allow-Origin": "https://www.enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -468,7 +472,7 @@ let displainterviewslots = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      "Access-Control-Allow-Origin": "https://www.enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -657,7 +661,7 @@ let displainterviewslots = () => {
             method: "POST",
             headers: {
               "Access-Control-Allow-Credentials": true,
-              "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+              "Access-Control-Allow-Origin": "https://www.enkaare.com",
               "Access-Control-Allow-Headers":
                 "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
@@ -721,7 +725,7 @@ function invitedorders() {
   //     method: "POST",
   //     headers: {
   //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
   //       "Access-Control-Allow-Headers":
   //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
   //       "Access-Control-Allow-Methods": "POST",
@@ -878,7 +882,7 @@ let profload = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      "Access-Control-Allow-Origin": "https://www.enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1113,7 +1117,7 @@ let profload = () => {
 
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+        "Access-Control-Allow-Origin": "https://www.enkaare.com",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -1198,7 +1202,7 @@ let profload = () => {
         method: "POST",
         headers: {
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+          "Access-Control-Allow-Origin": "https://www.enkaare.com",
           "Access-Control-Allow-Headers":
             "Origin, X-Requested-With, Content-Type, Accept, authorization",
           "Access-Control-Allow-Methods": "POST",
@@ -1246,7 +1250,7 @@ let profileeditbutton = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      "Access-Control-Allow-Origin": "https://www.enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1880,7 +1884,7 @@ let orderdetails = (order_id) => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+      "Access-Control-Allow-Origin": "https://www.enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
