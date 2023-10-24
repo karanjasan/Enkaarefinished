@@ -97,7 +97,7 @@ form.addEventListener("submit", (e) => {
       if (verytype === "valid") {
         // Function to set a subdomain cookie
         function setCookie(cname, cvalue, exdays = null) {
-          const domain = ".127.0.0.1:5500";
+          // const domain = "127.0.0.1:5500";
           let expires = exdays
             ? `expires=${new Date(
                 new Date().getTime() + exdays * 1000 * 60 * 30
@@ -106,7 +106,7 @@ form.addEventListener("submit", (e) => {
           console.log("expires: ", expires);
           document.cookie = `${cname}=${encodeURIComponent(
             cvalue
-          )}; expires=${expires}; path=/; domain=${domain}`;
+          )}; expires=${expires}; path=/`;
           console.log(document.cookie);
         }
 

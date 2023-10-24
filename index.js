@@ -139,6 +139,8 @@ so the search continue to the candidate side
         const userpassword = rows[0].password;
         const useremail = rows[0].email;
 
+        console.log("teste: ");
+
         async function checkuser(pass1, pass2) {
           const match = await bcrypt.compare(pass1, pass2);
 

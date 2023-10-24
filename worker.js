@@ -57,13 +57,14 @@ const getCookie = (name) => {
   }
   return "";
 };
+console.log("This is the cookie: ", getCookie("pfname"));
 
 // Function to delete a cookie
 function deleteCookie(name) {
-  const domain = ".127.0.0.1:5500"; // Replace with your actual domain
+  // const domain = ".127.0.0.1:5500"; // Replace with your actual domain
   const pastDate = new Date(0).toUTCString();
   try {
-    document.cookie = `${name}=; expires=${pastDate}; path=/; domain=${domain}`;
+    document.cookie = `${name}=; expires=${pastDate}; path=/`;
     console.log(`Deleted cookie: ${name}`);
   } catch (error) {
     console.error(`Error deleting cookie: ${name}`, error);
@@ -1875,7 +1876,8 @@ let notiload = () => {
 
 let orderdetails = (order_id) => {
   let loader = document.getElementsByClassName("loader");
-  let jbid = sessionStorage.getItem("clickedorderid");
+  //   let jbid = sessionStorage.getItem("clickedorderid");
+  let jbid = getCookie("clickedorderid");
 
   let jobtitle = document.getElementById("odh6");
   let name = document.getElementById("odp");
