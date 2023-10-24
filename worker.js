@@ -90,7 +90,7 @@ f.then((res) => res.json())
       deleteCookie("pfname");
       deleteCookie("psname");
       deleteCookie("usertype");
-      window.location.href = "/Enkari/login.html";
+      window.location.href = "/login.html";
     } else {
       //
     }
