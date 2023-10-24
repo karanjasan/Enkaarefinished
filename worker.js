@@ -30,12 +30,15 @@ const options = {
 // };
 
 // Function to set a subdomain cookie
-function setCookie(cname, cvalue, exdays) {
-  const d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  let expires = "expires=" + d.toUTCString();
-  document.cookie =
-    cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+function setCookie(cname, cvalue, exdays = null) {
+  let expires = exdays
+    ? `expires=${new Date(
+        new Date().getTime() + exdays * 24 * 60 * 60 * 1000
+      ).toUTCString()}`
+    : "";
+  document.cookie = `${cname}=${encodeURIComponent(
+    cvalue
+  )}; ${expires}; path=/`;
 }
 
 // Function to retrieve a cookie value
@@ -56,21 +59,24 @@ const getCookie = (name) => {
 };
 
 // Function to delete a cookie
-
-
 function deleteCookie(name) {
-  // Set the expiration date to a date in the past
-  const pastDate = new Date(0).toUTCString();
-
-  const domain = `.https://www.enkaare.com`; // Replace with your root domain preceded by a dot
-  document.cookie = `${name}=; expires=${pastDate}; path=/; domain=${domain}`;
-}
+  //  const domain = ".127.0.0.1:5501"; // Replace with your actual domain
+    const pastDate = new Date(0).toUTCString();
+    try {
+      document.cookie = `${name}=; expires=${pastDate}; path=/`;
+     // console.log(`Deleted cookie: ${name}`);
+    } catch (error) {
+      console.error(`Error deleting cookie: ${name}`, error)
+  }
+  
+  
+  }
 // https://1ed2-105-231-144-76.ngrok.io/api'
 
 //https://half-geode-roundworm.glitch.me/api
 
 let f = fetch(`${baseUrl}/session`, options).catch((err) => {
-  console.log("There is an error fetching data: ", err);
+  console.log("There is an error fetching seesion data: ", err);
 });
 
 f.then((res) => res.json())
@@ -83,6 +89,7 @@ f.then((res) => res.json())
       deleteCookie("userloged");
       deleteCookie("pfname");
       deleteCookie("psname");
+      deleteCookie("usertype");
       window.location.href = "/Enkari/login.html";
     } else {
       //
@@ -115,18 +122,26 @@ let logout = () => {
 
   //https://half-geode-roundworm.glitch.me/api
 
-  let f = fetch(`${baseUrl}/logout`, options).catch((err) => {});
+  let f = fetch(`${baseUrl}/logout`, options).catch((err) => {
+    console.log("There is an error fetching logout  : ", err);
+  });
   f.then((res) => res.json()).then((d) => {
     const {okay} = d;
     if (okay) {
       //  localStorage.removeItem("userloged");
       //  localStorage.removeItem("pfname");
       //  localStorage.removeItem("psname");
-      deleteCookie("userloged");
-      deleteCookie("pfname");
-      deleteCookie("psname");
-      window.location.href = "././login.html";
+      setTimeout(() => {
+        deleteCookie("userloged");
+        deleteCookie("pfname");
+        deleteCookie("psname");
+      }, 2000);
+      //   window.location.href = "././login.html";
+      setTimeout(() => {
+        window.location.href = "././login.html";
+      }, 5000);
     }
+    console.log("The return d is:: ", d);
   });
 };
 
@@ -272,7 +287,7 @@ let availableorders = () => {
   //https://half-geode-roundworm.glitch.me/api
 
   let f = fetch(`${baseUrl}/allorders`, optionWithFormData).catch((err) => {});
-  loader[0].classList.add("addedloader");
+  //   loader[0].classList.add("addedloader");
 
   f.then((res) => res.json()).then((d) => {
     const {pnotcomplte} = d;
@@ -377,8 +392,8 @@ let availableorders = () => {
 
           //   sessionStorage.setItem("clickedorderid", value);
           //   sessionStorage.setItem("seeorderbuttonvalue", "Apply");
-          sessionStorage.setCookie("clickedorderid", value, 7);
-          sessionStorage.setCookie("seeorderbuttonvalue", "Apply", 7);
+          sessionStorage.setCookie("clickedorderid", value);
+          sessionStorage.setCookie("seeorderbuttonvalue", "Apply");
 
           window.location.href = "/orderdetails.html";
         });
@@ -832,8 +847,8 @@ function invitedorders() {
 
         // sessionStorage.setItem("clickedorderid", value);
         // sessionStorage.setItem("seeorderbuttonvalue", "Accept");
-        sessionStorage.setCookie("clickedorderid", value, 7);
-        sessionStorage.setCookie("seeorderbuttonvalue", "Accept", 7);
+        sessionStorage.setCookie("clickedorderid", value);
+        sessionStorage.setCookie("seeorderbuttonvalue", "Accept");
 
         window.location.href = "/orderdetails.html";
       });
@@ -2337,8 +2352,8 @@ let acceptedjobs = () => {
 
       //   sessionStorage.setItem("clickedorderid", value);
       //   sessionStorage.setItem("seeorderbuttonvalue", "Terminate");
-      sessionStorage.setCookie("clickedorderid", value, 7);
-      sessionStorage.setCookie("seeorderbuttonvalue", "Terminate", 7);
+      sessionStorage.setCookie("clickedorderid", value);
+      sessionStorage.setCookie("seeorderbuttonvalue", "Terminate");
 
       window.location.href = "/orderdetails.html";
     });
@@ -3124,8 +3139,8 @@ let settingdata = () => {
     lastnameeee = last_name;
     // localStorage.setItem("pfname", first_name);
     // localStorage.setItem("psname", last_name);
-    setCookie("pfname", first_name, 7);
-    setCookie("psname", last_name, 7);
+    setCookie("pfname", first_name);
+    setCookie("psname", last_name);
     setprofile();
   });
 };
