@@ -33,7 +33,7 @@ f.then((res) => res.json())
     if (auth === "yes") {
       if (dashboard === "candidate") {
         window.location.href = "/workerdashboard.html";
-        console.log("This is the: ", dashboard);
+        
       } else {
         window.location.href = "/employerdashboard.html";
       }
@@ -90,7 +90,7 @@ form.addEventListener("submit", (e) => {
 
   f.then((res) => res.json())
     .then((d) => {
-      console.log("Response success: ", d);
+     
 
       const {verytype, usertype, userid, firstname, secondname} = d;
 
@@ -102,11 +102,11 @@ form.addEventListener("submit", (e) => {
                  new Date().getTime() + exdays * 1000 * 60 * 30
                ).toUTCString()}`
              : "";
-           console.log("expires: ", expires);
+          // console.log("expires: ", expires);
            document.cookie = `${cname}=${encodeURIComponent(
              cvalue
            )}; expires=${expires}; path=/ `;
-           console.log(document.cookie);
+          // console.log(document.cookie);
          }
 
         // Set Cookies
@@ -120,15 +120,15 @@ form.addEventListener("submit", (e) => {
         // localStorage.setItem("userloged", userid);
         // localStorage.setItem("usertype", usertype);
         if (usertype === "client") {
-          console.log("Yessssss client")
-         /* loader[0].classList.remove("addedloader");
+          
+         loader[0].classList.remove("addedloader");
           form.reset();
-          window.location.href = "././employerdashboard.html";*/
+          window.location.href = "././employerdashboard.html";
         } else if (usertype === "candidate") {
-          console.log("YESS employer")
-         /* loader[0].classList.remove("addedloader");
+          
+          loader[0].classList.remove("addedloader");
           form.reset();
-          window.location.href = "././workerdashboard.html";*/
+          window.location.href = "././workerdashboard.html";
         }
       } else {
         alert[0].style.display = "block";
