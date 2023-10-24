@@ -1,4 +1,4 @@
-const baseUrl = "http://127.0.0.1:3890";
+const baseUrl = "https://enkaare.onrender.com";
 // let formdata = new FormData();
 const options = {
   method: "POST",
@@ -67,8 +67,7 @@ function deleteCookie(name) {
     document.cookie = `${name}=; expires=${pastDate}; path=/`;
     console.log(`Deleted cookie: ${name}`);
   } catch (error) {
-    console.error(`Error deleting cookie: ${name}`, error);
-  }
+    console.error(`Error deleting cookie: ${name}`, error)
 }
 
 // https://1ed2-105-231-144-76.ngrok.io/api'
@@ -89,7 +88,7 @@ f.then((res) => res.json())
       deleteCookie("userloged");
       deleteCookie("pfname");
       deleteCookie("psname");
-      window.location.href = "/login.html";
+      window.location.href = "/Enkari/login.html";
     } else {
       //
     }

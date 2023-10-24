@@ -7,7 +7,7 @@ const options = {
 
   headers: {
     "Access-Control-Allow-Credentials": true,
-    "Access-Control-Allow-Origin": "http://127.0.0.1:5500",
+    "Access-Control-Allow-Origin": "https://enkaare.onrender.com",
     "Access-Control-Allow-Headers":
       "Origin, X-Requested-With, Content-Type, Accept, authorization",
     "Access-Control-Allow-Methods": "POST",
@@ -19,15 +19,15 @@ const options = {
 
 //https://half-geode-roundworm.glitch.me/api
 
-let f = fetch("http://127.0.0.1:3890/get", options).catch((err) => {
+let f = fetch("https://enkaare.onrender.com/get", options).catch((err) => {
   console.log("There is error fetching data: ", err);
 });
 
-loader[0].classList.add("addedloader");
+// loader[0].classList.add("addedloader");
 
 f.then((res) => res.json())
   .then((d) => {
-    loader[0].classList.remove("addedloader");
+    // loader[0].classList.remove("addedloader");
     const {auth, dashboard} = d;
 
     if (auth === "yes") {
@@ -70,7 +70,7 @@ form.addEventListener("submit", (e) => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "http://127.0.0.1:5500",
+      "Access-Control-Allow-Origin": "https://enkaare.onrender.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -85,8 +85,10 @@ form.addEventListener("submit", (e) => {
   //https://half-geode-roundworm.glitch.me/api
   //https://yielding-dented-amusement.glitch.me
 
-  let f = fetch("http://127.0.0.1:3890/login", options).catch((err) => {});
-  loader[0].classList.add("addedloader");
+  let f = fetch("https://enkaare.onrender.com/login", options).catch(
+    (err) => {}
+  );
+  // loader[0].classList.add("addedloader");
 
   f.then((res) => res.json())
     .then((d) => {
@@ -121,13 +123,15 @@ form.addEventListener("submit", (e) => {
         // localStorage.setItem("userloged", userid);
         // localStorage.setItem("usertype", usertype);
         if (usertype === "client") {
-          loader[0].classList.remove("addedloader");
+          console.log("Yessssss client");
+          /* loader[0].classList.remove("addedloader");
           form.reset();
-          window.location.href = "././employerdashboard.html";
+          window.location.href = "././employerdashboard.html";*/
         } else if (usertype === "candidate") {
-          loader[0].classList.remove("addedloader");
+          console.log("YESS employer");
+          /* loader[0].classList.remove("addedloader");
           form.reset();
-          window.location.href = "././workerdashboard.html";
+          window.location.href = "././workerdashboard.html";*/
         }
       } else {
         alert[0].style.display = "block";
