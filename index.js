@@ -59,7 +59,7 @@ app.use(
 app.use(
   cors({
     credentials: true,
-    origin: "http://127.0.0.1:5500",
+    origin: "https://enkaare.onrender.com",
   })
 );
 /*origin:'https://calm-gingersnap-fdb8ce.netlify.app'*/
@@ -97,6 +97,10 @@ const pool = createPool({
 // a variable to save a session
 
 // a variable to save a session
+
+// app.get("/", (req, res) => {
+//   res.redirect("index.html");
+// });
 
 app.post("/login", async (request, response) => {
   const {email, password, check} = request.body;
