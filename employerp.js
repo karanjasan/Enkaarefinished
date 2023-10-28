@@ -2,7 +2,7 @@ const baseUrl = "http://127.0.0.1:3890";
 // let formdata = new FormData();
 const options = {
   method: "POST",
-
+  
   headers: {
     "Access-Control-Allow-Credentials": true,
     "Access-Control-Allow-Origin": baseUrl,
@@ -354,7 +354,8 @@ let candidates = () => {
           let vr =
             profile.parentElement.firstElementChild.children[0].innerHTML;
 
-          sessionStorage.setItem("profileid", vr);
+          // sessionStorage.setItem("profileid", vr);
+          sessionStorage.setCookie("profileid", vr);
           window.location.href = "/candidateprofile.html";
         });
       }
