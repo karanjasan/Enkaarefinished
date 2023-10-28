@@ -57,9 +57,21 @@ const getCookie = (name) => {
   }
   return "";
 };
+console.log("This is the cookie: ", getCookie("pfname"));
 
 // Function to delete a cookie
 function deleteCookie(name) {
+<<<<<<< HEAD
+  // const domain = ".127.0.0.1:5500"; // Replace with your actual domain
+  const pastDate = new Date(0).toUTCString();
+  try {
+    document.cookie = `${name}=; expires=${pastDate}; path=/`;
+    console.log(`Deleted cookie: ${name}`);
+  } catch (error) {
+    console.error(`Error deleting cookie: ${name}`, error)
+}
+
+=======
   //  const domain = ".127.0.0.1:5501"; // Replace with your actual domain
     const pastDate = new Date(0).toUTCString();
     try {
@@ -71,6 +83,7 @@ function deleteCookie(name) {
   
   
   }
+>>>>>>> origin/dev
 // https://1ed2-105-231-144-76.ngrok.io/api'
 
 //https://half-geode-roundworm.glitch.me/api
@@ -1877,7 +1890,8 @@ let notiload = () => {
 
 let orderdetails = (order_id) => {
   let loader = document.getElementsByClassName("loader");
-  let jbid = sessionStorage.getItem("clickedorderid");
+  //   let jbid = sessionStorage.getItem("clickedorderid");
+  let jbid = getCookie("clickedorderid");
 
   let jobtitle = document.getElementById("odh6");
   let name = document.getElementById("odp");

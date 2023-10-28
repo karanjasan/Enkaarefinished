@@ -1,40 +1,79 @@
+const baseUrl = "http://127.0.0.1:3890";
+// let formdata = new FormData();
 const options = {
   method: "POST",
 
   headers: {
-    headers: {
-      "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
-      "Access-Control-Allow-Headers":
-        "Origin, X-Requested-With, Content-Type, Accept, authorization",
-      "Access-Control-Allow-Methods": "POST",
-      withCredentials: true,
-    },
-    credentials: "include",
-
+    "Access-Control-Allow-Credentials": true,
+    "Access-Control-Allow-Origin": baseUrl,
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept, authorization",
+    "Access-Control-Allow-Methods": "POST",
     withCredentials: true,
   },
   credentials: "include",
 };
+
+
+// Function to set a subdomain cookie
+function setCookie(cname, cvalue, exdays = null) {
+  let expires = exdays
+    ? `expires=${new Date(
+        new Date().getTime() + exdays * 24 * 60 * 60 * 1000
+      ).toUTCString()}`
+    : "";
+  document.cookie = `${cname}=${encodeURIComponent(
+    cvalue
+  )}; ${expires}; path=/`;
+}
+
+// Function to retrieve a cookie value
+const getCookie = (name) => {
+  const cookieName = `${name}=`;
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookieArray = decodedCookie.split(";");
+  for (let i = 0; i < cookieArray.length; i++) {
+    let cookie = cookieArray[i];
+    while (cookie.charAt(0) === " ") {
+      cookie = cookie.substring(1);
+    }
+    if (cookie.indexOf(cookieName) === 0) {
+      return cookie.substring(cookieName.length, cookie.length);
+    }
+  }
+  return "";
+};
+
+// Function to delete a cookie
+function deleteCookie(name) {
+  const domain = ".127.0.0.1:5500"; // Replace with your actual domain
+  const pastDate = new Date(0).toUTCString();
+  try {
+    document.cookie = `${name}=; expires=${pastDate}; path=/; domain=${domain}`;
+    console.log(`Deleted cookie: ${name}`);
+  } catch (error) {
+    console.error(`Error deleting cookie: ${name}`, error);
+  }
+}
 // https://1ed2-105-231-144-76.ngrok.io/api'
 
 //https://half-geode-roundworm.glitch.me/api
 
-let fetchSession = fetch(
-  "https://yielding-dented-amusement.glitch.me/session",
-  options
-).catch((err) => {
-  console.log("There is an error fetching session: " + err);
+let fetchSessions = fetch(`${baseUrl}/session`, options).catch((err) => {
+  console.log("There is an error fetching sessions", err);
 });
 
-fetchSession
+fetchSessions
   .then((res) => res.json())
   .then((d) => {
     const {auth} = d;
     if (auth === "no") {
-      localStorage.removeItem("userloged");
-      localStorage.removeItem("pfname");
-      localStorage.removeItem("psname");
+      //   localStorage.removeItem("userloged");
+      //   localStorage.removeItem("pfname");
+      //   localStorage.removeItem("psname");
+      deleteCookie("userloged");
+      deleteCookie("pfname");
+      deleteCookie("psname");
       window.location.href = "/login.html";
     } else {
     }
@@ -44,46 +83,28 @@ fetchSession
     if (err) {
       // yes();
       //  alert("Not sent.........the server is down!");
-      console.log("The server is down: " + err);
     } else {
     }
   });
 
 let logout = () => {
-  const options = {
-    method: "POST",
-
-    headers: {
-      "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
-      "Access-Control-Allow-Headers":
-        "Origin, X-Requested-With, Content-Type, Accept, authorization",
-      "Access-Control-Allow-Methods": "POST",
-      withCredentials: true,
-    },
-
-    credentials: "include",
-  };
-
   // https://1ed2-105-231-144-76.ngrok.io/api'
 
   //https://half-geode-roundworm.glitch.me/api
 
-  let fetchLogout = fetch(
-    "https://yielding-dented-amusement.glitch.me/logout",
-    options
-  ).catch((err) => {});
-  fetchLogout
-    .then((res) => res.json())
-    .then((d) => {
-      const {okay} = d;
-      if (okay) {
-        localStorage.removeItem("userloged");
-        localStorage.removeItem("pfname");
-        localStorage.removeItem("psname");
-        window.location.href = "/login.html";
-      }
-    });
+  let f = fetch(`${baseUrl}/logout`, options).catch((err) => {});
+  f.then((res) => res.json()).then((d) => {
+    const {okay} = d;
+    if (okay) {
+      //   localStorage.removeItem("userloged");
+      //   localStorage.removeItem("pfname");
+      //   localStorage.removeItem("psname");
+      deleteCookie("userloged");
+      deleteCookie("pfname");
+      deleteCookie("psname");
+      window.location.href = "/login.html";
+    }
+  });
 };
 
 let navmenu = () => {
@@ -97,19 +118,21 @@ let navmenu = () => {
 
 let setprofile = () => {
   let namediv = document.getElementById("ppname");
-  let firstnmae = localStorage.getItem("pfname");
-  let secname = localStorage.getItem("psname");
-
+  //   let firstnmae = localStorage.getItem("pfname");
+  //   let secname = localStorage.getItem("psname");
+  let firstnmae = getCookie("pfname");
+  let secname = getCookie("psname");
   namediv.innerHTML = firstnmae + "  " + secname.slice(0, 1);
 
   /*infomation for profile picture notificaations and messanges*/
 
-  let userd = localStorage.getItem("userloged");
+  //   let userd = localStorage.getItem("userloged");
+  let userd = getCookie("userloged");
 
   let formdata = new FormData();
   formdata.append("userid", userd);
 
-  const options = {
+  const optionWithFormData = {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
@@ -120,17 +143,17 @@ let setprofile = () => {
       withCredentials: true,
     },
     credentials: "include",
-
     body: formdata,
   };
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/enotimessprofile",
-    options
+  let fetchProfile = fetch(
+    `${baseUrl}/enotimessprofile`,
+    optionWithFormData
   ).catch((err) => {
     console.log(err);
   });
-  f.then((res) => res.json())
+  fetchProfile
+    .then((res) => res.json())
     .then((d) => {
       if (d[0].file === "noprofile") {
       } else {
@@ -150,7 +173,8 @@ let darray;
 let inviteclickedpid;
 
 let candidates = () => {
-  let userid = localStorage.getItem("userloged");
+  //   let userid = localStorage.getItem("userloged");
+  let userd = getCookie("userloged");
 
   let formdata = new FormData();
 
@@ -171,14 +195,14 @@ let candidates = () => {
     body: formdata,
   };
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/allcandidates",
-    options
-  ).catch((err) => {
-    console.log(err);
-  });
+  let fetchAllCandidates = fetch(`${baseUrl}/allcandidates`, options).catch(
+    (err) => {
+      console.log(err);
+    }
+  );
 
-  f.then((res) => res.json())
+  fetchAllCandidates
+    .then((res) => res.json())
     .then((d) => {
       for (let i = 0; i < d.length; i++) {
         if ((profileimage = d[i].profile_picture === "default")) {
@@ -344,7 +368,8 @@ let candidates = () => {
         jobinvitbtclicked.addEventListener("click", (e) => {
           let invitesec = document.getElementsByClassName("invitesec");
           invitesec[0].classList.add("addedinvitesec");
-          let userdi = localStorage.getItem("userloged");
+          //   let userdi = localStorage.getItem("userloged");
+          let userdi = getCookie("userloged");
 
           let clickedprofileid =
             jobinvitbtclicked.parentElement.parentElement.firstElementChild
@@ -381,61 +406,63 @@ let candidates = () => {
             body: getformdata,
           };
           inloader.style.display = "flex";
-          let f = fetch(
-            "https://yielding-dented-amusement.glitch.me/getinvitejobs",
+          let fetchInviteJobs = fetch(
+            `${baseUrl}/getinvitejobs`,
             options1
           ).catch((err) => {
             console.log(err);
           });
 
-          f.then((res) => res.json()).then((d) => {
-            inloader.style.display = "none";
-            const {already, noposted} = d;
+          fetchInviteJobs
+            .then((res) => res.json())
+            .then((d) => {
+              inloader.style.display = "none";
+              const {already, noposted} = d;
 
-            darray = d;
+              darray = d;
 
-            if (noposted) {
-              const label = document.createElement("div");
-              label.innerHTML = `
+              if (noposted) {
+                const label = document.createElement("div");
+                label.innerHTML = `
                     <div class="oops-container">
                     <div class="oops-icon">&#128543;</div>
                     <div class="oops-message">Oops! Something Went Wrong</div>
                     <div class="oops-description">"It seems you haven't posted any jobs yet, or this candidate has already applied to all of your job posts."</div>
                 </div>`;
 
-              answerOptionsElement.appendChild(label);
-              submitBtn.style.display = "none";
-              questionElement.textContent = "";
-            } else if (already) {
-              const label = document.createElement("div");
-              label.innerHTML = `  <div class="oops-container">
+                answerOptionsElement.appendChild(label);
+                submitBtn.style.display = "none";
+                questionElement.textContent = "";
+              } else if (already) {
+                const label = document.createElement("div");
+                label.innerHTML = `  <div class="oops-container">
                     <div class="oops-icon">&#128543;</div>
                     <div class="oops-message">Oops! Something Went Wrong</div>
                     <div class="oops-description">It seems this candidate has been invited in all your posted jobs!</div>
                 </div>`;
 
-              answerOptionsElement.appendChild(label);
-              submitBtn.style.display = "none";
-              questionElement.textContent = "";
-            } else {
-              console.log(d);
-
-              let allj = [];
-              for (let i = 0; i < d.length; i++) {
-                allj.push(d[i].job_title);
-              }
-              const answers = allj;
-              questionElement.textContent = question;
-
-              answers.forEach((answer, index) => {
-                const label = document.createElement("label");
-                label.innerHTML = `<input oninput="inviteundo()" type="radio" name="answer" value="${answer}"> ${answer}<br>`;
-
                 answerOptionsElement.appendChild(label);
-                submitBtn.style.display = "block";
-              });
-            }
-          });
+                submitBtn.style.display = "none";
+                questionElement.textContent = "";
+              } else {
+                console.log(d);
+
+                let allj = [];
+                for (let i = 0; i < d.length; i++) {
+                  allj.push(d[i].job_title);
+                }
+                const answers = allj;
+                questionElement.textContent = question;
+
+                answers.forEach((answer, index) => {
+                  const label = document.createElement("label");
+                  label.innerHTML = `<input oninput="inviteundo()" type="radio" name="answer" value="${answer}"> ${answer}<br>`;
+
+                  answerOptionsElement.appendChild(label);
+                  submitBtn.style.display = "block";
+                });
+              }
+            });
           /*
          
           */
@@ -448,13 +475,14 @@ let candidates = () => {
 };
 
 let checkempcomplete = () => {
-  let user_id = localStorage.getItem("userloged");
+  //   let user_id = localStorage.getItem("userloged");
+  let user_id = getCookie("userloged");
 
   let formdata = new FormData();
 
   formdata.append("user_id", user_id);
 
-  const options = {
+  const optionWithFormData = {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
@@ -469,26 +497,30 @@ let checkempcomplete = () => {
     body: formdata,
   };
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/checkepcomplete",
-    options
+  let fetchCheckComplete = fetch(
+    `${baseUrl}/checkepcomplete`,
+    optionWithFormData
   ).catch((err) => {
     console.log(err);
   });
 
-  f.then((res) => res.json()).then((d) => {
-    const {nocomplete} = d;
-    if (nocomplete) {
-      sessionStorage.setItem("employercomplete", "no");
-      setTimeout(() => {
-        document
-          .getElementsByClassName("incompleteprofile")[0]
-          .classList.add("adddincompleteprofile");
-      }, 700);
-    } else {
-      sessionStorage.setItem("employercomplete", "yes");
-    }
-  });
+  fetchCheckComplete
+    .then((res) => res.json())
+    .then((d) => {
+      const {nocomplete} = d;
+      if (nocomplete) {
+        // sessionStorage.setItem("employercomplete", "no");
+        sessionStorage.setCookie("employercomplete", "no");
+        setTimeout(() => {
+          document
+            .getElementsByClassName("incompleteprofile")[0]
+            .classList.add("adddincompleteprofile");
+        }, 700);
+      } else {
+        // sessionStorage.setItem("employercomplete", "yes");
+        sessionStorage.setCookie("employercomplete", "yes");
+      }
+    });
 };
 
 let checkempcompletecancel = () => {
@@ -528,7 +560,7 @@ function invitesubmit() {
       darray[findIndexByValue(darray, selectedvalue)].job_id
     );
 
-    const options = {
+    const optionWithFormData = {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
@@ -543,14 +575,15 @@ function invitesubmit() {
       body: fdata,
     };
 
-    let f = fetch(
-      "https://yielding-dented-amusement.glitch.me/sendinvite",
-      options
+    let fetchSendInvite = fetch(
+      `${baseUrl}/sendinvite`,
+      optionWithFormData
     ).catch((err) => {
       console.log(err);
     });
 
-    f.then((res) => res.json())
+    fetchSendInvite
+      .then((res) => res.json())
       .then((d) => {
         const {affectedRows} = d;
         if (affectedRows) {
@@ -599,12 +632,13 @@ let hidepoptions = () => {
 let eprofload = () => {
   let loader = document.getElementsByClassName("loader");
 
-  let theid = localStorage.getItem("userloged");
+  //   let theid = localStorage.getItem("userloged");
+  let theid = getCookie("userloged");
   let formdata = new FormData();
 
   formdata.append("user_id", theid);
 
-  const options = {
+  const optionWithFormData = {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
@@ -619,86 +653,89 @@ let eprofload = () => {
     body: formdata,
   };
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/eprofiledata",
-    options
+  let fetchProfileData = fetch(
+    `${baseUrl}/eprofiledata`,
+    optionWithFormData
   ).catch((err) => {
     console.log(err);
   });
   loader[0].classList.add("addedloader");
 
-  f.then((res) => res.json()).then((d) => {
-    const {user_id, city, first_name, last_name, country, no_complete} = d[1];
-    /* loader1[0].classList.remove("addedloader1");*/
+  fetchProfileData
+    .then((res) => res.json())
+    .then((d) => {
+      const {user_id, city, first_name, last_name, country, no_complete} = d[1];
+      /* loader1[0].classList.remove("addedloader1");*/
 
-    if (no_complete) {
-      try {
-        if (d[0].file === "noprofilepic") {
-        } else {
-          const imageex = "data:image/png;base64,";
-          let ppimage = document.getElementsByClassName("epprof");
-          ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
+      if (no_complete) {
+        try {
+          if (d[0].file === "noprofilepic") {
+          } else {
+            const imageex = "data:image/png;base64,";
+            let ppimage = document.getElementsByClassName("epprof");
+            ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
+          }
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
-      }
-      let firstname = document.getElementById("epfirstname");
-      let secondname = document.getElementById("epsecondname");
+        let firstname = document.getElementById("epfirstname");
+        let secondname = document.getElementById("epsecondname");
 
-      let country1 = document.getElementById("estate");
+        let country1 = document.getElementById("estate");
 
-      let city1 = document.getElementById("ecity1");
+        let city1 = document.getElementById("ecity1");
 
-      firstname.innerHTML = first_name;
-      secondname.innerHTML = last_name;
-      city1.innerHTML = "";
+        firstname.innerHTML = first_name;
+        secondname.innerHTML = last_name;
+        city1.innerHTML = "";
 
-      country1.innerHTML = country;
+        country1.innerHTML = country;
 
-      loader[0].classList.remove("addedloader");
-    } else {
-      try {
-        if (d[0].file === "noprofilepic") {
-        } else {
-          const imageex = "data:image/png;base64,";
-          let ppimage = document.getElementsByClassName("epprof");
-          ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
+        loader[0].classList.remove("addedloader");
+      } else {
+        try {
+          if (d[0].file === "noprofilepic") {
+          } else {
+            const imageex = "data:image/png;base64,";
+            let ppimage = document.getElementsByClassName("epprof");
+            ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
+          }
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
+
+        let firstname = document.getElementById("epfirstname");
+        let secondname = document.getElementById("epsecondname");
+        let department = document.getElementById("newdeppart");
+
+        let city = document.getElementById("ecity1");
+
+        let country = document.getElementById("estate");
+        let summary = document.getElementById("epsp");
+        let companyname = document.getElementById("epp");
+
+        firstname.innerHTML = d[1].first_name;
+        secondname.innerHTML = d[1].last_name;
+        department.innerHTML = d[1].department;
+
+        city.innerHTML = d[1].city;
+        country.innerHTML = d[1].country;
+
+        summary.innerHTML = d[1].company_summary;
+        companyname.innerHTML = d[1].company_name;
+
+        loader[0].classList.remove("addedloader");
       }
-
-      let firstname = document.getElementById("epfirstname");
-      let secondname = document.getElementById("epsecondname");
-      let department = document.getElementById("newdeppart");
-
-      let city = document.getElementById("ecity1");
-
-      let country = document.getElementById("estate");
-      let summary = document.getElementById("epsp");
-      let companyname = document.getElementById("epp");
-
-      firstname.innerHTML = d[1].first_name;
-      secondname.innerHTML = d[1].last_name;
-      department.innerHTML = d[1].department;
-
-      city.innerHTML = d[1].city;
-      country.innerHTML = d[1].country;
-
-      summary.innerHTML = d[1].company_summary;
-      companyname.innerHTML = d[1].company_name;
-
-      loader[0].classList.remove("addedloader");
-    }
-  });
-  let jf = fetch(
-    "https://yielding-dented-amusement.glitch.me/jprofilejobs",
-    options
+    });
+  let fetchJobProfile = fetch(
+    `${baseUrl}/jprofilejobs`,
+    optionWithFormData
   ).catch((err) => {
     console.log(err);
   });
 
-  jf.then((res) => res.json())
+  fetchJobProfile
+    .then((res) => res.json())
     .then((d) => {
       document.querySelector("#numberjobs").innerHTML = d.length;
       if (d.length > 1) {
@@ -789,8 +826,10 @@ let eprofload = () => {
     while (n--) {
       dataarr[n] = todString.charCodeAt(n);
     }
-    let useid = localStorage.getItem("userloged");
-    let firstname = localStorage.getItem("pfname");
+    // let useid = localStorage.getItem("userloged");
+    // let firstname = localStorage.getItem("pfname");
+    let useid = getCookie("userloged");
+    let firstname = getCookie("pfname");
 
     let file = new File([dataarr], firstname + useid + ".png", {type: name});
 
@@ -798,7 +837,7 @@ let eprofload = () => {
     formdata.append("file", file);
     formdata.append("user_id", useid);
 
-    const options = {
+    const optionWithFormData = {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
@@ -813,23 +852,24 @@ let eprofload = () => {
       body: formdata,
     };
 
-    let f = fetch(
-      "https://yielding-dented-amusement.glitch.me/eimageupload",
-      options
-    ).catch((err) => {
-      console.log(err);
-    });
+    let fetchImage = fetch(`${baseUrl}/eimageupload`, optionWithFormData).catch(
+      (err) => {
+        console.log(err);
+      }
+    );
 
-    f.then((res) => res.json()).then((d) => {
-      const {file} = d;
+    fetchImage
+      .then((res) => res.json())
+      .then((d) => {
+        const {file} = d;
 
-      let datatype = "data:image/png;base64,";
-      let imageurl = datatype + file;
+        let datatype = "data:image/png;base64,";
+        let imageurl = datatype + file;
 
-      document.getElementsByClassName(
-        "wrapper"
-      )[0].style.backgroundImage = `url(${imageurl})`;
-    });
+        document.getElementsByClassName(
+          "wrapper"
+        )[0].style.backgroundImage = `url(${imageurl})`;
+      });
     //here is where you will upload your profile picture
   };
 
@@ -858,7 +898,8 @@ let eprofload = () => {
       });
     } else {
       let formdata = new FormData();
-      let id = localStorage.getItem("userloged");
+      //   let id = localStorage.getItem("userloged");
+      let id = getCookie("userloged");
       formdata.append("user_id", id);
       formdata.append("firstname", fname.value);
       formdata.append("secondname", lnamme.value);
@@ -868,7 +909,7 @@ let eprofload = () => {
       formdata.append("companysumm", companysummary.value);
       formdata.append("city", city.value);
 
-      const options = {
+      const optionWithFormData = {
         method: "POST",
         headers: {
           "Access-Control-Allow-Credentials": true,
@@ -883,15 +924,16 @@ let eprofload = () => {
         body: formdata,
       };
 
-      let f = fetch(
-        "https://yielding-dented-amusement.glitch.me/editep",
-        options
+      let fetchEdit = fetch(
+        `${baseUrl}/editep`,
+        optionWithFormData
       ).catch((err) => {
         console.log(err);
       });
       loader1.style.display = "flex";
 
-      f.then((res) => res.json())
+      fetchEdit
+        .then((res) => res.json())
         .then((d) => {
           const {sucess} = d;
           if (sucess) {
@@ -914,12 +956,13 @@ let profileeditbutton = () => {
   let editpage = document.getElementsByClassName("profileedit");
 
   editpage[0].classList.add("addedprofileedit");
-  let theid = localStorage.getItem("userloged");
+  //   let theid = localStorage.getItem("userloged");
+  let theid = getCookie("userloged");
   let formdata = new FormData();
 
   formdata.append("user_id", theid);
 
-  const options = {
+  const optionWithFormData = {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
@@ -934,61 +977,63 @@ let profileeditbutton = () => {
     body: formdata,
   };
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/geteeditdata",
-    options
+  let fetchEditedData = fetch(
+    `${baseUrl}/geteeditdata`,
+    optionWithFormData
   ).catch((err) => {
     console.log(err);
   });
 
-  f.then((res) => res.json()).then((d) => {
-    const {user_id, first_name, last_name, country, no_complete} = d[1];
-    loader1.style.display = "none";
-    console.log(d);
+  fetchEditedData
+    .then((res) => res.json())
+    .then((d) => {
+      const {user_id, first_name, last_name, country, no_complete} = d[1];
+      loader1.style.display = "none";
+      console.log(d);
 
-    if (no_complete) {
-      if (d[0].file === "noprofilepic") {
+      if (no_complete) {
+        if (d[0].file === "noprofilepic") {
+        } else {
+          const imageex = "data:image/png;base64,";
+          let ppimage = document.getElementsByClassName("wrapper");
+          ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
+        }
+
+        let fname = document.getElementById("efirstname");
+        let lnamme = document.getElementById("esecondname");
+        let countr = document.getElementById("ecountry");
+
+        fname.value = first_name;
+        lnamme.value = last_name;
+        countr.value = country;
       } else {
-        const imageex = "data:image/png;base64,";
-        let ppimage = document.getElementsByClassName("wrapper");
-        ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
+        if (d[0].file === "noprofilepic") {
+        } else {
+          const imageex = "data:image/png;base64,";
+          let ppimage = document.getElementsByClassName("wrapper");
+          ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
+        }
+
+        let fname = document.getElementById("efirstname");
+        let lnamme = document.getElementById("esecondname");
+        let ptitle = document.getElementById("etitle");
+        let countr = document.getElementById("ecountry");
+        let ecity = document.getElementById("ecity");
+        let companyname = document.getElementById("ecompanyname");
+
+        let achive = document.getElementById("eabout");
+
+        fname.value = d[1].first_name;
+        lnamme.value = d[1].last_name;
+        ptitle.value = d[1].department;
+
+        countr.value = d[1].country;
+        ecity.value = d[1].city;
+
+        achive.value = d[1].company_summary;
+        companyname.value = d[1].company_name;
       }
-
-      let fname = document.getElementById("efirstname");
-      let lnamme = document.getElementById("esecondname");
-      let countr = document.getElementById("ecountry");
-
-      fname.value = first_name;
-      lnamme.value = last_name;
-      countr.value = country;
-    } else {
-      if (d[0].file === "noprofilepic") {
-      } else {
-        const imageex = "data:image/png;base64,";
-        let ppimage = document.getElementsByClassName("wrapper");
-        ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
-      }
-
-      let fname = document.getElementById("efirstname");
-      let lnamme = document.getElementById("esecondname");
-      let ptitle = document.getElementById("etitle");
-      let countr = document.getElementById("ecountry");
-      let ecity = document.getElementById("ecity");
-      let companyname = document.getElementById("ecompanyname");
-
-      let achive = document.getElementById("eabout");
-
-      fname.value = d[1].first_name;
-      lnamme.value = d[1].last_name;
-      ptitle.value = d[1].department;
-
-      countr.value = d[1].country;
-      ecity.value = d[1].city;
-
-      achive.value = d[1].company_summary;
-      companyname.value = d[1].company_name;
-    }
-  });
+    });
 };
 
 let profileeditcancel = () => {
@@ -1326,7 +1371,8 @@ let notiload = () => {
 /*ORDERS DETAILS START HERE*/
 
 let orderdetails = () => {
-  let jbid = sessionStorage.getItem("jobpostid");
+  //   let jbid = sessionStorage.getItem("jobpostid");
+  let jbid = getCookie("clickedorderid");
   let loader = document.getElementsByClassName("loader");
 
   let jobtitle = document.getElementById("odh2");
@@ -1345,7 +1391,7 @@ let orderdetails = () => {
   const formdata = new FormData();
   formdata.append("job_id", jbid);
   formdata.append("type", "or");
-  const options = {
+  const optionWithFormData = {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
@@ -1363,13 +1409,13 @@ let orderdetails = () => {
 
   //https://half-geode-roundworm.glitch.me/api
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/sedetails",
-    options
-  ).catch((err) => {});
+  let fetchDetails = fetch(`${baseUrl}/sedetails`, optionWithFormData).catch(
+    (err) => {}
+  );
   loader[0].classList.add("addedloader");
 
-  f.then((res) => res.json())
+  fetchDetails
+    .then((res) => res.json())
     .then((d) => {
       let orderarray = d;
 
@@ -1420,10 +1466,7 @@ let orderdetails = () => {
 
   //https://half-geode-roundworm.glitch.me/api
 
-  let sf = fetch(
-    "https://yielding-dented-amusement.glitch.me/sedetails",
-    soptions
-  ).catch((err) => {});
+  let sf = fetch(`${baseUrl}/sedetails`, soptions).catch((err) => {});
   sf.then((res) => res.json()).then((d) => {
     let skillsarray = d;
     for (values in skillsarray[0]) {
@@ -1478,7 +1521,8 @@ for(let i=0;i<buttonclicked.length;i++){
 }*/
 
 let seeorder = () => {
-  let v = sessionStorage.getItem("id");
+  //   let v = sessionStorage.getItem("id");
+  let v = getCookie("id");
   orderdetails(0);
 };
 
@@ -1576,8 +1620,10 @@ let myapporders = () => {
       let value =
         varbutton.parentElement.parentElement.firstElementChild.innerHTML;
 
-      sessionStorage.setItem("id", value);
-      sessionStorage.setItem("value", "Cancel");
+      //   sessionStorage.setItem("id", value);
+      setCookie("id", value);
+      //   sessionStorage.setItem("value", "Cancel");
+      setCookie("value", "Cancel");
 
       window.location.href = "/emp-orderdetails.html";
     });
@@ -1607,8 +1653,10 @@ let active = () => {
   closed.style.borderBottom = "3px solid transparent";
 
   const formdata = new FormData();
-  let posterid = localStorage.getItem("userloged");
-  let firstnmae = localStorage.getItem("pfname");
+  //   let posterid = localStorage.getItem("userloged");
+  //   let firstnmae = localStorage.getItem("pfname");
+  let posterid = getCookie("userloged");
+  let firstnmae = getCookie("pfname");
 
   formdata.append("orderid", posterid);
   formdata.append("firstname", firstnmae);
@@ -1633,7 +1681,7 @@ let active = () => {
   //https://half-geode-roundworm.glitch.me/api
 
   let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/mjpost",
+    `${baseUrl}/mjpost`,
     options
   ).catch((err) => {});
   loader[0].classList.add("addedloader");
@@ -1726,7 +1774,8 @@ let active = () => {
               clickedjobpost.parentElement.children[0].children[0].children[1]
                 .innerHTML;
 
-            sessionStorage.setItem("jobpostid", jobpostid);
+            // sessionStorage.setItem("jobpostid", jobpostid);
+            setCookie("jobpostid", jobpostid);
             window.location.href = "/vieworderbids.html";
           });
         }
@@ -1829,7 +1878,8 @@ let drafts = () => {
         clickedjobpost.parentElement.children[0].children[0].children[1]
           .innerHTML;
 
-      sessionStorage.setItem("jobpostid", jobpostid);
+      //   sessionStorage.setItem("jobpostid", jobpostid);
+      setCookie("jobpostid", jobpostid);
       window.location.href = "/vieworderbids.html";
     });
   }
@@ -1952,7 +2002,8 @@ let viewjobsapplications = () => {
   let applicationssum = document.getElementById("numberofapp");
   let daysremaining = document.getElementById("daysremaining");
 
-  let jbid = sessionStorage.getItem("jobpostid");
+//   let jbid = sessionStorage.getItem("jobpostid");
+  let jbid = getCookie("jobpostid");
 
   jbappid.innerHTML = jbid;
 
@@ -1981,7 +2032,7 @@ let viewjobsapplications = () => {
   //https://half-geode-roundworm.glitch.me/api
 
   let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/mjpost",
+    `${baseUrl}/mjpost`,
     options
   ).catch((err) => {});
 
@@ -2021,7 +2072,8 @@ let viewallaplicants = () => {
   shortlist.style.borderBottom = "3px solid transparent";
   invites.style.borderBottom = "3px solid transparent";
 
-  let jbid = sessionStorage.getItem("jobpostid");
+//   let jbid = sessionStorage.getItem("jobpostid");
+  let jbid = getCookie("jobpostid");
 
   const formdata = new FormData();
   formdata.append("job_id", jbid);
@@ -2046,7 +2098,7 @@ let viewallaplicants = () => {
   //https://half-geode-roundworm.glitch.me/api
 
   let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/viewbids",
+    `${baseUrl}/viewbids`,
     options
   ).catch((err) => {});
   loader[0].classList.add("addedloader");
@@ -2280,7 +2332,8 @@ let viewallaplicants = () => {
       profile.addEventListener("click", (e) => {
         let vr = profile.parentElement.firstElementChild.children[0].innerHTML;
 
-        sessionStorage.setItem("profileid", vr);
+        // sessionStorage.setItem("profileid", vr);
+        setCookie("profileid", vr);
         window.location.href = "/candidateprofile.html";
       });
     }
@@ -2295,7 +2348,8 @@ let viewallaplicants = () => {
 
         let bclicked = addtoshortlist.children[1].innerHTML;
         if (bclicked === "Add to Shortlist") {
-          let jbid = sessionStorage.getItem("jobpostid");
+        //   let jbid = sessionStorage.getItem("jobpostid");
+          let jbid = getCookie("jobpostid");
 
           const formdata = new FormData();
           formdata.append("job_id", jbid);
@@ -2320,7 +2374,7 @@ let viewallaplicants = () => {
           //https://half-geode-roundworm.glitch.me/api
 
           let f = fetch(
-            "https://yielding-dented-amusement.glitch.me/addshortlist",
+            `${baseUrl}/addshortlist`,
             options
           ).catch((err) => {});
           loader[0].classList.add("addedloader");
@@ -2351,11 +2405,13 @@ let viewallaplicants = () => {
           clickedB.parentElement.parentElement.parentElement.parentElement
             .firstElementChild.innerHTML;
 
-        let jbid = sessionStorage.getItem("jobpostid");
+        // let jbid = sessionStorage.getItem("jobpostid");
+           let jbid = getCookie("jobpostid");
         const formdata = new FormData();
 
         formdata.append("user_id", cid);
-        formdata.append("employer_id", localStorage.getItem("userloged"));
+        // formdata.append("employer_id", localStorage.getItem("userloged"));
+        formdata.append("employer_id", getCookie("userloged"));
         formdata.append("job_id", jbid);
 
         const options = {
@@ -2377,7 +2433,7 @@ let viewallaplicants = () => {
         //https://half-geode-roundworm.glitch.me/api
 
         let f = fetch(
-          "https://yielding-dented-amusement.glitch.me/requistinterview",
+          `${baseUrl}/requistinterview`,
           options
         ).catch((err) => {});
         loader[0].classList.add("addedloader");
@@ -2399,7 +2455,8 @@ let viewallaplicants = () => {
               mess.innerHTML =
                 "Oops! Add more interview slots to be able to invite this candidate.";
             } else if (res === 1) {
-              let jbid = sessionStorage.getItem("jobpostid");
+            //   let jbid = sessionStorage.getItem("jobpostid");
+              let jbid = getCookie("jobpostid");
 
               const formdata = new FormData();
               formdata.append("job_id", jbid);
@@ -2424,7 +2481,7 @@ let viewallaplicants = () => {
               //https://half-geode-roundworm.glitch.me/api
 
               let f = fetch(
-                "https://yielding-dented-amusement.glitch.me/addshortlist",
+                `${baseUrl}/addshortlist`,
                 options
               ).catch((err) => {});
               loader[0].classList.add("addedloader");
@@ -2464,7 +2521,8 @@ let shortlist = () => {
   shortlist.style.borderBottom = "3px solid hsl(188,47%,20%)";
   invites.style.borderBottom = "3px solid transparent";
 
-  let jbid = sessionStorage.getItem("jobpostid");
+//   let jbid = sessionStorage.getItem("jobpostid");
+  let jbid = getCookie("jobpostid");
 
   const formdata = new FormData();
   formdata.append("job_id", jbid);
@@ -2489,7 +2547,7 @@ let shortlist = () => {
   //https://half-geode-roundworm.glitch.me/api
 
   let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/shortlist",
+    `${baseUrl}/shortlist`,
     options
   ).catch((err) => {});
   loader[0].classList.add("addedloader");
@@ -2824,7 +2882,6 @@ let shortlist = () => {
           styled.style.display = "block";
         }
       }
-
       //here is the code for view  profile clicked by from candidates side
       let profileclicked = document.getElementsByClassName("divprfshow");
       for (let i = 0; i < profileclicked.length; i++) {
@@ -2833,7 +2890,8 @@ let shortlist = () => {
           let vr =
             profile.parentElement.firstElementChild.children[0].innerHTML;
 
-          sessionStorage.setItem("profileid", vr);
+          //   sessionStorage.setItem("profileid", vr);
+          setCookie("profileid", vr);
           window.location.href = "/candidateprofile.html";
         });
       }
@@ -2850,40 +2908,11 @@ let shortlist = () => {
 
           let bclicked = addtoshortlist.children[1].innerHTML;
           if (bclicked === "Remove") {
-            let jbid = sessionStorage.getItem("jobpostid");
+            // let jbid = sessionStorage.getItem("jobpostid");
+             let jbid = getCookie("jobpostid");
 
             const formdata = new FormData();
-            formdata.append("job_id", jbid);
-            formdata.append("user_id", value);
-
-            const options = {
-              method: "POST",
-              headers: {
-                "Access-Control-Allow-Credentials": true,
-                "Access-Control-Allow-Origin": "https://www.enkaare.com",
-                "Access-Control-Allow-Headers":
-                  "Origin, X-Requested-With, Content-Type, Accept, authorization",
-                "Access-Control-Allow-Methods": "POST",
-                withCredentials: true,
-              },
-              credentials: "include",
-
-              body: formdata,
-            };
-            // https://1ed2-105-231-144-76.ngrok.io/api'
-
-            //https://half-geode-roundworm.glitch.me/api
-
-            let f = fetch(
-              "https://yielding-dented-amusement.glitch.me/removeshortlist",
-              options
-            ).catch((err) => {});
-            loader[0].classList.add("addedloader");
-            f.then((res) => res.json()).then((d) => {
-              console.log(d);
-              loader[0].classList.remove("addedloader");
-              window.location.reload();
-            });
+            
           } else {
           }
         });
@@ -2900,11 +2929,13 @@ let shortlist = () => {
             clickedB.parentElement.parentElement.parentElement.parentElement
               .firstElementChild.innerHTML;
 
-          let jbid = sessionStorage.getItem("jobpostid");
+        //   let jbid = sessionStorage.getItem("jobpostid");
+           let jbid = getCookie("jobpostid");
           const formdata = new FormData();
 
           formdata.append("user_id", cid);
-          formdata.append("employer_id", localStorage.getItem("userloged"));
+        //   formdata.append("employer_id", localStorage.getItem("userloged"));
+        formdata.append("employer_id", getCookie("userloged"));
           formdata.append("job_id", jbid);
 
           const options = {
@@ -2917,7 +2948,7 @@ let shortlist = () => {
           //https://half-geode-roundworm.glitch.me/api
 
           let f = fetch(
-            "https://yielding-dented-amusement.glitch.me/requistinterview",
+            `${baseUrl}/requistinterview`,
             options
           ).catch((err) => {});
           loader[0].classList.add("addedloader");
@@ -2966,7 +2997,8 @@ let invites = () => {
   shortlist.style.borderBottom = "3px solid transparent";
   invites.style.borderBottom = "3px solid hsl(188,47%,20%)";
 
-  let jbid = sessionStorage.getItem("jobpostid");
+//   let jbid = sessionStorage.getItem("jobpostid");
+  let jbid = getCookie("jobpostid");
 
   const formdata = new FormData();
   formdata.append("job_id", jbid);
@@ -2986,8 +3018,8 @@ let invites = () => {
     body: formdata,
   };
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/einvites",
+  let fetchEinvites = fetch(
+    `${baseUrl}/einvites`,
     options
   ).catch((err) => {
     console.log(err);
@@ -3044,7 +3076,7 @@ let invites = () => {
 
 */
 
-  f.then((res) => res.json()).then((d) => {
+  fetchEinvites.then((res) => res.json()).then((d) => {
     loader[0].classList.remove("addedloader");
 
     if (d.length === 0) {
@@ -3210,7 +3242,8 @@ let invites = () => {
       profile.addEventListener("click", (e) => {
         let vr = profile.parentElement.firstElementChild.children[0].innerHTML;
 
-        sessionStorage.setItem("profileid", vr);
+        // sessionStorage.setItem("profileid", vr);
+        setCookie("profileid", vr);
         window.location.href = "/candidateprofile.html";
       });
     }
@@ -3460,7 +3493,8 @@ function selectslots() {
         selectedEndDateTime.setHours(parseInt(selectedTimePartsE[0]));
         selectedEndDateTime.setMinutes(parseInt(selectedTimePartsE[1]));
 
-        let jbid = sessionStorage.getItem("jobpostid");
+        // let jbid = sessionStorage.getItem("jobpostid");
+        let jbid = getCookie("jobpostid");
 
         let formdata = new FormData();
         formdata.append("job_id", jbid);
@@ -3483,7 +3517,7 @@ function selectslots() {
         };
 
         let f = fetch(
-          "https://yielding-dented-amusement.glitch.me/interviewslots",
+          `${baseUrl}/interviewslots`,
           options
         ).catch((err) => {
           console.log(err);
@@ -3555,7 +3589,8 @@ function selectslots() {
 
 let allinterviewslots = () => {
   let formdata = new FormData();
-  let jbid = sessionStorage.getItem("jobpostid");
+//   let jbid = sessionStorage.getItem("jobpostid");
+  let jbid = getCookie("jobpostid");
   formdata.append("job_id", jbid);
 
   const options = {
@@ -3574,7 +3609,7 @@ let allinterviewslots = () => {
   };
 
   let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/allintervieslots",
+    `${baseUrl}/allintervieslots`,
     options
   ).catch((err) => {
     console.log(err);
@@ -3671,7 +3706,7 @@ let allinterviewslots = () => {
         };
 
         let f = fetch(
-          "https://yielding-dented-amusement.glitch.me/deleteinslot",
+          `${baseUrl}/deleteinslot`,
           options2
         ).catch((err) => {
           console.log(err);
@@ -3736,7 +3771,8 @@ let allinterviess = () => {
     .getElementsByClassName("interviewspart")[0]
     .classList.toggle("interviewspartadded");
 
-  let jbid = sessionStorage.getItem("jobpostid");
+//   let jbid = sessionStorage.getItem("jobpostid");
+  let jbid = getCookie("jobpostid");
 
   let formdata = new FormData();
   formdata.append("job_id", jbid);
@@ -3756,15 +3792,15 @@ let allinterviess = () => {
     body: formdata,
   };
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/takeninterviews",
+  let fetchInterviesTaken = fetch(
+    `${baseUrl}/takeninterviews`,
     options
   ).catch((err) => {
     console.log(err);
   });
   document.querySelector(".interviewploader").style.display = "flex";
 
-  f.then((res) => res.json())
+  fetchInterviesTaken.then((res) => res.json())
     .then((d) => {
       document.querySelector(".interviewploader").style.display = "none";
 
@@ -3907,8 +3943,8 @@ let terminateinterviews = (interviewid) => {
       body: formdata,
     };
 
-    let f = fetch(
-      "https://yielding-dented-amusement.glitch.me/terminateinterview",
+    let fetchTerminatedInterviews = fetch(
+      `${baseUrl}/terminateinterview`,
       options
     ).catch((err) => {
       console.log(err);
@@ -3916,7 +3952,7 @@ let terminateinterviews = (interviewid) => {
     hideConfirmation();
     document.querySelector(".interviewploader").style.display = "flex";
 
-    f.then((res) => res.json()).then((d) => {
+    fetchTerminatedInterviews.then((res) => res.json()).then((d) => {
       const {affectedrows} = d;
       if (affectedrows) {
         document.querySelector(".interviewploader").style.display = "none";
@@ -3929,10 +3965,7 @@ let terminateinterviews = (interviewid) => {
 };
 
 let interviewasums = () => {
-  let jbid = sessionStorage.getItem("jobpostid");
-
-  let formdata = new FormData();
-  formdata.append("job_id", jbid);
+ let jbid = getCookie("jobpostid");
 
   const options = {
     method: "POST",
@@ -3949,14 +3982,14 @@ let interviewasums = () => {
     body: formdata,
   };
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/interviewsums",
+  let fetchInterviewSums = fetch(
+    `${baseUrl}/interviewsums`,
     options
   ).catch((err) => {
     console.log(err);
   });
 
-  f.then((res) => res.json())
+  fetchInterviewSums.then((res) => res.json())
     .then((d) => {
       const {sum} = d;
       if (sum === 0) {
@@ -3973,10 +4006,7 @@ let interviewasums = () => {
 };
 
 let shortlistsum = () => {
-  let jbid = sessionStorage.getItem("jobpostid");
-
-  let formdata = new FormData();
-  formdata.append("job_id", jbid);
+  let jbid = getCookie("jobpostid");
 
   const options = {
     method: "POST",
@@ -3994,7 +4024,7 @@ let shortlistsum = () => {
   };
 
   let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/shortlistsum",
+    `${baseUrl}/shortlistsum`,
     options
   ).catch((err) => {
     console.log(err);
@@ -4020,8 +4050,12 @@ let shortlistsum = () => {
 let profload = () => {
   let loader1 = document.getElementsByClassName("loader1");
   let loader = document.getElementsByClassName("loader");
-  let userid = sessionStorage.getItem("profileid");
-  let firstn = localStorage.getItem("pfname");
+//   let userid = sessionStorage.getItem("profileid");
+//   let firstn = localStorage.getItem("pfname");
+//   let userid = sessionStorage.getItem("profileid");
+//   let firstn = localStorage.getItem("pfname");
+ let userid = getCookie("profileid");
+  let firstn = getCookie("pfname");
 
   let formdata = new FormData();
 
@@ -4043,15 +4077,15 @@ let profload = () => {
     body: formdata,
   };
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/candidateprofile",
+  let fetchCandidateProfile = fetch(
+    `${baseUrl}/candidateprofile`,
     options
   ).catch((err) => {
     console.log(err);
   });
 
   loader[0].classList.add("addedloader");
-  f.then((res) => res.json()).then((d) => {
+  fetchCandidateProfile.then((res) => res.json()).then((d) => {
     const {first_name, last_name, country, no_complete, user_id} = d;
     console.log(d);
     loader[0].classList.remove("addedloader");
@@ -4147,8 +4181,10 @@ let requestintervieb = () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     let anymessage = document.getElementById("anyinformation");
-    let candidateid = sessionStorage.getItem("profileid");
-    let employerid = localStorage.getItem("userloged");
+    // let candidateid = sessionStorage.getItem("profileid");
+    // let employerid = localStorage.getItem("userloged");
+     let candidateid = getCookie("profileid");
+    let employerid = getCookie("userloged");
 
     let formdata = new FormData();
 
@@ -4171,8 +4207,8 @@ let requestintervieb = () => {
       body: formdata,
     };
 
-    let f = fetch(
-      "https://yielding-dented-amusement.glitch.me/enquire",
+    let fetchEnquiry = fetch(
+      `${baseUrl}/enquire`,
       options
     ).catch((err) => {
       console.log(err);
@@ -4180,7 +4216,7 @@ let requestintervieb = () => {
     let sending = document.querySelector(".sedingidi");
     sending.innerHTML = "Sending......";
 
-    f.then((res) => res.json()).then((d) => {
+    fetchEnquiry.then((res) => res.json()).then((d) => {
       const {sent} = d;
       if (sent) {
         sending.innerHTML = "Sent!";
@@ -4197,7 +4233,8 @@ let requestintervieb = () => {
 
 //JOB POST START
 let postjobbutton = () => {
-  let comornot = sessionStorage.getItem("employercomplete");
+//   let comornot = sessionStorage.getItem("employercomplete");
+  let comornot = getCookie("employercomplete");
 
   if (comornot === "no") {
     document
@@ -4210,7 +4247,8 @@ let postjobbutton = () => {
 
 let skills = [];
 let postjobform = () => {
-  let posterid = localStorage.getItem("userloged");
+//   let posterid = localStorage.getItem("userloged");
+  let posterid = getCookie("userloged");
 
   let formdat = new FormData();
   formdat.append("user_id", posterid);
@@ -4230,14 +4268,14 @@ let postjobform = () => {
     body: formdat,
   };
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/companyname",
+  let fetchCompanyName = fetch(
+  `${baseUrl}/companyname`,
     optionsa
   ).catch((err) => {
     console.log(err);
   });
 
-  f.then((res) => res.json()).then((d) => {
+  fetchCompanyName.then((res) => res.json()).then((d) => {
     if (d[0].company_name != null) {
       document.getElementById("company").value = d[0].company_name;
     } else {
@@ -4246,11 +4284,8 @@ let postjobform = () => {
   });
 
   let loader = document.getElementsByClassName("loader");
-  let v = sessionStorage.getItem("jobposttype");
+   let v = getCookie("jobposttype");
 
-  if (v === "edit") {
-    editp();
-  } else if (v === "similar") {
     similar();
   }
   let statename;
@@ -4308,7 +4343,8 @@ let postjobform = () => {
         jobtitle.innerHTML = title.value;
         name.innerHTML = company.value;
         cit.innerHTML = city.value;
-        poster[0].innerHTML = localStorage.getItem("pfname");
+        // poster[0].innerHTML = localStorage.getItem("pfname");
+        poster[0].innerHTML = getCookie("pfname");
         depart[0].innerHTML = department.value;
 
         ctry.innerHTML = country.value + "," + statename;
@@ -4387,7 +4423,8 @@ let postjobform = () => {
       e.stopPropagation();
 
       clicks = 1;
-      let rt = sessionStorage.getItem("jobposttype");
+    //   let rt = sessionStorage.getItem("jobposttype");
+       let rt = getCookie("jobposttype");
 
       if (v === "none" || v === "similar" || v === null) {
         const formdata = new FormData();
@@ -4427,13 +4464,13 @@ let postjobform = () => {
 
         //https://half-geode-roundworm.glitch.me/api
 
-        let f = fetch(
-          "https://yielding-dented-amusement.glitch.me/postjob",
+        let fetchPostedJobs = fetch(
+          `${baseUrl}/postjob`,
           options
         ).catch((err) => {});
 
         loader[0].classList.add("addedloader");
-        f.then((res) => res.json()).then((d) => {
+        fetchPostedJobs.then((res) => res.json()).then((d) => {
           if (d === 1) {
             details[0].classList.remove("addedodetails");
             form.reset();
@@ -4448,7 +4485,8 @@ let postjobform = () => {
           }
         });
       } else if (v === "edit") {
-        let jbid = sessionStorage.getItem("jobpostid");
+        // let jbid = sessionStorage.getItem("jobpostid");
+         let jbid = getCookie("jobpostid");
         const formdata = new FormData();
         formdata.append("joe_id", jbid);
         formdata.append("user_id", posterid);
@@ -4485,13 +4523,13 @@ let postjobform = () => {
 
         //https://half-geode-roundworm.glitch.me/api
 
-        let f = fetch(
-          "https://yielding-dented-amusement.glitch.me/postjob",
+        let fetchPostedJobs = fetch(
+          `${baseUrl}/postjob`,
           options
         ).catch((err) => {});
 
         loader[0].classList.add("addedloader");
-        f.then((res) => res.json()).then((d) => {
+        fetchPostedJobs.then((res) => res.json()).then((d) => {
           if (d === 1) {
             details[0].classList.remove("addedodetails");
             form.reset();
@@ -4500,7 +4538,8 @@ let postjobform = () => {
               removepr.firstChild.remove();
             }
             skills = [];
-            sessionStorage.setItem("jobposttype", "none");
+            // sessionStorage.setItem("jobposttype", "none");
+            setCookie("jobposttype", "none");
 
             loader[0].classList.remove("addedloader");
             window.close();
@@ -4601,12 +4640,14 @@ let backbutton = () => {
 //EDIT POSTED JOB START HERE
 
 let editpost = () => {
-  sessionStorage.setItem("jobposttype", "edit");
+  //   sessionStorage.setItem("jobposttype", "edit");
+  setCookie("jobposttype", "edit");
   var w = window.open("/postjob.html", "_system");
 };
 let editp = () => {
   let loader = document.getElementsByClassName("loader");
-  let jbid = sessionStorage.getItem("jobpostid");
+//   let jbid = sessionStorage.getItem("jobpostid");
+    let jbid = getCookie("jobpostid");
 
   let postjobtitle = document.getElementById("jbfph3");
   postjobtitle.innerHTML = "Edit Job";
@@ -4648,13 +4689,13 @@ let editp = () => {
 
   //https://half-geode-roundworm.glitch.me/api
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/sedetails",
+  let fetchDetails = fetch(
+    `${baseUrl}/sedetails`,
     options
   ).catch((err) => {});
   loader[0].classList.add("addedloader");
 
-  f.then((res) => res.json()).then((d) => {
+  fetchDetails.then((res) => res.json()).then((d) => {
     let payvalues = d[0].pay.split(",");
     title.value = d[0].job_title;
     provstate.value = d[0].state_province;
@@ -4691,7 +4732,7 @@ let editp = () => {
   //https://half-geode-roundworm.glitch.me/api
 
   let sf = fetch(
-    "https://yielding-dented-amusement.glitch.me/sedetails",
+    `${baseUrl}/sedetails`,
     soptions
   ).catch((err) => {});
 
@@ -4720,12 +4761,15 @@ let editp = () => {
 // HERE IS THE FUNCTION TO CREATE NEW JOB
 
 let createsimilarjob = () => {
-  sessionStorage.setItem("jobposttype", "similar");
+  //   sessionStorage.setItem("jobposttype", "similar");
+  setCookie("jobposttype", "similar");
+
   var w = window.open("/postjob.html", "_system");
 };
 let similar = () => {
   let loader = document.getElementsByClassName("loader");
-  let jbid = sessionStorage.getItem("jobpostid");
+//   let jbid = sessionStorage.getItem("jobpostid");
+let jbid = getCookie("jobpostid");
 
   let postjobtitle = document.getElementById("jbfph3");
   postjobtitle.innerHTML = "Edit Job";
@@ -4768,7 +4812,7 @@ let similar = () => {
   //https://half-geode-roundworm.glitch.me/api
 
   let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/sedetails",
+    `${baseUrl}/sedetails`,
     options
   ).catch((err) => {});
   loader[0].classList.add("addedloader");
@@ -4810,7 +4854,7 @@ let similar = () => {
   //https://half-geode-roundworm.glitch.me/api
 
   let sf = fetch(
-    "https://yielding-dented-amusement.glitch.me/sedetails",
+    `${baseUrl}/sedetails`,
     soptions
   ).catch((err) => {});
 
@@ -5110,7 +5154,8 @@ let ssavename = () => {
     let formdata = new FormData();
     formdata.append("firstname", vfirsname);
     formdata.append("lastname", vsecondname);
-    formdata.append("userid", localStorage.getItem("userloged"));
+    // formdata.append("userid", localStorage.getItem("userloged"));
+     formdata.append("userid", getCookie("userloged"));
 
     const options = {
       method: "POST",
@@ -5127,8 +5172,8 @@ let ssavename = () => {
       body: formdata,
     };
 
-    let f = fetch(
-      "https://yielding-dented-amusement.glitch.me/changeename",
+    let fetchChangeName = fetch(
+      `${baseUrl}/changeename`,
       options
     ).catch((err) => {
       console.log(err);
@@ -5184,7 +5229,8 @@ function sverifyPassword() {
     } else {
       // submit pasword for update
       let formdata = new FormData();
-      formdata.append("userid", localStorage.getItem("userloged"));
+    //   formdata.append("userid", localStorage.getItem("userloged"));
+      formdata.append("userid", getCookie("userloged"));
       formdata.append("password", password);
 
       const options = {
@@ -5202,8 +5248,8 @@ function sverifyPassword() {
         body: formdata,
       };
 
-      let f = fetch(
-        "https://yielding-dented-amusement.glitch.me/changeepassword",
+      let fetchChangePassword = fetch(
+        `${baseUrl}/changeepassword`,
         options
       ).catch((err) => {
         console.log(err);
@@ -5212,7 +5258,7 @@ function sverifyPassword() {
       confirmpassvalue = "";
       loader.style.display = "flex";
 
-      f.then((res) => res.json())
+      fetchChangePassword.then((res) => res.json())
         .then((d) => {
           loader.style.display = "none";
           const {affectedrows} = d;
@@ -5259,9 +5305,11 @@ let sverifypass = () => {
   } else {
     let formdata = new FormData();
     formdata.append("requesttype", "verifypass");
-    formdata.append("userid", localStorage.getItem("userloged"));
+    // formdata.append("userid", localStorage.getItem("userloged"));
+    formdata.append("userid", getCookie("userloged"));
     formdata.append("userpassword", password.value);
-    formdata.append("lastname", localStorage.getItem("psname"));
+    // formdata.append("lastname", localStorage.getItem("psname"));
+    formdata.append("lastname", getCookie("psname"));
 
     const options = {
       method: "POST",
@@ -5278,14 +5326,14 @@ let sverifypass = () => {
       body: formdata,
     };
 
-    let f = fetch(
-      "https://yielding-dented-amusement.glitch.me/changeemployeremail",
+    let fetchChangeEmail = fetch(
+      `${baseUrl}/changeemployeremail`,
       options
     ).catch((err) => {
       console.log(err);
     });
     loader.style.display = "flex";
-    f.then((res) => res.json())
+    fetchChangeEmail.then((res) => res.json())
       .then((d) => {
         loader.style.display = "none";
         const {verytype} = d;
@@ -5399,14 +5447,14 @@ let emailcode = () => {
     body: formdata,
   };
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/changeemployeremail",
+  let fetchChangeEmail = fetch(
+    `${baseUrl}/changeemployeremail`,
     options
   ).catch((err) => {
     console.log(err);
   });
   loader.style.display = "flex";
-  f.then((res) => res.json()).then((d) => {
+  fetchChangeEmail.then((res) => res.json()).then((d) => {
     loader.style.display = "none";
     email.value = "";
     const {sent} = d;
@@ -5446,7 +5494,8 @@ let emailcode = () => {
                 let formdata = new FormData();
                 formdata.append("email", emaili);
                 formdata.append("requesttype", "update");
-                formdata.append("userid", localStorage.getItem("userloged"));
+                formdata.append("userid", getCookie("userloged"));
+                // formdata.append("userid", localStorage.getItem("userloged"));
 
                 const options = {
                   method: "POST",
@@ -5463,8 +5512,8 @@ let emailcode = () => {
                   body: formdata,
                 };
 
-                let f = fetch(
-                  "https://yielding-dented-amusement.glitch.me/changeemployeremail",
+                let fetchChangeEmail = fetch(
+                  `${baseUrl}/changeemployeremail`,
                   options
                 ).catch((err) => {
                   console.log(err);
@@ -5512,7 +5561,8 @@ let cancelemailc = () => {
 
 let settingdata = () => {
   let formdata = new FormData();
-  formdata.append("userid", localStorage.getItem("userloged"));
+  formdata.append("userid", getCookie("userloged"));
+//   formdata.append("userid", localStorage.getItem("userloged"));
 
   const options = {
     method: "POST",
@@ -5528,14 +5578,14 @@ let settingdata = () => {
 
     body: formdata,
   };
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/esettingdata",
+  let fetchSetting = fetch(
+    `${baseUrl}e/esettingdata`,
     options
   ).catch((err) => {
     console.log(err);
   });
 
-  f.then((res) => res.json()).then((d) => {
+  fetchSetting.then((res) => res.json()).then((d) => {
     const {first_name, last_name, email} = d;
     let emailsec = document.querySelector("#set1email");
 
@@ -5548,8 +5598,10 @@ let settingdata = () => {
     semail = email;
     firstnameee = first_name;
     lastnameeee = last_name;
-    localStorage.setItem("pfname", first_name);
-    localStorage.setItem("psname", last_name);
+    // localStorage.setItem("pfname", first_name);
+    setCookie("pfname", first_name);
+    // localStorage.setItem("psname", last_name);
+    setCookie("psname", last_name);
     setprofile();
   });
 };
@@ -5576,7 +5628,8 @@ let tsupport = () => {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    let userid = localStorage.getItem("userloged");
+    // let userid = localStorage.getItem("userloged");
+    let userid = getCookie("userloged");
     let subject = document.querySelector("#subject");
     let message = document.querySelector("#sumessage");
 
@@ -5601,15 +5654,15 @@ let tsupport = () => {
       body: formdata,
     };
 
-    let f = fetch(
-      "https://yielding-dented-amusement.glitch.me/supporttalk",
+    let fetchSupport = fetch(
+      `${baseUrl}/supporttalk`,
       options
     ).catch((err) => {
       console.log(err);
     });
     loader1[0].classList.add("addedloader1");
 
-    f.then((res) => res.json()).then((d) => {
+    fetchSupport.then((res) => res.json()).then((d) => {
       const {sent} = d;
 
       if (sent) {
