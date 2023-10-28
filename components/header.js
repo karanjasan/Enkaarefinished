@@ -1,10 +1,9 @@
-class Navmenu extends HTMLElement{
-    constructor(){
-        super();
-
-    }
-    connectedCallback(){
-        this.innerHTML=`  <a href="https://www.enkaare.com"><img src="/images/enkari logo.jpg" alt=""></a>
+class Navmenu extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.innerHTML = `  <a href="https://www.enkaare.com"><img src="/images/enkari logo.jpg" alt=""></a>
         <div onmouseover="hidepoptions()" class="status">
             
         <button onclick="postjobbutton()"><img src="/images/add.png" alt=""> Post a Job</button><span id="ebeta">Beta</span>
@@ -87,17 +86,17 @@ class Navmenu extends HTMLElement{
             <p id="rb">Rules & guidelines</p>
 
 
-           </div>`
-    }
+           </div>`;
+  }
 }
-customElements.define('nav-menu',Navmenu);
+customElements.define("nav-menu", Navmenu);
 
-class ProfileView extends HTMLElement{
-    constructor(){
-        super();
-    }
-    connectedCallback(){
-        this.innerHTML=` <a href="/e-myprofile.html">
+class ProfileView extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.innerHTML = ` <a href="/e-myprofile.html">
         <section class="myprofile">
             <img src="/images/user.png" alt="">
             <p>My profile</p>
@@ -115,17 +114,17 @@ class ProfileView extends HTMLElement{
         <img src="/images/logout.png" alt="">
         <p>Logout</p>
 
-       </section>`
-    }
+       </section>`;
+  }
 }
-customElements.define('profile-options',ProfileView);
+customElements.define("profile-options", ProfileView);
 
-class CandidateNavmenu extends HTMLElement{
-    constructor(){
-        super();
-    }
-    connectedCallback(){
-        this.innerHTML=` <a href="https://www.enkaare.com"><img src="/images/enkari logo.jpg" alt=""></a>
+class CandidateNavmenu extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.innerHTML = ` <a href="https://www.enkaare.com"><img src="/images/enkari logo.jpg" alt=""></a>
         <div onmouseover="hidepoptions()" class="status">
             <p>Acount status </p>
             <button id="statusbuton"></button>
@@ -227,19 +226,18 @@ class CandidateNavmenu extends HTMLElement{
             <p id="rb">Rules & guidelines</p>
 
 
-           </div>`
-    }
+           </div>`;
+  }
 }
 
-customElements.define('candidate-navmenu',CandidateNavmenu);
+customElements.define("candidate-navmenu", CandidateNavmenu);
 
-
-class CandidatePview extends HTMLElement{
-    constructor(){
-        super();
-    }
-    connectedCallback(){
-        this.innerHTML=`<a href="/profile.html">
+class CandidatePview extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.innerHTML = `<a href="/profile.html">
         <section class="myprofile">
             <img src="/images/user.png" alt="">
             <p>My profile</p>
@@ -259,9 +257,8 @@ class CandidatePview extends HTMLElement{
         <img src="/images/logout.png" alt="">
         <p>Logout</p>
 
-       </section>`
-    }
+       </section>`;
+  }
 }
 
-customElements.define('candidate-pview',CandidatePview)
-
+customElements.define("candidate-pview", CandidatePview);
