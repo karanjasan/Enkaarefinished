@@ -136,7 +136,7 @@ let setprofile = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -184,7 +184,7 @@ let candidates = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -395,7 +395,7 @@ let candidates = () => {
             method: "POST",
             headers: {
               "Access-Control-Allow-Credentials": true,
-              "Access-Control-Allow-Origin": "https://www.enkaare.com",
+              "Access-Control-Allow-Origin": "https://enkaare.com",
               "Access-Control-Allow-Headers":
                 "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
@@ -486,7 +486,7 @@ let checkempcomplete = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -564,7 +564,7 @@ function invitesubmit() {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.com",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -642,7 +642,7 @@ let eprofload = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -841,7 +841,7 @@ let eprofload = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.com",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -913,7 +913,7 @@ let eprofload = () => {
         method: "POST",
         headers: {
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Origin": "https://enkaare.com",
           "Access-Control-Allow-Headers":
             "Origin, X-Requested-With, Content-Type, Accept, authorization",
           "Access-Control-Allow-Methods": "POST",
@@ -966,7 +966,7 @@ let profileeditbutton = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1395,7 +1395,7 @@ let orderdetails = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1452,7 +1452,7 @@ let orderdetails = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1666,7 +1666,7 @@ let active = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -2017,7 +2017,7 @@ let viewjobsapplications = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -2083,7 +2083,7 @@ let viewallaplicants = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -2359,7 +2359,7 @@ let viewallaplicants = () => {
             method: "POST",
             headers: {
               "Access-Control-Allow-Credentials": true,
-              "Access-Control-Allow-Origin": "https://www.enkaare.com",
+              "Access-Control-Allow-Origin": "https://enkaare.com",
               "Access-Control-Allow-Headers":
                 "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
@@ -2418,7 +2418,7 @@ let viewallaplicants = () => {
           method: "POST",
           headers: {
             "Access-Control-Allow-Credentials": true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Origin": "https://enkaare.com",
             "Access-Control-Allow-Headers":
               "Origin, X-Requested-With, Content-Type, Accept, authorization",
             "Access-Control-Allow-Methods": "POST",
@@ -2466,7 +2466,7 @@ let viewallaplicants = () => {
                 method: "POST",
                 headers: {
                   "Access-Control-Allow-Credentials": true,
-                  "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                  "Access-Control-Allow-Origin": "https://enkaare.com",
                   "Access-Control-Allow-Headers":
                     "Origin, X-Requested-With, Content-Type, Accept, authorization",
                   "Access-Control-Allow-Methods": "POST",
@@ -2532,7 +2532,7 @@ let shortlist = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -3007,7 +3007,7 @@ let invites = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -3505,7 +3505,7 @@ function selectslots() {
           method: "POST",
           headers: {
             "Access-Control-Allow-Credentials": true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
+            "Access-Control-Allow-Origin": "https://enkaare.com",
             "Access-Control-Allow-Headers":
               "Origin, X-Requested-With, Content-Type, Accept, authorization",
             "Access-Control-Allow-Methods": "POST",
@@ -3597,7 +3597,7 @@ let allinterviewslots = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -3781,7 +3781,7 @@ let allinterviess = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -3932,7 +3932,7 @@ let terminateinterviews = (interviewid) => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.com",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -3971,7 +3971,7 @@ let interviewasums = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -4012,7 +4012,7 @@ let shortlistsum = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -4066,7 +4066,7 @@ let profload = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -4196,7 +4196,7 @@ let requestintervieb = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.com",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -4231,327 +4231,390 @@ let requestintervieb = () => {
   });
 };
 
+
 //JOB POST START
-let postjobbutton = () => {
-//   let comornot = sessionStorage.getItem("employercomplete");
-  let comornot = getCookie("employercomplete");
 
-  if (comornot === "no") {
-    document
-      .getElementsByClassName("incompleteprofile")[0]
-      .classList.add("adddincompleteprofile");
-  } else {
-    window.open("/postjob.html", "_blank");
+let postjobbutton=()=>{
+  let comornot= sessionStorage.getItem("employercomplete")
+
+  
+if(comornot==="no"){
+  
+      document.getElementsByClassName("incompleteprofile")[0].classList.add("adddincompleteprofile");
+
+ 
+}else{
+  window.open("/postjob.html", "_blank")
+}
+}
+
+
+
+
+
+let skills=[]
+let postjobform=()=>{
+
+  let posterid=getCookie("userloged");
+
+  let formdat= new FormData()
+  formdat.append("user_id",posterid)
+
+  let optionsa={
+      method: "POST",
+      headers:{
+          "Acces-Control-Allow-Credentials":true,
+          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+          "Access-Control-Allow-Methods": "POST",
+             withCredentials:true
+     
+         },
+        credentials: 'include',
+     
+      body:formdat
+
   }
-};
 
-let skills = [];
-let postjobform = () => {
-//   let posterid = localStorage.getItem("userloged");
-  let posterid = getCookie("userloged");
+  let f= fetch('http://127.0.0.1:3890/companyname',optionsa).catch(err =>{
+       console.log(err)    
+     
+});
 
-  let formdat = new FormData();
-  formdat.append("user_id", posterid);
+f.then(res=>res.json()).then(d=>{
 
-  let optionsa = {
-    method: "POST",
-    headers: {
-      "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
-      "Access-Control-Allow-Headers":
-        "Origin, X-Requested-With, Content-Type, Accept, authorization",
-      "Access-Control-Allow-Methods": "POST",
-      withCredentials: true,
-    },
-    credentials: "include",
-
-    body: formdat,
-  };
-
-  let fetchCompanyName = fetch(
-  `${baseUrl}/companyname`,
-    optionsa
-  ).catch((err) => {
-    console.log(err);
-  });
-
-  fetchCompanyName.then((res) => res.json()).then((d) => {
-    if (d[0].company_name != null) {
-      document.getElementById("company").value = d[0].company_name;
-    } else {
-      window.close();
-    }
-  });
-
-  let loader = document.getElementsByClassName("loader");
-   let v = getCookie("jobposttype");
-
-    similar();
+  if(d[0].company_name != null){
+      document.getElementById("company").value=d[0].company_name;
+  }else{
+      window.close()
   }
-  let statename;
-  let form = document.getElementById("form");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
 
-    let details = document.getElementsByClassName("pjorderdetails");
-    let title = document.getElementById("title");
-    let country = document.getElementById("country");
-    let usstate = document.getElementById("usstates");
-    let canadaprovince = document.getElementById("canadaprovence");
-    let provstate = document.getElementById("state");
-    let city = document.getElementById("city");
-    let jobtype = document.getElementById("jbtype");
-    let bnfits = document.getElementById("pjbenefits");
-    let company = document.getElementById("company");
-    let department = document.getElementById("department");
+})
 
-    let currency = document.getElementById("currency");
-    let pay = document.getElementById("pay");
-    let rate = document.getElementById("rate");
-    let summary = document.getElementById("jbsummary");
-    let responsibility = document.getElementById("responsibility");
 
-    /*this function is just a continution of form validatio
-        check below where it takes over from*/
-    let validatescontinuation = () => {
-      if (jobtype.value === "") {
-        jobtype.style.borderBottomColor = "red";
-      } else if (currency.value === "") {
-        currency.style.borderBottomColor = "red";
-      } else if (rate.value === "") {
-        rate.style.borderBottomColor = "red";
-      } else if (summary.value === "") {
-        summary.style.borderColor = "red";
-      } else {
-        //here is all where form data is collected
+  let loader =document.getElementsByClassName("loader");
+let v=  sessionStorage.setCookie("jobposttype");
 
-        //code the view detailselement
-        details[0].classList.add("addedodetails");
-
-        let jobtitle = document.getElementById("odh2");
-        let name = document.getElementById("odp");
-        let cit = document.getElementById("citysta");
-        let ctry = document.getElementById("countrysta");
-        let pay_rate = document.getElementById("payrate");
-        let benefits = document.getElementById("benefits");
-        let type = document.getElementById("ttype");
-        let about = document.getElementById("aboutj");
-        let responsibilities = document.getElementById("tasksres");
-        let poster = document.getElementsByClassName("postername");
-        let depart = document.getElementsByClassName("depart");
-
-        jobtitle.innerHTML = title.value;
-        name.innerHTML = company.value;
-        cit.innerHTML = city.value;
-        // poster[0].innerHTML = localStorage.getItem("pfname");
-        poster[0].innerHTML = getCookie("pfname");
-        depart[0].innerHTML = department.value;
-
-        ctry.innerHTML = country.value + "," + statename;
-        pay_rate.innerHTML = currency.value + " " + pay.value + rate.value;
-        benefits.innerHTML = bnfits.value;
-        type.innerHTML = jobtype.value;
-        about.innerHTML = summary.value;
-        responsibilities.innerHTML = responsibility.value;
-
-        for (let i = 0; i < skills.length; i++) {
-          let skill = skills[i];
-          let skillcarier = document.getElementsByClassName("skillst")[0];
-          let skilldiv = document.createElement("div");
-          let skill_content = `<section class="skillcarrier">
-                      ${skill}        
-                    </section>`;
-          skilldiv.innerHTML = skill_content;
-          skillcarier.append(skilldiv);
-        }
-      }
-    };
-
-    if (country.value === "") {
-      country.style.borderBottomColor = "red";
-    } else if (
-      usstate.value === "" &&
-      canadaprovince.value === "" &&
-      provstate.value === ""
-    ) {
-      usstate.style.borderBottomColor = "red";
-      provstate.style.borderBottomColor = "red";
-      canadaprovince.style.borderBottomColor = "red";
-    } else if (usstate.value != "") {
-      statename = usstate.value;
-      validatescontinuation();
-    } else if (canadaprovince.value != "") {
-      statename = canadaprovince.value;
-      validatescontinuation();
-    } else if (provstate.value != "") {
-      statename = provstate.value;
-      validatescontinuation();
-    }
-
-    //Continution functions should continue from here
-  });
-
-  /////////FOR POSTING A NEW EVENT HAD TO BE HANDLED//////////////*
-
-  let postbutton = document.getElementsByClassName("pjbutton2");
-
-  let clicks = 0;
-  postbutton[0].addEventListener(
-    "click",
-    (e) => {
-      //here is where the job is posted;
-
-      let details = document.getElementsByClassName("pjorderdetails");
+if(v==="edit"){
+  editp();
+}else if(v==="similar"){
+  similar();
+}
+let statename;
+  let form =document.getElementById("form");
+  form.addEventListener("submit",(e)=>{
+      e.preventDefault()
+     
+      
+      let details=document.getElementsByClassName("pjorderdetails");
       let title = document.getElementById("title");
-      let country = document.getElementById("country");
-      let usstate = document.getElementById("usstates");
-      let canadaprovince = document.getElementById("canadaprovence");
-      let provstate = document.getElementById("state");
-      let city = document.getElementById("city");
-      let jobtype = document.getElementById("jbtype");
-      let bnfits = document.getElementById("pjbenefits");
-      let company = document.getElementById("company");
-      let department = document.getElementById("department");
+      let country= document.getElementById("country");
+      let usstate=document.getElementById("usstates");
+      let canadaprovince=document.getElementById("canadaprovence");
+      let provstate=document.getElementById("state");
+      let city=document.getElementById("city");
+      let jobtype=document.getElementById("jbtype");
+      let bnfits=document.getElementById("pjbenefits");
+      let company=document.getElementById("company");
+      let department=document.getElementById("department");
 
-      let currency = document.getElementById("currency");
-      let pay = document.getElementById("pay");
-      let rate = document.getElementById("rate");
-      let summary = document.getElementById("jbsummary");
-      let responsibility = document.getElementById("responsibility");
+      
+    
+      let currency=document.getElementById("currency");
+      let pay =document.getElementById("pay");
+      let rate=document.getElementById("rate");
+      let summary=document.getElementById("jbsummary");
+      let responsibility= document.getElementById("responsibility");
 
-      console.log("clicked");
-      e.stopPropagation();
+      /*this function is just a continution of form validatio
+      check below where it takes over from*/
+      let validatescontinuation=()=>{
+          if(jobtype.value===""){
+              jobtype.style.borderBottomColor="red";
 
-      clicks = 1;
-    //   let rt = sessionStorage.getItem("jobposttype");
-       let rt = getCookie("jobposttype");
+          }else if(currency.value===""){
+              currency.style.borderBottomColor="red";
+          }else if(rate.value===""){
+              rate.style.borderBottomColor="red";
+          }else if(summary.value===""){
+              summary.style.borderColor="red";
+          }else{
+              //here is all where form data is collected
+              
 
-      if (v === "none" || v === "similar" || v === null) {
-        const formdata = new FormData();
-        formdata.append("user_id", posterid);
-        formdata.append("title", title.value);
-        formdata.append("city", city.value);
-        formdata.append("country", country.value);
-        formdata.append("state_province", statename);
-        formdata.append(
-          "pay",
-          currency.value + "," + pay.value + "," + rate.value
-        );
-        formdata.append("benefit", bnfits.value);
-        formdata.append("job_type", jobtype.value);
-        formdata.append("summary", summary.value);
-        formdata.append("responsb", responsibility.value);
-        formdata.append("skills", skills);
-        formdata.append("c", "s");
-        formdata.append("company", company.value);
-        formdata.append("department", department.value);
+                //code the view detailselement
+              details[0].classList.add("addedodetails");
+           
 
-        const options = {
-          method: "POST",
-          headers: {
-            "Access-Control-Allow-Credentials": true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-            "Access-Control-Allow-Headers":
-              "Origin, X-Requested-With, Content-Type, Accept, authorization",
-            "Access-Control-Allow-Methods": "POST",
-            withCredentials: true,
-          },
-          credentials: "include",
 
-          body: formdata,
-        };
-        // https://1ed2-105-231-144-76.ngrok.io/api'
+              let jobtitle=document.getElementById("odh2");
+             let name=document.getElementById("odp");
+              let cit=document.getElementById("citysta");
+              let ctry=document.getElementById("countrysta");
+              let pay_rate=document.getElementById("payrate");
+              let benefits=document.getElementById("benefits");
+              let type=document.getElementById("ttype");
+              let about=document.getElementById("aboutj");
+              let responsibilities=document.getElementById("tasksres");
+              let poster=document.getElementsByClassName("postername");
+              let depart=document.getElementsByClassName("depart");
+          
+               jobtitle.innerHTML=title.value;
+               name.innerHTML=company.value ;
+               cit.innerHTML=city.value;
+               poster[0].innerHTML=localStorage.getItem("pfname");;
+               depart[0].innerHTML=department.value;
 
-        //https://half-geode-roundworm.glitch.me/api
+               ctry.innerHTML=country.value+","+statename;
+               pay_rate.innerHTML=currency.value+" "+pay.value+rate.value;
+               benefits.innerHTML=bnfits.value;
+               type.innerHTML=jobtype.value;
+               about.innerHTML=summary.value;
+               responsibilities.innerHTML=responsibility.value;
 
-        let fetchPostedJobs = fetch(
-          `${baseUrl}/postjob`,
-          options
-        ).catch((err) => {});
+               for(let i=0;i<skills.length;i++){
+                  let skill=skills[i];
+                  let skillcarier=document.getElementsByClassName("skillst")[0];
+                  let skilldiv=document.createElement('div');
+                  let skill_content=`<section class="skillcarrier">
+                    ${skill}        
+                  </section>`;
+                  skilldiv.innerHTML=skill_content;
+                  skillcarier.append(skilldiv)
 
-        loader[0].classList.add("addedloader");
-        fetchPostedJobs.then((res) => res.json()).then((d) => {
-          if (d === 1) {
-            details[0].classList.remove("addedodetails");
-            form.reset();
-            let removepr = document.getElementById("skillsdivcar");
-            while (removepr.hasChildNodes()) {
-              removepr.firstChild.remove();
-            }
-            skills = [];
-            loader[0].classList.remove("addedloader");
-            sessionStorage.setItem("jobposttype", "none");
-            window.close();
-          }
-        });
-      } else if (v === "edit") {
-        // let jbid = sessionStorage.getItem("jobpostid");
-         let jbid = getCookie("jobpostid");
-        const formdata = new FormData();
-        formdata.append("joe_id", jbid);
-        formdata.append("user_id", posterid);
-        formdata.append("title", title.value);
-        formdata.append("city", city.value);
-        formdata.append("country", country.value);
-        formdata.append("state_province", statename);
-        formdata.append(
-          "pay",
-          currency.value + "," + pay.value + "," + rate.value
-        );
-        formdata.append("benefit", bnfits.value);
-        formdata.append("job_type", jobtype.value);
-        formdata.append("summary", summary.value);
-        formdata.append("responsb", responsibility.value);
-        formdata.append("skills", skills);
-        formdata.append("c", "e");
+               }
+             
+           
 
-        const options = {
-          method: "POST",
-          headers: {
-            "Access-Control-Allow-Credentials": true,
-            "Access-Control-Allow-Origin": "https://www.enkaare.com",
-            "Access-Control-Allow-Headers":
-              "Origin, X-Requested-With, Content-Type, Accept, authorization",
-            "Access-Control-Allow-Methods": "POST",
-            withCredentials: true,
-          },
-          credentials: "include",
+           
+          };
+      };
 
-          body: formdata,
-        };
-        // https://1ed2-105-231-144-76.ngrok.io/api'
 
-        //https://half-geode-roundworm.glitch.me/api
 
-        let fetchPostedJobs = fetch(
-          `${baseUrl}/postjob`,
-          options
-        ).catch((err) => {});
-
-        loader[0].classList.add("addedloader");
-        fetchPostedJobs.then((res) => res.json()).then((d) => {
-          if (d === 1) {
-            details[0].classList.remove("addedodetails");
-            form.reset();
-            let removepr = document.getElementById("skillsdivcar");
-            while (removepr.hasChildNodes()) {
-              removepr.firstChild.remove();
-            }
-            skills = [];
-            // sessionStorage.setItem("jobposttype", "none");
-            setCookie("jobposttype", "none");
-
-            loader[0].classList.remove("addedloader");
-            window.close();
-          }
-        });
+    if(country.value===""){
+      country.style.borderBottomColor='red';
+    }else
+      
+      if(usstate.value==="" && canadaprovince.value==="" && provstate.value===""){
+          usstate.style.borderBottomColor="red";
+          provstate.style.borderBottomColor="red";
+          canadaprovince.style.borderBottomColor="red";
+      }else if(usstate.value !=""){
+          statename=usstate.value;
+          validatescontinuation()
+          
+      }else if(canadaprovince.value !=""){
+          statename=canadaprovince.value;
+          validatescontinuation();
+        
+          
+      }else if(provstate.value !=""){
+          statename=provstate.value;
+          validatescontinuation();
+          
       }
-    },
-    {once: true}
-  );
+    
+      //Continution functions should continue from here
+  });
 
-  /////////FOR POSTING A NEW EVENT HAD TO BE HANDLED//////////////*
-};
+
+
+
+/////////FOR POSTING A NEW EVENT HAD TO BE HANDLED//////////////*
+
+
+
+
+
+  let postbutton=document.getElementsByClassName("pjbutton2");
+ 
+   
+    let clicks=0;
+  postbutton[0].addEventListener('click',(e)=>{
+//here is where the job is posted;
+      
+      let details=document.getElementsByClassName("pjorderdetails");
+      let title = document.getElementById("title");
+      let country= document.getElementById("country");
+      let usstate=document.getElementById("usstates");
+      let canadaprovince=document.getElementById("canadaprovence");
+      let provstate=document.getElementById("state");
+      let city=document.getElementById("city");
+      let jobtype=document.getElementById("jbtype");
+      let bnfits=document.getElementById("pjbenefits");
+      let company=document.getElementById("company");
+      let department=document.getElementById("department");
+
+      
+    
+      let currency=document.getElementById("currency");
+      let pay =document.getElementById("pay");
+      let rate=document.getElementById("rate");
+      let summary=document.getElementById("jbsummary");
+      let responsibility= document.getElementById("responsibility");
+      
+
+
+     e.stopPropagation();
+
+     
+         clicks=1;
+         let rt=  sessionStorage.setCookie("jobposttype");
+
+     if(v==="none" || v==="similar" ||v===null){
+         const formdata = new FormData();
+         formdata.append("user_id",posterid);
+         formdata.append("title",title.value);  
+         formdata.append("city",city.value);
+         formdata.append("country",country.value);  
+         formdata.append("state_province",statename);
+         formdata.append("pay",currency.value+","+pay.value+","+rate.value);  
+         formdata.append("benefit",bnfits.value);
+         formdata.append("job_type",jobtype.value);  
+         formdata.append("summary",summary.value);
+         formdata.append("responsb",responsibility.value);  
+         formdata.append("skills",skills);
+         formdata.append("c","s"); 
+         formdata.append("company",company.value);
+         formdata.append("department",department.value);
+
+
+        
+         
+
+
+
+
+         const options ={
+
+             method: 'POST',
+             headers:{
+              "Acces-Control-Allow-Credentials":true,
+              "Access-Control-Allow-Origin": "https://enkaare.com",
+              "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+              "Access-Control-Allow-Methods": "POST",
+                 withCredentials:true
+         
+             },
+            credentials: 'include',
+         
+        
+             body: formdata,
+            
+         };
+        // https://1ed2-105-231-144-76.ngrok.io/api'
+ 
+        //https://half-geode-roundworm.glitch.me/api
+         
+         let f= fetch('http://127.0.0.1:3890/postjob',options).catch(err =>{
+           
+     
+     });
+     
+     loader[0].classList.add("addedloader");
+      f.then(res=> res.json()).then(d=>{
+       if(d===1){
+         details[0].classList.remove("addedodetails");
+         form.reset();
+         let removepr=document.getElementById("skillsdivcar");
+         while(removepr.hasChildNodes()){
+             removepr.firstChild.remove()
+         }
+         skills=[]
+         loader[0].classList.remove("addedloader");
+         sessionStorage.setItem("jobposttype","none");
+         window.close()
+       }
+
+      });
+      
+     
+     }else if(v==="edit"){
+         let jbid= sessionStorage.setCookie("jobpostid");
+         const formdata = new FormData();
+         formdata.append("joe_id",jbid);
+         formdata.append("user_id",posterid);
+         formdata.append("title",title.value);  
+         formdata.append("city",city.value);
+         formdata.append("country",country.value);  
+         formdata.append("state_province",statename);
+         formdata.append("pay",currency.value+","+pay.value+","+rate.value);  
+         formdata.append("benefit",bnfits.value);
+         formdata.append("job_type",jobtype.value);  
+         formdata.append("summary",summary.value);
+         formdata.append("responsb",responsibility.value);  
+         formdata.append("skills",skills);
+         formdata.append("c","e");  
+        
+         
+
+
+
+
+         const options ={
+
+             method: 'POST',
+             headers:{
+              "Acces-Control-Allow-Credentials":true,
+              "Access-Control-Allow-Origin": "https://enkaare.com",
+              "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+              "Access-Control-Allow-Methods": "POST",
+                 withCredentials:true
+         
+             },
+            credentials: 'include',
+         
+        
+             body: formdata,
+            
+         };
+        // https://1ed2-105-231-144-76.ngrok.io/api'
+ 
+        //https://half-geode-roundworm.glitch.me/api
+         
+         let f= fetch('http://127.0.0.1:3890/postjob',options).catch(err =>{
+           
+     
+     });
+    
+     loader[0].classList.add("addedloader");
+      f.then(res=> res.json()).then(d=>{
+       if(d===1){
+         details[0].classList.remove("addedodetails");
+         form.reset();
+         let removepr=document.getElementById("skillsdivcar");
+         while(removepr.hasChildNodes()){
+             removepr.firstChild.remove()
+         }
+         skills=[]
+         sessionStorage.setCookie("jobposttype","none");
+
+         loader[0].classList.remove("addedloader");
+         window.close()
+       }
+
+      });
+         
+      
+
+     }
+
+     
+
+   
+     
+    
+
+
+    
+  },{once:true});
+
+/////////FOR POSTING A NEW EVENT HAD TO BE HANDLED//////////////*
+
+
+
+}
 
 let listeancountry = () => {
   let country = document.getElementById("country");
@@ -4675,7 +4738,7 @@ let editp = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -4717,7 +4780,7 @@ let editp = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -4797,7 +4860,7 @@ let jbid = getCookie("jobpostid");
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -4839,7 +4902,7 @@ let jbid = getCookie("jobpostid");
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -5161,7 +5224,7 @@ let ssavename = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.com",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -5237,7 +5300,7 @@ function sverifyPassword() {
         method: "POST",
         headers: {
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Origin": "https://enkaare.com",
           "Access-Control-Allow-Headers":
             "Origin, X-Requested-With, Content-Type, Accept, authorization",
           "Access-Control-Allow-Methods": "POST",
@@ -5315,7 +5378,7 @@ let sverifypass = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.com",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -5436,7 +5499,7 @@ let emailcode = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -5501,7 +5564,7 @@ let emailcode = () => {
                   method: "POST",
                   headers: {
                     "Access-Control-Allow-Credentials": true,
-                    "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                    "Access-Control-Allow-Origin": "https://enkaare.com",
                     "Access-Control-Allow-Headers":
                       "Origin, X-Requested-With, Content-Type, Accept, authorization",
                     "Access-Control-Allow-Methods": "POST",
@@ -5568,7 +5631,7 @@ let settingdata = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -5643,7 +5706,7 @@ let tsupport = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.com",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",

@@ -5,7 +5,7 @@ const options = {
 
   headers: {
     "Access-Control-Allow-Credentials": true,
-    "Access-Control-Allow-Origin": "https://www.enkaare.com",
+    "Access-Control-Allow-Origin": "https://enkaare.com",
     "Access-Control-Allow-Headers":
       "Origin, X-Requested-With, Content-Type, Accept, authorization",
     "Access-Control-Allow-Methods": "POST",
@@ -18,7 +18,7 @@ const options = {
 //   method: "POST",
 //   headers: {
 //     "Access-Control-Allow-Credentials": true,
-//     "Access-Control-Allow-Origin": "https://www.enkaare.com",
+//     "Access-Control-Allow-Origin": "https://enkaare.com",
 //     "Access-Control-Allow-Headers":
 //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
 //     "Access-Control-Allow-Methods": "POST",
@@ -123,7 +123,7 @@ let logout = () => {
 
   //     headers: {
   //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
+  //       "Access-Control-Allow-Origin": "https://enkaare.com",
   //       "Access-Control-Allow-Headers":
   //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
   //       "Access-Control-Allow-Methods": "POST",
@@ -286,7 +286,7 @@ let availableorders = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -455,7 +455,7 @@ let suminter = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -500,7 +500,7 @@ let displainterviewslots = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -689,7 +689,7 @@ let displainterviewslots = () => {
             method: "POST",
             headers: {
               "Access-Control-Allow-Credentials": true,
-              "Access-Control-Allow-Origin": "https://www.enkaare.com",
+              "Access-Control-Allow-Origin": "https://enkaare.com",
               "Access-Control-Allow-Headers":
                 "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
@@ -753,7 +753,7 @@ function invitedorders() {
   //     method: "POST",
   //     headers: {
   //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
+  //       "Access-Control-Allow-Origin": "https://enkaare.com",
   //       "Access-Control-Allow-Headers":
   //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
   //       "Access-Control-Allow-Methods": "POST",
@@ -910,7 +910,7 @@ let profload = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1145,7 +1145,7 @@ let profload = () => {
 
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.com",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -1230,7 +1230,7 @@ let profload = () => {
         method: "POST",
         headers: {
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Origin": "https://enkaare.com",
           "Access-Control-Allow-Headers":
             "Origin, X-Requested-With, Content-Type, Accept, authorization",
           "Access-Control-Allow-Methods": "POST",
@@ -1278,7 +1278,7 @@ let profileeditbutton = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1913,7 +1913,7 @@ let orderdetails = (order_id) => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1982,7 +1982,7 @@ let orderdetails = (order_id) => {
   //     method: "POST",
   //     headers: {
   //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
+  //       "Access-Control-Allow-Origin": "https://enkaare.com",
   //       "Access-Control-Allow-Headers":
   //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
   //       "Access-Control-Allow-Methods": "POST",
@@ -2030,7 +2030,7 @@ let orderdetails = (order_id) => {
         method: "POST",
         headers: {
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Origin": "https://enkaare.com",
           "Access-Control-Allow-Headers":
             "Origin, X-Requested-With, Content-Type, Accept, authorization",
           "Access-Control-Allow-Methods": "POST",
@@ -2068,7 +2068,7 @@ let orderdetails = (order_id) => {
         method: "POST",
         headers: {
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Origin": "https://enkaare.com",
           "Access-Control-Allow-Headers":
             "Origin, X-Requested-With, Content-Type, Accept, authorization",
           "Access-Control-Allow-Methods": "POST",
@@ -2105,7 +2105,7 @@ let orderdetails = (order_id) => {
         method: "POST",
         headers: {
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Origin": "https://enkaare.com",
           "Access-Control-Allow-Headers":
             "Origin, X-Requested-With, Content-Type, Accept, authorization",
           "Access-Control-Allow-Methods": "POST",
@@ -2173,7 +2173,7 @@ let myapporders = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -2734,7 +2734,7 @@ let ssavename = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.com",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -2872,7 +2872,7 @@ let sverifypass = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.com",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -2992,7 +2992,7 @@ let emailcode = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -3057,7 +3057,7 @@ let emailcode = () => {
                   method: "POST",
                   headers: {
                     "Access-Control-Allow-Credentials": true,
-                    "Access-Control-Allow-Origin": "https://www.enkaare.com",
+                    "Access-Control-Allow-Origin": "https://enkaare.com",
                     "Access-Control-Allow-Headers":
                       "Origin, X-Requested-With, Content-Type, Accept, authorization",
                     "Access-Control-Allow-Methods": "POST",
@@ -3124,7 +3124,7 @@ let settingdata = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -3197,7 +3197,7 @@ let tsupport = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://www.enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.com",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
