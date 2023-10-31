@@ -1,11 +1,11 @@
-const baseUrl = "http://127.0.0.1:3890";
+const baseUrl = "https://yielding-dented-amusement.glitch.me";
 // let formdata = new FormData();
 const options = {
   method: "POST",
   
   headers: {
     "Access-Control-Allow-Credentials": true,
-    "Access-Control-Allow-Origin": baseUrl,
+    "Access-Control-Allow-Origin": "https://enkaare.com",
     "Access-Control-Allow-Headers":
       "Origin, X-Requested-With, Content-Type, Accept, authorization",
     "Access-Control-Allow-Methods": "POST",
@@ -46,7 +46,7 @@ const getCookie = (name) => {
 
 // Function to delete a cookie
 function deleteCookie(name) {
-  const domain = ".127.0.0.1:5500"; // Replace with your actual domain
+  const domain = ".enkaare.com"; // Replace with your actual domain
   const pastDate = new Date(0).toUTCString();
   try {
     document.cookie = `${name}=; expires=${pastDate}; path=/; domain=${domain}`;

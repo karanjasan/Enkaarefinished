@@ -61,7 +61,7 @@ console.log("This is the cookie: ", getCookie("pfname"));
 
 // Function to delete a cookie
 function deleteCookie(name) {
-  const domain = ".127.0.0.1:5500"; // Replace with your actual domain
+  const domain = ".enkaare.com"; // Replace with your actual domain
   const pastDate = new Date(0).toUTCString();
   try {
     document.cookie = `${name}=; expires=${pastDate}; path=/; domain=${domain}`;
