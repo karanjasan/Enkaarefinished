@@ -5,7 +5,7 @@ const options = {
   
   headers: {
     "Access-Control-Allow-Credentials": true,
-    "Access-Control-Allow-Origin": "https://enkaare.com",
+    "Access-Control-Allow-Origin": "https://enkaare.co",
     "Access-Control-Allow-Headers":
       "Origin, X-Requested-With, Content-Type, Accept, authorization",
     "Access-Control-Allow-Methods": "POST",
@@ -46,7 +46,7 @@ const getCookie = (name) => {
 
 // Function to delete a cookie
 function deleteCookie(name) {
-  const domain = ".enkaare.com"; // Replace with your actual domain
+  const domain = ".enkaare.co"; // Replace with your actual domain
   const pastDate = new Date(0).toUTCString();
   try {
     document.cookie = `${name}=; expires=${pastDate}; path=/; domain=${domain}`;
@@ -136,7 +136,7 @@ let setprofile = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -174,7 +174,7 @@ let inviteclickedpid;
 
 let candidates = () => {
   //   let userid = localStorage.getItem("userloged");
-  let userd = getCookie("userloged");
+  let userid = getCookie("userloged");
 
   let formdata = new FormData();
 
@@ -184,7 +184,7 @@ let candidates = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -354,8 +354,8 @@ let candidates = () => {
           let vr =
             profile.parentElement.firstElementChild.children[0].innerHTML;
 
-          // sessionStorage.setItem("profileid", vr);
-          sessionStorage.setCookie("profileid", vr);
+           sessionStorage.setItem("profileid", vr);
+         
           window.location.href = "/candidateprofile.html";
         });
       }
@@ -396,7 +396,7 @@ let candidates = () => {
             method: "POST",
             headers: {
               "Access-Control-Allow-Credentials": true,
-              "Access-Control-Allow-Origin": "https://enkaare.com",
+              "Access-Control-Allow-Origin": "https://enkaare.co",
               "Access-Control-Allow-Headers":
                 "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
@@ -487,7 +487,7 @@ let checkempcomplete = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -510,16 +510,16 @@ let checkempcomplete = () => {
     .then((d) => {
       const {nocomplete} = d;
       if (nocomplete) {
-        // sessionStorage.setItem("employercomplete", "no");
-        sessionStorage.setCookie("employercomplete", "no");
+         sessionStorage.setItem("employercomplete", "no");
+       
         setTimeout(() => {
           document
             .getElementsByClassName("incompleteprofile")[0]
             .classList.add("adddincompleteprofile");
         }, 700);
       } else {
-        // sessionStorage.setItem("employercomplete", "yes");
-        sessionStorage.setCookie("employercomplete", "yes");
+         sessionStorage.setItem("employercomplete", "yes");
+        
       }
     });
 };
@@ -565,7 +565,7 @@ function invitesubmit() {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.co",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -643,7 +643,7 @@ let eprofload = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -842,7 +842,7 @@ let eprofload = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.co",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -914,7 +914,7 @@ let eprofload = () => {
         method: "POST",
         headers: {
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://enkaare.com",
+          "Access-Control-Allow-Origin": "https://enkaare.co",
           "Access-Control-Allow-Headers":
             "Origin, X-Requested-With, Content-Type, Accept, authorization",
           "Access-Control-Allow-Methods": "POST",
@@ -967,7 +967,7 @@ let profileeditbutton = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1372,8 +1372,8 @@ let notiload = () => {
 /*ORDERS DETAILS START HERE*/
 
 let orderdetails = () => {
-  //   let jbid = sessionStorage.getItem("jobpostid");
-  let jbid = getCookie("clickedorderid");
+     let jbid = sessionStorage.getItem("jobpostid");
+  
   let loader = document.getElementsByClassName("loader");
 
   let jobtitle = document.getElementById("odh2");
@@ -1396,7 +1396,7 @@ let orderdetails = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1453,7 +1453,7 @@ let orderdetails = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1522,8 +1522,8 @@ for(let i=0;i<buttonclicked.length;i++){
 }*/
 
 let seeorder = () => {
-  //   let v = sessionStorage.getItem("id");
-  let v = getCookie("id");
+     let v = sessionStorage.getItem("id");
+  
   orderdetails(0);
 };
 
@@ -1621,10 +1621,10 @@ let myapporders = () => {
       let value =
         varbutton.parentElement.parentElement.firstElementChild.innerHTML;
 
-      //   sessionStorage.setItem("id", value);
-      setCookie("id", value);
-      //   sessionStorage.setItem("value", "Cancel");
-      setCookie("value", "Cancel");
+      sessionStorage.setItem("id", value);
+      
+       sessionStorage.setItem("value", "Cancel");
+      
 
       window.location.href = "/emp-orderdetails.html";
     });
@@ -1667,7 +1667,7 @@ let active = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1775,8 +1775,8 @@ let active = () => {
               clickedjobpost.parentElement.children[0].children[0].children[1]
                 .innerHTML;
 
-            // sessionStorage.setItem("jobpostid", jobpostid);
-            setCookie("jobpostid", jobpostid);
+             sessionStorage.setItem("jobpostid", jobpostid);
+            
             window.location.href = "/vieworderbids.html";
           });
         }
@@ -1879,8 +1879,8 @@ let drafts = () => {
         clickedjobpost.parentElement.children[0].children[0].children[1]
           .innerHTML;
 
-      //   sessionStorage.setItem("jobpostid", jobpostid);
-      setCookie("jobpostid", jobpostid);
+       sessionStorage.setItem("jobpostid", jobpostid);
+    
       window.location.href = "/vieworderbids.html";
     });
   }
@@ -2003,8 +2003,8 @@ let viewjobsapplications = () => {
   let applicationssum = document.getElementById("numberofapp");
   let daysremaining = document.getElementById("daysremaining");
 
-//   let jbid = sessionStorage.getItem("jobpostid");
-  let jbid = getCookie("jobpostid");
+  let jbid = sessionStorage.getItem("jobpostid");
+ 
 
   jbappid.innerHTML = jbid;
 
@@ -2018,7 +2018,7 @@ let viewjobsapplications = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -2073,8 +2073,8 @@ let viewallaplicants = () => {
   shortlist.style.borderBottom = "3px solid transparent";
   invites.style.borderBottom = "3px solid transparent";
 
-//   let jbid = sessionStorage.getItem("jobpostid");
-  let jbid = getCookie("jobpostid");
+let jbid = sessionStorage.getItem("jobpostid");
+  
 
   const formdata = new FormData();
   formdata.append("job_id", jbid);
@@ -2084,7 +2084,7 @@ let viewallaplicants = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -2333,8 +2333,8 @@ let viewallaplicants = () => {
       profile.addEventListener("click", (e) => {
         let vr = profile.parentElement.firstElementChild.children[0].innerHTML;
 
-        // sessionStorage.setItem("profileid", vr);
-        setCookie("profileid", vr);
+         sessionStorage.setItem("profileid", vr);
+        
         window.location.href = "/candidateprofile.html";
       });
     }
@@ -2349,8 +2349,8 @@ let viewallaplicants = () => {
 
         let bclicked = addtoshortlist.children[1].innerHTML;
         if (bclicked === "Add to Shortlist") {
-        //   let jbid = sessionStorage.getItem("jobpostid");
-          let jbid = getCookie("jobpostid");
+      let jbid = sessionStorage.getItem("jobpostid");
+          
 
           const formdata = new FormData();
           formdata.append("job_id", jbid);
@@ -2360,7 +2360,7 @@ let viewallaplicants = () => {
             method: "POST",
             headers: {
               "Access-Control-Allow-Credentials": true,
-              "Access-Control-Allow-Origin": "https://enkaare.com",
+              "Access-Control-Allow-Origin": "https://enkaare.co",
               "Access-Control-Allow-Headers":
                 "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
@@ -2406,8 +2406,8 @@ let viewallaplicants = () => {
           clickedB.parentElement.parentElement.parentElement.parentElement
             .firstElementChild.innerHTML;
 
-        // let jbid = sessionStorage.getItem("jobpostid");
-           let jbid = getCookie("jobpostid");
+        let jbid = sessionStorage.getItem("jobpostid");
+           
         const formdata = new FormData();
 
         formdata.append("user_id", cid);
@@ -2419,7 +2419,7 @@ let viewallaplicants = () => {
           method: "POST",
           headers: {
             "Access-Control-Allow-Credentials": true,
-            "Access-Control-Allow-Origin": "https://enkaare.com",
+            "Access-Control-Allow-Origin": "https://enkaare.co",
             "Access-Control-Allow-Headers":
               "Origin, X-Requested-With, Content-Type, Accept, authorization",
             "Access-Control-Allow-Methods": "POST",
@@ -2456,8 +2456,8 @@ let viewallaplicants = () => {
               mess.innerHTML =
                 "Oops! Add more interview slots to be able to invite this candidate.";
             } else if (res === 1) {
-            //   let jbid = sessionStorage.getItem("jobpostid");
-              let jbid = getCookie("jobpostid");
+             let jbid = sessionStorage.getItem("jobpostid");
+              
 
               const formdata = new FormData();
               formdata.append("job_id", jbid);
@@ -2467,7 +2467,7 @@ let viewallaplicants = () => {
                 method: "POST",
                 headers: {
                   "Access-Control-Allow-Credentials": true,
-                  "Access-Control-Allow-Origin": "https://enkaare.com",
+                  "Access-Control-Allow-Origin": "https://enkaare.co",
                   "Access-Control-Allow-Headers":
                     "Origin, X-Requested-With, Content-Type, Accept, authorization",
                   "Access-Control-Allow-Methods": "POST",
@@ -2522,8 +2522,8 @@ let shortlist = () => {
   shortlist.style.borderBottom = "3px solid hsl(188,47%,20%)";
   invites.style.borderBottom = "3px solid transparent";
 
-//   let jbid = sessionStorage.getItem("jobpostid");
-  let jbid = getCookie("jobpostid");
+ let jbid = sessionStorage.getItem("jobpostid");
+  
 
   const formdata = new FormData();
   formdata.append("job_id", jbid);
@@ -2533,7 +2533,7 @@ let shortlist = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -2891,8 +2891,8 @@ let shortlist = () => {
           let vr =
             profile.parentElement.firstElementChild.children[0].innerHTML;
 
-          //   sessionStorage.setItem("profileid", vr);
-          setCookie("profileid", vr);
+            sessionStorage.setItem("profileid", vr);
+        
           window.location.href = "/candidateprofile.html";
         });
       }
@@ -2909,8 +2909,8 @@ let shortlist = () => {
 
           let bclicked = addtoshortlist.children[1].innerHTML;
           if (bclicked === "Remove") {
-            // let jbid = sessionStorage.getItem("jobpostid");
-             let jbid = getCookie("jobpostid");
+            let jbid = sessionStorage.getItem("jobpostid");
+            
 
             const formdata = new FormData();
             
@@ -2930,8 +2930,8 @@ let shortlist = () => {
             clickedB.parentElement.parentElement.parentElement.parentElement
               .firstElementChild.innerHTML;
 
-        //   let jbid = sessionStorage.getItem("jobpostid");
-           let jbid = getCookie("jobpostid");
+         let jbid = sessionStorage.getItem("jobpostid");
+           
           const formdata = new FormData();
 
           formdata.append("user_id", cid);
@@ -2998,8 +2998,8 @@ let invites = () => {
   shortlist.style.borderBottom = "3px solid transparent";
   invites.style.borderBottom = "3px solid hsl(188,47%,20%)";
 
-//   let jbid = sessionStorage.getItem("jobpostid");
-  let jbid = getCookie("jobpostid");
+ let jbid = sessionStorage.getItem("jobpostid");
+ 
 
   const formdata = new FormData();
   formdata.append("job_id", jbid);
@@ -3008,7 +3008,7 @@ let invites = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -3243,8 +3243,8 @@ let invites = () => {
       profile.addEventListener("click", (e) => {
         let vr = profile.parentElement.firstElementChild.children[0].innerHTML;
 
-        // sessionStorage.setItem("profileid", vr);
-        setCookie("profileid", vr);
+         sessionStorage.setItem("profileid", vr);
+        
         window.location.href = "/candidateprofile.html";
       });
     }
@@ -3494,8 +3494,8 @@ function selectslots() {
         selectedEndDateTime.setHours(parseInt(selectedTimePartsE[0]));
         selectedEndDateTime.setMinutes(parseInt(selectedTimePartsE[1]));
 
-        // let jbid = sessionStorage.getItem("jobpostid");
-        let jbid = getCookie("jobpostid");
+         let jbid = sessionStorage.getItem("jobpostid");
+      
 
         let formdata = new FormData();
         formdata.append("job_id", jbid);
@@ -3506,7 +3506,7 @@ function selectslots() {
           method: "POST",
           headers: {
             "Access-Control-Allow-Credentials": true,
-            "Access-Control-Allow-Origin": "https://enkaare.com",
+            "Access-Control-Allow-Origin": "https://enkaare.co",
             "Access-Control-Allow-Headers":
               "Origin, X-Requested-With, Content-Type, Accept, authorization",
             "Access-Control-Allow-Methods": "POST",
@@ -3590,15 +3590,15 @@ function selectslots() {
 
 let allinterviewslots = () => {
   let formdata = new FormData();
-//   let jbid = sessionStorage.getItem("jobpostid");
-  let jbid = getCookie("jobpostid");
+ let jbid = sessionStorage.getItem("jobpostid");
+  
   formdata.append("job_id", jbid);
 
   const options = {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -3772,9 +3772,8 @@ let allinterviess = () => {
     .getElementsByClassName("interviewspart")[0]
     .classList.toggle("interviewspartadded");
 
-//   let jbid = sessionStorage.getItem("jobpostid");
-  let jbid = getCookie("jobpostid");
-
+  let jbid = sessionStorage.getItem("jobpostid");
+  
   let formdata = new FormData();
   formdata.append("job_id", jbid);
 
@@ -3782,7 +3781,7 @@ let allinterviess = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -3933,7 +3932,7 @@ let terminateinterviews = (interviewid) => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.co",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -3972,7 +3971,7 @@ let interviewasums = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -4013,7 +4012,7 @@ let shortlistsum = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -4051,11 +4050,11 @@ let shortlistsum = () => {
 let profload = () => {
   let loader1 = document.getElementsByClassName("loader1");
   let loader = document.getElementsByClassName("loader");
-//   let userid = sessionStorage.getItem("profileid");
+  let userid = sessionStorage.getItem("profileid");
 //   let firstn = localStorage.getItem("pfname");
-//   let userid = sessionStorage.getItem("profileid");
+  
 //   let firstn = localStorage.getItem("pfname");
- let userid = getCookie("profileid");
+
   let firstn = getCookie("pfname");
 
   let formdata = new FormData();
@@ -4067,7 +4066,7 @@ let profload = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -4182,9 +4181,9 @@ let requestintervieb = () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     let anymessage = document.getElementById("anyinformation");
-    // let candidateid = sessionStorage.getItem("profileid");
+    let candidateid = sessionStorage.getItem("profileid");
     // let employerid = localStorage.getItem("userloged");
-     let candidateid = getCookie("profileid");
+    
     let employerid = getCookie("userloged");
 
     let formdata = new FormData();
@@ -4197,7 +4196,7 @@ let requestintervieb = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.co",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -4277,7 +4276,7 @@ let postjobform=()=>{
 
   }
 
-  let f= fetch('http://127.0.0.1:3890/companyname',optionsa).catch(err =>{
+  let f= fetch('https://yielding-dented-amusement.glitch.me/companyname',optionsa).catch(err =>{
        console.log(err)    
      
 });
@@ -4294,7 +4293,7 @@ f.then(res=>res.json()).then(d=>{
 
 
   let loader =document.getElementsByClassName("loader");
-let v=  sessionStorage.setCookie("jobposttype");
+let v=  sessionStorage.getItem("jobposttype");
 
 if(v==="edit"){
   editp();
@@ -4461,7 +4460,7 @@ let statename;
 
      
          clicks=1;
-         let rt=  sessionStorage.setCookie("jobposttype");
+         let rt=  sessionStorage.setItem("jobposttype");
 
      if(v==="none" || v==="similar" ||v===null){
          const formdata = new FormData();
@@ -4492,7 +4491,7 @@ let statename;
              method: 'POST',
              headers:{
               "Acces-Control-Allow-Credentials":true,
-              "Access-Control-Allow-Origin": "https://enkaare.com",
+              "Access-Control-Allow-Origin": "https://enkaare.co",
               "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
                  withCredentials:true
@@ -4508,7 +4507,7 @@ let statename;
  
         //https://half-geode-roundworm.glitch.me/api
          
-         let f= fetch('http://127.0.0.1:3890/postjob',options).catch(err =>{
+         let f= fetch('https://yielding-dented-amusement.glitch.me/postjob',options).catch(err =>{
            
      
      });
@@ -4532,7 +4531,7 @@ let statename;
       
      
      }else if(v==="edit"){
-         let jbid= sessionStorage.setCookie("jobpostid");
+         let jbid= sessionStorage.getItem("jobpostid");
          const formdata = new FormData();
          formdata.append("joe_id",jbid);
          formdata.append("user_id",posterid);
@@ -4558,7 +4557,7 @@ let statename;
              method: 'POST',
              headers:{
               "Acces-Control-Allow-Credentials":true,
-              "Access-Control-Allow-Origin": "https://enkaare.com",
+              "Access-Control-Allow-Origin": "https://enkaare.co",
               "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
                  withCredentials:true
@@ -4574,7 +4573,7 @@ let statename;
  
         //https://half-geode-roundworm.glitch.me/api
          
-         let f= fetch('http://127.0.0.1:3890/postjob',options).catch(err =>{
+         let f= fetch('https://yielding-dented-amusement.glitch.me/postjob',options).catch(err =>{
            
      
      });
@@ -4589,7 +4588,7 @@ let statename;
              removepr.firstChild.remove()
          }
          skills=[]
-         sessionStorage.setCookie("jobposttype","none");
+         sessionStorage.setItem("jobposttype","none");
 
          loader[0].classList.remove("addedloader");
          window.close()
@@ -4704,14 +4703,14 @@ let backbutton = () => {
 //EDIT POSTED JOB START HERE
 
 let editpost = () => {
-  //   sessionStorage.setItem("jobposttype", "edit");
-  setCookie("jobposttype", "edit");
+     sessionStorage.setItem("jobposttype", "edit");
+  
   var w = window.open("/postjob.html", "_system");
 };
 let editp = () => {
   let loader = document.getElementsByClassName("loader");
-//   let jbid = sessionStorage.getItem("jobpostid");
-    let jbid = getCookie("jobpostid");
+  let jbid = sessionStorage.getItem("jobpostid");
+   
 
   let postjobtitle = document.getElementById("jbfph3");
   postjobtitle.innerHTML = "Edit Job";
@@ -4739,7 +4738,7 @@ let editp = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -4781,7 +4780,7 @@ let editp = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -4825,15 +4824,15 @@ let editp = () => {
 // HERE IS THE FUNCTION TO CREATE NEW JOB
 
 let createsimilarjob = () => {
-  //   sessionStorage.setItem("jobposttype", "similar");
-  setCookie("jobposttype", "similar");
+     sessionStorage.setItem("jobposttype", "similar");
+  
 
   var w = window.open("/postjob.html", "_system");
 };
 let similar = () => {
   let loader = document.getElementsByClassName("loader");
-//   let jbid = sessionStorage.getItem("jobpostid");
-let jbid = getCookie("jobpostid");
+   let jbid = sessionStorage.getItem("jobpostid");
+
 
   let postjobtitle = document.getElementById("jbfph3");
   postjobtitle.innerHTML = "Edit Job";
@@ -4861,7 +4860,7 @@ let jbid = getCookie("jobpostid");
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -4903,7 +4902,7 @@ let jbid = getCookie("jobpostid");
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -5225,7 +5224,7 @@ let ssavename = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.co",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -5301,7 +5300,7 @@ function sverifyPassword() {
         method: "POST",
         headers: {
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://enkaare.com",
+          "Access-Control-Allow-Origin": "https://enkaare.co",
           "Access-Control-Allow-Headers":
             "Origin, X-Requested-With, Content-Type, Accept, authorization",
           "Access-Control-Allow-Methods": "POST",
@@ -5379,7 +5378,7 @@ let sverifypass = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.co",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -5500,7 +5499,7 @@ let emailcode = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -5565,7 +5564,7 @@ let emailcode = () => {
                   method: "POST",
                   headers: {
                     "Access-Control-Allow-Credentials": true,
-                    "Access-Control-Allow-Origin": "https://enkaare.com",
+                    "Access-Control-Allow-Origin": "https://enkaare.co",
                     "Access-Control-Allow-Headers":
                       "Origin, X-Requested-With, Content-Type, Accept, authorization",
                     "Access-Control-Allow-Methods": "POST",
@@ -5632,7 +5631,7 @@ let settingdata = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -5707,7 +5706,7 @@ let tsupport = () => {
       method: "POST",
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://enkaare.com",
+        "Access-Control-Allow-Origin": "https://enkaare.co",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
