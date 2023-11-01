@@ -25,11 +25,11 @@ let f = fetch("https://yielding-dented-amusement.glitch.me/get", options).catch(
   }
 );
 
-// loader[0].classList.add("addedloader");
+loader[0].classList.add("addedloader");
 
 f.then((res) => res.json())
   .then((d) => {
-    // loader[0].classList.remove("addedloader");
+     loader[0].classList.remove("addedloader");
     const {auth, dashboard} = d;
 
     if (auth === "yes") {
