@@ -7,7 +7,7 @@ const options = {
 
   headers: {
     "Access-Control-Allow-Credentials": true,
-    "Access-Control-Allow-Origin": "https://www.enkaare.com",
+    "Access-Control-Allow-Origin": "https://enkaare.co",
     "Access-Control-Allow-Headers":
       "Origin, X-Requested-With, Content-Type, Accept, authorization",
     "Access-Control-Allow-Methods": "POST",
@@ -71,7 +71,7 @@ form.addEventListener("submit", (e) => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
