@@ -1,9 +1,17 @@
+let token = localStorage.getItem("token");
+
+
+
+
+
 const baseUrl = "https://yielding-dented-amusement.glitch.me";
 // let formdata = new FormData();
+
 const options = {
   method: "POST",
   
   headers: {
+    "Authorization": `Bearer ${token}`,
     "Access-Control-Allow-Credentials": true,
     "Access-Control-Allow-Origin": "https://enkaare.co",
     "Access-Control-Allow-Headers":
@@ -87,7 +95,78 @@ fetchSessions
     }
   });
 
+  //function to refresh token
+
+  function getTokenExpiration(token2) {
+    try {
+      const payload = JSON.parse(atob(token2.split('.')[1]));
+      if (payload && payload.exp) {
+        const expirationTimestamp = payload.exp * 1000;
+        return new Date(expirationTimestamp);
+      }
+    } catch (error) {
+      console.error('Error parsing token payload:', error);
+    }
+    return null;
+  }
+  
+  
+  const expirationDate = getTokenExpiration(token);
+
+  
+  
+  if (expirationDate) {
+    const now = new Date();
+   
+
+    const timeRemaining = (expirationDate - now) / 1000;
+
+    
+  
+    if (now >= expirationDate) {
+  
+      deleteCookie("pfname");
+      deleteCookie("psname");
+      deleteCookie("usertype");
+      localStorage.removeItem('token')
+      window.location.href = "././login.html";
+    } else if (timeRemaining <= 900) {
+      
+      let f= fetch(`${baseUrl}/refeshtoken`, options).catch((err) => {
+        console.log("There is an error fetching sessions", err);
+      });
+
+      f.then(res=>res.json()).then(d=>{
+        const{newt}=d;
+        localStorage.setItem("token", newt);
+
+      })
+
+
+      
+  
+      
+    } else {
+  
+      console.log("Token is still valid");
+    }
+  } else {
+    console.log('Token does not have a valid expiration claim.');
+  }
+  
+
+
+
 let logout = () => {
+
+  
+  deleteCookie("userloged");
+      deleteCookie("pfname");
+      deleteCookie("psname");
+      deleteCookie("usertype");
+      localStorage.removeItem('token')
+      window.location.href = "././login.html";
+/*
   // https://1ed2-105-231-144-76.ngrok.io/api'
 
   //https://half-geode-roundworm.glitch.me/api
@@ -104,7 +183,7 @@ let logout = () => {
       deleteCookie("psname");
       window.location.href = "/login.html";
     }
-  });
+  });*/
 };
 
 let navmenu = () => {
@@ -1696,7 +1775,7 @@ let active = () => {
 
         let myjpostscarrier =
           document.getElementsByClassName("jobspostlist")[0];
-        console.log(mjarray);
+     
         for (let i = 0; i < mjarray.length; i++) {
           let jbid = mjarray[i].job_id;
           let tit = mjarray[i].job_title;
@@ -3966,6 +4045,9 @@ let terminateinterviews = (interviewid) => {
 
 let interviewasums = () => {
  let jbid = getCookie("jobpostid");
+ let formdata= new FormData();
+    formdata.append("job_id",jbid);
+    
 
   const options = {
     method: "POST",
@@ -4007,6 +4089,8 @@ let interviewasums = () => {
 
 let shortlistsum = () => {
   let jbid = getCookie("jobpostid");
+  let formdata= new FormData();
+  formdata.append("job_id",jbid);
 
   const options = {
     method: "POST",
@@ -4087,7 +4171,7 @@ let profload = () => {
   loader[0].classList.add("addedloader");
   fetchCandidateProfile.then((res) => res.json()).then((d) => {
     const {first_name, last_name, country, no_complete, user_id} = d;
-    console.log(d);
+   
     loader[0].classList.remove("addedloader");
     if (no_complete) {
       /*
@@ -4264,7 +4348,7 @@ let postjobform=()=>{
       method: "POST",
       headers:{
           "Acces-Control-Allow-Credentials":true,
-          "Access-Control-Allow-Origin": "https://www.enkaare.com",
+          "Access-Control-Allow-Origin": "https://enkaare.com",
           "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
           "Access-Control-Allow-Methods": "POST",
              withCredentials:true

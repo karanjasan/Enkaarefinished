@@ -1,11 +1,14 @@
 const baseUrl = "https://yielding-dented-amusement.glitch.me";
 // let formdata = new FormData();
+
+let token = localStorage.getItem("token");
 const options = {
   method: "POST",
 
   headers: {
+    "Authorization": `Bearer ${token}`,
     "Access-Control-Allow-Credentials": true,
-    "Access-Control-Allow-Origin": "https://enkaare.com",
+    "Access-Control-Allow-Origin": "https://enkaare.co",
     "Access-Control-Allow-Headers":
       "Origin, X-Requested-With, Content-Type, Accept, authorization",
     "Access-Control-Allow-Methods": "POST",
@@ -18,7 +21,7 @@ const options = {
 //   method: "POST",
 //   headers: {
 //     "Access-Control-Allow-Credentials": true,
-//     "Access-Control-Allow-Origin": "https://enkaare.com",
+//     "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
 //     "Access-Control-Allow-Headers":
 //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
 //     "Access-Control-Allow-Methods": "POST",
@@ -30,15 +33,12 @@ const options = {
 // };
 
 // Function to set a subdomain cookie
-function setCookie(cname, cvalue, exdays = null) {
-  let expires = exdays
-    ? `expires=${new Date(
-        new Date().getTime() + exdays * 24 * 60 * 60 * 1000
-      ).toUTCString()}`
-    : "";
-  document.cookie = `${cname}=${encodeURIComponent(
-    cvalue
-  )}; ${expires}; path=/`;
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  let expires = "expires=" + d.toUTCString();
+  document.cookie =
+    cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
 }
 
 // Function to retrieve a cookie value
@@ -57,11 +57,17 @@ const getCookie = (name) => {
   }
   return "";
 };
-console.log("This is the cookie: ", getCookie("pfname"));
+
+console.log("THis cookie"+ getCookie("pfname"))
+console.log()
 
 // Function to delete a cookie
+
+
+
+
 function deleteCookie(name) {
-  const domain = ".enkaare.com"; // Replace with your actual domain
+  const domain = ".enkaare.co"; // Replace with your actual domain
   const pastDate = new Date(0).toUTCString();
   try {
     document.cookie = `${name}=; expires=${pastDate}; path=/; domain=${domain}`;
@@ -75,7 +81,7 @@ function deleteCookie(name) {
 //https://half-geode-roundworm.glitch.me/api
 
 let f = fetch(`${baseUrl}/session`, options).catch((err) => {
-  console.log("There is an error fetching seesion data: ", err);
+  console.log("There is an error fetching data: ", err);
 });
 
 f.then((res) => res.json())
@@ -88,7 +94,6 @@ f.then((res) => res.json())
       deleteCookie("userloged");
       deleteCookie("pfname");
       deleteCookie("psname");
-      deleteCookie("usertype");
       window.location.href = "/login.html";
     } else {
       //
@@ -103,7 +108,78 @@ f.then((res) => res.json())
     }
   });
 
+
+
+  
+  function getTokenExpiration(token2) {
+    try {
+      const payload = JSON.parse(atob(token2.split('.')[1]));
+      if (payload && payload.exp) {
+        const expirationTimestamp = payload.exp * 1000;
+        return new Date(expirationTimestamp);
+      }
+    } catch (error) {
+      console.error('Error parsing token payload:', error);
+    }
+    return null;
+  }
+  
+  
+  const expirationDate = getTokenExpiration(token);
+
+  
+  
+  if (expirationDate) {
+    const now = new Date();
+   
+
+    const timeRemaining = (expirationDate - now) / 1000;
+
+   
+  
+    if (now >= expirationDate) {
+  
+      deleteCookie("pfname");
+      deleteCookie("psname");
+      deleteCookie("usertype");
+      localStorage.removeItem('token')
+      window.location.href = "././login.html";
+    } else if (timeRemaining <= 900) {
+      
+      let f= fetch(`${baseUrl}/refeshtoken`, options).catch((err) => {
+        console.log("There is an error fetching sessions", err);
+      });
+
+      f.then(res=>res.json()).then(d=>{
+        const{newt}=d;
+        localStorage.setItem("token", newt);
+
+      })
+
+
+      
+  
+      
+    } else {
+  
+      console.log("Token is still valid");
+    }
+  } else {
+    console.log('Token does not have a valid expiration claim.');
+  }
+  
+
+
 let logout = () => {
+
+  deleteCookie("userloged");
+      deleteCookie("pfname");
+      deleteCookie("psname");
+      deleteCookie("usertype");
+      localStorage.removeItem('token')
+      window.location.href = "././login.html";
+
+/*
   //   const options = {
   //     method: "POST",
 
@@ -121,27 +197,20 @@ let logout = () => {
 
   //https://half-geode-roundworm.glitch.me/api
 
-  let f = fetch(`${baseUrl}/logout`, options).catch((err) => {
-    console.log("There is an error fetching logout  : ", err);
-  });
+  let f = fetch(`${baseUrl}/logout`, options).catch((err) => {});
   f.then((res) => res.json()).then((d) => {
     const {okay} = d;
     if (okay) {
       //  localStorage.removeItem("userloged");
       //  localStorage.removeItem("pfname");
       //  localStorage.removeItem("psname");
-      setTimeout(() => {
-        deleteCookie("userloged");
-        deleteCookie("pfname");
-        deleteCookie("psname");
-      }, 2000);
-      //   window.location.href = "././login.html";
-      setTimeout(() => {
-        window.location.href = "././login.html";
-      }, 5000);
+      deleteCookie("userloged");
+      deleteCookie("pfname");
+      deleteCookie("psname");
+      deleteCookie("usertype");
+      window.location.href = "././login.html";
     }
-    console.log("The return d is:: ", d);
-  });
+  });*/
 };
 
 let setprofile = () => {
@@ -172,7 +241,7 @@ let setprofile = () => {
   });
   f.then((res) => res.json())
     .then((d) => {
-      console.log(d);
+      
       if (d[0].file === "noprofile") {
       } else {
         const imageex = "data:image/png;base64,";
@@ -272,7 +341,7 @@ let availableorders = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -286,7 +355,7 @@ let availableorders = () => {
   //https://half-geode-roundworm.glitch.me/api
 
   let f = fetch(`${baseUrl}/allorders`, optionWithFormData).catch((err) => {});
-  loader[0].classList.add("addedloader");
+ // loader[0].classList.add("addedloader");
 
   f.then((res) => res.json()).then((d) => {
     const {pnotcomplte} = d;
@@ -389,10 +458,9 @@ let availableorders = () => {
           let value =
             varbutton.parentElement.parentElement.firstElementChild.innerHTML;
 
-          //   sessionStorage.setItem("clickedorderid", value);
-          //   sessionStorage.setItem("seeorderbuttonvalue", "Apply");
-          sessionStorage.setCookie("clickedorderid", value);
-          sessionStorage.setCookie("seeorderbuttonvalue", "Apply");
+             sessionStorage.setItem("clickedorderid", value);
+            sessionStorage.setItem("seeorderbuttonvalue", "Apply");
+          
 
           window.location.href = "/orderdetails.html";
         });
@@ -441,7 +509,7 @@ let suminter = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -486,7 +554,7 @@ let displainterviewslots = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -675,7 +743,7 @@ let displainterviewslots = () => {
             method: "POST",
             headers: {
               "Access-Control-Allow-Credentials": true,
-              "Access-Control-Allow-Origin": "https://enkaare.com",
+              "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
               "Access-Control-Allow-Headers":
                 "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
@@ -739,7 +807,7 @@ function invitedorders() {
   //     method: "POST",
   //     headers: {
   //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "https://enkaare.com",
+  //       "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
   //       "Access-Control-Allow-Headers":
   //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
   //       "Access-Control-Allow-Methods": "POST",
@@ -844,11 +912,9 @@ function invitedorders() {
         let value =
           varbutton.parentElement.parentElement.firstElementChild.innerHTML;
 
-        // sessionStorage.setItem("clickedorderid", value);
-        // sessionStorage.setItem("seeorderbuttonvalue", "Accept");
-        sessionStorage.setCookie("clickedorderid", value);
-        sessionStorage.setCookie("seeorderbuttonvalue", "Accept");
-
+        sessionStorage.setItem("clickedorderid", value);
+         sessionStorage.setItem("seeorderbuttonvalue", "Accept");
+        
         window.location.href = "/orderdetails.html";
       });
     }
@@ -896,7 +962,7 @@ let profload = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1131,7 +1197,7 @@ let profload = () => {
 
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://enkaare.com",
+        "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -1216,7 +1282,7 @@ let profload = () => {
         method: "POST",
         headers: {
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://enkaare.com",
+          "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
           "Access-Control-Allow-Headers":
             "Origin, X-Requested-With, Content-Type, Accept, authorization",
           "Access-Control-Allow-Methods": "POST",
@@ -1264,7 +1330,7 @@ let profileeditbutton = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1876,8 +1942,7 @@ let notiload = () => {
 
 let orderdetails = (order_id) => {
   let loader = document.getElementsByClassName("loader");
-  //   let jbid = sessionStorage.getItem("clickedorderid");
-  let jbid = getCookie("clickedorderid");
+  let jbid = sessionStorage.getItem("clickedorderid");
 
   let jobtitle = document.getElementById("odh6");
   let name = document.getElementById("odp");
@@ -1899,7 +1964,7 @@ let orderdetails = (order_id) => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.com",
+      "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -2250,10 +2315,9 @@ let myapporders = () => {
           let value =
             varbutton.parentElement.parentElement.firstElementChild.innerHTML;
 
-          //   sessionStorage.setItem("clickedorderid", value);
-          //   sessionStorage.setItem("seeorderbuttonvalue", "Cancel");
-          sessionStorage.setCookie("clickedorderid", value, 7);
-          sessionStorage.setCookie("seeorderbuttonvalue", "Cancel", 7);
+            sessionStorage.setItem("clickedorderid", value);
+            sessionStorage.setItem("seeorderbuttonvalue", "Cancel");
+          
 
           window.location.href = "/orderdetails.html";
         });
@@ -2350,10 +2414,9 @@ let acceptedjobs = () => {
       let value =
         varbutton.parentElement.parentElement.firstElementChild.innerHTML;
 
-      //   sessionStorage.setItem("clickedorderid", value);
-      //   sessionStorage.setItem("seeorderbuttonvalue", "Terminate");
-      sessionStorage.setCookie("clickedorderid", value);
-      sessionStorage.setCookie("seeorderbuttonvalue", "Terminate");
+         sessionStorage.setItem("clickedorderid", value);
+        sessionStorage.setItem("seeorderbuttonvalue", "Terminate");
+      
 
       window.location.href = "/orderdetails.html";
     });
@@ -3139,8 +3202,8 @@ let settingdata = () => {
     lastnameeee = last_name;
     // localStorage.setItem("pfname", first_name);
     // localStorage.setItem("psname", last_name);
-    setCookie("pfname", first_name);
-    setCookie("psname", last_name);
+    setCookie("pfname", first_name, 7);
+    setCookie("psname", last_name, 7);
     setprofile();
   });
 };
