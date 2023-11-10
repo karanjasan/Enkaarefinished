@@ -80,6 +80,54 @@ span{
     border-radius: 0.3vw;
 }
 
+.homelinka{
+    text-decoration: none;
+}
+.homelink{
+ 
+    height: 2.5vw;
+    width: 7vw;
+    margin-top: 1vw;
+    margin-left: 2%;
+    display: flex;
+    cursor: pointer;
+    border-radius: 5vw;
+}
+
+.greaterthanbutton{
+    /*border: 1px solid hsl(188,47%,20%);*/
+    height: 2vw;
+    width: 2vw;
+    background-color: hsl(188,47%,20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-left: 1%;
+    margin-top: 0.2vw;
+    cursor: pointer;
+
+    
+}
+
+.greaterthanbutton img{
+    height: 1.3vw;
+}
+.hmlinkp{
+    
+    font-size: 1.2vw;
+    height: 1.5vw;
+    margin-top: 0vw;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-left: 6%;
+    color: hsl(188,47%,20%);
+    margin-top: 0.6vw;
+
+
+}
+
+
 @media (max-width:500px){
     h2{
         border: 1px solid black;
@@ -165,4 +213,52 @@ span{
         padding: 1vw;
         border-radius: 0.3vw;
     }
+
+    
+.homelinka{
+    text-decoration: none;
 }
+.homelink{
+   
+    height: 5vw;
+    width: 16vw;
+    margin-top: 5vw;
+    margin-left: 2%;
+   
+}
+
+.greaterthanbutton{
+    border: 1px solid hsl(188,47%,20%);
+    height: 4vw;
+    width: 4vw;
+    background-color: hsl(188,47%,20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-left: 1%;
+    margin-top: 0.2vw;
+    cursor: pointer;
+
+    
+}
+
+.greaterthanbutton img{
+    height: 3vw;
+}
+.hmlinkp{
+    
+    font-size: 3vw;
+    height: 1.5vw;
+    margin-top: 0vw;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-left: 6%;
+    color: hsl(188,47%,20%);
+    margin-top: 0.8vw;
+
+
+}
+
+}
+

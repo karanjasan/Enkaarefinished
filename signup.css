@@ -2,7 +2,7 @@ body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: scroll;
 
 }
 .emailvericationdivi{
@@ -175,7 +175,11 @@ select{
     margin-left: 6%;
     font-size: 1.2vw;
     border-radius: 0.3;
+    
   
+}
+select:focus{
+    outline-width: none;
 }
 form a{
     text-decoration: none;
@@ -239,6 +243,7 @@ form a:hover{
     font-size: 1vw;
     color: hsl(188,47%,20%);
 }
+
 #spancountry{
     display: block;
     font-size: 1vw;
@@ -303,16 +308,17 @@ margin-top: 4.5%;
     width: 45%;
 }
 .phonecode{
-    border: 1px solid black;
-    height: 2.6vw;
+  border: 1px solid black;
+    height: 3vw;
     margin-top: 2.5vw;
     width: 24.8vw;
     display: flex;
 }
 .realpcode{
     
+    
     width: 5vw;
-    height: 2vw;
+    height: 2.5vw;
     margin-top: 0.3vw;
     display: flex;
     align-items: center;
@@ -323,10 +329,15 @@ margin-top: 4.5%;
 }
 #phonenumberin{
     margin-top: 0.3vw;
-    height: 1.8vw;
+    height: 2.35vw;
     margin-left: 0.0vw;
     text-align: left;
-    border: transparent;
+    border-radius: 0%;
+    border: 1px solid transparent;
+    
+  
+   
+
 }
 
 
@@ -391,6 +402,57 @@ margin-top: 4.5%;
     display: flex;
     opacity: 1;
 }
+
+
+
+
+.homelinka{
+    text-decoration: none;
+}
+.homelink{
+ 
+    height: 2.5vw;
+    width: 7vw;
+    margin-top: 1vw;
+    margin-left: 2%;
+    display: flex;
+    cursor: pointer;
+    border-radius: 5vw;
+}
+
+.greaterthanbutton{
+    /*border: 1px solid hsl(188,47%,20%);*/
+    height: 2vw;
+    width: 2vw;
+    background-color: hsl(188,47%,20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-left: 1%;
+    margin-top: 0.2vw;
+    cursor: pointer;
+
+    
+}
+
+.greaterthanbutton img{
+    height: 1.3vw;
+}
+.hmlinkp{
+    
+    font-size: 1.2vw;
+    height: 1.5vw;
+    margin-top: 0vw;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-left: 6%;
+    color: hsl(188,47%,20%);
+    margin-top: 0.6vw;
+
+
+}
+
 @keyframes loading {
     from{transform: rotate(0turn);}
     to{transform: rotate(1turn);}
@@ -495,10 +557,11 @@ margin-top: 4.5%;
     form{
         width: 90vw;
         border: 1px solid black;
-        height: 160vw;
+        height: 170vw;
         margin: auto;
         margin-top: 10vw;
          font-family: 'Roboto', sans-serif;
+         margin-bottom: 10vw;
     }
     h2{
         font-size: 5vw;
@@ -741,7 +804,7 @@ margin-top: 4.5%;
     }
     .phonecode{
         width: 69.4vw;
-        height: 7.5vw;
+        height: 9vw;
         margin-top: 22vw;
         margin-left: 9.9%;
         font-size: 3vw;
@@ -752,12 +815,12 @@ margin-top: 4.5%;
     
     #phonenumberin{
       
-        height: 6.2vw;
-        margin-top: 0.1vw;
+        height: 6.5vw;
+        
         margin-left: 0%;
         width: 100vw;
         font-size: 3.5vw;
-       /* border: 1px solid black;*/
+     
         
     }
     
@@ -785,5 +848,52 @@ margin-top: 4.5%;
     .fa{
         margin-top: 7vw;
     }
+
+       
+.homelinka{
+    text-decoration: none;
+}
+.homelink{
+   
+    height: 5vw;
+    width: 16vw;
+    margin-top: 5vw;
+    margin-left: 2%;
+   
+}
+
+.greaterthanbutton{
+    border: 1px solid hsl(188,47%,20%);
+    height: 4vw;
+    width: 4vw;
+    background-color: hsl(188,47%,20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-left: 1%;
+    margin-top: 0.2vw;
+    cursor: pointer;
+
+    
+}
+
+.greaterthanbutton img{
+    height: 3vw;
+}
+.hmlinkp{
+    
+    font-size: 3vw;
+    height: 1.5vw;
+    margin-top: 0vw;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-left: 6%;
+    color: hsl(188,47%,20%);
+    margin-top: 0.8vw;
+
+
+}
+
     
 }
