@@ -307,19 +307,28 @@ margin-top: 4.5%;
     
     width: 45%;
 }
+
+
+
+
+
+
+
 .phonecode{
   border: 1px solid black;
-    height: 3vw;
+    height: 2.6vw;
     margin-top: 2.5vw;
     width: 24.8vw;
     display: flex;
+    border-radius: 1%;
 }
 .realpcode{
     
     
+    border: 1px solid transparent;
     width: 5vw;
-    height: 2.5vw;
-    margin-top: 0.3vw;
+    height: 2.3vw;
+    margin-top: 0vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -328,12 +337,13 @@ margin-top: 4.5%;
 
 }
 #phonenumberin{
-    margin-top: 0.3vw;
-    height: 2.35vw;
+    margin-top: 0vw;
+    height: 2.1vw;
     margin-left: 0.0vw;
     text-align: left;
     border-radius: 0%;
     border: 1px solid transparent;
+
     
   
    
@@ -804,7 +814,7 @@ margin-top: 4.5%;
     }
     .phonecode{
         width: 69.4vw;
-        height: 9vw;
+        height: 8vw;
         margin-top: 22vw;
         margin-left: 9.9%;
         font-size: 3vw;
@@ -815,8 +825,8 @@ margin-top: 4.5%;
     
     #phonenumberin{
       
-        height: 6.5vw;
-        
+        height: 6vw;
+      
         margin-left: 0%;
         width: 100vw;
         font-size: 3.5vw;
@@ -826,7 +836,7 @@ margin-top: 4.5%;
     
     .realpcode{
         width: 25vw;
-        height: 7vw;
+        height: 6.5vw;
         font-size: 3.5vw;
        
 

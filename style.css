@@ -224,8 +224,9 @@ header{
 }
 
 .propsp{
-   background-color: hsla(45, 44%, 80%,0.8);
+   background-color: hsl(44,54%,77%);
    padding-bottom: 4vw;
+   
 }
 .setter{
     visibility: hidden;
@@ -465,7 +466,7 @@ header{
     border-radius: 0.1vw;
 }
 .bakcolor{
-    background-color: hsla(45, 44%, 80%,0.8);
+    background-color: hsl(37,42%,94%);
 }
 
 
@@ -1028,10 +1029,10 @@ header{
        
     }
     .backgroudcolorsetter{
-        background-color: hsla(45, 44%, 80%,0.8);
+        background-color: hsl(37,42%,94%);
     }
   .aboutmain{
-    background-color: hsla(45, 44%, 80%,0.8);
+    background-color: hsl(37,42%,94%);
   
     height: 80vw;
     overflow: hidden;
