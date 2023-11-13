@@ -224,7 +224,7 @@ header{
 }
 
 .propsp{
-   background-color: hsl(44,54%,77%);
+   background-color: hsla(45, 44%, 80%,0.8);
    padding-bottom: 4vw;
    
 }
