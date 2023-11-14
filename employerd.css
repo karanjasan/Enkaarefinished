@@ -64,7 +64,7 @@ a{
     width: 13vw;
     margin-top: 1vw;
     margin-left: 5%;
-    font-size: 1.3vw;
+    font-size: 1.2vw;
     font-weight: 600;
     color: white;
     background-color: hsl(188,47%,20%);
@@ -835,6 +835,7 @@ iframe{
    
     margin-left: 2%;
     font-size: 1vw;
+    color: hsla(4,0%,0%,0.5);
 }
 .approvalr{
     border-left: 1px solid hsla(188,47%,20%,0.5);
@@ -4130,7 +4131,7 @@ select{
     height: 0vh;
     width: 0vw;
     position: absolute;
-    background-color: hsla(0,0%,100%,0.9);
+    background-color: hsla(100,100%,100%,0.7);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -4175,7 +4176,7 @@ select{
 .innersupport2{
    
     width: 50%;
-    background-color: whitesmoke;
+    background-color: hsla(45, 44%, 80%,0.8);
 }
 .innersupport2 h2{
  
