@@ -1,4 +1,4 @@
-const baseUrl = "https://yielding-dented-amusement.glitch.me";
+const baseUrl = "http://127.0.0.1:3890";
 // let formdata = new FormData();
 
 let token = localStorage.getItem("token");
@@ -21,7 +21,7 @@ const options = {
 //   method: "POST",
 //   headers: {
 //     "Access-Control-Allow-Credentials": true,
-//     "Access-Control-Allow-Origin": "https://enkaare.co",
+//     "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
 //     "Access-Control-Allow-Headers":
 //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
 //     "Access-Control-Allow-Methods": "POST",
@@ -62,14 +62,16 @@ const getCookie = (name) => {
 // Function to delete a cookie
 
 function deleteCookie(name) {
-  const domain = ".enkaare.co"; // Replace with your actual domain
+//  const domain = ".127.0.0.1:5501"; // Replace with your actual domain
   const pastDate = new Date(0).toUTCString();
   try {
-    document.cookie = `${name}=; expires=${pastDate}; path=/; domain=${domain}`;
-    console.log(`Deleted cookie: ${name}`);
+    document.cookie = `${name}=; expires=${pastDate}; path=/`;
+   // console.log(`Deleted cookie: ${name}`);
   } catch (error) {
-    console.error(`Error deleting cookie: ${name}`, error);
-  }
+    console.error(`Error deleting cookie: ${name}`, error)
+}
+
+
 }
 
 
@@ -378,7 +380,7 @@ let availableorders = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -546,7 +548,7 @@ let suminter = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -591,7 +593,7 @@ let displainterviewslots = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -780,7 +782,7 @@ let displainterviewslots = () => {
             method: "POST",
             headers: {
               "Access-Control-Allow-Credentials": true,
-              "Access-Control-Allow-Origin": "https://enkaare.co",
+              "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
               "Access-Control-Allow-Headers":
                 "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
@@ -840,25 +842,23 @@ function invitedorders() {
   formdata.append("firstname", firstnmae);
   formdata.append("logedid", logedid);
 
-  //   const options = {
-  //     method: "POST",
-  //     headers: {
-  //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "https://enkaare.co",
-  //       "Access-Control-Allow-Headers":
-  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-  //       "Access-Control-Allow-Methods": "POST",
-  //       withCredentials: true,
-  //     },
-  //     credentials: "include",
+     const options = {
+       method: "POST",
+      headers: {
+         "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
+       "Access-Control-Allow-Headers":
+         "Origin, X-Requested-With, Content-Type, Accept, authorization",
+       "Access-Control-Allow-Methods": "POST",
+       withCredentials: true,
+      },
+      credentials: "include",
 
-  //     body: formdata,
-  //   };
-  // https://1ed2-105-231-144-76.ngrok.io/api'
+       body: formdata,
+     };
+  
 
-  //https://half-geode-roundworm.glitch.me/api
-
-  let f = fetch(`${baseUrl}/cinvites`, optionWithFormData).catch((err) => {});
+  let f = fetch(`${baseUrl}/cinvites`, options).catch((err) => {});
   loader[0].classList.add("addedloader");
 
   f.then((res) => res.json()).then((d) => {
@@ -999,7 +999,7 @@ let profload = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -1234,7 +1234,7 @@ let profload = () => {
 
       headers: {
         "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://enkaare.co",
+        "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept, authorization",
         "Access-Control-Allow-Methods": "POST",
@@ -1319,7 +1319,7 @@ let profload = () => {
         method: "POST",
         headers: {
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://enkaare.co",
+          "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
           "Access-Control-Allow-Headers":
             "Origin, X-Requested-With, Content-Type, Accept, authorization",
           "Access-Control-Allow-Methods": "POST",
@@ -1367,7 +1367,7 @@ let profileeditbutton = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -2001,7 +2001,7 @@ let orderdetails = (order_id) => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "http://127.0.0.1:3890",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",

@@ -1023,6 +1023,8 @@ header{
 
     /*ABOUT PAGE*/
     .headerabout{
+
+        
    
         height: 2vw;
         overflow: hidden;
@@ -2278,8 +2280,8 @@ header{
 
     /*ABOUT US*/
     .headerabout{
-        /*  background-color: green;*/
-          height: 5vw;
+        
+          height: 12vw;
           overflow: hidden;
    
          
