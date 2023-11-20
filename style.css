@@ -1411,7 +1411,7 @@ header{
     }
     .signup:hover{
      background-color: hsl(229,43%,30%);
-     border: 1px solid hsl(229,43%,30%);
+     border: transparent;
     }
     .head{
       
