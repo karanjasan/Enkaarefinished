@@ -1043,11 +1043,11 @@ header{
    
     
   }
-    .aboutsection1,.aboutsection2{
-       
+    .aboutsection1,.aboutsection2
+    {
         width: 50%;
         height: 70vw;
-       
+        
     }
     .aboutsec11{
         
@@ -1057,8 +1057,10 @@ header{
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-       
-    }
+        /* border-radius: 8px;
+        position: relative;
+        left: 0; */
+        }
     .aboutsection2 h2{
       /* color: #ffff;*/
      
@@ -1090,6 +1092,9 @@ header{
        background-size: cover;
        background-repeat: no-repeat;
         margin-top: 10vw;
+        border-radius: 8px;
+        position: relative;
+        right: 0;
         
     }
     .aboutsec11h2{
@@ -2368,10 +2373,8 @@ header{
        
         width: 50%;
         height: 150vw;
-       
-      
-       
     }
+    
     .aboutsec11{
        
         height: 60vw;
@@ -2380,8 +2383,7 @@ header{
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-        margin-top: 4vw;
-       
+        margin-top: 4vw;       
     }
     .aboutsection2 h2{
       /* color: #ffff;*/
