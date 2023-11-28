@@ -1,42 +1,50 @@
+
+
 let loader = document.getElementsByClassName("loader");
+let token = localStorage.getItem("token");
+
 
 const formdata = new FormData();
+
+
 
 const options = {
   method: "POST",
 
   headers: {
+    "Authorization": `Bearer ${token}`,
     "Access-Control-Allow-Credentials": true,
-    "Access-Control-Allow-Origin": "https://www.enkaare.com",
+    "Access-Control-Allow-Origin": "https://enkaare.co",
     "Access-Control-Allow-Headers":
       "Origin, X-Requested-With, Content-Type, Accept, authorization",
     "Access-Control-Allow-Methods": "POST",
     withCredentials: true,
   },
   credentials: "include",
+  
 };
 // https://1ed2-105-231-144-76.ngrok.io/api'
 
 //https://half-geode-roundworm.glitch.me/api
 
-let f = fetch("https://yielding-dented-amusement.glitch.me/get", options).catch(
-  (err) => {
-    console.log("There is error fetching data: ", err);
-  }
-);
+let f = fetch("https://yielding-dented-amusement.glitch.me/get", options).catch((err) => {
+  console.log("There is error fetching data: ", err);
+});
 
-// loader[0].classList.add("addedloader");
+loader[0].classList.add("addedloader");
 
 f.then((res) => res.json())
   .then((d) => {
-    // loader[0].classList.remove("addedloader");
+    
+    loader[0].classList.remove("addedloader");
     const {auth, dashboard} = d;
 
     if (auth === "yes") {
       if (dashboard === "candidate") {
         window.location.href = "/workerdashboard.html";
+        console.log("This is the: ", dashboard);
       } else {
-        window.location.href = "/employerdashboard.html";
+       window.location.href = "/employerdashboard.html";
       }
     }
   })
@@ -48,6 +56,11 @@ f.then((res) => res.json())
     } else {
     }
   });
+
+
+
+
+  
 
 let form = document.getElementById("loginform");
 let email = document.getElementById("username");
@@ -71,7 +84,7 @@ form.addEventListener("submit", (e) => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://www.enkaare.com",
+      "Access-Control-Allow-Origin": "http://127.0.0.1:5500",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -86,29 +99,32 @@ form.addEventListener("submit", (e) => {
   //https://half-geode-roundworm.glitch.me/api
   //https://yielding-dented-amusement.glitch.me
 
-  let f = fetch(
-    "https://yielding-dented-amusement.glitch.me/login",
-    options
-  ).catch((err) => {});
+  let f = fetch("https://yielding-dented-amusement.glitch.me/login", options).catch((err) => {});
   loader[0].classList.add("addedloader");
 
   f.then((res) => res.json())
     .then((d) => {
-      const {verytype, usertype, userid, firstname, secondname} = d;
+
+      console.log(d)
+      
+      
+      console.log("Response success: ", d);
+
+      const {verytype, usertype, userid, firstname, secondname,token} = d;
 
       if (verytype === "valid") {
         function setCookie(cname, cvalue, exdays = null) {
-          // const domain = ".127.0.0.1:5500";
+         // const domain = ".127.0.0.1:5500";
           let expires = exdays
             ? `expires=${new Date(
                 new Date().getTime() + exdays * 1000 * 60 * 30
               ).toUTCString()}`
             : "";
-          // console.log("expires: ", expires);
+          console.log("expires: ", expires);
           document.cookie = `${cname}=${encodeURIComponent(
             cvalue
           )}; expires=${expires}; path=/ `;
-          // console.log(document.cookie);
+          console.log(document.cookie);
         }
 
         // Set Cookies
@@ -116,16 +132,21 @@ form.addEventListener("submit", (e) => {
         setCookie("psname", secondname);
         setCookie("userloged", userid);
         setCookie("usertype", usertype);
+        localStorage.setItem("token", token);
 
-        // localStorage.setItem("pfname", firstname);
+
+
+        // 
         // localStorage.setItem("psname", secondname);
         // localStorage.setItem("userloged", userid);
         // localStorage.setItem("usertype", usertype);
         if (usertype === "client") {
+          console.log("Yessssss client")
           loader[0].classList.remove("addedloader");
           form.reset();
           window.location.href = "././employerdashboard.html";
         } else if (usertype === "candidate") {
+          console.log("YESS employer")
           loader[0].classList.remove("addedloader");
           form.reset();
           window.location.href = "././workerdashboard.html";
@@ -134,6 +155,8 @@ form.addEventListener("submit", (e) => {
         alert[0].style.display = "block";
         loader[0].classList.remove("addedloader");
       }
+
+      
     })
     .catch((err) => {
       console.log(err);
@@ -147,3 +170,8 @@ form.addEventListener("submit", (e) => {
 let removealert = () => {
   alert[0].style.display = "none";
 };
+
+
+
+
+

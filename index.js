@@ -16,11 +16,7 @@ const app = express();
 app.use(cookiepar());
 
 app.use(function (req, res, next) {
-<<<<<<< HEAD
   res.setHeader("Access-Control-Allow-Origin", "https://enkaare.onrender.com");
-=======
-  res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
->>>>>>> dev
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, authorization"
