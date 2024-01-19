@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/forgotpassword/verifyemail.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email</title>
+</head>
+<body>
+  <div class="loader"></div>
+  <div class="emailvericationdivi">
+    <div class="codeinputsec">
+      <p class="vermaessage">
+        An email verication code has been sent to
+        <span id="sentemail"></span>, enter the code below.
+      </p>
+      <div class="ccinputs">
+        <input oninput="change()" type="text" class="codes" maxlength="1" />
+        <input oninput="change()" type="text" class="codes" maxlength="1" />
+        <input oninput="change()" type="text" class="codes" maxlength="1" />
+        <input oninput="change()" type="text" class="codes" maxlength="1" />
+        <input oninput="change()" type="text" class="codes" maxlength="1" />
+      </div>
+      <div class="bb">
+        <div class="bloader"></div>
+        <button onclick="resend()">Re-send</button>
+      </div>
+    </div>
+    <span onclick="getrid()" id="scancelb">&times;</span>
+  </div>
+
+    <a class="homelinka" href="/login.html">
+        <div class="homelink">
+          <div class="greaterthanbutton">
+        
+            <img src="/images/less-than.png" alt="">
+        
+          </div>
+          <p class="hmlinkp">
+            back
+          </p>
+          
+        
+         </div>
+      </a>
+
+
+      <div class="centerimage">
+        <img class="verifyimage" src="/images/forgot-password.png" alt="forgotpassword">
+      </div>
+      <p class="verication-message">
+        Please enter the email address that you are currently registered with. Once entered, a verification code will be sent to this email address. Please check your inbox for the verification email, and use the provided code to complete the verification process.
+      </p>
+
+      <form class="form" action="">
+        <div class="emailinput">
+          <p class="emaillabel">
+            Enter email
+          </p>
+          <div class="inneremailinput">
+            <img src="/images/emailver.png" alt="">
+            <input oninput="oninpuEmail()" type="email" name="email" id="email" placeholder="Enter email" required>
+            
+            
+          </div>
+          
+        </div>
+        <span class="warnmessage"></span>
+        <input class="submitButton" type="submit" value="Submit">
+      </form>
+    
+</body>
+<script src="/forgotpassword/verifyemail.js"></script>
+</html>

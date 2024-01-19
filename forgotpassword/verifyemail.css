@@ -1,0 +1,575 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    
+scrollbar-color: #888 transparent;
+
+}
+
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: hsla(188,47%,20%,0.3);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+   
+
+}
+.loader::after{
+    content: "";
+    width: 5vw;
+    height: 5vw;
+    border: 0.8vw solid white;
+    border-top: 0.8vw solid hsl(188,47%,20%);
+    border-radius: 50%;
+    animation: loading 0.7s ease infinite;
+    opacity: 1;
+    
+   
+}
+.loader.addedloader{
+    display: flex;
+    opacity: 1;
+}
+@keyframes loading {
+    from{transform: rotate(0turn);}
+    to{transform: rotate(1turn);}
+}
+
+
+
+body::-webkit-scrollbar {
+width: 0.4vw; 
+}
+body::-webkit-scrollbar-thumb {
+background-color: #c0c0c0;
+border-radius: 0.7vw;
+}
+
+.homelinka{
+    text-decoration: none;
+}
+.homelink{
+ 
+    height: 2.5vw;
+    width: 7vw;
+    margin-top: 1vw;
+    margin-left: 2%;
+    display: flex;
+    cursor: pointer;
+    border-radius: 5vw;
+}
+.greaterthanbutton{
+    /*border: 1px solid hsl(188,47%,20%);*/
+    height: 2vw;
+    width: 2vw;
+    background-color: hsl(188,47%,20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-left: 1%;
+    margin-top: 0.2vw;
+    cursor: pointer;
+
+    
+}
+
+.greaterthanbutton img{
+    height: 1.3vw;
+}
+.hmlinkp{
+    
+    font-size: 1.2vw;
+    height: 1.5vw;
+    margin-top: 0vw;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-left: 6%;
+    color: hsl(188,47%,20%);
+    margin-top: 0.6vw;
+
+
+}
+
+.centerimage{
+    margin: auto;
+   
+    width: 30%;
+    text-align: center;
+    margin-top: 2vw;
+
+}
+.centerimage img{
+    height: 15vw;
+    
+}
+.verication-message{
+   
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1.2vw;
+    margin: auto;
+    width: 70%;
+    line-height: 1.7vw;
+    margin-top: 2vw;
+}
+
+form{
+ 
+    text-align: center;
+}
+
+.emaillabel{
+    font-size: 1.2vw;
+    font-weight: 600;
+    font-family: sans-serif;
+    color: hsl(188,47%,20%);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    
+}
+
+.emaillabel.addedlabel{
+    opacity: 1;
+    visibility: visible;
+
+}
+.inneremailinput{
+    border: 1px solid hsla(0,0%,0%,0.3);
+    width: 35vw;
+    display: flex;
+    margin: auto;
+    overflow-y: hidden;
+    height: 3.4vw;
+    border-radius: 10vw;
+}
+.inneremailinput img{
+ height: 2.5vw;
+ margin-left: 2%;
+ margin-top: 0.3vw;
+ 
+}
+
+#email{
+    height: 2.5vw;
+    width: 30vw;
+    margin-left: 2%;
+    text-align: center;
+    font-size: 1.3vw;
+    font-family: sans-serif;
+    border: 1px solid transparent;
+    background-color: white;
+    margin-top: 0.3vw;
+}
+#email:valid {
+    background-color: transparent;
+}
+#email:focus{
+    outline: none;
+    background-color: white;
+    box-shadow: none;
+}
+.warnmessage{
+    display: block;
+    font-size: 1vw;
+    margin-top: 0.5vw;
+    color: red;
+}
+.submitButton{
+    border: 1px solid hsla(0,0%,0%,0.3);
+    width: 35vw;
+    margin: auto;
+    height: 3.4vw;
+    border-radius: 10vw;
+    margin-top: 2vw;
+    text-align: center;
+    font-size: 1.3vw;
+    font-weight: 700;
+    color: white;
+    background-color: hsl(188,47%,20%);
+    cursor: pointer;
+    border: 1px solid hsl(188,47%,20%);
+
+}
+
+.submitButton:hover{
+    color: hsl(188,47%,20%);
+    background-color: white;
+    border: 1px solid hsl(188,47%,20%);
+
+}
+
+
+/***ss*/
+.emailvericationdivi{
+    
+    height: 0vh;
+    width: 0vw;
+    background-color: hsla(0,0%,100%, 0.9);
+    position: absolute;
+    margin-top: -0vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    overflow: hidden;
+    opacity: 0;
+    
+}
+#sentemail{
+    color: blue;
+}
+.emailvericationdivi.addedcodep{
+    height: 100vh;
+    width: 100vw;
+    opacity: 1;
+}
+.codeinputsec{
+    border: 1px solid hsla(4,0%,0%,0.4);
+    height: 40vw;
+    width: 60vw;
+    
+}
+.ccinputs{
+    margin: auto;
+   
+    display: flex;
+    margin-top: 10vw;
+    width: 42vw;
+    
+}
+.codes{
+    width: 5vw;
+    height: 7vw;
+    border:  1px solid hsla(4,0%,0%,0.5);
+    font-size: 1.3vw;
+    margin-left: 2vw;
+    text-align: center;
+}
+.vermaessage{
+    font-family: 'Roboto', sans-serif;
+    margin-left: 15%;
+    font-size: 1.3vw;
+    margin-top: 2vw;
+    
+     
+}
+.codeinputsec button{
+    height: 2.5vw;
+    width: 7vw;
+    font-size: 1.2vw;
+    font-weight: 700;
+    color: white;
+    background-color: hsla(188,47%,20%,1);
+    border: 1px solid hsl(188,47%,20%);
+    border-radius: 0.3vw;
+    cursor: pointer;
+    margin-left: 80%;
+    margin-top: 10vw;
+}
+.codeinputsec button:hover{
+    background-color: white;
+    color: hsla(188,47%,20%,1);
+    
+}
+#scancelb{
+    margin-left: 90%;
+    position: absolute;
+    margin-top: -40vw;
+    cursor: pointer;
+    color: hsla(4,0%,0%,0.5);
+    font-size: 1.5vw;
+    font-weight: 700;
+}
+#scancelb:hover{
+    color: red;
+}
+
+.bloader{
+    background-color: hsla(44,0%,100%,0.4);
+    position: fixed;
+    width: 6.9vw;
+    height: 2.49vw;
+    align-items: center;
+     justify-content: center;
+     display: none;
+     border: 1px solid black;
+     margin-left: 48%;
+     margin-top: 10vw;
+     border-radius: 0.3vw;
+ 
+ }
+ .bloader.adddedbloader{
+     display: flex;
+     opacity: 1;
+ }
+ .bloader::after{
+     content: "";
+     width: 1vw;
+     height: 1vw;
+     border: 0.1vw solid hsl(188,47%,20%);
+     border-top: 0.1vw solid white;
+     border-radius: 50%;
+     animation: loading 0.7s ease infinite;
+     opacity: 1;
+     
+ 
+ }
+
+
+
+
+
+@media (max-width:700px){
+    .homelinka{
+        text-decoration: none;
+    }
+    .homelink{
+       
+        height: 5vw;
+        width: 16vw;
+        margin-top: 5vw;
+        margin-left: 2%;
+    }    
+    .greaterthanbutton{
+        border: 1px solid hsl(188,47%,20%);
+        height: 4vw;
+        width: 4vw;
+        background-color: hsl(188,47%,20%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        margin-left: 1%;
+        margin-top: 0.2vw;
+        cursor: pointer;
+    
+        
+    }
+    
+    .greaterthanbutton img{
+        height: 3vw;
+    }
+
+    .hmlinkp{
+    
+        font-size: 3vw;
+        height: 1.5vw;
+        margin-top: 0vw;
+        font-family: sans-serif;
+        font-weight: 700;
+        margin-left: 6%;
+        color: hsl(188,47%,20%);
+        margin-top: 0.8vw;
+    
+    
+    }
+    .centerimage{
+        margin: auto;
+        width: 80%;
+        text-align: center;
+        margin-top: 20vw;
+    
+    }
+    .centerimage img{
+        height: 40vw;
+
+        
+    }
+
+    .verication-message{
+        
+        font-weight: 600;
+        font-size: 3.2vw;
+        margin: auto;
+        width: 90%;
+        line-height: 5vw;
+        margin-top: 6vw;
+    }
+
+
+    .emaillabel{
+        font-size: 3.2vw;
+       
+        
+    }
+    .inneremailinput{
+        width: 85vw;
+        height: 10vw;
+        border-radius: 15vw;
+    }
+    .inneremailinput img{
+     height: 7vw;
+     margin-left: 2%;
+     margin-top: 1.3vw;
+     
+    }
+    
+    #email{
+        height: 7vw;
+        width: 72vw;
+        margin-left: 2%;
+       
+        font-size: 3.3vw;
+    
+        margin-top: 1vw;
+    }
+    
+    .warnmessage{
+        
+        font-size: 2vw;
+        margin-top: 2vw;
+    }
+    .submitButton{
+        
+        width: 85vw;
+        height: 10vw;
+        border-radius: 15vw;
+        margin-top: 5vw;
+        text-align: center;
+        font-size: 3.5vw;
+        font-weight: 700;
+        color: white;
+       
+        cursor: pointer;
+    
+    }
+    .submitButton:hover{
+        color: hsl(188,47%,20%);
+        background-color: white;
+        border: 1px solid hsl(188,47%,20%);
+    
+    }
+    
+form{
+ 
+    margin-top: 12vw;
+}
+
+
+
+
+
+.emailvericationdivi{
+    
+   /* height: 90vh;
+    width: 100vw;*/
+    background-color: hsla(0,0%,100%, 0.9);
+    position: absolute;
+    margin-top: -0vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    overflow: hidden;
+    opacity: 1;
+    
+    
+}
+#sentemail{
+    color: blue;
+}
+/*/
+.emailvericationdivi:hover{
+    height: 90vh;
+    width: 100vw;
+
+}*/
+.emailvericationdivi.addedcodep{
+    height: 90vh;
+    width: 100vw;
+    opacity: 1;
+}
+.codeinputsec{
+    border: 1px solid hsla(4,0%,0%,0.4);
+    height: 100vw;
+    width: 90vw;
+    
+}
+.ccinputs{
+    margin: auto;
+  
+    display: flex;
+    margin-top: 30vw;
+    width: 80vw;
+    
+}
+.codes{
+    width: 7vw;
+    height: 10vw;
+    border:  1px solid hsla(4,0%,0%,0.5);
+    font-size: 4vw;
+    margin-left: 6.1vw;
+}
+.vermaessage{
+    font-family: 'Roboto', sans-serif;
+    margin-left: 15%;
+    font-size: 3vw;
+    margin-top: 7vw;
+    
+     
+}
+.codeinputsec button{
+    height: 7vw;
+    width: 25vw;
+    font-size: 3.8vw;
+    font-weight: 700;
+    color: white;
+    background-color: hsla(188,47%,20%,1);
+    border: 1px solid hsl(188,47%,20%);
+    border-radius: 0.3vw;
+    cursor: pointer;
+    margin-left: 68%;
+    margin-top: 25vw;
+}
+.codeinputsec button:hover{
+    background-color: white;
+    color: hsla(188,47%,20%,1);
+    
+}
+#scancelb{
+    margin-left: 80%;
+    position: absolute;
+    margin-top: -140vw;
+    cursor: pointer;
+    color: hsla(4,0%,0%,0.5);
+    font-size: 6vw;
+   
+    width: 7vw;
+    height: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#scancelb:hover{
+    color: red;
+}
+
+.bloader{
+        
+    height: 6.8vw;
+    width: 25vw;
+    margin-left: 60.9%;
+    margin-top: 24.8vw;
+ 
+ }
+ .bloader::after{
+   
+    width: 4vw;
+    height: 4vw;
+  
+    
+
+}
+
+}

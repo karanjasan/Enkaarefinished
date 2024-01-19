@@ -3,7 +3,18 @@ body{
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    overflow: scroll;
+    
+    scrollbar-width: thin;
 }
+
+body::-webkit-scrollbar {
+    width: 0.7vw; 
+    }
+    body::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border-radius: 0.7vw;
+    }
 h2{
     border: 1px solid black;
     font-size: 2.7vw;
@@ -18,12 +29,13 @@ h2{
     text-align: center;
 }
 form{
-    border: 1px solid black;
+    border: 1px solid hsl(188,47%,20%);
     margin: auto;
     width: 50%;
     margin-top: 3vw;
     height: 25vw;
     background-color: hsl(188,47%,20%);
+    margin-bottom: 2vw;
     
 }
 form div{
