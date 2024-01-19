@@ -21,7 +21,7 @@ const options = {
 //   method: "POST",
 //   headers: {
 //     "Access-Control-Allow-Credentials": true,
-//     "Access-Control-Allow-Origin": "https://enkaare.co",
+//     "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
 //     "Access-Control-Allow-Headers":
 //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
 //     "Access-Control-Allow-Methods": "POST",
@@ -61,6 +61,8 @@ const getCookie = (name) => {
 
 // Function to delete a cookie
 
+
+
 function deleteCookie(name) {
   const domain = ".enkaare.co"; // Replace with your actual domain
   const pastDate = new Date(0).toUTCString();
@@ -71,7 +73,6 @@ function deleteCookie(name) {
     console.error(`Error deleting cookie: ${name}`, error);
   }
 }
-
 
 
 
@@ -92,7 +93,7 @@ let updateonlinestatus=(status)=>{
     headers: {
       "Authorization": `Bearer ${token}`,
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": baseUrl,
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -379,7 +380,7 @@ let availableorders = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -393,7 +394,7 @@ let availableorders = () => {
   //https://half-geode-roundworm.glitch.me/api
 
   let f = fetch(`${baseUrl}/allorders`, optionWithFormData).catch((err) => {});
- // loader[0].classList.add("addedloader");
+ loader[0].classList.add("addedloader");
 
   f.then((res) => res.json()).then((d) => {
     const {pnotcomplte} = d;
@@ -402,7 +403,7 @@ let availableorders = () => {
       let orderlist = document.getElementsByClassName("orderslist")[0];
       var order = document.createElement("div");
       var orderitems = `<div class="empty-message">
-    <div class="empty-icon">&#128533;</div>
+    <img id="empty-icon" src="/images/empty-folder.png" alt="empty-folder">
     <div class="empty-text">Oops! No Results Found</div>
     `;
       order.innerHTML = orderitems;
@@ -547,7 +548,7 @@ let suminter = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -592,7 +593,7 @@ let displainterviewslots = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -612,11 +613,12 @@ let displainterviewslots = () => {
     }
   );
 
-  // document.querySelector(".interloader").style.display="flex";
+   document.querySelector(".interloader").style.display="flex";
 
   f.then((res) => res.json()).then((d) => {
     const {nointer} = d;
-    // document.querySelector(".interloader").style.display="none";
+    
+     document.querySelector(".interloader").style.display="none";
 
     if (nointer) {
       let interviewcontainer = document.getElementsByClassName(
@@ -769,7 +771,7 @@ let displainterviewslots = () => {
           const endTime = slotparent
             .querySelector("span:nth-child(3)")
             .textContent.trim();
-
+            
           //   let logedid = localStorage.getItem("userloged");
           let logedid = getCookie("userloged");
           let formdata = new FormData();
@@ -781,7 +783,7 @@ let displainterviewslots = () => {
             method: "POST",
             headers: {
               "Access-Control-Allow-Credentials": true,
-              "Access-Control-Allow-Origin": "https://enkaare.co",
+              "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
               "Access-Control-Allow-Headers":
                 "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
@@ -845,7 +847,7 @@ function invitedorders() {
        method: "POST",
       headers: {
          "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://enkaare.co",
+        "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
        "Access-Control-Allow-Headers":
          "Origin, X-Requested-With, Content-Type, Accept, authorization",
        "Access-Control-Allow-Methods": "POST",
@@ -862,12 +864,14 @@ function invitedorders() {
 
   f.then((res) => res.json()).then((d) => {
     let orderarray = d;
+    
+
 
     if (d.length === 0) {
       let orderlist = document.getElementsByClassName("orderslist")[0];
       var order = document.createElement("div");
       var orderitems = `<div class="empty-message">
-          <div class="empty-icon">&#128533;</div>
+          <img id="empty-icon" src="/images/empty-folder.png" alt="empty-folder">
           <div class="empty-text">Oops! No Results Found</div>
           `;
       order.innerHTML = orderitems;
@@ -965,1281 +969,1488 @@ let incompltepopmes = () => {
 
 /*PROFILE JS START HERE*/
 
-let displaypoptions = () => {
+let displaypoptions =()=>{
   try {
-    document
-      .getElementsByClassName("incompleteprofile")[0]
-      .classList.remove("adddincompleteprofile");
-  } catch (error) {}
-
-  let poptions = document.getElementsByClassName("poptions");
-  poptions[0].classList.add("addpoptions");
-};
-let hidepoptions = () => {
-  let poptions = document.getElementsByClassName("poptions");
-  poptions[0].classList.remove("addpoptions");
-};
-
-let experincesarray = [];
-let profload = () => {
-  let loader1 = document.getElementsByClassName("loader1");
-  let loader = document.getElementsByClassName("loader");
-  //   let userid = localStorage.getItem("userloged");
-  //   let firstn = localStorage.getItem("pfname");
-  let userid = getCookie("userloged");
-  let firstn = getCookie("pfname");
-
-  let formdata = new FormData();
-
-  formdata.append("first_name", firstn);
-  formdata.append("user_id", userid);
-
-  const optionWithFormData = {
-    method: "POST",
-    headers: {
-      "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
-      "Access-Control-Allow-Headers":
-        "Origin, X-Requested-With, Content-Type, Accept, authorization",
-      "Access-Control-Allow-Methods": "POST",
-      withCredentials: true,
-    },
-    credentials: "include",
-
-    body: formdata,
-  };
-
-  let f = fetch(`${baseUrl}/candidateprofile`, optionWithFormData).catch(
-    (err) => {
-      console.log(err);
-    }
-  );
-  loader[0].classList.add("addedloader");
-
-  f.then((res) => res.json()).then((d) => {
-    const {first_name, last_name, country, no_complete, user_id} = d[1];
-    if (no_complete) {
-      try {
-        if (d[0].file === "noprofilepic") {
-        } else {
-          const imageex = "data:image/png;base64,";
-          let ppimage = document.getElementsByClassName("pp");
-          ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
-        }
-      } catch (error) {
-        console.log(err);
-      }
-
-      let firstname = document.getElementById("nh21");
-      let secondname = document.getElementById("nh22");
-      let location = document.getElementById("location");
-      let id = document.getElementById("id");
-
-      id.innerHTML = user_id;
-
-      firstname.innerHTML = first_name;
-      secondname.innerHTML = last_name;
-      location.innerHTML = country;
-
-      loader[0].classList.remove("addedloader");
-    } else if (d.length > 2) {
-      try {
-        if (d[0].file === "noprofilepic") {
-        } else {
-          const imageex = "data:image/png;base64,";
-          let ppimage = document.getElementsByClassName("pp");
-          ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
-        }
-      } catch (error) {}
-      let payr = d[1].pay_rate.split(",");
-
-      let id = document.getElementById("id");
-      let firstname = document.getElementById("nh21");
-      let secondname = document.getElementById("nh22");
-      let jobtitle = document.getElementById("jtitle");
-      let payrate = document.getElementById("payrate");
-      let payrate1 = document.getElementById("payrate1");
-
-      let location = document.getElementById("location");
-      let experience = document.getElementById("experience");
-      let aboutme = document.getElementById("abme");
-      let workh = document.getElementById("workh");
-
-      id.innerHTML = userid;
-      firstname.innerHTML = d[1].first_name;
-      secondname.innerHTML = d[1].last_name;
-      jobtitle.innerHTML = d[1].professional_title;
-      payrate.innerHTML = payr[1] + "/h";
-      payrate1.innerHTML = payr[1] + "/hour";
-
-      location.innerHTML = d[1].city + "," + d[1].country;
-      experience.innerHTML = d[1].experience_in_years + " years";
-      aboutme.innerHTML = d[1].about;
-      workh.innerHTML = d[1].availability;
-
-      let jobexperience = document.getElementsByClassName("experience")[0];
-
-      loader[0].classList.remove("addedloader");
-
-      for (let i = 0; i < d[2].length; i++) {
-        positiont = d[2][i].job_title;
-        start = d[2][i].start_date;
-        end = d[2][i].end_date;
-        cname = d[2][i].company_name;
-        summary = d[2][i].achievement;
-
-        var expecarrier = document.createElement("div");
-        var expeitems = `<div class="expecarrier">
-     <h3 id="expech3">${positiont}</h3>
-     <p id="expecp">${start}-${end}</p>
-     <h3 id="expech31">${cname}</h3>
-     <p class="expeplast">${summary}</p>
-  
-  
-  </div>`;
-
-        expecarrier.innerHTML = expeitems;
-        jobexperience.append(expecarrier);
-      }
-    } /*else{
-       let payr=d[0].pay_rate.split(',');
-
-   
-      
-       
+     document.getElementsByClassName("incompleteprofile")[0].classList.remove("adddincompleteprofile");
+  } catch (error) {
      
-        let id = document.getElementById("id");
-        let firstname = document.getElementById("nh21");
-        let secondname = document.getElementById("nh22");
-        let jobtitle = document.getElementById("jtitle");
-        let payrate = document.getElementById("payrate");
-        let payrate1 = document.getElementById("payrate1");
+  }
+ 
+ let poptions = document.getElementsByClassName("poptions");
+ poptions[0].classList.add("addpoptions");
+ }
+ let hidepoptions=()=>{
+    let poptions = document.getElementsByClassName("poptions");
+ poptions[0].classList.remove("addpoptions");
+ }
+ 
+ let experincesarray=[];
+
+
+ 
+ let profload =()=>{
+    let loader1 =document.getElementsByClassName("loader1");
+    let loader =document.getElementsByClassName("loader");
+   // let userid=localStorage.getItem("userloged");
+   // let firstn=localStorage.getItem("pfname");
+    let userid=getCookie("userloged");
+    let firstn=getCookie("pfname");
+ 
+    let formdata=new FormData();
+ 
+    formdata.append("first_name",firstn);
+    formdata.append("user_id",userid);
+ 
+   const options={
+       method: 'POST',
+       headers:{
+         "Acces-Control-Allow-Credentials":true,
+         "Access-Control-Allow-Origin": "https://enkaare.co",
+         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+         "Access-Control-Allow-Methods": "POST",
+            withCredentials:true
     
-       
-        let location = document.getElementById("location");
-        let  experience = document.getElementById("experience");
-        let aboutme = document.getElementById("abme");
-        let workh = document.getElementById("workh");
-       
-        id.innerHTML=userid;
-        firstname.innerHTML=d[0].first_name;
-        secondname.innerHTML=d[0].last_name;
-        jobtitle.innerHTML=d[0].professional_title;
-        payrate.innerHTML=payr[0]+payr[1]+"/h";
-        payrate1.innerHTML=payr[0]+payr[1]+"/hour";
-    
-       
-        location.innerHTML=d[0].city+","+d[0].country;
-        experience.innerHTML=d[0].experience_in_years +" years";
-        aboutme.innerHTML=d[0].about;
-        workh.innerHTML=d[0].availability;
-    
-    
-    
-    
-        let jobexperience=document.getElementsByClassName("experience")[0];
-        
-    
-      
-        for(let i=0;i<d[2].length;i++){
-          positiont=d[2][i].job_title;
-          start=d[2][i].start_date;
-          end=d[2][i].end_date;
-          cname=d[2][i].company_name;
-          summary=d[2][i].achievement;
-      
-      
-      
-          var expecarrier = document.createElement('div');
-         var expeitems=`<div class="expecarrier">
-         <h3 id="expech3">${positiont}</h3>
-         <p id="expecp">${start}-${end}</p>
-         <h3 id="expech31">${cname}</h3>
-         <p class="expeplast">${summary}</p>
-      
-      
-      </div>`
-      
-      expecarrier.innerHTML= expeitems;
-      jobexperience.append(expecarrier);
-        }
-   }
-
-
-
-  
-*/
-  });
-
-  const WIDTH = 150;
-  let input = document.getElementById("input");
-  input.addEventListener("change", (e) => {
-    let image_file = e.target.files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(image_file);
-
-    reader.onload = (e) => {
-      let image_url = e.target.result;
-
-      let image = document.createElement("img");
-      image.src = image_url;
-
-      image.onload = (e) => {
-        let canvas = document.createElement("canvas");
-        let ratio = WIDTH / e.target.width;
-        canvas.width = WIDTH;
-        canvas.height = e.target.height * ratio;
-
-        const context = canvas.getContext("2d");
-        context.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-        let new_url = context.canvas.toDataURL("image/jpg", 100);
-        let new_image = document.createElement("img");
-        new_image.src = new_url;
-
-        /*console.log(new_url);*/
-        /* document.getElementsByClassName("wrapper")[0].style.backgroundImage=`url(${image_url})`*/
-
-        urltoFile(new_url);
-      };
-
-      // document.getElementsByClassName("wrapper")[0].style.backgroundImage=`url(${image_url})`
-    };
-  });
-  let urltoFile = (url) => {
-    let arr = url.split(",");
-    let name = arr[0].match(/:(.*?);/)[1];
-    let data = arr[1];
-
-    let todString = atob(data);
-    let n = todString.length;
-    let dataarr = new Uint8Array(n);
-    while (n--) {
-      dataarr[n] = todString.charCodeAt(n);
-    }
-    // let useid = localStorage.getItem("userloged");
-    // let firstname = localStorage.getItem("pfname");
-    let useid = getCookie("userloged");
-    let firstname = getCookie("pfname");
-
-    let file = new File([dataarr], firstname + useid + ".png", {type: name});
-
-    let formdata = new FormData();
-    formdata.append("file", file);
-    formdata.append("user_id", useid);
-
-    const optionWithFormData = {
-      method: "POST",
-
-      headers: {
-        "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://enkaare.co",
-        "Access-Control-Allow-Headers":
-          "Origin, X-Requested-With, Content-Type, Accept, authorization",
-        "Access-Control-Allow-Methods": "POST",
-        withCredentials: true,
-      },
-      credentials: "include",
-
-      body: formdata,
-    };
-
-    let f = fetch(`${baseUrl}/imageupload`, optionWithFormData).catch((err) => {
-      console.log(err);
-    });
-
-    f.then((res) => res.json()).then((d) => {
-      const {file} = d;
-
-      let datatype = "data:image/png;base64,";
-      let imageurl = datatype + file;
-
-      document.getElementsByClassName(
-        "wrapper"
-      )[0].style.backgroundImage = `url(${imageurl})`;
-    });
-    //here is where you will upload your profile picture
-  };
-
-  let form = document.getElementById("eeditform");
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-   
-    let scrolldiv = document.getElementById("profileedit");
-
-    let fname = document.getElementById("efirstname");
-    let lnamme = document.getElementById("esecondname");
-    let ptitle = document.getElementById("etitle");
-    let avail = document.getElementById("eavailability");
-    let countr = document.getElementById("ecountry");
-    let ecity = document.getElementById("ecity");
-    let currency = document.getElementById("ecurrency");
-    let pae = document.getElementById("epay");
-    let achive = document.getElementById("eabout");
-    let years_experience = document.getElementById("eexperinence");
-
-    if (avail.value === "") {
-      avail.style.border = "1px solid red";
-      scrolldiv.scroll({
-        top: 0,
-        behavior: "smooth",
-      });
-    } else if (countr.value === "") {
-      countr.style.border = "1px solid red";
-      scrolldiv.scroll({
-        top: 0,
-        behavior: "smooth",
-      });
-    } else if (currency.value === "") {
-      currency.style.border = "1px solid red";
-      scrolldiv.scroll({
-        top: 0,
-        behavior: "smooth",
-      });
-    } else {
-      let formdata = new FormData();
-      //   let id = localStorage.getItem("userloged");
-      let id = getCookie("userloged");
-      formdata.append("user_id", id);
-      formdata.append("firstname", fname.value);
-      formdata.append("secondname", lnamme.value);
-      formdata.append("professional_title", ptitle.value);
-      formdata.append("country", countr.value);
-      formdata.append("city", ecity.value);
-      formdata.append("pay_rate", currency.value + "," + pae.value);
-      formdata.append("about", achive.value);
-      formdata.append("avilability", avail.value);
-      formdata.append("years_experience", years_experience.value);
-
-      formdata.append("experience", JSON.stringify(experincesarray));
-
-      const optionWithFormData = {
-        method: "POST",
-        headers: {
-          "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://enkaare.co",
-          "Access-Control-Allow-Headers":
-            "Origin, X-Requested-With, Content-Type, Accept, authorization",
-          "Access-Control-Allow-Methods": "POST",
-          withCredentials: true,
         },
-        credentials: "include",
-
-        body: formdata,
-      };
-
-      let f = fetch(`${baseUrl}/editcp`, optionWithFormData).catch((err) => {
-        console.log(err);
-      });
-
-      document.getElementsByClassName("editpload")[0].style.display = "flex";
-
-      f.then((res) => res.json())
-        .then((d) => {
-          const {sucess} = d;
-          if (sucess) {
-            document.getElementsByClassName("editpload")[0].style.display =
-              "none";
-            form.reset();
-            location.reload();
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  });
-};
-let profileeditbutton = () => {
-  let loader1 = document.getElementsByClassName("loader1");
-  let editpage = document.getElementsByClassName("profileedit");
-
-  editpage[0].classList.add("addedprofileedit");
-  //   let theid = localStorage.getItem("userloged");
-  let theid = getCookie("userloged");
-  let formdata = new FormData();
-
-  formdata.append("user_id", theid);
-
-  const optionWithFormData = {
-    method: "POST",
-    headers: {
-      "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
-      "Access-Control-Allow-Headers":
-        "Origin, X-Requested-With, Content-Type, Accept, authorization",
-      "Access-Control-Allow-Methods": "POST",
-      withCredentials: true,
-    },
-    credentials: "include",
-
-    body: formdata,
-  };
-
-  let f = fetch(`${baseUrl}/geteditdata`, optionWithFormData).catch((err) => {
-    console.log(err);
-  });
-
-  document.getElementsByClassName("editpload")[0].style.display = "flex";
-
-  f.then((res) => res.json()).then((d) => {
-    const {user_id, first_name, last_name, country, no_complete} = d[1];
-
-    if (no_complete) {
-      try {
-        if (d[0].file === "noprofilepic") {
-        } else {
-          const imageex = "data:image/png;base64,";
-          let ppimage = document.getElementsByClassName("wrapper");
-          ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
-        }
-      } catch (error) {
-        console.log(error);
-      }
-
-      let fname = document.getElementById("efirstname");
-      let lnamme = document.getElementById("esecondname");
-      let countr = document.getElementById("ecountry");
-
-      fname.value = first_name;
-      lnamme.value = last_name;
-      countr.value = country;
-
-      document.getElementsByClassName("editpload")[0].style.display = "none";
-    } else if (d.length > 2) {
-      try {
-        if (d[0].file === "noprofilepic") {
-        } else {
-          const imageex = "data:image/png;base64,";
-          let ppimage = document.getElementsByClassName("wrapper");
-          ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
-        }
-      } catch (error) {
-        console.log(error);
-      }
-
-      let payr = d[1].pay_rate.split(",");
-
-      let fname = document.getElementById("efirstname");
-      let lnamme = document.getElementById("esecondname");
-      let ptitle = document.getElementById("etitle");
-      let avail = document.getElementById("eavailability");
-      let countr = document.getElementById("ecountry");
-      let ecity = document.getElementById("ecity");
-      let currency = document.getElementById("ecurrency");
-      let pae = document.getElementById("epay");
-      let achive = document.getElementById("eabout");
-      let years_experience = document.getElementById("eexperinence");
-
-      fname.value = d[1].first_name;
-      lnamme.value = d[1].last_name;
-      ptitle.value = d[1].professional_title;
-      avail.value = d[1].availability;
-      countr.value = d[1].country;
-      ecity.value = d[1].city;
-      currency.value = payr[0];
-      pae.value = payr[1];
-      achive.value = d[1].about;
-
-      years_experience.value = d[1].experience_in_years;
-
-      experincesarray = experincesarray.concat(d[2]);
-
-      document.getElementsByClassName("editpload")[0].style.display = "none";
-
-      let carrier = document.getElementsByClassName("eexperiencedisplay")[0];
-      let ex = document.getElementById("eexperiencedisplay");
-      while (ex.hasChildNodes()) {
-        ex.firstChild.remove();
-      }
-      for (let i = 0; i < experincesarray.length; i++) {
-        let id = experincesarray[i].id;
-        let compn = experincesarray[i].company_name;
-        let jbt = experincesarray[i].job_title;
-        let stdat = experincesarray[i].start_date;
-        let eddate = experincesarray[i].end_date;
-        let contry = experincesarray[i].country;
-        let state = experincesarray[i].state;
-        let city = experincesarray[i].city;
-        let achive = experincesarray[i].achievement;
-
-        let contediv = document.createElement("div");
-        let conte = `<div class="eexpecarrier">
-          <div class="eojectid">${id}</div>
-          <span class="eecancelb">&#x2715;</span>
-          <h3 id="eexpech3">${jbt}</h3>
-          
-          <p class="eexpecp">${contry + " " + state + " " + city}</p>
-          <p class="eexpecp">${stdat + "-" + eddate}</p>
-          <h3 id="eexpech31">${compn}</h3>
-          <p class="expeplast">${achive}</p>
-                
-
-
-      </div>`;
-
-        contediv.innerHTML = conte;
-        carrier.append(contediv);
-      }
-    }
-  });
-};
-
-let profileeditcancel = () => {
-  let editpage = document.getElementsByClassName("profileedit");
-  editpage[0].classList.remove("addedprofileedit");
-};
-
-let adexperience = () => {
-  let wholecarrier = document.getElementById("expe1");
-  let ejbtitle = document.getElementById("role");
-  let ecompanyname = document.getElementById("ecompany");
-  let startdate = document.getElementById("smonthYearInput");
-  let enddate = document.getElementById("emonthYearInput");
-  let country = document.getElementById("eecountry");
-  let state = document.getElementById("eestate");
-  let city = document.getElementById("eecity");
-  let achivements = document.getElementById("eesumarry");
-  let satartdinavalid = document.getElementsByClassName("dateivalid");
-  let dcarrier = document.getElementsByClassName("sadindiv");
-
-  var monthYearPattern = /^(0[1-9]|1[0-2])\/\d{4}$/;
-  if (ecompanyname.value === "") {
-    ecompanyname.style.borderBottom = "1px solid red";
-  } else if (ejbtitle.value === "") {
-    ejbtitle.style.borderBottom = "1px solid red";
-  } else if (!monthYearPattern.test(startdate.value)) {
-    satartdinavalid[0].style.display = "block";
-    dcarrier[0].style.borderBottom = "1px solid red";
-
-    wholecarrier.scroll({
-      top: 0,
-      behavior: "smooth",
-    });
-  } else if (!monthYearPattern.test(enddate.value)) {
-    satartdinavalid[1].style.display = "block";
-    dcarrier[1].style.borderBottom = "1px solid red";
-
-    wholecarrier.scroll({
-      top: 0,
-      behavior: "smooth",
-    });
-  } else if (country.value === "") {
-    country.style.borderBottom = "1px solid red";
-  } else if (state.value === "") {
-    state.style.borderBottom = "1px solid red";
-  } else if (city.value === "") {
-    city.style.borderBottom = "1px solid red";
-  } else if (achivements.value === "") {
-    achivements.style.border = "1px solid red";
-    wholecarrier.scroll({
-      top: wholecarrier.scrollHeight,
-      behavior: "smooth",
-    });
-  } else {
-    var randomstring = "";
-    randomstring += Math.random();
-
-    let expeobject = {
-      experience_id: randomstring,
-      company_name: ecompanyname.value,
-      job_title: ejbtitle.value,
-      start_date: startdate.value,
-      end_date: enddate.value,
-      country: country.value,
-      state: state.value,
-      city: city.value,
-      achievement: achivements.value,
-    };
-
-    experincesarray.push(expeobject);
-
+       credentials: 'include',
     
-    ecompanyname.value = "";
-    ejbtitle.value = "";
-    startdate.value = "";
-    enddate.value = "";
-    country.value = "";
-    state.value = "";
-    city.value = "";
-    achivements.value = "";
-    let carrier = document.getElementsByClassName("eexperiencedisplay")[0];
-    let ex = document.getElementById("eexperiencedisplay");
-    while (ex.hasChildNodes()) {
-      ex.firstChild.remove();
+                       
+        body: formdata
+   }
+ 
+   let f=fetch("https://yielding-dented-amusement.glitch.me/candidateprofile",options).catch(err=>{
+    console.log(err);
+   });
+   loader[0].classList.add("addedloader");
+ 
+    
+   f.then(res=>res.json()).then(d=>{
+ 
+ 
+    
+ 
+    
+    
+    const{first_name,last_name,country,no_complete,user_id}=d[1]
+    if(no_complete){
+ 
+     try {
+         if(d[0].file==="noprofilepic"){
+ 
+         }else{
+          const imageex="data:image/png;base64,";
+          let ppimage=document.getElementsByClassName("pp");
+          ppimage[0].style.backgroundImage=`url('${imageex+d[0].file}')`
+         }
+         
+         
+     } catch (error) {
+         console.log(err)
+     }
+ 
+     
+        let firstname = document.getElementById("nh21");
+    let secondname = document.getElementById("nh22");
+    let location = document.getElementById("location");
+    let id = document.getElementById("id");
+ 
+    id.innerHTML=user_id;
+ 
+    firstname.innerHTML=first_name;
+    secondname.innerHTML=last_name;
+    location.innerHTML=country;
+ 
+ 
+    loader[0].classList.remove("addedloader");
+ 
+    }  else if(d.length>2){
+     try {
+         if(d[0].file==="noprofilepic"){
+ 
+         }else{
+          const imageex="data:image/png;base64,";
+          let ppimage=document.getElementsByClassName("pp");
+          ppimage[0].style.backgroundImage=`url('${imageex+d[0].file}')`
+         }
+     } catch (error) {
+         
+     }
+     let payr=d[1].pay_rate.split(',');
+ 
+     let id = document.getElementById("id");
+     let firstname = document.getElementById("nh21");
+     let secondname = document.getElementById("nh22");
+     let jobtitle = document.getElementById("jtitle");
+     let payrate = document.getElementById("payrate");
+     let payrate1 = document.getElementById("payrate1");
+ 
+    
+     let location = document.getElementById("location");
+     let  experience = document.getElementById("experience");
+     let aboutme = document.getElementById("abme");
+     let workh = document.getElementById("workh");
+    
+     id.innerHTML=userid;
+     firstname.innerHTML=d[1].first_name;
+     secondname.innerHTML=d[1].last_name;
+     jobtitle.innerHTML=d[1].professional_title;
+     payrate.innerHTML=payr[0]+payr[1]+"/h";
+     payrate1.innerHTML=payr[0]+payr[1]+"/hour";
+ 
+    
+     location.innerHTML=d[1].city+", "+d[1].country;
+     experience.innerHTML=d[1].experience_in_years +" years";
+     aboutme.innerHTML=d[1].about;
+     workh.innerHTML=d[1].availability;
+ 
+ 
+ 
+ 
+     let jobexperience=document.getElementsByClassName("experience")[0];
+     
+     loader[0].classList.remove("addedloader");
+   
+     for(let i=0;i<d[2].length;i++){
+       positiont=d[2][i].job_title;
+       start=d[2][i].start_date;
+       end=d[2][i].end_date;
+       cname=d[2][i].company_name;
+       summary=d[2][i].achievement;
+   
+   
+   
+       var expecarrier = document.createElement('div');
+      var expeitems=`<div class="expecarrier">
+      <h3 id="expech3">${positiont}</h3>
+      <p id="expecp">${start}-${end}</p>
+      <h3 id="expech31">${cname}</h3>
+      <p class="expeplast">${summary}</p>
+   
+   
+   </div>`
+   
+   expecarrier.innerHTML= expeitems;
+   jobexperience.append(expecarrier);
+     }
+ 
+ 
+    }/*else{
+        let payr=d[0].pay_rate.split(',');
+ 
+    
+       
+        
+      
+         let id = document.getElementById("id");
+         let firstname = document.getElementById("nh21");
+         let secondname = document.getElementById("nh22");
+         let jobtitle = document.getElementById("jtitle");
+         let payrate = document.getElementById("payrate");
+         let payrate1 = document.getElementById("payrate1");
+     
+        
+         let location = document.getElementById("location");
+         let  experience = document.getElementById("experience");
+         let aboutme = document.getElementById("abme");
+         let workh = document.getElementById("workh");
+        
+         id.innerHTML=userid;
+         firstname.innerHTML=d[0].first_name;
+         secondname.innerHTML=d[0].last_name;
+         jobtitle.innerHTML=d[0].professional_title;
+         payrate.innerHTML=payr[0]+payr[1]+"/h";
+         payrate1.innerHTML=payr[0]+payr[1]+"/hour";
+     
+        
+         location.innerHTML=d[0].city+","+d[0].country;
+         experience.innerHTML=d[0].experience_in_years +" years";
+         aboutme.innerHTML=d[0].about;
+         workh.innerHTML=d[0].availability;
+     
+     
+     
+     
+         let jobexperience=document.getElementsByClassName("experience")[0];
+         
+     
+       
+         for(let i=0;i<d[2].length;i++){
+           positiont=d[2][i].job_title;
+           start=d[2][i].start_date;
+           end=d[2][i].end_date;
+           cname=d[2][i].company_name;
+           summary=d[2][i].achievement;
+       
+       
+       
+           var expecarrier = document.createElement('div');
+          var expeitems=`<div class="expecarrier">
+          <h3 id="expech3">${positiont}</h3>
+          <p id="expecp">${start}-${end}</p>
+          <h3 id="expech31">${cname}</h3>
+          <p class="expeplast">${summary}</p>
+       
+       
+       </div>`
+       
+       expecarrier.innerHTML= expeitems;
+       jobexperience.append(expecarrier);
+         }
     }
-    for (let i = 0; i < experincesarray.length; i++) {
-      let id = experincesarray[i].id;
-      let compn = experincesarray[i].company_name;
-      let jbt = experincesarray[i].job_title;
-      let stdat = experincesarray[i].start_date;
-      let eddate = experincesarray[i].end_date;
-      let contry = experincesarray[i].country;
-      let state = experincesarray[i].state;
-      let city = experincesarray[i].city;
-      let achive = experincesarray[i].achievement;
+ 
+ 
+ 
+   
+ */
+ 
+   });
+ 
+  
+ 
+ const WIDTH=150;
+ let input =document.getElementById("input");
+ input.addEventListener('change',(e)=>{
+    let image_file=e.target.files[0]
+    let reader= new FileReader()
+    reader.readAsDataURL(image_file);
+ 
+   
+    
+    reader.onload=(e)=>{
+        let image_url=e.target.result;
+       
+        let image=document.createElement("img");
+        image.src=image_url;
+ 
+        image.onload=(e)=>{
+            let canvas=document.createElement("canvas");
+            let ratio=WIDTH/e.target.width;
+            canvas.width=WIDTH;
+            canvas.height=e.target.height*ratio;
+ 
+            const context=canvas.getContext("2d");
+            context.drawImage(image,0,0,canvas.width,canvas.height);
+ 
+            let new_url=context.canvas.toDataURL("image/jpg",100);
+            let new_image=document.createElement("img");
+            new_image.src=new_url;
+ 
+            /*console.log(new_url);*/
+           /* document.getElementsByClassName("wrapper")[0].style.backgroundImage=`url(${image_url})`*/
+ 
+        urltoFile(new_url);
+ 
+ 
+        }
+ 
+       // document.getElementsByClassName("wrapper")[0].style.backgroundImage=`url(${image_url})`
+    }
+ });
+ let urltoFile=(url)=>{
+    let arr=url.split(",");
+    let name=arr[0].match(/:(.*?);/)[1];
+    let data=arr[1];
+ 
+    let todString= atob(data);
+    let n=todString.length;
+    let dataarr= new Uint8Array(n);
+    while(n--){
+        dataarr[n]=todString.charCodeAt(n)
+    }
+    //let useid=localStorage.getItem("userloged");
+    let useid=getCookie("userloged");
+    let firstname=getCookie("pfname");
+   // let firstname=localStorage.getItem("pfname");
+   
+    let file=new File([dataarr],firstname+useid+'.png',{type:name});
+    
+ 
+ 
+ 
+    let formdata=new FormData();
+    formdata.append("file",file);
+    formdata.append("user_id",useid);
+ 
+ 
+    const options={
+        method:"POST",
+ 
+        headers:{
+         "Acces-Control-Allow-Credentials":true,
+         "Access-Control-Allow-Origin": "https://enkaare.co",
+         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+         "Access-Control-Allow-Methods": "POST",
+            withCredentials:true
+    
+        },
+       credentials: 'include',
+    
+        body:formdata
+    }
+ 
+    let f=fetch("https://yielding-dented-amusement.glitch.me/imageupload",options).catch(err=>{
+        console.log(err);
+    })
+ 
+    f.then(res=>res.json()).then(d=>{
+        const{file}=d;
+ 
+    
+ 
+ 
+       let datatype="data:image/png;base64,"
+       let imageurl=datatype+file;
+ 
+       document.getElementsByClassName("wrapper")[0].style.backgroundImage=`url(${imageurl})`
+ 
+ 
+    })
+    //here is where you will upload your profile picture
+ 
+ 
+ }
+ 
+ let form=document.getElementById("eeditform");
+ 
+ form.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    
+    let scrolldiv=document.getElementById("profileedit");
+ 
+    let fname=document.getElementById("efirstname");
+    let lnamme=document.getElementById("esecondname");
+    let ptitle =document.getElementById("etitle");
+    let avail=document.getElementById("eavailability");
+    let countr=document.getElementById("ecountry");
+    let ecity=document.getElementById("ecity");
+    let currency=document.getElementById("ecurrency");
+    let pae=document.getElementById("epay");
+    let achive=document.getElementById("eabout");
+    let years_experience=document.getElementById("eexperinence")
+ 
+    if(avail.value===""){
+        avail.style.border="1px solid red";
+        scrolldiv.scroll({
+            top:0,
+            behavior:"smooth"
+        });
+    }else if(countr.value===""){
+        countr.style.border="1px solid red";
+        scrolldiv.scroll({
+            top:0,
+            behavior:"smooth"
+        });
+    }else if(currency.value===""){
+        currency.style.border="1px solid red";
+        scrolldiv.scroll({
+            top:0,
+            behavior:"smooth"
+        });
+    }else{
+        
+        let formdata= new FormData();
+        let id=getCookie("userloged");
+        //let id=localStorage.getItem("userloged");
+        formdata.append("user_id",id);
+        formdata.append("firstname",fname.value);
+        formdata.append("secondname",lnamme.value);
+        formdata.append("professional_title",ptitle.value);
+        formdata.append("country",countr.value);
+        formdata.append("city",ecity.value);
+        formdata.append("pay_rate",currency.value+","+pae.value);
+        formdata.append("about",achive.value);
+        formdata.append("avilability",avail.value);
+        formdata.append("years_experience",years_experience.value)
+ 
+        formdata.append("experience",JSON.stringify(experincesarray));
 
-      let contediv = document.createElement("div");
-      let conte = `<div class="eexpecarrier">
+        
+     
+ 
+        const options={
+            method:'POST',
+            headers:{
+             "Acces-Control-Allow-Credentials":true,
+             "Access-Control-Allow-Origin": "https://enkaare.co",
+             "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+             "Access-Control-Allow-Methods": "POST",
+                withCredentials:true
+        
+            },
+           credentials: 'include',
+        
+            body:formdata
+        }
+ 
+        let f=fetch("https://yielding-dented-amusement.glitch.me/editcp",options).catch(err=>{
+            console.log(err)
+        })
+        
+        document.getElementsByClassName("editpload")[0].style.display="flex";
+        
+    f.then(res=>res.json()).then(d=>{
+        const{sucess}=d;
+        if(sucess){
+         document.getElementsByClassName("editpload")[0].style.display="none";
+            form.reset()
+            location.reload()
+        }
+    }).catch(err=>{
+        console.log(err);
+    })
+ 
+    }
+ 
+    
+    
+ })
+ 
+ 
+ }
+ let profileeditbutton=()=>{
+    let loader1 =document.getElementsByClassName("loader1");
+    let editpage=document.getElementsByClassName("profileedit");
+ 
+ 
+ editpage[0].classList.add("addedprofileedit");
+ let theid =getCookie("userloged");
+ //let theid =localStorage.getItem("userloged");
+ let formdata = new FormData();
+ 
+ formdata.append("user_id",theid)
+ 
+ const options={
+    method:"POST",
+    headers:{
+     "Acces-Control-Allow-Credentials":true,
+     "Access-Control-Allow-Origin": "https://enkaare.co",
+     "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+     "Access-Control-Allow-Methods": "POST",
+        withCredentials:true
+ 
+    },
+   credentials: 'include',
+ 
+    
+ 
+    body:formdata
+ }
+ 
+ let f=fetch("https://yielding-dented-amusement.glitch.me/geteditdata",options).catch(err=>{
+    console.log(err);
+ })
+ 
+ document.getElementsByClassName("editpload")[0].style.display="flex";
+ 
+ 
+ 
+ f.then(res=>res.json()).then(d=>{
+    const{user_id,first_name,last_name,country,no_complete}=d[1];
+   
+ 
+ 
+ 
+ 
+   
+    if(no_complete){
+     try {
+         if(d[0].file==="noprofilepic"){
+     
+         }else{
+          const imageex="data:image/png;base64,";
+          let ppimage=document.getElementsByClassName("wrapper");
+          ppimage[0].style.backgroundImage=`url('${imageex+d[0].file}')`
+         }
+     } catch (error) {
+         console.log(error)
+     }
+     
+        let fname=document.getElementById("efirstname");
+        let lnamme=document.getElementById("esecondname"); 
+        let countr=document.getElementById("ecountry");
+ 
+        fname.value=first_name;
+        lnamme.value=last_name;
+        countr.value=country;
+ 
+        document.getElementsByClassName("editpload")[0].style.display="none";
+        
+ 
+    }else if(d.length>2){
+      try {
+        
+ 
+     if(d[0].file==="noprofilepic"){
+ 
+     }else{
+      const imageex="data:image/png;base64,";
+      let ppimage=document.getElementsByClassName("wrapper");
+      ppimage[0].style.backgroundImage=`url('${imageex+d[0].file}')`
+     } 
+      } catch (error) {
+         console.log(error)
+      }
+ 
+ 
+     let payr=d[1].pay_rate.split(',');
+ 
+        let fname=document.getElementById("efirstname");
+        let lnamme=document.getElementById("esecondname");
+        let ptitle =document.getElementById("etitle");
+        let avail=document.getElementById("eavailability");
+        let countr=document.getElementById("ecountry");
+        let ecity=document.getElementById("ecity");
+        let currency=document.getElementById("ecurrency");
+        let pae=document.getElementById("epay");
+        let achive=document.getElementById("eabout");
+        let years_experience=document.getElementById("eexperinence");
+ 
+        fname.value=d[1].first_name;
+        lnamme.value=d[1].last_name;
+        ptitle.value=d[1].professional_title;
+        avail.value=d[1].availability;
+        countr.value=d[1].country;
+        ecity.value=d[1].city;
+        currency.value=payr[0];
+        pae.value=payr[1];
+        achive.value=d[1].about;
+ 
+        years_experience.value=d[1].experience_in_years;
+ 
+ 
+        experincesarray=experincesarray.concat(d[2]);
+ 
+        document.getElementsByClassName("editpload")[0].style.display="none";
+ 
+        let carrier =document.getElementsByClassName("eexperiencedisplay")[0];
+        let ex=document.getElementById("eexperiencedisplay")
+        while(ex.hasChildNodes()){
+            ex.firstChild.remove()
+        }
+        for(let i=0;i<experincesarray.length;i++){
+           let id=experincesarray[i].experience_id;
+           let compn=experincesarray[i].company_name;
+           let jbt=experincesarray[i].job_title;
+           let stdat=experincesarray[i].start_date;
+           let eddate=experincesarray[i].end_date;
+           let contry=experincesarray[i].country;
+           let state=experincesarray[i].state;
+           let city=experincesarray[i].city;
+           let achive=experincesarray[i].achievement;
+           
+          
+ 
+           let contediv=document.createElement('div');
+           let conte=`<div class="eexpecarrier">
            <div class="eojectid">${id}</div>
            <span class="eecancelb">&#x2715;</span>
            <h3 id="eexpech3">${jbt}</h3>
            
-           <p class="eexpecp">${contry + " " + state + " " + city}</p>
-           <p class="eexpecp">${stdat + "-" + eddate}</p>
+           <p class="eexpecp">${contry+" "+state+" "+city}</p>
+           <p class="eexpecp">${stdat+"-"+eddate}</p>
            <h3 id="eexpech31">${compn}</h3>
            <p class="expeplast">${achive}</p>
                  
-
-
+ 
+ 
        </div>`;
-
-      contediv.innerHTML = conte;
-      carrier.append(contediv);
+ 
+       contediv.innerHTML=conte;
+       carrier.append(contediv);
+        }
+ 
+        listeancancelB()
+ 
+ 
+ 
     }
-  }
-
-  let expecancel = document.getElementsByClassName("eecancelb");
-
-  for (let i = 0; i < expecancel.length; i++) {
-    let clickedelement = expecancel[i];
-    clickedelement.addEventListener("click", () => {
-      let objectid = clickedelement.parentElement.children[0].innerHTML;
-
-      const index = experincesarray.findIndex((object) => {
-        return object.id === objectid;
-      });
-      experincesarray.splice(index, 1);
-      clickedelement.parentElement.remove();
-    });
-  }
-};
-
-let editpartinput_reset = () => {
-  let currency = document.getElementById("ecurrency");
-  let avail = document.getElementById("eavailability");
-  let countr = document.getElementById("ecountry");
-  let ejbtitle = document.getElementById("role");
-  let companyname = document.getElementById("ecompany");
-  let startdate = document.getElementById("smonthYearInput");
-  let enddate = document.getElementById("emonthYearInput");
-  let country = document.getElementById("eecountry");
-  let state = document.getElementById("eestate");
-  let city = document.getElementById("eecity");
-  let achivements = document.getElementById("eesumarry");
-  let satartdinavalid = document.getElementsByClassName("dateivalid");
-  let dcarrier = document.getElementsByClassName("sadindiv");
-
-  satartdinavalid[0].style.display = "none";
-  dcarrier[0].style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
-  satartdinavalid[1].style.display = "none";
-  dcarrier[1].style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
-  companyname.style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
-  ejbtitle.style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
-  country.style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
-  state.style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
-  city.style.borderBottom = "1px solid hsla(4,0%,0%,0.5)";
-  achivements.style.border = "1px solid hsla(4,0%,0%,0.5)";
-
-  countr.style.border = "1px solid hsla(4,0%,0%,0.5)";
-  currency.style.border = "1px solid hsla(4,0%,0%,0.5)";
-  avail.style.border = "1px solid hsla(4,0%,0%,0.5)";
-};
-
-/*MESSENGER START HERE*/
-let mainchats_count = document.getElementById("ac");
-let main_message_box = document.getElementsByClassName("message");
-let message_thread_container = document.getElementById("messagethreads");
-let messageh = document.getElementById("messageheeader");
-let thcontainer = document.getElementsByClassName("messagethreads");
-let real_thread = document.getElementsByClassName("thread");
-let wholechatscarrier = document.getElementById("wholemescontainer");
-
-let chats = () => {
-  message_thread_container.style.display = "block";
-  wholechatscarrier.style.display = "none";
-
-  messageh.innerHTML = "Chats!";
-
-  main_message_box[0].classList.add("addmessage");
-  let message_p_icon = document.getElementById("mesimg");
-  let threads = [
-    {
-      message_id: "0001",
-      sender_name: "Karanja G",
-      message_body:
-        "Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me",
-      sender_prof:
-        "url('/images/financial-manager-job-description-4000x2667-20201114.jpeg')",
-      message_state: "new",
-      thread_id: "karg",
-      time_stamp: "8:40pm",
-      count: 2,
-    },
-    {
-      message_id: "0002",
-      sender_name: "Samantha K",
-      message_body: "This is a second thread a trial on threads functionality",
-      sender_prof: "url('/images/model-g07596919e_1280.jpg')",
-      message_state: "new",
-      time_stamp: "9:30pm",
-      thread_id: "samk",
-      count: 1,
-    },
-    {
-      message_id: "0003",
-      sender_name: "Kato M",
-      message_body: "This is a third thread a trial on threads functionality",
-      sender_prof: "url('/images/mentor-ga06c0b8e3_1280.jpg')",
-      message_state: "new",
-      thread_id: "katm",
-      time_stamp: "2:15am",
-      count: 4,
-    },
-    {
-      message_id: "0004",
-      sender_name: "Support",
-      message_body: "What is wrong with your order?",
-      sender_prof: "url('/images/mentor-ga06c0b8e3_1280.jpg')",
-      message_state: "new",
-      thread_id: "support",
-      time_stamp: "2:15am",
-      count: 4,
-    },
-  ];
-
-  if (real_thread.length > 0) {
-    for (let i = 0; i < threads.length; i++) {
-      real_thread[0].remove();
+ 
+ })
+ 
+ 
+ 
+ }
+ 
+ let profileeditcancel=()=>{
+    let editpage=document.getElementsByClassName("profileedit");
+ editpage[0].classList.remove("addedprofileedit");
+ }
+ 
+ let adexperience=()=>{
+    let wholecarrier=document.getElementById("expe1");
+    let ejbtitle=document.getElementById("role");
+    let ecompanyname=document.getElementById("ecompany");
+    let startdate=document.getElementById("smonthYearInput");
+    let enddate=document.getElementById("emonthYearInput");
+    let country=document.getElementById("eecountry");
+    let state=document.getElementById("eestate");
+    let city=document.getElementById("eecity");
+    let achivements=document.getElementById("eesumarry");
+    let satartdinavalid=document.getElementsByClassName("dateivalid");
+    let dcarrier=document.getElementsByClassName("sadindiv");
+ 
+    
+    var monthYearPattern = /^(0[1-9]|1[0-2])\/\d{4}$/;
+    if(ecompanyname.value===""){
+       
+        ecompanyname.style.borderBottom="1px solid red"
+        
+        
+    }else  if(ejbtitle.value===""){
+        ejbtitle.style.borderBottom="1px solid red";
+    }else 
+ 
+        if (!monthYearPattern.test(startdate.value)) {
+            satartdinavalid[0].style.display="block";
+            dcarrier[0].style.borderBottom="1px solid red";
+            
+            
+            wholecarrier.scroll({
+                top:0,
+                behavior:"smooth"
+            });
+          } else if (!monthYearPattern.test(enddate.value)) {
+            satartdinavalid[1].style.display="block";
+            dcarrier[1].style.borderBottom="1px solid red";
+            
+            wholecarrier.scroll({
+                top:0,
+                behavior:"smooth"
+            });
+ 
+          } else if(country.value===""){
+            country.style.borderBottom="1px solid red";
+        }else if(state.value===""){
+            state.style.borderBottom="1px solid red";
+        }else if(city.value===""){
+            city.style.borderBottom="1px solid red";
+        }else if(achivements.value===""){
+            achivements.style.border="1px solid red";
+            wholecarrier.scroll({
+                top:wholecarrier.scrollHeight,
+                behavior: "smooth"
+            });
+        }else{
+ 
+            var randomstring =""
+                randomstring+= Math.random();
+ 
+            let expeobject={
+                experience_id:randomstring,
+                company_name:ecompanyname.value,
+                job_title:ejbtitle.value,
+                start_date:startdate.value,
+                end_date:enddate.value,
+                country:country.value,
+                state:state.value,
+                city:city.value,
+                achievement:achivements.value
+            }
+ 
+            
+ 
+        
+            experincesarray.push(expeobject);
+ 
+            
+           ecompanyname.value="";
+            ejbtitle.value="";
+            startdate.value="";
+            enddate.value="";
+            country.value="";
+            state.value="";
+            city.value="";
+            achivements.value="";
+         let carrier =document.getElementsByClassName("eexperiencedisplay")[0];
+         let ex=document.getElementById("eexperiencedisplay")
+    while(ex.hasChildNodes()){
+        ex.firstChild.remove()
     }
-  }
+         for(let i=0;i<experincesarray.length;i++){
+            let id=experincesarray[i].experience_id;
+            let compn=experincesarray[i].company_name;
+            let jbt=experincesarray[i].job_title;
+            let stdat=experincesarray[i].start_date;
+            let eddate=experincesarray[i].end_date;
+            let contry=experincesarray[i].country;
+            let state=experincesarray[i].state;
+            let city=experincesarray[i].city;
+            let achive=experincesarray[i].achievement;
+            
+ 
+            let contediv=document.createElement('div');
+            let conte=`<div class="eexpecarrier">
+            <div class="eojectid">${id}</div>
+            <span class="eecancelb">&#x2715;</span>
+            <h3 id="eexpech3">${jbt}</h3>
+            
+            <p class="eexpecp">${contry+" "+state+" "+city}</p>
+            <p class="eexpecp">${stdat+"-"+eddate}</p>
+            <h3 id="eexpech31">${compn}</h3>
+            <p class="expeplast">${achive}</p>
+                  
+ 
+ 
+        </div>`;
+ 
+        contediv.innerHTML=conte;
+        carrier.append(contediv);
+         }
+        
+         listeancancelB()
+         
+            
+        }
+   
+    
+       
+ 
+    
+ }
 
-  for (let i = 0; i < threads.length; i++) {
-    let name = threads[i].sender_name;
-    let time = threads[i].time_stamp;
-    let message = threads[i].message_body.slice(0, 30);
-    let count = threads[i].count;
-    let thrid = threads[i].thread_id;
-    var threadc = document.createElement("div");
-    var mesthreads = document.getElementsByClassName("messagethreads")[0];
+// Functionlisten to cancel button on the experience windows at the bottom of the edit page
+ function listeancancelB(){
+  let expecancel =document.getElementsByClassName("eecancelb");
+        
+ 
+  for(let i=0;i<expecancel.length;i++){
+      let clickedelement=expecancel[i]
+      clickedelement.addEventListener('click',()=>{
 
-    let thread_content = ` <div class="thread">
-   <section class="imgpart">
-   <p class="messagethreadid">${thrid}</p>
+        
+          let objectid=clickedelement.parentElement.children[0].innerHTML;
 
-       <section class="mesimg" id="mesimg">
-  
-       </section>
-    </section>
-    <section class="namemes">
-       <p class="mesp" id="mesp">${name}</p>
-       <p id="threadp2">${message + "...."}</p>
-  
-    </section>
-    <section class="times">
-        <div class="threadnoti">
-        ${count}
-  
-        </div>
-        <p class="thtimestamp">
-        ${time}
-        </p>
-    </section>
-  </div>`;
-
-    threadc.innerHTML = thread_content;
-    mesthreads.append(threadc);
-    let sender_ppicture = document.getElementById("mesimg");
-    sender_ppicture.style.backgroundImage = threads[i].sender_prof;
-  }
-
-  let threaddiv = document.getElementsByClassName("thread");
-
-  for (var i = 0; i < threaddiv.length; i++) {
-    let clickedthread = threaddiv[i];
-    clickedthread.addEventListener("click", () => {
-      let clickedthread_id =
-        clickedthread.firstElementChild.firstElementChild.innerHTML;
-      let thread_name = clickedthread.children[1].children[0].innerHTML;
-
-      chatbox(clickedthread_id, thread_name);
-
-      message_thread_container.style.display = "none";
-    });
-  }
-};
-
-let messageboxdis = () => {
-  main_message_box[0].classList.remove("addmessage");
-};
-
-let chatbox = (letcaht_id, name) => {
-  wholechatscarrier.style.display = "block";
-
-  let p_iname = document.getElementById("mesp1");
-  p_iname.innerHTML = name;
-
-  let karg = [
-    {
-      message_id: 1003,
-      message_type: "send",
-      time_stamp: "8:30pm",
-      body: "I would be more than happy if i get the opportunity to work with you",
-    },
-    {
-      message_id: 1003,
-      message_type: "receive",
-      time_stamp: "5:40pm",
-      body: "This sounds great what is your qulifications?",
-    },
-  ];
-  let samk = [
-    {
-      message_id: 103,
-      message_type: "send",
-      time_stamp: "1:30am",
-      body: "Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me ",
-    },
-    {
-      message_id: 1003,
-      message_type: "receive",
-      time_stamp: "12:00pm",
-      body: "it was great learning about you ",
-    },
-  ];
-
-  let katm = [
-    {
-      message_id: 1003,
-      message_type: "send",
-      time_stamp: "2:30am",
-      body: "Im looking to be hired in a position of nurse administration",
-    },
-    {
-      message_id: 1003,
-      message_type: "receive",
-      time_stamp: "8:30pm",
-      body: "wow wonderful to hear that for how long have you been a software developer ",
-    },
-  ];
-
-  let support = [
-    {
-      message_id: 10001,
-      message_type: "send",
-      time_stamp: "2:30am",
-      body: "I want help with order 4007",
-    },
-    {
-      message_id: 1003,
-      message_type: "receive",
-      time_stamp: "8:30pm",
-      body: "What's wrong with the otrder?",
-    },
-  ];
-
-  let messagesarray = [];
-  if (letcaht_id === "karg") {
-    messagesarray.length = 0;
-    messagesarray = messagesarray.concat(karg);
-  } else if (letcaht_id === "katm") {
-    messagesarray.length = 0;
-    messagesarray = messagesarray.concat(katm);
-  } else if (letcaht_id === "samk") {
-    messagesarray.length = 0;
-    messagesarray = messagesarray.concat(samk);
-  } else if (letcaht_id === "support") {
-    messagesarray.length = 0;
-    messagesarray = messagesarray.concat(support);
-  }
-
-  //extra removecodes
-  let car = document.getElementById("messagecarrier");
-  while (car.hasChildNodes()) {
-    car.firstChild.remove();
-  }
-
-  for (let i = 0; i < messagesarray.length; i++) {
-    let type = messagesarray[i].message_type;
-    let ts = messagesarray[i].time_stamp;
-    let mbody = messagesarray[i].body;
-
-    let chatscarrier = document.getElementsByClassName("messagecarrier")[0];
-    let messdiv = document.createElement("div");
-    let mess_content;
-    if (type === "send") {
-      mess_content = `<div class="sendmessage">
-           <p class="sendmp">${mbody}</p>
-           <p class="timefmp sendstyle">${ts}</p>
+         
           
-              </div>`;
-    } else if (type === "receive") {
-      mess_content = `<div class="receivemessage">
-           <p class="receivmp">${mbody}</p>
-           <p class="timefmp restyle">${ts}</p>
-              </div>`;
-    }
-
-    messdiv.innerHTML = mess_content;
-    chatscarrier.append(messdiv);
+          const index = experincesarray.findIndex(object => {
+              return String(object.experience_id)=== objectid;
+            })
+            
+            
+            experincesarray.splice(index,1);
+            clickedelement.parentElement.remove();
+            
+      });
   }
-};
-
-let sendb = () => {
-  let form = document.getElementById("form");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let text = document.getElementById("text");
-    const tstamp = new Date().toLocaleString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    });
-    let chatscarrier = document.getElementsByClassName("messagecarrier")[0];
-    let messdiv = document.createElement("div");
-
-    let mess_content = `<div class="sendmessage">
-       <p class="sendmp">${text.value}</p>
-       <p class="timefmp sendstyle">${tstamp}</p>
-      
-          </div>`;
-    messdiv.innerHTML = mess_content;
-    chatscarrier.append(messdiv);
-
-    form.reset();
-  });
-};
-
-let support = (id, nam) => {
-  messageh.innerHTML = "Hey!<br>How can we help you?";
+ }
+ 
+ let editpartinput_reset=()=>{
+    let currency=document.getElementById("ecurrency");
+    let avail=document.getElementById("eavailability");
+    let countr=document.getElementById("ecountry");
+    let ejbtitle=document.getElementById("role");
+    let companyname=document.getElementById("ecompany");
+    let startdate=document.getElementById("smonthYearInput");
+    let enddate=document.getElementById("emonthYearInput");
+    let country=document.getElementById("eecountry");
+    let state=document.getElementById("eestate");
+    let city=document.getElementById("eecity");
+    let achivements=document.getElementById("eesumarry");
+    let satartdinavalid=document.getElementsByClassName("dateivalid");
+    let dcarrier=document.getElementsByClassName("sadindiv");
+ 
+ 
+        satartdinavalid[0].style.display="none";
+        dcarrier[0].style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
+        satartdinavalid[1].style.display="none";
+        dcarrier[1].style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
+        companyname.style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
+        ejbtitle.style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
+        country.style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
+        state.style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
+        city.style.borderBottom="1px solid hsla(4,0%,0%,0.5)";
+        achivements.style.border="1px solid hsla(4,0%,0%,0.5)";
+        
+        countr.style.border="1px solid hsla(4,0%,0%,0.5)";
+        currency.style.border="1px solid hsla(4,0%,0%,0.5)";
+        avail.style.border="1px solid hsla(4,0%,0%,0.5)";
+ 
+ }
+ 
+ 
+    
+ 
+ /*MESSENGER START HERE*/
+ let mainchats_count=document.getElementById("ac");
+ let main_message_box= document.getElementsByClassName("message");
+ let message_thread_container=document.getElementById("messagethreads");
+ let messageh=document.getElementById("messageheeader");
+ let thcontainer=document.getElementsByClassName("messagethreads");
+ let real_thread=document.getElementsByClassName("thread");
+ let wholechatscarrier=document.getElementById("wholemescontainer");
+ 
+ 
+ let chats=()=>{
+    
+ message_thread_container.style.display="block";
+ wholechatscarrier.style.display="none";
+ 
+ messageh.innerHTML="Chats!"
+ 
+ 
+ 
   main_message_box[0].classList.add("addmessage");
-  message_thread_container.style.display = "none";
-  chatbox(id, nam);
-};
-
-//NOTIFICATIONS JAVASCRIPT START HERE
-let notiload = () => {
-  let noticarrier = document.getElementsByClassName("noticarrier")[0];
-  let notiarray = [
-    {
-      noti_id: 1003,
-      noti_title: "Job",
-      order_id: 98989,
-      body: "application has been accepted.",
-      time_stamp: "Feb 24, 2022, 4:11 PM",
-      img_type: "/images/customer-service.png",
+  let message_p_icon=document.getElementById("mesimg");
+  let threads=[
+    {message_id:"0001",
+     sender_name:"Karanja G",
+     message_body:"Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me",
+     sender_prof:"url('/images/financial-manager-job-description-4000x2667-20201114.jpeg')",
+     message_state:"new",
+     thread_id:"karg",
+     time_stamp:"8:40pm",
+     count:2
+     
     },
-    {
-      noti_id: 1003,
-      noti_title: "Job",
-      order_id: 98989,
-      body: "application has been accepted.",
-      time_stamp: "Feb 24, 2022, 4:11 PM",
-      img_type: "/images/customer-service.png",
-    },
-    {
-      noti_id: 1003,
-      noti_title: "Job",
-      order_id: 98989,
-      body: "application has been accepted.",
-      time_stamp: "Feb 24, 2022, 4:11 PM",
-      img_type: "/images/customer-service.png",
-    },
-  ];
-  for (let i = 0; i < notiarray.length; i++) {
-    let noti_t = notiarray[i].noti_title;
-    let order_id = notiarray[i].order_id;
-    let body = notiarray[i].body;
-    let tms = notiarray[i].time_stamp;
-    let noti_icon = notiarray[i].img_type;
-
-    let noticontent = `<div class="noti">
-       <section class="notimage">
-     <img src="${noti_icon}" alt="">
-       </section>
-       <section class="notip">
-          <p>${noti_t} <span class="notiid">${order_id} </span>${body}</p>
-       </section>
-       <section class="timestamp">
-           <p>${tms}
-           </p>
-       </section>
-
-   </div>`;
-
-    let notidiv = document.createElement("div");
-    notidiv.innerHTML = noticontent;
-    noticarrier.append(notidiv);
+    {message_id:"0002",
+    sender_name:"Samantha K",
+    message_body:"This is a second thread a trial on threads functionality",
+    sender_prof:"url('/images/model-g07596919e_1280.jpg')",
+    message_state:"new",
+    time_stamp:"9:30pm",
+    thread_id:"samk",
+    count:1
+    
+   },
+   {message_id:"0003",
+   sender_name:"Kato M",
+   message_body:"This is a third thread a trial on threads functionality",
+   sender_prof:"url('/images/mentor-ga06c0b8e3_1280.jpg')",
+   message_state:"new",
+   thread_id:"katm",
+   time_stamp:"2:15am",
+   count:4
+   
   }
-};
-
-/*ORDERS DETAILS START HERE*/
-
-let orderdetails = (order_id) => {
-  let loader = document.getElementsByClassName("loader");
-  let jbid = sessionStorage.getItem("clickedorderid");
-
-  let jobtitle = document.getElementById("odh6");
-  let name = document.getElementById("odp");
-  let city = document.getElementById("citysta");
-  let country = document.getElementById("countrysta");
-  let time_posted = document.getElementById("postedt");
-  let pay_rate = document.getElementById("payrate");
-  let benefits = document.getElementById("benefits");
-  let type = document.getElementById("ttype");
-  let about = document.getElementById("aboutj");
-  let responsibilities = document.getElementById("tasksres");
-  let poster = document.getElementsByClassName("postername");
-  let depart = document.getElementsByClassName("depart");
-
-  const formdata = new FormData();
-  formdata.append("job_id", jbid);
-  formdata.append("type", "or");
-  const optionWithFormData = {
-    method: "POST",
-    headers: {
-      "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
-      "Access-Control-Allow-Headers":
-        "Origin, X-Requested-With, Content-Type, Accept, authorization",
-      "Access-Control-Allow-Methods": "POST",
-      withCredentials: true,
-    },
-    credentials: "include",
-
-    body: formdata,
-  };
-  // https://1ed2-105-231-144-76.ngrok.io/api'
-
-  //https://half-geode-roundworm.glitch.me/api
-
-  let f = fetch(`${baseUrl}/sedetails`, optionWithFormData).catch((err) => {});
-  loader[0].classList.add("addedloader");
-
-  f.then((res) => res.json())
-    .then((d) => {
-      let orderarray = d;
-
-      let time;
-      /*  if(parseInt(orderarray[0].time_posted) >60){
-       time=Math.trunc(parseInt(orderarray[0].time_posted )/60)+" hours";
-       
-
-   }else if(Math.trunc(parseInt(orderarray[0].time_posted)/24)>0){
-       time=Math.trunc(parseInt(orderarray[0].time_posted)/24)+" days"
+  ,
+  {message_id:"0004",
+  sender_name:"Support",
+  message_body:"What is wrong with your order?",
+  sender_prof:"url('/images/mentor-ga06c0b8e3_1280.jpg')",
+  message_state:"new",
+  thread_id:"support",
+  time_stamp:"2:15am",
+  count:4
+  
+ }
+ ];
+ 
+ if(real_thread.length>0){
+   
+ 
+    for(let i=0;i<threads.length;i++){
       
-   }else{
-       time=orderarray[0].time_posted+" minutes";
+        real_thread[0].remove();
+        
+    }
+   
+ }
+ 
+ 
+ 
+ for(let i=0; i<threads.length;i++){
+ 
+    let name=threads[i].sender_name;
+    let time=threads[i].time_stamp;
+    let message=threads[i].message_body.slice(0,30);
+    let count=threads[i].count;
+    let thrid=threads[i].thread_id
+    var threadc=document.createElement('div');
+    var mesthreads=document.getElementsByClassName("messagethreads")[0];
+  
+  
+    let thread_content=` <div class="thread">
+    <section class="imgpart">
+    <p class="messagethreadid">${thrid}</p>
+ 
+        <section class="mesimg" id="mesimg">
+   
+        </section>
+     </section>
+     <section class="namemes">
+        <p class="mesp" id="mesp">${name}</p>
+        <p id="threadp2">${message+"...."}</p>
+   
+     </section>
+     <section class="times">
+         <div class="threadnoti">
+         ${count}
+   
+         </div>
+         <p class="thtimestamp">
+         ${time}
+         </p>
+     </section>
+   </div>`;
+  
+ threadc.innerHTML=thread_content;
+ mesthreads.append(threadc);
+ let sender_ppicture=document.getElementById("mesimg");
+ sender_ppicture.style.backgroundImage= threads[i].sender_prof;
+ 
+ 
+ 
+ }
+ 
+ 
+ let threaddiv=document.getElementsByClassName("thread");
+ 
+ for(var i=0; i<threaddiv.length;i++){
+  let clickedthread=threaddiv[i];
+  clickedthread.addEventListener('click',()=>{
+    let clickedthread_id=clickedthread.firstElementChild.firstElementChild.innerHTML;
+   let thread_name=clickedthread.children[1].children[0].innerHTML;
+   
+    chatbox(clickedthread_id,thread_name);
+ 
+   message_thread_container.style.display="none";
+ 
+  })
+   
+ }
+ 
+ }
+ 
+ 
+ let messageboxdis=()=>{
+    main_message_box[0].classList.remove("addmessage");
+ 
+ }
+ 
+ let chatbox=(letcaht_id,name)=>{
+   wholechatscarrier.style.display="block";
+   
+   let p_iname=document.getElementById("mesp1");
+   p_iname.innerHTML=name; 
+ 
+ 
+    let karg =[
+        {
+            message_id:1003,
+            message_type:"send",
+            time_stamp:"8:30pm",
+            body:"I would be more than happy if i get the opportunity to work with you"
+        },
+        {
+            message_id:1003,
+            message_type:"receive",
+            time_stamp:"5:40pm",
+            body:"This sounds great what is your qulifications?"
+        }
+ 
+    ];
+    let samk =[
+        {
+            message_id:103,
+            message_type:"send",
+            time_stamp:"1:30am",
+            body:"Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me "
+        },
+        {
+            message_id:1003,
+            message_type:"receive",
+            time_stamp:"12:00pm",
+            body:"it was great learning about you "
+        } 
+    ]
+ 
+    let katm =[
+        {
+            message_id:1003,
+            message_type:"send",
+            time_stamp:"2:30am",
+            body:"Im looking to be hired in a position of nurse administration"
+        },
+        {
+            message_id:1003,
+            message_type:"receive",
+            time_stamp:"8:30pm",
+            body:"wow wonderful to hear that for how long have you been a software developer "
+        }
+    ];
+ 
+    let support=[
+        {
+            message_id:10001,
+            message_type:"send",
+            time_stamp:"2:30am",
+            body:"I want help with order 4007"
+        },
+        {
+            message_id:1003,
+            message_type:"receive",
+            time_stamp:"8:30pm",
+            body:"What's wrong with the otrder?"
+        }
+    ]
+ 
+    
+    let messagesarray=[];
+    if(letcaht_id==="karg"){
+        messagesarray.length=0;
+        messagesarray=messagesarray.concat(karg);
+        
+    }else if(letcaht_id==="katm"){
+        messagesarray.length=0;
+        messagesarray=messagesarray.concat(katm);
        
-   }*/
-
-      if (parseInt(orderarray[0].time_posted) >= 1440) {
-        const days = Math.floor(parseInt(orderarray[0].time_posted) / 1440); // Calculate days
-        time = days + " days";
-      } else if (parseInt(orderarray[0].time_posted) >= 60) {
-        const hours = Math.floor(parseInt(orderarray[0].time_posted) / 60); // Calculate hours
-        time = hours + " hours";
-      } else {
-        time = orderarray[0].time_posted + " minutes";
-      }
-
-      let payy = orderarray[0].pay.split(",");
-      jobtitle.innerHTML = orderarray[0].job_title;
-      /* name.innerHTML=orderarray[0].company_name;*/
-      city.innerHTML = orderarray[0].state_province + " " + orderarray[0].city;
-      time_posted.innerHTML = time;
-      country.innerHTML = orderarray[0].country;
-      pay_rate.innerHTML = payy[0] + payy[1] + payy[2];
-      benefits.innerHTML = orderarray[0].benefit;
-      type.innerHTML = orderarray[0].job_type;
-      about.innerHTML = orderarray[0].summary;
-      responsibilities.innerHTML = orderarray[0].responsibilities;
-      poster[0].innerHTML = orderarray[0].first_name + ",";
-      depart[0].innerHTML = orderarray[0].department;
-    })
-    .catch((err) => {
-      console.log(err);
+ 
+    }else if(letcaht_id==="samk"){
+        messagesarray.length=0;
+        messagesarray=messagesarray.concat(samk);
+       
+ 
+    }else if(letcaht_id==="support"){
+        messagesarray.length=0;
+        messagesarray=messagesarray.concat(support);
+       
+ 
+    }
+   
+ 
+  //extra removecodes
+  let car=document.getElementById("messagecarrier");
+  while(car.hasChildNodes()){
+   car.firstChild.remove()
+  }
+ 
+ 
+ 
+    for(let i=0;i<messagesarray.length;i++){
+       
+        let type=messagesarray[i].message_type;
+        let ts=messagesarray[i].time_stamp;
+        let mbody=messagesarray[i].body;
+ 
+ 
+        let chatscarrier= document.getElementsByClassName("messagecarrier")[0];
+        let messdiv=document.createElement('div');
+        let mess_content;
+        if(type==="send"){
+           
+            mess_content=`<div class="sendmessage">
+            <p class="sendmp">${mbody}</p>
+            <p class="timefmp sendstyle">${ts}</p>
+           
+               </div>`;
+        }else if(type==="receive"){
+ 
+            mess_content=`<div class="receivemessage">
+            <p class="receivmp">${mbody}</p>
+            <p class="timefmp restyle">${ts}</p>
+               </div>`;
+    
+        }
+        
+        messdiv.innerHTML=mess_content;
+        chatscarrier.append(messdiv);
+    }
+ 
+   
+       
+ }
+ 
+ 
+ 
+ let sendb=()=>{
+    let form =document.getElementById("form");
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        let text=document.getElementById("text");
+        const tstamp=new Date().toLocaleString('en-US',{hour:'numeric',minute:'numeric',hour12:true});
+        let chatscarrier= document.getElementsByClassName("messagecarrier")[0];
+        let messdiv=document.createElement('div');
+    
+        let  mess_content=`<div class="sendmessage">
+        <p class="sendmp">${text.value}</p>
+        <p class="timefmp sendstyle">${tstamp}</p>
+       
+           </div>`;
+           messdiv.innerHTML=mess_content;
+            chatscarrier.append(messdiv);
+       
+        form.reset()
     });
-
-  const sformdata = new FormData();
-  sformdata.append("job_id", jbid);
-  sformdata.append("type", "any");
-  //   const soptions = {
-  //     method: "POST",
-  //     headers: {
-  //       "Access-Control-Allow-Credentials": true,
-  //       "Access-Control-Allow-Origin": "https://www.enkaare.com",
-  //       "Access-Control-Allow-Headers":
-  //         "Origin, X-Requested-With, Content-Type, Accept, authorization",
-  //       "Access-Control-Allow-Methods": "POST",
-  //       withCredentials: true,
-  //     },
-  //     credentials: "include",
-
-  //     body: sformdata,
-  //   };
-  // https://1ed2-105-231-144-76.ngrok.io/api'
-
-  //https://half-geode-roundworm.glitch.me/api
-
-  let sf = fetch(`${baseUrl}/sedetails`, soptions).catch((err) => {});
-  sf.then((res) => res.json()).then((d) => {
-    let skillsarray = d;
-
-    for (values in skillsarray[0]) {
-      if (skillsarray[0][values] != null) {
-        let skill = skillsarray[0][values];
-        let skillcarier = document.getElementsByClassName("skillst")[0];
-        let skilldiv = document.createElement("div");
-        let skill_content = `<section class="skillcarrier">
-             ${skill}        
-           </section>`;
-        skilldiv.innerHTML = skill_content;
-        skillcarier.append(skilldiv);
-      }
+ }
+ 
+ let support=(id,nam)=>{
+  messageh.innerHTML="Hey!<br>How can we help you?";
+    main_message_box[0].classList.add("addmessage");
+    message_thread_container.style.display="none";
+    chatbox(id,nam);
+ }
+ 
+ 
+ 
+ //NOTIFICATIONS JAVASCRIPT START HERE
+ let notiload=()=>{
+    let noticarrier= document.getElementsByClassName("noticarrier")[0];
+    let notiarray=[
+        {noti_id:1003,
+        noti_title:"Job",
+        order_id:98989,
+        body:"application has been accepted.",
+        time_stamp:"Feb 24, 2022, 4:11 PM",
+        img_type:"/images/customer-service.png"
+ 
+        },
+        {noti_id:1003,
+            noti_title:"Job",
+            order_id:98989,
+            body:"application has been accepted.",
+            time_stamp:"Feb 24, 2022, 4:11 PM",
+            img_type:"/images/customer-service.png"
+    
+            },
+            {noti_id:1003,
+                noti_title:"Job",
+                order_id:98989,
+                body:"application has been accepted.",
+                time_stamp:"Feb 24, 2022, 4:11 PM",
+                img_type:"/images/customer-service.png"
+        
+                }
+    ];
+    for(let i=0;i<notiarray.length;i++){
+        let noti_t=notiarray[i].noti_title;
+        let  order_id=notiarray[i].order_id;
+        let body=notiarray[i].body;
+        let tms=notiarray[i].time_stamp;
+        let noti_icon=notiarray[i].img_type;
+ 
+        let noticontent=`<div class="noti">
+        <section class="notimage">
+      <img src="${noti_icon}" alt="">
+        </section>
+        <section class="notip">
+           <p>${noti_t} <span class="notiid">${order_id} </span>${body}</p>
+        </section>
+        <section class="timestamp">
+            <p>${tms}
+            </p>
+        </section>
+ 
+    </div>`
+ 
+ 
+    let notidiv=document.createElement('div');
+    notidiv.innerHTML=noticontent;
+    noticarrier.append(notidiv)
+    }
+ 
+ 
+   
+ 
+ }
+ 
+ 
+ /*ORDERS DETAILS START HERE*/
+ 
+ let orderdetails=(order_id)=>{
+    let loader =document.getElementsByClassName("loader");
+    ;
+   
+    let jbid= sessionStorage.getItem("clickedorderid");
+  
+ 
+    let jobtitle=document.getElementById("odh6");
+    let name=document.getElementById("odp");
+    let city=document.getElementById("citysta");
+    let country=document.getElementById("countrysta");
+    let time_posted=document.getElementById("postedt");
+    let pay_rate=document.getElementById("payrate");
+    let benefits=document.getElementById("benefits");
+    let type=document.getElementById("ttype");
+    let about=document.getElementById("aboutj");
+    let responsibilities=document.getElementById("tasksres");
+    let poster =document.getElementsByClassName("postername");
+    let depart=document.getElementsByClassName("depart");
+ 
+    const formdata= new FormData();
+    formdata.append("job_id",jbid);
+    formdata.append("type","or");
+    const options ={
+ 
+        method: 'POST',
+        headers:{
+         "Acces-Control-Allow-Credentials":true,
+         "Access-Control-Allow-Origin": "https://enkaare.co",
+         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+         "Access-Control-Allow-Methods": "POST",
+            withCredentials:true
+    
+        },
+       credentials: 'include',
+    
+   
+        body: formdata,
+       
+    };
+   // https://1ed2-105-231-144-76.ngrok.io/api'
+ 
+   //https://half-geode-roundworm.glitch.me/api
+    
+    let f= fetch('https://yielding-dented-amusement.glitch.me/sedetails',options).catch(err =>{
+       
+ 
+ });
+ loader[0].classList.add("addedloader");
+ 
+ f.then(res=>res.json()).then(d=>{
+ 
+    
+    let orderarray =d
+   
+    let time=orderarray[0].posted_date.split(',')[0]
+  /*  if(parseInt(orderarray[0].time_posted) >60){
+        time=Math.trunc(parseInt(orderarray[0].time_posted )/60)+" hours";
+        
+ 
+    }else if(Math.trunc(parseInt(orderarray[0].time_posted)/24)>0){
+        time=Math.trunc(parseInt(orderarray[0].time_posted)/24)+" days"
+       
+    }else{
+        time=orderarray[0].time_posted+" minutes";
+        
+    }*/
+ 
+ 
+ 
+ 
+ 
+    let payy=orderarray[0].pay.split(",");
+    jobtitle.innerHTML=orderarray[0].job_title;
+   /* name.innerHTML=orderarray[0].company_name;*/
+   city.innerHTML=" "+orderarray[0].state_province+", "+orderarray[0].city;
+    time_posted.innerHTML=time;
+    country.innerHTML=orderarray[0].country;
+    pay_rate.innerHTML=payy[0]+payy[1]+payy[2];
+    benefits.innerHTML=orderarray[0].benefit;
+    type.innerHTML=orderarray[0].job_type;
+    about.innerHTML=orderarray[0].summary;
+    responsibilities.innerHTML=orderarray[0].responsibilities;
+    poster[0].innerHTML=orderarray[0].first_name +",";
+    depart[0].innerHTML=orderarray[0].department;
+ 
+ }).catch(err=>{
+    console.log(err);
+ });
+ 
+    
+ const sformdata= new FormData();
+    sformdata.append("job_id",jbid);
+    sformdata.append("type","any");
+    const soptions ={
+ 
+        method: 'POST',
+        headers:{
+         "Acces-Control-Allow-Credentials":true,
+         "Access-Control-Allow-Origin": "https://enkaare.co",
+         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+         "Access-Control-Allow-Methods": "POST",
+            withCredentials:true
+    
+        },
+       credentials: 'include',
+    
+   
+        body: sformdata,
+       
+    };
+   // https://1ed2-105-231-144-76.ngrok.io/api'
+ 
+   //https://half-geode-roundworm.glitch.me/api
+    
+    let sf= fetch('https://yielding-dented-amusement.glitch.me/sedetails',soptions).catch(err =>{
+      
+ 
+ });
+ sf.then(res=>res.json()).then(d=>{
+ 
+ 
+    let skillsarray=d
+   
+    for(values in skillsarray[0]){
+        if(skillsarray[0][values]!=null){
+            let skill=skillsarray[0][values];
+            let skillcarier=document.getElementsByClassName("skillst")[0];
+            let skilldiv=document.createElement('div');
+            let skill_content=`<section class="skillcarrier">
+              ${skill}        
+            </section>`;
+            skilldiv.innerHTML=skill_content;
+            skillcarier.append(skilldiv)
+        
+    
+        }
+        
     }
     loader[0].classList.remove("addedloader");
-  });
-
-  let appbutton = document.getElementById("odbutton");
-
-  appbutton.addEventListener("click", (e) => {
-    if (e.target.innerHTML === "Apply") {
-      //   let logged = localStorage.getItem("userloged");
-      let logged = getCookie("userloged");
-      let formdata = new FormData();
-      formdata.append("job_id", jbid);
-      formdata.append("user_id", logged);
-      formdata.append("action", "apply");
-
-      const optionWithFormData = {
-        method: "POST",
-        headers: {
-          "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://www.enkaare.com",
-          "Access-Control-Allow-Headers":
-            "Origin, X-Requested-With, Content-Type, Accept, authorization",
-          "Access-Control-Allow-Methods": "POST",
-          withCredentials: true,
-        },
-        credentials: "include",
-
-        body: formdata,
-      };
-
-      let f = fetch(`${baseUrl}/apply`, optionWithFormData).catch((err) => {
-        console.log(err);
-      });
-      loader[0].classList.add("addedloader");
-      f.then((res) => res.json()).then((d) => {
-        const {affectedrows} = d;
-
-        if (affectedrows) {
-          window.location.href = "/availableorders.html";
-          loader[0].classList.remove("addedloader");
-        } else {
-          window.location.href = "/availableorders.html";
-          loader[0].classList.remove("addedloader");
-        }
-      });
-    } else if (e.target.innerHTML === "Cancel") {
-      //   let logged = localStorage.getItem("userloged");
-      let logged = getCookie("userloged");
-      let formdata = new FormData();
-      formdata.append("job_id", jbid);
-      formdata.append("user_id", logged);
-      formdata.append("action", "cancel");
-
-      const optionWithFormData = {
-        method: "POST",
-        headers: {
-          "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://www.enkaare.com",
-          "Access-Control-Allow-Headers":
-            "Origin, X-Requested-With, Content-Type, Accept, authorization",
-          "Access-Control-Allow-Methods": "POST",
-          withCredentials: true,
-        },
-        credentials: "include",
-
-        body: formdata,
-      };
-
-      let f = fetch(`${baseUrl}/apply`, optionWithFormData).catch((err) => {
-        console.log(err);
-      });
-      loader[0].classList.add("addedloader");
-
-      f.then((res) => res.json()).then((d) => {
-        const {affectedrows} = d;
-        if (affectedrows) {
-          window.location.href = "/myorders.html";
-          loader[0].classList.remove("addedloader");
-        } else {
-          window.location.href = "/myorders.html";
-          loader[0].classList.remove("addedloader");
-        }
-      });
-    } else if (e.target.innerHTML === "Accept") {
-      //   let logged = localStorage.getItem("userloged");
-      let logged = getCookie("userlogged");
-      let formdata = new FormData();
-      formdata.append("job_id", jbid);
-      formdata.append("user_id", logged);
-
-      const optionWithFormData = {
-        method: "POST",
-        headers: {
-          "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "https://www.enkaare.com",
-          "Access-Control-Allow-Headers":
-            "Origin, X-Requested-With, Content-Type, Accept, authorization",
-          "Access-Control-Allow-Methods": "POST",
-          withCredentials: true,
-        },
-        credentials: "include",
-
-        body: formdata,
-      };
-
-      let f = fetch(`${baseUrl}/acceptinvite`, optionWithFormData).catch(
-        (err) => {
-          console.log(err);
-        }
-      );
-      loader[0].classList.add("addedloader");
-      f.then((res) => res.json()).then((d) => {
-        const {done} = d;
-
-        if (done) {
-          loader[0].classList.remove("addedloader");
-          window.location.href = "/availableorders.html";
-        }
-      });
-    }
-  });
-};
-let orderdetailsvalue;
-let orderdetailsvalueupdate = (vr) => {
-  orderdetailsvalue = vr;
-  /* console.log(orderdetailsvalue)*/
-};
-
-/*
-let ordervalue=()=>{
-orderdetails(2);
-  
-  
-}*/
-
-let seeorder = () => {
-  cbutton(sessionStorage.getItem("seeorderbuttonvalue"));
-
-  let v = sessionStorage.getItem("clickedorderid");
-  orderdetails(v);
-};
-
+ });
+ 
+ let appbutton =document.getElementById('odbutton');
+ 
+ appbutton.addEventListener('click',(e)=>{
+     if(e.target.innerHTML==='Apply'){
+         let logged=getCookie("userloged")
+         //let logged=localStorage.getItem("userloged")
+     let formdata=new FormData()
+     formdata.append("job_id",jbid);
+     formdata.append("user_id",logged);
+     formdata.append("action","apply")
+ 
+ 
+     const options={
+         method:"POST",
+         headers:{
+             "Acces-Control-Allow-Credentials":true,
+             "Access-Control-Allow-Origin": "https://enkaare.co",
+             "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+             "Access-Control-Allow-Methods": "POST",
+                withCredentials:true
+        
+            },
+           credentials: 'include',
+        
+         body:formdata
+     }
+ 
+     let f=fetch("https://yielding-dented-amusement.glitch.me/apply",options).catch(err=>{
+         console.log(err)
+     })
+     loader[0].classList.add("addedloader");
+     f.then(res=>res.json()).then(d=>{
+       
+       const{affectedrows}=d;
+ 
+       if(affectedrows){
+         
+         window.location.href="/availableorders.html";
+         loader[0].classList.remove("addedloader");
+ 
+       }else{
+         window.location.href="/availableorders.html";
+         loader[0].classList.remove("addedloader");
+       }
+     })
+ 
+     }else if(e.target.innerHTML==='Cancel'){
+ 
+         //let logged=localStorage.getItem("userloged")
+         let logged=getCookie("userloged")
+         let formdata=new FormData()
+         formdata.append("job_id",jbid);
+         formdata.append("user_id",logged);
+         formdata.append("action","cancel")
+     
+     
+         const options={
+             method:"POST",
+             headers:{
+                 "Acces-Control-Allow-Credentials":true,
+                 "Access-Control-Allow-Origin": "https://enkaare.co",
+                 "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                 "Access-Control-Allow-Methods": "POST",
+                    withCredentials:true
+            
+                },
+               credentials: 'include',
+            
+             body:formdata
+         }
+     
+         let f=fetch("https://yielding-dented-amusement.glitch.me/apply",options).catch(err=>{
+             console.log(err)
+         })
+         loader[0].classList.add("addedloader");
+ 
+         f.then(res=>res.json()).then(d=>{
+             const{affectedrows}=d;
+             if(affectedrows){
+         
+                 window.location.href="/myorders.html";
+                 loader[0].classList.remove("addedloader");
+         
+               }else{
+                 window.location.href="/myorders.html";
+                 loader[0].classList.remove("addedloader");
+               }
+         })
+         
+     }else if(e.target.innerHTML==='Accept'){
+         //let logged=localStorage.getItem("userloged")
+         let logged=getCookie("userloged")
+         let formdata=new FormData()
+         formdata.append("job_id",jbid);
+         formdata.append("user_id",logged);
+         
+     
+     
+         const options={
+             method:"POST",
+             headers:{
+                 "Acces-Control-Allow-Credentials":true,
+                 "Access-Control-Allow-Origin": "https://enkaare.co",
+                 "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+                 "Access-Control-Allow-Methods": "POST",
+                    withCredentials:true
+            
+                },
+               credentials: 'include',
+            
+             body:formdata
+         }
+     
+         let f=fetch("https://yielding-dented-amusement.glitch.me/acceptinvite",options).catch(err=>{
+ 
+            console.log(err)
+              
+         })
+         loader[0].classList.add("addedloader");
+         f.then(res=>res.json()).then(d=>{
+             const{done}=d
+ 
+             if(done){
+                 loader[0].classList.remove("addedloader");
+                 window.location.href="/availableorders.html";
+             }
+         })
+ 
+     }
+ })
+ 
+ }
+ let orderdetailsvalue;
+ let orderdetailsvalueupdate=(vr)=>{
+    orderdetailsvalue=vr;
+   /* console.log(orderdetailsvalue)*/
+   
+    
+ 
+    
+    
+   
+ 
+    
+ }
+ 
+ 
+ 
+ /*
+ let ordervalue=()=>{
+ orderdetails(2);
+   
+   
+ }*/
+ 
+ 
+ let seeorder=()=>{
+    cbutton(sessionStorage.getItem('seeorderbuttonvalue'));
+    
+   let v=sessionStorage.getItem("clickedorderid");
+   orderdetails(v);
+ }
+ 
+ 
 //MY APPLICATION START HERE
 //*********************************************************************************** */
 
@@ -2279,6 +2490,15 @@ let myapporders = () => {
   f.then((res) => res.json()).then((d) => {
     loader[0].classList.remove("addedloader");
     if (d.length === 0) {
+
+      let orderlist = document.getElementsByClassName("jobsappcarrier")[0];
+      var order = document.createElement("div");
+      var orderitems = `<div class="empty-message">
+    <img id="empty-icon" src="/images/empty-folder.png" alt="empty-folder">
+    <div class="empty-text">Oops! No Results Found</div>
+    `;
+      order.innerHTML = orderitems;
+      orderlist.append(order);
     } else {
       let orderarray = d;
 
@@ -3098,6 +3318,7 @@ let emailcode = () => {
     loader.style.display = "none";
     email.value = "";
     const {sent} = d;
+    
     if (sent) {
       emaildis2.style.display = "none";
       emaildis3.style.display = "block";

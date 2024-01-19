@@ -8,6 +8,8 @@ html{
     scroll-behavior: smooth;
 }
 
+
+
 .anime{
    
     transition: 0.8s;
@@ -154,10 +156,13 @@ header{
     width: 8vw;
     font-size: 1.2vw;
     border-radius: 7vw;
-    border: 1px solid white;
+    border: 1px solid hsl(188,47%,20%);
     font-weight: 600;
-    color: hwb(229 17% 57%);
+    color: hsl(188,47%,20%);
     margin-top: -0.5vw;
+    
+    
+
     
     
 }
@@ -174,7 +179,7 @@ header{
 .head{
   
     width: 40%;
-    margin-top: 8%;
+    margin-top: -35%;
     margin-left: 7%;
     transition: 1.5s;
     transition-property: margin-top;
@@ -182,6 +187,10 @@ header{
     backdrop-filter: blur(20px);
     padding: 1vw;*/
     border-radius: 0.3vw;
+    
+}
+.head.addedhead{
+    margin-top: 8%;
     
 }
 .head:hover{
@@ -221,10 +230,20 @@ header{
     margin-top: 3vw; 
     color: white;
     border-radius: 0.1vw;
+    border-radius: 10vw;
+    cursor: pointer;
+}
+.head button:hover{
+    background-color: white;
+    color: hsl(40,26%,68%);
+    border: 1px solid white;
+
 }
 
 .propsp{
    background-color: hsla(45, 44%, 80%,0.8);
+
+   background: linear-gradient(to bottom,hsla(45, 44%, 80%,0.7),hsla(45, 44%, 80%,0.7),hsla(37,42%,94%));
    padding-bottom: 4vw;
    
 }
@@ -237,9 +256,25 @@ header{
     font-family: 'Roboto', sans-serif;
     font-size: 3.4vw;
     text-align: center;
+   
+    margin: auto;
+    width: 43%;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid hsl(188,47%,20%);
+    animation: handwriting 6s steps(20) infinite;
+    animation-delay: 2s;
     
    
 }
+@keyframes handwriting {
+    from {
+      width: 0;
+    }
+    to {
+      width: 43%;
+    }
+  }
 .propsp1{
     /*border: 1px solid black;*/
     height: 30vw;
@@ -466,7 +501,9 @@ header{
     border-radius: 0.1vw;
 }
 .bakcolor{
-    background-color: hsl(37,42%,94%);
+
+   /* background: linear-gradient(to bottom, hsla(37,42%,94%,1), hsla(37,42%,94%,0.5), hsla(37,42%,94%,0.1));*/
+    background-color: hsla(37,42%,94%);
 }
 
 
@@ -549,6 +586,14 @@ header{
         color: white;
         border-radius: 0.1vw;
         margin-left: 4%;
+        border-radius: 10vw;
+        cursor: pointer;
+    }
+    .recruitp2 button:hover{
+        background-color: white;
+        color: hsl(188,47%,20%);
+       
+    
     }
 
     .remotep{
@@ -600,6 +645,14 @@ header{
         color: white;
         border-radius: 0.1vw;
         margin-left: 10%;
+        border-radius: 10vw;
+        cursor: pointer;
+    }
+    .remotep1 button:hover{
+        background-color: white;
+        color: hsl(188,47%,20%);
+       
+    
     }
     .remotep2 img{
         height: 28vw;
@@ -693,6 +746,14 @@ header{
         color:  hsl(188,47%,20%);
         border-radius: 0.1vw;
         margin-left: 0%;
+        border-radius: 10vw;
+        cursor: pointer;
+    }
+    .employeep2  button:hover{
+        background-color: hsl(188,47%,20%);
+        color: white;
+       
+    
     }
    
     
@@ -921,6 +982,7 @@ header{
         border: 1px solid white;
         padding: 1vw;
         cursor: pointer;
+        
     }
     .f2 button:hover{
         background-color: white;
@@ -969,6 +1031,9 @@ header{
         transition: 1.5s;
         transition-property: margin-top;
         
+    }
+    .head.addedhead{
+        margin-top: 9%;
     }
     .heada:hover{
         margin-top: 7%;
@@ -1031,10 +1096,10 @@ header{
        
     }
     .backgroudcolorsetter{
-        background-color: hsl(37,42%,94%);
+        background-color: hsla(37,42%,94%,0.7);
     }
   .aboutmain{
-    background-color: hsl(37,42%,94%);
+    background-color: hsl(37,42%,94%,0.7);
   
     height: 80vw;
     overflow: hidden;
@@ -1415,13 +1480,17 @@ header{
     .head{
       
         width: 64%;
-        margin-top: 35%;
+        margin-top: -84%;
         margin-left: 6%;
         transition: 1.5s;
         transition-property: margin-top;
         
        
       
+        
+    }
+    .head.addedheadp{
+        margin-top: 35%;
         
     }
     .head:hover{
@@ -1507,7 +1576,7 @@ header{
        
         margin-top: 7vw; 
         color: white;
-        border-radius: 0.5vw;
+        border-radius: 10vw;
     }
 
 
@@ -1520,15 +1589,27 @@ header{
         margin-top: 10vw;
         padding-bottom: 20vw;
         margin-top: 0vw;
+
      }
      .propsp h1{
          background-color: transparent;
          font-size: 6vw;
          text-align: center;
+         width: 75%;
+    border-right: 2px solid hsl(188,47%,20%);
+    animation: handwritingp 5s steps(20) infinite;
+    animation-delay: 2s;
          
     
         
      }
+     @keyframes handwritingp {
+        from {
+          width: 0;
+        }
+        to {
+          width: 75%;
+        }}
      .propsp1{
       
          height: 245vw;
@@ -1841,7 +1922,7 @@ header{
       
         margin-top: 10vw; 
         color: white;
-        border-radius: 0.5vw;
+        border-radius: 10vw;
         margin-left: 6%;
     }
 
@@ -1901,7 +1982,7 @@ header{
         
         margin-top: 10vw; 
         color: white;
-        border-radius: 0.5vw;
+        border-radius: 10vw;
         margin-left: 6%;
     }
     .remotep2 img{
@@ -2010,7 +2091,7 @@ header{
         background-color: white;
         margin-top: 10vw; 
         color: hsl(188,47%,20%);
-        border-radius: 0.5vw;
+        border-radius: 10vw;
         margin-left: 6%;
     }
     
@@ -2243,6 +2324,7 @@ header{
         border: 1px solid white;
         padding: 3vw;
         cursor: pointer;
+      
     }
     .f3 a{
         display: block;

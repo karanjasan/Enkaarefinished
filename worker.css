@@ -114,6 +114,8 @@
 }
 #pb{
     margin-left: 7%;
+    
+    width: 15vw;
 }
 #bp{
     
@@ -242,15 +244,13 @@ display: block;
 }
 .iframe{
     width: 80%;
-   
+
+  
     display: flex;
 
 }
-iframe{
-    width: 100%;
-    height: 100vh;
-    
-}
+
+
 .message{
     border: 1px solid black;
     height: 95vh;
@@ -578,13 +578,29 @@ iframe{
    width: 80vw;
    background-color: hsl(36,43%,94%);
    
- 
+   
+    overflow-y: scroll;
     font-family: 'Roboto', sans-serif;
-    overflow-x: hidden;
+  /*  overflow-x: hidden;
+    scrollbar-width: thin;*/
     scrollbar-width: thin;
+    
+scrollbar-color: #888 transparent;
+    
     
    
 }
+
+
+
+.avbody::-webkit-scrollbar {
+width: 0.4vw; 
+}
+.avbody::-webkit-scrollbar-thumb {
+background-color: #c0c0c0;
+border-radius: 0.7vw;
+}
+
 
 .orderinid{
     display: none;
@@ -719,11 +735,7 @@ iframe{
    
 }
 
-.emoji {
-    font-size: 2.5vw;
-    margin-bottom: 1vw;
-    margin-top: 0.1vw;
-}
+
 
 .messagepp {
     margin: 0;
@@ -732,6 +744,7 @@ iframe{
     font-style: italic;
     margin: auto;
     width: 95%;
+    margin-top: 2vw;
 }
 
 
@@ -795,6 +808,8 @@ iframe{
             padding-right: 1%;
             overflow-y: scroll;
             scrollbar-width: none;
+            padding-bottom: 1vw;
+            
         }
 
         .interloader{
@@ -857,10 +872,10 @@ iframe{
             opacity: 1;
 
         }
-        .interview-container:hover{
+      /*  .interview-container:hover{
             height: 20vw;
             opacity: 1;
-        }
+        }*/
 
         /* Style for each row */
         .row {
@@ -1000,11 +1015,21 @@ iframe{
     
      background-color: purple;
      color: white;
+     display: none;
 
         }
         
-
-
+/*
+        .avtopbar{
+         
+            position: fixed;
+            width: 80%;
+            background-color: hsl(228,14%,93%);
+            margin-top: -12vw;
+            padding-bottom: 2vw;
+            border-bottom:1px solid hsla(4,0%,0%,0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }*/
 
 
 .searchbar{
@@ -1016,6 +1041,7 @@ iframe{
     background-color: white;
     border-radius: 0.3vw;
     display: flex;
+    
 }
 .searchbar select{
     height: 2.5vw;
@@ -1070,8 +1096,26 @@ iframe{
     margin: auto;
     width: 93%;
     margin-top: 1vw;
+    padding-bottom: 1vw;
+   
+   
    
 }
+
+/*
+   
+    scrollbar-width: thin;
+    
+    scrollbar-color: #888 transparent;
+   
+.orderslist::-webkit-scrollbar {
+    width: 0.4vw; 
+  }
+  .orderslist::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border-radius: 0.7vw;
+  }*/
+  
 .order{
   
     margin: auto;
@@ -1208,6 +1252,8 @@ iframe{
     color: hsla(4,0%,0%,0.5);
   
     margin-top: 1vw;
+    opacity: 0;
+    visibility: hidden;
 }
 .orderp3 .orderbuttonp,.orderbutton{
     height: 2.3vw;
@@ -1238,8 +1284,8 @@ iframe{
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.empty-icon {
-    font-size: 4vw;
+#empty-icon {
+     height: 6vw;
     color: #3498db;
     margin-bottom: 20px;
 }
@@ -1552,14 +1598,15 @@ iframe{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: black;
      position: absolute;
-     margin-left: 90%;
+     margin-left: 82%;
      width: 1vw;
      height: 1vw;
      margin-top: 1.3vw;
      cursor: pointer;
-      font-weight: 700;
+     font-size: 1.7vw;
+      
      
 }
 .cancleedit:hover{
@@ -1702,6 +1749,7 @@ iframe{
     font-size: 1.2vw;
     width: 28.8vw;
     font-family: 'Roboto', sans-serif;
+    padding: 1vw;
 }
 .experineces{
     border-bottom:transparent;
@@ -1854,7 +1902,7 @@ iframe{
 }
 .saveb{
     height: 2.5vw;
-    margin-left: 85%;
+    margin-left: 50vw;
     margin-top: 0.5vw;
     cursor: pointer;
     background-color: green;
@@ -1862,6 +1910,8 @@ iframe{
     font-weight: 700;
     border: 1px solid green;
     border-radius: 0.3vw;
+    font-size: 1.2vw;
+    width: 11vw;
 
 }
 .saveb:hover{
@@ -2112,6 +2162,11 @@ background-color: hsla(188,47%,20%,0.8);
    
     height: 1;
     margin-top: 3vw;
+    
+}
+#paysecd{
+    display: none;
+
 }
 .paysec{
     
@@ -2516,6 +2571,7 @@ background-color: hsla(188,47%,20%,0.8);
 
 }
 
+
 .auth1st p{
     
     margin-top: 0.5vw;
@@ -2557,6 +2613,7 @@ background-color: hsla(188,47%,20%,0.8);
     width: 93%;
     margin-top: 2vw;
     color: hsla(4,0%,0%,0.6);
+    font-size: 1.2vw;
 }
 .sinputc,.sinputc2{
     border: 1px solid hsla(4,0%,0%,0.3);
@@ -3187,3 +3244,11 @@ background-color: hsla(188,47%,20%,0.8);
 .contactsupport #suucanncel:hover{
     color: red;
 }
+
+
+
+
+
+
+
+

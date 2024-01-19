@@ -31,6 +31,8 @@ a{
     height: 100vh;
     width: 100vw;
     display: flex; 
+
+    
     
 
 }
@@ -40,7 +42,7 @@ a{
 .navbar{
     height: 100%;
     width: 20%;
-   
+    
     background-color: white;
 }
 .navbar img{
@@ -78,6 +80,10 @@ a{
     height: 1.5vw;
     margin-right: 0.5vw;
 }
+.phoneprofilenav{
+    display: none;
+}
+
 .profile,.balance,.notification,.aorders,.mbids,.chats,.hcentre,.rules{
     display: flex;
    
@@ -114,9 +120,13 @@ a{
 
 }
 #pb{
-    margin-left: 7%;
+    
+    width: 15vw;
+    
    
 }
+
+
 #bp{
     
     width: 3vw;
@@ -211,6 +221,8 @@ a{
     transition-property: opacity;
     opacity: 0;
     display: none;
+
+
 }
 .poptions.addpoptions{
 opacity: 1;
@@ -244,13 +256,28 @@ display: block;
 }
 .iframe{
     width: 80%;
+   /* border: 4px solid yellow;*/
    
     display: flex;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    
 
 }
+.iframe::-webkit-scrollbar {
+    width: 5px; 
+  }
+  .iframe::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border-radius: 0.7vw;
+  }
+
+
 iframe{
     width: 100%;
     height: 100vh;
+
+    
     
 }
 .message{
@@ -512,19 +539,32 @@ iframe{
    width: 80vw;
    background-color: hsl(36,43%,94%);
    
- 
+    /*overflow-y: scroll;*/
     font-family: 'Roboto', sans-serif;
-    overflow-x: hidden;
-    scrollbar-width: thin;
+   
+    overflow: hidden;
+    height: 114vh;
+    
+  
+  
+   
     
    
-}
+}/*
+.avbody::-webkit-scrollbar {
+    
+    width: 5px; 
+  }
+  .avbody::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border-radius: 1vw;
+  }*/
 .orderinid{
     display: none;
 }
-.avbody::-webkit-scrollbar{
+/*.avbody::-webkit-scrollbar{
     width: thin;
-}
+}*/
 .aordersh1{
   
     margin: auto;
@@ -570,6 +610,9 @@ iframe{
 
     width: 2vw;
     margin-top: -0.5vw;
+}
+.arrow-containerp{
+    display: none;
 }
 
 .arrow {
@@ -631,12 +674,15 @@ iframe{
 
 
 .cancel-icon {
-    font-size: 1vw;
+    font-size: 1.5vw;
     margin-left: 50%;
     cursor: pointer;
     font-weight: 100;
     color: whitesmoke;
 }
+.cancel-iconp{
+    display: none;
+} 
 .cancel-icon:hover{
     color: red;
 }
@@ -655,11 +701,7 @@ iframe{
    
 }
 
-.emoji {
-    font-size: 2.5vw;
-    margin-bottom: 1vw;
-    margin-top: 0.1vw;
-}
+
 
 .messagepp {
     margin: 0;
@@ -668,6 +710,7 @@ iframe{
     font-style: italic;
     margin: auto;
     width: 95%;
+    margin-top: 2vw;
 }
 
 
@@ -745,11 +788,17 @@ iframe{
     width: 17vw;
 }
 .search input:focus{
-    outline-width: 0vw;
+    
+    outline: none;
+    border: none;
+    box-shadow: none;
 }
 
 .searchbar select:focus{
     outline-width: 0vw;
+}
+.searchicon{
+    display: none;
 }
 
 .candidatelist{
@@ -757,7 +806,25 @@ iframe{
     margin: auto;
     width: 93%;
     margin-top: 2vw;
+    overflow-y: scroll;
+  /* border: 1px solid black;*/
+    margin-bottom: 4vw;
+   
+    scrollbar-width: thin;
+    height: 72vh;
+   
+    
+    
+   
 }
+
+.candidatelist::-webkit-scrollbar {
+    width: 5px; 
+  }
+  .candidatelist::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border-radius: 0.7vw;
+  }
 .candidatecarrier{
  
     height: 6vw;
@@ -773,6 +840,7 @@ iframe{
 .cadpsec{
    
     width: 50%;
+    
 }
 .cadprofile{
    height: 4vw;
@@ -837,6 +905,8 @@ iframe{
     font-size: 1vw;
     color: hsla(4,0%,0%,0.5);
 }
+
+
 .approvalr{
     border-left: 1px solid hsla(188,47%,20%,0.5);
     height: 4vw;
@@ -860,7 +930,8 @@ iframe{
 .cadabout{
     border-left: 1px solid hsla(188,47%,20%,0.7);
     width: 50%;
-    display: flex;
+    display: flex; 
+   
     
 }
 .cadabout h3{
@@ -989,6 +1060,8 @@ iframe{
     height: 3vw;
     display: flex;
     width: 24vw;
+   
+    
 }
 .name .nh21,.nh22,.payhr{
     
@@ -998,12 +1071,14 @@ iframe{
 }
 
 
+
+
 .nh22{
     margin-left: 5%;
  
 }
 .jtitle{
-    font-size: 1.2;
+    font-size: 1.2vw;
    
 }
 .pdetails button{
@@ -1025,6 +1100,9 @@ iframe{
     height: 100%;
     background-color: white;
    
+}
+.ddetailsp{
+    display: none;
 }
 .ddp{
    
@@ -1194,14 +1272,14 @@ iframe{
      display: flex;
      align-items: center;
      justify-content: center;
-     color: white;
+     color: black;
       position: absolute;
-      margin-left: 90%;
+      margin-left: 82%;
       width: 1vw;
       height: 1vw;
       margin-top: 1.3vw;
       cursor: pointer;
-       font-weight: 700;
+       font-size: 1.7vw;
       
  }
  .cancleedit:hover{
@@ -1292,8 +1370,9 @@ iframe{
      height: 2.3vw;
      color: hsla(4,0%,0%,0.6);
      margin-left: 8%;
-    
+     border: 1px solid hsla(4,0%,0%,0.8);
      font-size: 1.2vw;
+     
  }
  #eexperinence{
      width: 14vw;
@@ -1345,6 +1424,7 @@ iframe{
      font-size: 1.2vw;
      width: 28.8vw;
      font-family: 'Roboto', sans-serif;
+     padding: 1vw;
  }
 
 
@@ -1593,6 +1673,8 @@ iframe{
     margin-top: 2vw;
 }
 
+
+
 /*ORDER DATAILS STYLING*/
 .odbody{
     box-sizing: border-box;
@@ -1734,6 +1816,8 @@ iframe{
     line-height: 2.5vw;
     color: hsla(4,0%,0%,0.9);
     font-size: 1.2vw;
+    font-family: sans-serif;
+    
     
 }
 .skillst{
@@ -1798,8 +1882,8 @@ iframe{
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.empty-icon {
-    font-size: 4vw;
+#empty-icon {
+    height: 6vw;
     color: #3498db;
     margin-bottom: 20px;
 }
@@ -1814,7 +1898,16 @@ iframe{
 
 
 /*E-PROFILE CSS START HERE*/
-
+.profilesetter{
+    
+    overflow-y: scroll;
+    height: 100vh;
+    scrollbar-width: thin;
+}
+.profilesetter::-webkit-scrollbar {
+    width: 5px;
+    background-color: #D3D3D3;
+  }
 
 .maintitle{
     display: flex;
@@ -2049,9 +2142,9 @@ iframe{
     color: white;
     font-weight: 600;
     border: 1px solid orange;
-    border-radius: 0.3vw;
     font-size: 1vw;
     margin-top: 0.8vw;
+    width: 8vw;
     
 }
 .appart{
@@ -2157,14 +2250,17 @@ iframe{
 
 .jbremin{
    
-    width: 40%;
+    width: 45%;
     margin-left: 6%;
+   
     
 }
 .jbp1,.jbp2{
    
     margin-top: 0.1vw;
     font-size: 1.2vw;
+    
+    
 }
 .jbp1{
     height: 0.4vw;
@@ -2212,7 +2308,11 @@ iframe{
     background-color: white;
     border-radius: 0.2vw;
     position: absolute;
+    
    
+}
+.jbquicklinksa{
+    display: none;
 }
 
 .jbwd{
@@ -2273,7 +2373,8 @@ iframe{
     border: 1px solid hsla(188,47%,20%,0.4);
     height: 2.5vw;
     width: 2.5vw;
-    margin-left: 5%;
+    margin-left: 65%;
+   /* margin-left: 5%;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2297,6 +2398,10 @@ iframe{
     border-radius: 0.3vw;
     margin-top: 0.5vw;
     cursor: pointer;
+}
+
+.interviewdates,.avaislots,.icominginte{
+    display: none;
 }
 .interviewdates{
     width: 17.5vw;
@@ -2908,6 +3013,82 @@ label {
 
 
 
+  
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    margin-left: 4%;
+  }
+  
+  .modal-content {
+    padding: 1vw;
+  }
+  .modal-content p{
+    font-size: 1.2vw;
+  }
+  
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  .buttons button {
+    margin: 0 1vw;
+    padding: 0.5vw 0.5vw;
+    cursor: pointer;
+    font-size: 1.2vw;
+  }
+  
+ /* Add this style for the spinner container */
+.spin-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: absolute;
+ 
+    width: 72.6vw;
+    margin-top: -8.5vw;
+    background-color: hsla(188,47%,20%,0.1);
+  }
+  
+  /* Update the style for the spinner to fill its container */
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 3.5vw;
+    height: 3.5vw;
+    animation: spin 1s linear infinite;
+    /* Adjust margin to center the spinner */
+    margin: auto;
+  }
+  
+  /* Rest of your existing styles... */
+  
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+
+
+
+
+
+
 
 
 
@@ -2956,6 +3137,14 @@ label {
    
     width: 32%;
 
+    
+
+}
+
+.setoverflow{
+  /*  border: 2px solid brown;*/
+    display: flex;
+    height: 3.7vw;
 }
 .hirethreebuttons{
     border: 1px solid hsla(188,47%,20%,0.5) ;
@@ -2964,12 +3153,14 @@ label {
     margin-left: 80%;
     margin-top: 0.3vw;
     border-radius: 0.2vw;
+    cursor: pointer;
     
 }
 .hirethreebuttons:hover + .canclejobsec{
     height: 3.4vw;
-    width: 10%;
+    width: 80%;
     border: 1px solid hsla(4,0%,0%,0.4);
+    
 }
 .hirethreebuttons section{
     /*border: 1px solid black;*/
@@ -2984,8 +3175,10 @@ label {
    
 }
 .hirepart{
+    
+ 
    
-    height: 3.4vw;
+    height: 2vw;
 }
 #hirepp{
   
@@ -2996,6 +3189,7 @@ label {
     font-size: 1.3vw;
     visibility: hidden;
     opacity: 0;
+    display: none;
 }
 .hirebutton{
     border: 1px solid green;
@@ -3004,15 +3198,22 @@ label {
     height: 1.5vw;
     margin-left: 30%;
     font-weight: 700;
-    cursor: pointer;
+    cursor:default;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.3vw;
-    color: white;
+    color: hsla(0,0%,100%,0.5);
+    
    
   
     background-color: green;
+}
+.hirebutton:hover{
+    cursor: no-drop; /* Changes cursor to a red circle with a cross line */
+    /* Additional styles for hover effect */
+    background-color: #ddd;
+    color: #777;
 }
 
 .canclejobsec{
@@ -3020,10 +3221,10 @@ label {
     height: 0vw;
     width: 0%;
     background-color:  white;
-    position: absolute;
-    
-    margin-left: 1%;
-    margin-top: 0.2vw;
+  /*  position: absolute;*/
+ 
+    margin-left: -97%;
+    margin-top: 0vw;
     display: block;
    
     transition: 0.2s;
@@ -3035,8 +3236,9 @@ label {
 
 .canclejobsec:hover{
     height: 3.4vw;
-    width: 10%;
+    width: 80%;
     border: 1px solid hsla(4,0%,0%,0.4);
+    
     
 }
 .cancelappl{
@@ -3113,7 +3315,7 @@ label {
    background-color: white;
     font-family: 'Roboto', sans-serif;
     overflow-y: scroll;
-    scrollbar-width: none;
+    
     height: 1;
    
     -ms-overflow-style: none;
@@ -3255,9 +3457,7 @@ label {
     display: flex;
     
 }
-.jbody::-webkit-scrollbar{
-    display: none;
-}
+
 .jbsidebar{
     width: 20%;
    
@@ -3425,6 +3625,7 @@ select{
     margin-left: 3%;
     margin-top: 2vw;
     font-size: 1.2vw;
+    padding: 1vw;
  }
  #responsibility{
     margin-left: 25%;
@@ -4230,7 +4431,7 @@ select{
     margin-left: 65%;
     margin-top: -30vw;
     cursor: pointer;
-    font-size: 1.1vw;
+    font-size: 1.6vw;
 }
 .contactsupport #suucanncel:hover{
     color: red;
@@ -4371,4 +4572,2262 @@ select{
 }
 .oops-description {
     color: #666;
+}
+
+
+
+
+
+
+@media (max-width:500px){
+
+    .main{
+    
+        height: 100vh;
+        width: 100vw;
+        display: block; 
+    
+        
+        
+    
+    }
+    .navbar{
+        height: 32vw;
+        width: 100%;
+        background-color: white;
+        
+    }
+
+    .navbar #employerdlogo{
+        height: 14vw;
+        margin-left: 5%;
+        margin-top: 5vw;
+        padding-bottom: 1vw;
+    }
+
+    .status{
+        display: flex;
+        border: 1px solid hsl(37,48%,84%);
+        height: 10vw;
+    }
+
+    .status button{
+        height: 6vw;
+        width: 40vw;
+        margin-top: 2vw;
+        margin-left: 15%;
+        font-size: 3.2vw;
+        font-weight: 600;
+       
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .status button img{
+        height: 4vw;
+        margin-right: 2vw;
+    }
+
+
+    .navbutton{
+        display: block;
+         height: 30px;
+         background: transparent;
+         width: 30px;
+         margin-left: 5%;
+         margin-top: 1vw;
+         border-radius: 5px;
+        
+     
+        
+        }
+        
+        .nav{
+           
+            height: 2px;
+            display: block;
+            background-color : hsl(188,47%,20%);
+            width: 25px;
+            margin: 6px;
+            border-radius: 20px;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        
+        }
+ 
+         
+        .navbutton.active .nav:nth-child(2){
+         opacity: 0;
+        }
+        .navbutton.active .nav:nth-child(1){
+         transform:translateY(8px)   rotate(45deg);
+        }
+        .navbutton.active .nav:nth-child(3){
+         transform:translateY(-8px)  rotate(-45deg);
+        }
+
+        #ebeta{
+            display:  none;
+        }
+
+
+        .phoneprofilenav{
+            
+            height: 10vw;
+            width: 18vw;
+            display: flex;
+            margin-left: 13%;
+            
+        }
+
+        .logo-container {
+            display: flex;
+            background-color: hsl(188,47%,20%);
+            overflow: hidden;
+            border-radius: 50%;
+            
+            width: 8vw; 
+            height: 8vw; 
+            margin-top: 1vw;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #logo {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 50%;
+        }
+
+        #gthanphone{
+            height: 6vw;
+            transform: rotate(90deg);
+            margin-top: 2vw;
+        }
+        #myprofile{
+  
+            display: none;
+            
+         }
+
+         .phonenavmenu{
+            border: 1px solid hsla(4,0%,0%,0.2);
+            width: 60%;
+           
+            position: absolute;
+            background-color: white;
+            margin-left: 4%;
+            margin-top: 1vw;
+            overflow: hidden;
+            height: 0vw;
+            opacity: 0;
+            background-color: whitesmoke;
+            border-radius: 2vw;
+            transition: 0.3s ease-in-out;
+           
+         }
+         .phonenavmenu.addedphonemenu{
+            height: 70vw;
+            opacity: 1;
+
+         }
+
+         .balance,.notification,.aorders,.mbids,.chats,.hcentre,.rules{
+            display: flex;
+            
+            height: 12vw;
+            cursor: pointer;
+           
+           
+            margin-top: 2vw;
+            
+        }
+
+        .balance img,.notification img,.aorders img,.mbids img,.abids img,.chats img, .rating img,.hcentre img,.rules img{
+            
+            margin-top: 0.4vw;
+            margin-left: 5%;
+
+            
+        }
+        #canidateimg,#mypostedjobimg,#recruiterimg,#termsimg{
+            height: 6vw;
+            margin-top: 3vw;
+        }
+
+        .notification,.rules{
+            border-bottom: 1px solid transparent ;
+        }
+      
+
+
+        .balance,.notification, .chats{
+            display: none;
+
+        }
+        .navbar img{
+            height: 5vw;
+            margin-left: 7%;
+            margin-top: 1vw;
+            padding-bottom: 1vw;
+        }
+        .profile p,.balance p,.notification p,.aorders p,.mbids p,.chats p,.hcentre p,.rules p{
+    
+            width: 90vw;
+           
+            margin-left: 5%;
+            margin-top: 4.5vw;
+            font-size: 3.2vw;
+           
+        
+            
+            
+        
+        }
+        #rb{
+            font-size: 3.2vw;
+            
+            width: 30vw;
+            margin-top: 4.5vw;
+        }
+        #pb{
+            width: 30vw;
+            font-size: 3.2vw;
+           
+        }
+        
+        .iframe{
+            width: 100%;
+            
+        
+        }
+        .avbody{
+            
+            width: 100%;
+            height: 100.5vh;
+           
+           
+
+           
+        }
+        
+        .aordersh1{
+  
+            margin: auto;
+            width: 93%;
+            margin-top: 5vw;
+            font-size: 5vw;
+        
+        }
+        .ordersnav .h31{
+             
+            height: 4vw;
+            margin-top: 2vw;
+            font-size: 3.2vw;
+            
+        }
+        .ordersnav .h32{
+            height: 4vw;
+            margin-top: 2vw;
+            font-size: 3.2vw;
+   
+           
+        }
+        
+        .ordersnav{
+           
+            height: 7vw;
+            
+        
+        }
+        .searchbar{
+            height: 9vw;
+           
+        }
+
+
+
+        .searchbar select{
+            height: 5vw;
+            margin-top: 2vw;
+            width: 35vw;
+            font-size: 2.3vw;
+            border-radius: 1vw;
+            text-align: center;
+            
+         
+        }
+        .searchbar label{
+            margin-left: 2%;
+            margin-top: 3vw;
+            font-size: 2.5vw;
+            
+        }
+        .searchbar .search{
+           
+            display: none;
+        }
+        .searchicon{
+            height: 5vw;
+            margin-left: 40%;
+            margin-top: 2vw;
+            display: block;
+            
+
+        }
+        .candidatelist{
+    
+            margin: auto;
+            width: 93%;
+            margin-top: 2vw;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            
+            overflow-x: hidden;
+            
+            height: 58vh;
+           padding-bottom: 3vw;
+            
+           
+        }
+        .candidatecarrier{
+
+ 
+            height: 55vw;
+            margin-top: 4vw;
+            display: block;
+            box-shadow: 0 4px 8px rgba(0.1, 0.1, 0.1, 0.1);
+            
+           
+        
+            
+        }
+        .cadpsec{
+   
+            width: 100%;
+            
+        }
+        .cadprfmain{
+    
+            display: block;
+            height: 27vw;
+            border-bottom: 1px solid hsla(4,0%,0%,0.2);
+        
+        }
+        .divprfshow{
+            display: flex;
+       
+            width: 100%;
+            height: 18vw;
+            cursor: pointer;
+           
+           
+        }
+
+        .cadprofile{
+            height: 10vw;
+             width: 10vw;
+             background-color: hsla(188,47%,20%,0.2);
+             border-radius: 50%;
+             margin-left: 3%;
+             margin-top: 1vw;
+         
+             
+             
+         }
+         .cadprofile img{
+            height: 10vw;
+            width: 10vw;
+            
+        }
+     
+.js{
+    
+    width: 50%;
+}
+#cadph3{
+  
+     margin-left: 2%;
+     margin-top: 1.2vw;
+     font-size: 1.5vw;
+     height: 0.5vw;
+}
+
+#cadp{
+   
+    margin-left: 2%;
+    font-size: 2vw;
+    color: hsla(4,0%,0%,0.5);
+   
+}
+
+
+
+
+
+.online{
+    border: 2px solid white;
+    height: 1.2vw;
+    width: 1.2vw;
+    margin-left: 90%;
+    margin-top: -5.2vw;
+    background-color: green;
+    border-radius: 50%;
+    display: none;
+    
+    
+}
+.js{
+   
+    width: 50%;
+}
+#cadph3{
+  
+     margin-left: 5%;
+     margin-top: 3vw;
+     font-size: 3.5vw;
+     height: 0.5vw;
+}
+
+#cadp{
+   
+    margin-left: 5%;
+    font-size: 2vw;
+    color: hsla(4,0%,0%,0.5);
+}
+
+
+
+
+
+
+.approvalr{
+    border-left: 1px solid hsla(188,47%,20%,0.5);
+    height: 7vw;
+    width: 50%;
+    margin-top: 1vw;
+    margin-left: 5%;
+}
+#aprateh3{
+  
+    margin-left: 3%;
+    margin-top: 0.5vw;
+    font-size: 3.5vw;
+    height: 0.4vw;
+    
+}
+.approvalr p{
+  
+    margin-left: 2%;
+    font-size: 3vw;
+   
+}
+.cadabout{
+    border-left: 1px solid transparent;
+    width: 100%;
+    display: block;
+   
+    
+}
+.cadabout h3{
+    margin-top: 2vw;
+   
+    font-size: 3.3vw;
+    height: 1vw;
+    margin-left: 5%;
+    
+    
+}
+#cadaboutp{
+    
+    margin-top: 0.1vw;
+    font-size: 3.1vw;
+    width: 65vw;
+    margin-left: 5%;
+}
+.cadabout button{
+    margin-top: 0vw;
+    height: 7vw;
+     width: 80vw;
+    font-weight: 600;
+    font-size: 3.5vw;
+    
+    margin-top: 3vw;
+    margin-left: 6%;
+ 
+}
+
+
+
+.poptions{
+    height: 30vw;
+    width: 30vw;
+    margin-left: 65%;
+    border-radius: 1vw;
+    opacity: 0;
+    display: none;
+    margin-top: 1vw;
+
+    
+}
+
+.poptions.addpoptionsp{
+    opacity: 1;
+    display: block;
+    }
+    
+    .myprofile{
+      
+      
+       height: 7vw;
+       margin-top: 2.2vw;
+       
+       
+      
+    }
+    #myprofile:hover+#ppp{
+        opacity: 1;
+    }
+    .myprofile p{
+        width: 18vw;
+        margin-left: 5%;
+        margin-top: 1vw;
+        font-size: 3.2vw;
+       
+        
+        
+    }
+    .myprofile:hover{
+        background-color: hsl(36,43%,90%);
+    }
+    .myprofile img{
+        height: 5vw;
+        margin-left: 8%;
+    }
+      
+
+    /*JOBS INVITE SECTION*/
+.invitesec{
+    
+    
+    height: 0vh;
+    width: 0vw;
+   /* background-color: hsla(188,47%,20%,0.9)*/;
+   /*background-color: grey;*/
+    position: absolute;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.invitesec.addedinvitesec{
+    height: 100vh;
+    width: 100vw;
+}
+.invitesecrealsec{
+   
+    width: 90vw;
+    height: 120vw;
+  
+    
+    
+}
+.invitesecloader{
+    width: 90vw;
+    height: 120vw;
+  
+}
+.invitesecloader::after{
+    
+    width: 10vw;
+    height: 10vw;
+  
+    
+   
+}
+
+@keyframes loa {
+    from{transform: rotate(0turn);}
+    to{transform: rotate(1turn);}
+}
+.invitesecrealsec::-webkit-scrollbar{
+    display: none;
+}
+.invitesecrealsec #question{
+    
+   
+    font-size: 3.8vw;
+    margin-top: 7vw;
+}
+.invitesecrealsec label{
+  
+    margin-left: 5.5%;
+    height: 6vw;
+    margin-top: 2vw;
+    width: 80vw;
+    font-size: 3.2vw;
+    border-radius: 10vw;
+
+  
+    
+    
+}
+.invitesecrealsec label input{
+    margin-top: 0.9vw;
+    margin-left: 4%;
+}
+.invitesecrealsec #submit-btn{
+    width: 30vw;
+    margin-top: 4vw;
+    margin-left: 60%;
+    height: 6vw;
+  
+    font-size: 3.2vw;
+    border-radius: 5vw;
+    
+}
+.invitesecrealsec #submit-btn:hover{
+    background-color: hsla(188,47%,20%,0.7);
+}
+.invitesecrealsec #result{
+
+    margin-left: 3%;
+    text-align: center;
+    color: red;
+    font-size: 3.5vw;
+}
+.invitesec #suucanncel{
+   
+    font-size: 6vw;
+    color: red;
+    margin-left: 80%;
+    margin-top: -109vw;
+}
+.oops-container {
+    text-align: center;
+    padding: 1vw;
+    /*background-color: ;*/
+    border-radius: 1vw;
+    margin-top: 20vw;
+  
+    
+    
+}
+.oops-icon {
+    font-size: 8vw;
+    color: #e74c3c;
+    margin-bottom: 5vw;
+}
+.oops-message {
+    font-size: 3.2vw;
+    color: #333;
+    margin-bottom: 6vw;
+}
+.oops-description {
+    color: #666;
+}
+
+/*Support start here*/
+
+.contactsupport{
+    height: 0vh;
+    width: 0vw;
+    position: absolute;
+    background-color: hsla(100,100%,100%,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    overflow: hidden;
+    z-index: 9999;
+}
+.contactsupport.addedhove{
+    height: 100vh;
+    width: 100vw;
+}
+.innersupport{
+    border: 1px solid hsl(188,47%,20%);
+    height: 140vw;
+    width: 85vw;
+    margin-top: 1vw;
+    display: block;
+  
+    
+}
+.innersupport1{
+  
+    width: 100%;
+    background-color: hsl(188,47%,20%);
+    height: 50vw;
+
+}
+.innersupport1 h1{
+    color: whitesmoke;
+    
+    font-size: 5vw;
+    margin-left: 30%;
+    margin-top: 0vw;
+    padding-top: 6vw;
+
+}
+.deco{
+   
+   
+    height: 20vw;
+    margin-top: 8vw;
+    
+}
+
+.deco img{
+    height: 15vw;
+    margin-left: 42%;
+}
+.innersupport2{
+   
+    width: 100%;
+    height: 90vw;
+    background-color: hsla(45, 44%, 80%,0.8);
+}
+.innersupport2 h2{
+ 
+    color: black;
+    font-size: 5vw;
+    margin-left: 32%;
+    margin-top: 0vw;
+    padding-top: 5vw;
+}
+#subject{
+  width: 70vw;
+  margin-left: 6vw;
+  margin-top: 2vw;
+  border: 1px solid hsla(4,0%,0%,0.3 );
+  height: 7vw;
+  border-radius: 10vw;
+  font-size: 3.2vw;
+  text-align: center;
+  
+}
+#sumessage{
+    width: 65vw;
+    margin-left: 6vw;
+    margin-top: 5vw;
+    border: 1px solid hsla(4,0%,0%,0.3 );
+    display: block;
+    height: 40vw;
+   
+    font-size: 3.2vw;
+    padding: 3vw;
+}
+#susubmitb{
+    border: 1px solid  hsl(188,47%,20%);
+    
+    width: 25vw;
+    height: 6vw;
+    margin-top: 4vw;
+    margin-left: 65%;
+    font-size: 3.3vw;
+    font-weight: 700;
+    background-color: hsl(188,47%,20%);
+    color: whitesmoke;
+    border-radius: 10vw;
+
+}
+#susubmitb:hover{
+    background-color: whitesmoke;
+    color: hsl(188,47%,20%);
+    border: 1px solid hsl(188,47%,20%);
+}
+
+
+.contactsupport  #suucanncel{
+    position: absolute;
+    margin-left: 75%;
+    margin-top: -130vw;
+    cursor: pointer;
+    font-size: 5vw;
+    color: white;
+}
+.contactsupport #suucanncel:hover{
+    color: red;
+}
+
+/*Incoplete profile */
+
+.incompleteprofile{
+
+    height: 40vw;
+    position: absolute;
+    width: 65vw;
+   
+    margin-top: -28vw;
+    border-radius: 1vw;
+    display: none;
+    margin-left: 23%;
+   
+}
+.incompleteprofile.adddincompleteprofile{
+    display: block;
+}
+
+
+
+.arrow-container {
+    display: none;
+    align-items: center;
+    animation: bounce 1.5s infinite;
+
+    width: 2vw;
+    margin-top: -0.5vw;
+}
+.arrow-containerp {
+    display: flex;
+    align-items: center;
+    animation: bounce 1.5s infinite;
+
+    width: 2vw;
+    margin-top: -0.5vw;
+   
+    margin-left: 25%;
+}
+.arrow {
+    width: 3vw;
+    height: 3vw;
+   
+   /*clip-path: polygon(0% 50%, 100% 0, 100% 100%);*/
+   clip-path: polygon(0% 0, 100% 50%, 0% 100%);
+
+    margin-top: 1vw;
+}
+
+@keyframes slide {
+    0%, 100% {
+        transform: rotate(0deg) translateX(0);
+    }
+    50% {
+        transform: rotate(0deg) translateX(20px);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.horizontal-section {
+    display: flex;
+    align-items: center;
+   
+    padding: 5px;
+    border-radius: 5px;
+
+   
+
+    
+}
+
+.item {
+   /* padding: 10px 15px;*/
+    font-size: 3.3vw;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+
+    font-weight: 700;
+    font-style: italic;
+    margin-top: 3;
+    
+    
+    
+}
+.item1{
+    margin-left: 20%;
+}
+
+.arrow1 {
+    font-size: 1.3vw;
+    margin: 0 1vw;
+}
+
+
+
+
+
+.cancel-icon {
+    display: none;
+}
+
+.cancel-iconp {
+    display: block;
+    font-size: 5vw;
+    margin-left: 1%;
+    cursor: pointer;
+    font-weight: 100;
+    color: whitesmoke;
+}
+.cancel-icon:hover{
+    color: red;
+}
+
+
+
+
+
+
+
+
+.messagepp {
+    margin: 0;
+    font-size: 3.3vw;
+    line-height: 1.5;
+    font-style: italic;
+    margin: auto;
+    width: 95%;
+    margin-top: 2vw;
+}
+
+
+/*MY JOBS POSTS START HERE*/
+
+
+.jobspostlist{
+    
+    height: 1;
+    margin: auto;
+    width: 93%;
+    margin-top: 2vw;
+    
+}
+
+.jobspcarrier{
+    
+    height: 35vw;
+    margin-top: 5vw;
+    display: block;
+    background-color: white;
+   
+}
+.jobspcarrier:hover{
+  background-color: hsla(188,47%,20%,0.1);  
+}
+.jbtitle{
+
+    
+    
+    width: 100%;
+    height: 12vw;
+    padding-top: 2vw;
+}
+.titlej{
+    
+    display: flex;
+    height: 2.4vw;
+}
+.animeb{
+    
+    height: 1vw;
+    width: 1vw;
+   
+   margin-top: 0.9vw;
+   margin-left: 2%;
+}
+#jbtitlep1{
+
+    margin-top: 0.5vw;
+    margin-left: 3%;
+    font-weight: 600;
+    font-size: 3.2vw;
+
+}
+#jbordrid{
+    
+    margin-top: 4vw;
+    margin-left: 3%;
+    font-size: 3.2vw;
+    
+}
+.jbstatus{
+    
+    width: 100%;
+ 
+}
+.jbstatus button{
+    
+    height: 5vw;
+    width: 40vw;
+    font-size: 3.2vw;
+   
+    border-radius: 0.5vw;
+}
+.jbbids{
+    
+    width: 100%;
+    display: flex;
+
+    
+}
+
+.jbremin{
+   
+    width: 45%;
+    margin-left: 6%;
+   
+    
+}
+.jbp1,.jbp2{
+   
+    margin-top: 0.5vw;
+    font-size: 3.2vw;
+   
+    
+    
+}
+.jbp1{
+    height: 1vw;
+    margin-top: 1.3vw;
+}
+
+
+.bscarrier{
+    border: 1px solid hsla(4,0%,0%,0.5);
+    width: 8vw;
+    height: 8vw;
+    border-radius: 1vw;
+    margin-left: 380%;
+    margin-top: 2vw;
+}
+.bscarrier section{
+    height: 0.2vw;
+    width: 0.2vw;
+    margin-top: 1.4vw;
+    border-radius: 50%;
+    
+    
+    
+}
+
+
+
+
+
+/*EMPLOYER JOBS VIEW START HERE*/
+.bidtopbar{
+   
+    margin-top: 3vw;
+    height: 7vw;
+    
+    
+}
+
+#bidsh1{
+
+    width: 25%;
+    font-size: 3.4vw;
+    margin-top: 1.4vw;
+    
+
+
+}
+
+.bidsedit{
+    border: 1px solid hsla(188,47%,20%,0.4);
+    height: 5.3vw;
+    width: 5.3vw;
+    margin-left: 38%;
+   /* margin-left: 5%;*/
+   
+    border-radius: 1vw;
+   
+}
+
+.bidsedit img{
+    height: 3vw;
+}
+
+
+.bidsdetails{
+ 
+    height: 5.3vw;
+    width: 24vw;
+    margin-left: 5%;
+    border-radius: 1vw;
+    margin-top: 0.5vw;
+    
+}
+
+.bidsdetails img{
+    margin-left: 4%;
+    height: 4vw;
+    margin-top: 0.8vw;
+}
+
+.bidsdetails p{
+  
+    margin-top: 0.8vw;
+    font-size: 3.2vw;
+    margin-left: 2%;
+}
+
+.jobspcarrier2{
+   
+    display: block;
+  
+}
+
+.jbquicklinks{
+    
+      width: 33vw;
+      height: 26vw;
+      margin-top: 2vw;
+      border-radius: 1vw;
+     
+      margin-left: 7.2%;
+     display: none;
+      
+     
+  }
+
+  .jbquicklinks.addedjblinks{
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  
+
+.jbquicklinksa{
+    display: none;
+}
+
+.jbwd{
+
+  
+    height: 5vw;
+    margin-top: 2.5vw;
+ 
+    
+}
+
+
+
+.jbwd img{
+    height: 4vw;
+    margin-left: 4%;
+    margin-top: 0.5vw;
+}
+.jbwd p{
+    
+    margin-top: 0.5vw;
+    font-size: 3vw;
+    margin-left: 2%;
+}
+
+
+#letsee{
+    border: 1px solid black;
+    width: 100%;
+    background-color: blue;
+}
+
+.numbersecdshort{
+    width: 3.2vw;
+    height: 3.2vw;
+    font-size: 2.5vw;
+   
+
+}
+
+#startcb{
+    height: 4.5vw;
+    width: 30vw;
+    margin-top: 2vw;
+    font-size: 2.8vw;
+    border-radius: 1vw;
+
+
+
+}
+
+.bidshiresec{
+   
+   
+    width: 100%;
+    
+
+}
+.setoverflow{
+    /*  border: 2px solid brown;*/
+      display: flex;
+      height: 12vw;
+      margin-top: -10vw;
+  }
+
+.hirepart{
+   /* border: 1px solid  green;*/
+   
+    height: 6vw;
+    
+}
+#hirepp{
+ 
+    display: none;
+}
+.hirebutton{
+    margin-top: 0vw;
+    width: 25vw;
+    height: 4vw;
+    font-size: 3.3vw;
+    margin-left: 69%;
+
+
+
+
+
+    border: 1px solid green;
+    
+    
+   
+}
+.hirebutton:hover{
+    cursor: no-drop; /* Changes cursor to a red circle with a cross line */
+    /* Additional styles for hover effect */
+    background-color: #ddd;
+    color: #777;
+}
+.viewbids-window{
+    border: 1px solid red;
+}
+
+
+
+
+
+.hirethreebuttons{
+  
+    width: 5.2vw;
+    height: 6vw;
+    
+    margin-left: 92%;
+    margin-top: 0vw;
+    border-radius: 1vw;
+    background-color: white;
+   
+
+   
+    
+}
+
+.hirethreebuttons:hover + .canclejobsec{
+    
+    height: 10.5vw;
+    width: 30%;
+    border: 1px solid hsla(4,0%,0%,0.4);
+    
+    
+}
+.hirethreebuttons:hover{
+    color: inherit;
+      background-color: inherit;
+}
+.hirethreebuttons section{
+    /*border: 1px solid black;*/
+    height: 2px;
+    width: 2px;
+    background-color: black;
+    margin-left: 40%;
+    border-radius: 50%;
+    margin-top: 1vw;
+    
+  
+   
+}
+
+
+
+
+
+.canclejobsec{
+    border: 1px solid purple;
+    
+    height: 0vw;
+    width: 0%;
+    background-color:  white;
+  /*  position: absolute;*/
+    
+    margin-left: -38%;
+    margin-top: 0.2vw;
+    display: block;
+   
+    
+    border-radius: 1vw;
+   
+    
+    
+   
+ 
+}
+
+.canclejobsec:hover{
+    height: 10.5vw;
+    width: 30%;
+    border: 1px solid hsla(4,0%,0%,0.4);
+  
+   
+    
+}
+.canclejobsec.addncc{
+    height: 10.5vw;
+    width: 30%;
+    border: 1px solid hsla(4,0%,0%,0.4);
+    
+
+}
+
+
+.cancelappl{
+   
+    height: 3.4vw;
+    display: flex;
+    margin-top: 1vw;
+    cursor: pointer;
+  
+    
+}
+.cancelappl:hover{
+    background-color:  hsl(37,48%,84%);
+}
+.cancelappl img{
+    height: 3.2vw;
+    margin-left: 2%;
+}
+.cancelappl p{
+    
+    margin-top: 0.2vw;
+    font-size: 3vw;
+    margin-left: 2%;
+}
+
+
+
+
+
+
+/*ORDER DATAILS STYLING*/
+.odbody{
+    
+    overflow-y: scroll;
+   
+   width: 100vw;
+   
+ 
+   
+}
+
+.allelements{
+    height: 100vh;
+    
+    overflow-y: scroll;
+}
+#odh2{
+    
+  
+    width: 90%;
+    
+ 
+    margin-top: 4vw;
+    font-size: 3.2vw;
+   
+
+}
+.odpdetails{
+  
+    width: 90%;
+  
+    height: 4vw;
+   
+  
+    margin-top: 2vw;
+}
+
+.odcname{
+    padding-right: 2vw;
+}
+.odp{
+   
+    height: 4vw;
+   
+    width: 90%;
+    font-weight: 600;
+    font-size: 3.2vw;
+   
+    
+    
+}
+.poster{
+    height: 4vw;
+   
+    width: 90%;
+
+    font-size: 3.2vw;
+   
+    margin-top: 2vw;
+     
+}
+.postername{
+    color: hsl(207,52%,44%);
+    cursor: pointer;
+}
+
+
+.odcname img,.locname img{
+   height: 4vw;
+   padding-right: 0.5vw;
+}
+.odcnp, .locnp{
+   
+    
+    font-size: 3.1vw;
+    
+    
+}
+.odmain{
+    margin: auto;
+    width: 90%;
+  height: 1;
+ 
+  margin-top: 5vw;
+  
+
+}
+.payshow{
+ 
+    width: 90%;
+   
+    height: 1;
+    margin-top: 6vw;
+   
+}
+.paysec{
+    
+   
+    height: 4vw;
+   
+}
+.paysecp1{
+    
+   
+    font-size: 3.2vw;
+    width: 20vw;
+   
+    
+   
+    
+   
+}
+.paysecp2{
+  
+  
+    font-size: 3.1vw;
+    height: 3.5vw;
+    
+}
+.odmain h3{
+   
+    font-size: 3.8vw;
+    /*border: 1px solid black;*/
+    margin-top: 2vw;
+    text-align: center;
+  
+
+    
+}
+.aboutj,.tasksres{
+   
+    margin-left: 4%;
+    line-height: 4vw;
+  
+    font-size: 3.2vw;
+   
+    
+    
+}
+.skillst{
+   
+ 
+    margin-left: 1.5%;
+    margin-top: 4vw;
+   
+}
+.skillcarrier{
+ 
+    margin-left: 1vw;
+    font-weight: 600;
+    font-size: 3.1vw;
+}
+
+
+
+
+/*profile styling*/
+
+.bodyp{
+   width: 100vw;  
+
+    overflow-y: scroll;
+    height: 1;
+}
+.setp{
+    overflow-y: scroll;
+    height: 80vh;
+}
+.pph1{
+    margin: auto;
+    width: 93%;
+    display: flex;
+    
+    margin-top: 4vw;
+  
+    
+}
+
+
+.profileh1{
+   
+    width: 50%;
+    margin-top: 3vw;
+    font-size: 4vw; 
+
+    
+}
+.profsec{
+    margin: auto;
+    width: 93%;
+    height: 40vw;
+ 
+    margin-top: 3vw;
+    display: flex;
+
+}
+
+
+
+
+
+.profp {
+   
+    width: 20%;
+    height: 100%;
+}
+.pp{
+    margin-top: 12vw;
+    height: 12vw;
+    width: 12vw;
+    border: 1px solid hsla(188,47%,20%,0.3);
+    margin-left: 10%;
+
+   
+}
+.pdetails{
+  
+    width: 80%;
+    height: 100%;
+}
+.pdetails .name{
+  
+    height: 5vw;
+    display: flex;
+    margin-top: 8vw;
+    
+}
+.namein{
+   
+    height: 3vw;
+    display: flex;
+    width: 65vw;
+   
+    margin-left: 5%;
+}
+.name .nh21,.nh22,.payhr{
+    
+    height: 4vw;
+    margin-top: 0vw;
+    font-size: 3.7vw;
+   
+}
+
+
+.nh22{
+    margin-left: 5%;
+   
+ 
+}
+.jtitle{
+    font-size: 3.2vw;
+    margin-left: 5%;
+   
+}
+.pdetails button{
+    margin-left: 5%; 
+    width: 30vw;
+    height: 6vw;
+    font-size: 3.4vw;
+    border-radius: 1vw;
+    
+    /*#1B454B*/
+
+}
+.ddetails{
+ display: none;
+   
+}
+
+
+.ddetailsp{
+    margin: auto;
+    display: block;
+    margin-left: 4%;
+      width: 93%;
+      height: 25vw;
+     background-color: white;
+      margin-top: 4vw;
+     
+  }
+.ddp{
+   
+    height: 20vw;
+
+    border: 1px solid white;
+   
+}
+.ddp .avalb{
+    height: 4vw;
+    
+    display: flex;
+    margin-top: 3vw;
+    
+}
+#availit{
+    margin-top: 3vw;
+}
+.avalb h3{
+    
+    margin-top: 0vw;
+    font-size: 3.3vw;
+    margin-left: 5%;
+    width: 6vw;
+    
+}
+.payrate1{
+    display: none;
+}
+.avalb p{
+
+    
+    
+    margin-top: 0vw;
+    font-size: 3.2vw;
+    margin-left: 20vw;
+   
+    
+}
+.avalb .av{
+   
+    height: 4vw;
+    font-weight: 600;
+    background-color: green;
+    color: white;
+    border: 1px solid hsl(188,47%,20%);
+    border-radius: 1vw;
+    font-size: 3vw;
+    margin-left: 20%;
+}
+.contacts{
+    height: 10vw;
+   
+     
+    width: 35vw;
+    margin-left: 3.5%;
+    margin-top: 2vw;
+}
+.contacarrier{
+   
+    height: 2.5vw;
+    display: flex;
+}
+.aboutp{
+   
+    margin: auto;
+    width: 93%;
+    height: 1;
+    margin-top: 5vw;
+    display: flex;
+   
+}
+.about{
+ 
+   
+    height: 1;
+    width: 100%;
+    background-color: white;
+}
+.about h3,.expe{
+  
+    text-align: center;
+    font-size: 3.6vw;
+    margin-top: 2vw;
+ 
+}
+.expe{
+  
+    margin: auto;
+    padding-top: 2vw;
+    width: 99%;
+    border-top: 2px solid hsl(37,48%,84%);
+   
+   
+}
+#ab{
+    margin-top: 2.5vw;
+}
+.about p{
+    line-height: 4.5vw;
+    font-size: 3.2vw;
+    width: 95%;
+   
+    margin: auto;
+    color: hsla(4,0%,0%,0.8);
+    
+    margin-left: 3%;
+    
+}
+.experience{
+   
+    height: 1;
+    margin-top: 1vw;
+}
+.expecarrier{
+  
+    height: 1;
+    margin-top: 2vw;
+  
+
+}
+#expech3{
+   text-align: left; 
+   font-size: 1.3vw;
+  
+   width: 95%;
+   
+    margin: auto;
+   
+   
+}
+#expech31{
+    text-align: left; 
+   font-size: 1.2vw;
+  
+   width: 95%;
+   color:  green;
+    margin: auto;
+    margin-top: 1vw;
+
+}
+#expecp{
+    font-size: 1vw;
+    margin-top: 0vw;
+    
+    font-weight: 600;
+    color: hsla(4,0%,0%,0.5);
+}
+.expeplast{
+    border-bottom: 2px solid hsl(37,48%,84%);
+}
+#langh3{
+  
+    margin: auto;
+    width: 94%;
+    margin-top: 2vw;
+   
+   
+}
+
+
+
+
+ 
+ /*here is the code to enquire about candidate*/
+ .enquire{
+   /* border: 1px solid  hsla(188,47%,20%,0.5);*/
+    height: 0vw;
+    width: 37vw;
+    /*position: absolute;*/
+    margin-left: 45.6%;
+    background-color: hsla(188,47%,20%,0.5);
+    transition: 0.7s;
+    transition-property: height;
+    overflow: hidden;
+  
+    
+ }
+ .enquire.addedenquire{
+    height: 22vw;
+ }
+ .enquire h3{
+   
+    margin-left: 10%;
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+    font-size: 1.5vw;
+    line-height: 2vw;
+    
+ }
+ #anyinformation{
+    margin-left: 10%;
+    font-size: 1.2vw;
+    font-family: 'Roboto', sans-serif;
+    width: 30vw;
+    height: 11vw;
+ }
+
+ /*******************************************************/
+ #enquirebut{
+    margin-left: 76%;
+    width: 7vw;
+    height: 2vw;
+    font-weight: 700;
+    font-size: 1vw;
+    margin-top: 0.5vw;
+    border: 1px solid hsl(188,47%,20%);
+    border-radius: 0.3vw;
+    color: white;
+    background: hsl(188,47%,20%);
+    cursor: pointer;
+
+ }
+ #enquirebut:hover{
+    background-color: whitesmoke;
+    color: hsl(188,47%,20%);
+
+ }
+ .sedingidi{
+    position: absolute;
+    margin-left: -20%;
+    margin-top: 12vw;
+    font-size: 1.2vw;
+    color: whitesmoke;
+ }
+
+
+
+ 
+/*E-PROFILE CSS START HERE*/
+
+.profilesetter{
+    
+    overflow-y: scroll;
+    height: 80vh;
+}
+.maintitle{
+    display: flex;
+    
+    margin: auto;
+    width: 90%;
+    
+    
+}
+
+.aordersh1pp{
+    margin: auto;
+    margin-top: 7vw;
+   
+    font-size: 3.6vw;
+    text-align: left;
+    margin-left: 0vw;
+}
+#epbutton{
+    width: 20vw;
+    margin-left:1vw;
+    margin-left: 0vw;
+    height: 5vw;
+    margin-top: 6vw;
+    font-size: 3.2vw;
+    border-radius: 1vw;
+}
+#epbutton:hover{
+    background-color: #449e48;
+}
+.profdetailsdiv{
+   
+    margin: auto;
+    height: 30vw;
+    margin-top: 5vw;
+    width: 90%;
+    
+}
+.profpar{
+  
+    width: 20%;
+}
+.epprof{
+    border: 1px solid hsla(188,47%,20%,0.7);
+    width: 9vw;
+    height: 9vw;
+    margin-top: 9vw;
+    margin-left: 3vw;
+}
+#epp{
+    font-size: 3vw;
+    margin-top: 2vw;
+    height: 7vw;
+    
+  
+}
+#eph3{
+  
+    margin-top: 0vw;
+    font-size: 3vw;
+    height: 0.5vw;
+}
+#newdeppart{
+    
+    margin-top: 2vw;
+    font-size: 2.5vw;
+     
+}
+.eplocation{
+  
+    display: flex;
+}
+.eplocation img{
+    height: 3.5vw;
+}
+#eplocp{
+  
+    margin-top: 0vw;
+    font-weight: 600;
+    font-size: 3vw;
+    margin-left: 1vw;
+    
+}
+.epdetails{
+  
+    width: 60%;
+   
+}
+.jobsposts{
+    
+    width: 10%;
+    height: 12vw;
+    margin-top: 10vw;
+    
+    
+}
+#numberjobs{
+   
+   margin-left: 30%;
+   width: 80%;
+   font-size: 3.5vw;
+   margin-top: 2vw;
+ 
+
+}
+.jbsp{
+  
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    margin-top: 0.5vw;
+    font-size: 3.2vw;
+    margin-left: 30%;
+    
+}
+.epsummary{
+   
+    height: 1;
+    margin: auto;
+    width: 90%;
+    margin-top: 2vw;
+}
+.epsummary h3{
+ 
+    font-size: 3.5vw;
+    height: 0.5vw;
+    padding-top: 2vw;
+}
+#epsp{
+   
+    width: 96%;
+    margin-top: 3vw;
+    line-height: 4vw;
+    font-size: 3.2vw;
+    padding-top: 2vw;
+   
+}
+.latestjobs{
+   
+    height: 1;
+    width: 90%;
+    font-size: 3vw;
+    margin-top: 2vw;
+
+  
+   
+}
+.ljh3{
+    border-bottom: 1px solid hsla(4,0%,0%,0.2);
+   
+    margin-top: 2vw;
+    padding-top: 1vw;
+    padding-left: 1vw;
+    
+}
+.lttitles{
+    border-bottom: 1px solid hsla(4,0%,0%,0.2);
+    display: flex;
+    height: 3vw;
+}
+.lttitles p{
+    font-size: 2.8vw;
+    font-weight: 600;
+    margin-top: 0vw;
+    
+ 
+    
+}
+.ltorder{
+ 
+    margin-left: 3%;
+}
+.ltdate{
+   
+    margin-left: 10%; 
+}
+.ltstatus{
+   
+    margin-left: 25%; 
+}
+.ltcandi{
+  
+    margin-left: 10%; 
+
+}
+.ltcarrier{
+   
+    background-color: white;
+   
+}
+.ltmain{
+   
+    height: 3vw;
+    display: flex;
+    height: 10vw;
+    margin-top: 3vw;
+    
+}
+.ltmain p{
+  
+    margin-top: 3vw;
+    font-size: 2vw;
+    height: 1vw;
+    
+}
+.ltmbutton{
+    height: 2vw;
+}
+.ltmorder{
+    margin-left: 3%;
+    width: 4vw;
+}
+.ltmdate{
+    margin-left: 5%;
+    width: 25vw;
+   
+    height: 4vw;
+}
+.ltmbutton{
+    height: 4vw;
+    margin-left: 6%;
+    border-radius: 0vw;
+    font-size: 2vw;
+    margin-top: 3vw;
+    width: 15vw;
+    
+}
+.appart{
+   
+   display: flex;
+   margin-left: 6%;
+   height: 3vw;
+   margin-top: 3vw;
+   
+}
+#appsavailable{
+   border: 1px solid hsla(188,47%,20%,0.9);
+   height: 3vw;
+   width: 3vw;
+   
+   font-size: 1.5vw;
+   margin-top: 1vw;
+}
+
+#aplp{
+   margin-left: 1vw;
+   margin-top: 1.4vw;
+}
+
+
+
+.profileedit{
+    z-index: 999;
+     
+ 
+ }
+ 
+ .profileedit.addedprofileedit{
+     margin-left: 0%;
+ }
+ .cancleedit{
+   
+      margin-left: 90%;
+      margin-top: 8.5vw;
+       font-size: 4.7vw;
+      
+ }
+ .cancleedit:hover{
+      color: red;
+ 
+ }
+ .editin{
+    
+     margin: auto;
+     width: 90%;
+     height: 1;
+     margin-top: 5vw;
+     
+    
+        
+     
+ }
+ .edith2{
+     font-size: 5vw;
+     margin-left: 5%;
+     margin-top: 2vw;
+    
+ }
+ .edprofilep{
+     
+     
+     height: 20vw;
+     
+ }
+ .wrapper{
+     border: 1px solid black;
+     width: 9vw;
+     height: 9vw;
+     margin-top: 5vw;
+     margin-left: 5%;
+    
+     
+ 
+ }
+ #input{
+     display: none;
+ }
+ .edprofilep label{
+     height: 6vw;
+     margin-top: 10vw;
+     width: 34vw;
+     margin-left: 12%;
+     border-radius: 1vw;
+ }
+ .edprofilep label img{
+     height: 4vw;
+ }
+ .edprofilep label p{
+    
+     font-size: 3.2vw;
+     margin-left: 4%;
+ }
+ .regu{
+     
+     margin: auto;
+     width: 90%;
+     margin-top:4vw;
+     display: block;
+     
+ }
+ #efirstname,#etitle,#ecompanyname{
+     width: 78vw;
+     height: 7vw;
+     font-size: 3.2vw;
+     display: block;
+
+     
+ }
+ #epalate{
+   
+     height: 10%;
+    
+     
+ }
+ #ecountry{
+    width: 48vw;
+    height: 7vw;
+     color: hsla(4,0%,0%,0.6);
+     margin-left: 0%;
+     border: 1px solid hsla(188,47%,20%,0.9);
+     font-size: 3.2vw;
+ }
+
+ #ecity{
+     width: 28vw;
+     height: 6vw;
+     font-size: 3.2vw;
+     margin-left: 1%;
+     margin-top: 4vw;
+ }
+ 
+ #esecondname{
+     width: 78vw;
+     height: 7vw;
+     margin-left: 0%;
+     font-size: 3.2vw;
+     margin-top: 4vw;
+ }
+
+ #eabout{
+     font-size: 3.2vw;
+     width: 75.8vw;
+     height: 30vw;
+     padding: 2vw;
+     border: 1px solid hsla(4,0%,0%,0.8);
+    
+ }
+
+
+ /***********************************************/
+ 
+ .profileedit button{
+     width: 20vw;
+     height: 5vw;
+     margin-left: 70%;
+     margin-top: 10vw;
+     font-size: 3.3vw;
+     border: 1px solid hsl(188,47%,20%);
+     border-radius: 1vw;
+     
+ }
+ .profileedit button:hover{
+ background-color: hsla(188,47%,20%,0.8);
+ }
+
+
+
+
+
 }

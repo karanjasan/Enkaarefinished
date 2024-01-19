@@ -54,7 +54,7 @@ const getCookie = (name) => {
 
 // Function to delete a cookie
 function deleteCookie(name) {
-  const domain = ".enkaare.co"; // Replace with your actual domain
+  const domain = ".127.0.0.1:5500"; // Replace with your actual domain
   const pastDate = new Date(0).toUTCString();
   try {
     document.cookie = `${name}=; expires=${pastDate}; path=/; domain=${domain}`;
@@ -63,6 +63,7 @@ function deleteCookie(name) {
     console.error(`Error deleting cookie: ${name}`, error);
   }
 }
+
 
 
 
@@ -241,6 +242,7 @@ let navmenu = () => {
 };
 
 let setprofile = () => {
+  let phoneProfilePicture=document.querySelector("#logo");
   let namediv = document.getElementById("ppname");
   //   let firstnmae = localStorage.getItem("pfname");
   //   let secname = localStorage.getItem("psname");
@@ -281,9 +283,12 @@ let setprofile = () => {
     .then((d) => {
       if (d[0].file === "noprofile") {
       } else {
+
         const imageex = "data:image/png;base64,";
         let ppimage = document.getElementsByClassName("img");
         ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
+
+       phoneProfilePicture.src=`${imageex + d[0].file}`
       }
     })
     .catch((err) => {
@@ -492,6 +497,7 @@ let candidates = () => {
 
         jobinvitbtclicked.addEventListener("click", (e) => {
           let invitesec = document.getElementsByClassName("invitesec");
+          getRidOfOverlayWindows()
           invitesec[0].classList.add("addedinvitesec");
           //   let userdi = localStorage.getItem("userloged");
           let userdi = getCookie("userloged");
@@ -844,7 +850,7 @@ let eprofload = () => {
         department.innerHTML = d[1].department;
 
         city.innerHTML = d[1].city;
-        country.innerHTML = d[1].country;
+        country.innerHTML = " "+d[1].country;
 
         summary.innerHTML = d[1].company_summary;
         companyname.innerHTML = d[1].company_name;
@@ -1544,23 +1550,19 @@ let orderdetails = () => {
     .then((d) => {
       let orderarray = d;
 
-      let time;
-      if (parseInt(orderarray[0].time_posted) > 60) {
-        time = Math.trunc(parseInt(orderarray[0].time_posted) / 60) + " hours";
-      } else if (Math.trunc(parseInt(orderarray[0].time_posted) / 24) > 0) {
-        time = Math.trunc(parseInt(orderarray[0].time_posted) / 24) + " days";
-      } else {
-        time = orderarray[0].time_posted + " minutes";
-      }
+      let time=orderarray[0].posted_date.split(',')[0]
+      
 
       jobtitle.innerHTML = orderarray[0].job_title;
       name.innerHTML = orderarray[0].company_name;
-      city.innerHTML = orderarray[0].state_province + " " + orderarray[0].city;
+      city.innerHTML =" "+ orderarray[0].state_province + ", " + orderarray[0].city;
       time_posted.innerHTML = time;
       poster[0].innerHTML = orderarray[0].first_name + ",";
       depart[0].innerHTML = orderarray[0].department;
       country.innerHTML = orderarray[0].country;
-      pay_rate.innerHTML = orderarray[0].pay;
+      let formattedPay=orderarray[0].pay.split(',')
+      pay_rate.innerHTML = formattedPay[0]+formattedPay[1]+formattedPay[2];
+      
       benefits.innerHTML = orderarray[0].benefit;
       type.innerHTML = orderarray[0].job_type;
       about.innerHTML = orderarray[0].summary;
@@ -1817,6 +1819,8 @@ let active = () => {
         console.log(err);
       } else {
         let mjarray = d;
+        
+        
 
         let myjpostscarrier =
           document.getElementsByClassName("jobspostlist")[0];
@@ -1824,8 +1828,21 @@ let active = () => {
         for (let i = 0; i < mjarray.length; i++) {
           let jbid = mjarray[i].job_id;
           let tit = mjarray[i].job_title;
-          let dar = mjarray[i].time_posted;
+          let posteddate = mjarray[i].expiration;
           let appli = mjarray[i].submits;
+
+          
+          
+          
+
+/*
+          TypeError: postedDate.getTime is not a function
+    at calculateJobExpiration (employerp.js:1842:80)
+    at employerp.js:1873:23*/
+
+        
+          
+        
 
           let jbdiv = document.createElement("div");
           let jbcontents = ` <div class="jobspcarrier">
@@ -1848,8 +1865,8 @@ let active = () => {
             </section>
             <section class="jbbids">
                 <div class="jbremin">
-                    <p class="jbp1">Applications</p>
-                    <p class="jbp2">Expires in 17 days</p>
+                    <p class="jbp1">${appli +" "}Applications</p>
+                    <p class="jbp2">Expires in ${posteddate.remaining.value+" "+posteddate.remaining.unit}</p>
     
                 </div>
                 <div class="jb3bs">
@@ -1859,7 +1876,7 @@ let active = () => {
                        <section></section>
     
                     </div>
-                    <div class="jbquicklinks">
+                    <div class="jbquicklinksa">
                         <div class="jbwd">
                             <img src="/images/cancel.png" alt="">
                             <p>Cancel Job</p>
@@ -2121,6 +2138,8 @@ cbutton(sessionStorage.getItem('value'));
 //VIEW JOBS START HERE*/
 
 let viewjobsapplications = () => {
+
+
   let jobtitle = document.getElementById("jbtitlep1");
   let jjobid = document.getElementById("jbordrid");
   let jbappid = document.getElementById("jbappsid");
@@ -2163,11 +2182,15 @@ let viewjobsapplications = () => {
 
   f.then((res) => res.json())
     .then((d) => {
-      let mjarray = d;
+      let mjarray = [d];
+      console.log(d)
+     
+      let posteddate = mjarray[0].expiration;
 
+      
       jobtitle.innerHTML = mjarray[0].job_title;
       applicationssum.innerHTML = mjarray[0].submits;
-      daysremaining.innerHTML = mjarray[0].time_posted;
+      daysremaining.innerHTML = posteddate.remaining.value+" "+posteddate.remaining.unit;
 
       //candidates who have applyed start here
       viewallaplicants();
@@ -2229,11 +2252,13 @@ let jbid = sessionStorage.getItem("jobpostid");
   loader[0].classList.add("addedloader");
   f.then((res) => res.json()).then((d) => {
     loader[0].classList.remove("addedloader");
+
+   
     if (d.length === 0) {
       let candidates = document.getElementsByClassName("candidatelist")[0];
       var candidate = document.createElement("div");
       var carditems = `<div class="empty-message">
-        <div class="empty-icon">&#128533;</div>
+                   <img id="empty-icon" src="/images/empty-folder.png" alt="empty-folder">
         <div class="empty-text">Oops! No Results Found</div>
        
     </div>`;
@@ -2298,8 +2323,10 @@ let jbid = sessionStorage.getItem("jobpostid");
                    </div>
                
                   <div class="bidshiresec">
+
+                  <div class="setoverflow">
                     
-                    <div class="hirethreebuttons">
+                     <div class="hirethreebuttons">
                         <section></section>
                         <section></section>
                         <section></section>
@@ -2318,6 +2345,9 @@ let jbid = sessionStorage.getItem("jobpostid");
                         </div>
                         
                     </div>
+                    </div>
+
+
                     <div class="hirepart">
                         <p id="hirepp">${payarr[0] + payarr[1] + "/hr"}</p>
                         <div class="hirebutton">
@@ -2398,8 +2428,9 @@ let jbid = sessionStorage.getItem("jobpostid");
                    </div>
                
                   <div class="bidshiresec">
+                  <div class="setoverflow">
                     
-                    <div class="hirethreebuttons">
+                     <div class="hirethreebuttons">
                         <section></section>
                         <section></section>
                         <section></section>
@@ -2417,6 +2448,7 @@ let jbid = sessionStorage.getItem("jobpostid");
 
                         </div>
                         
+                    </div>
                     </div>
                     <div class="hirepart">
                         <p id="hirepp">${payarr[0] + payarr[1] + "/hr"}</p>
@@ -2462,19 +2494,49 @@ let jbid = sessionStorage.getItem("jobpostid");
         window.location.href = "/candidateprofile.html";
       });
     }
+
+
+
+
+/*
+    const hireb=document.getElementsByClassName("hirethreebuttons");
+    
+    const cancelJobSection=document.getElementsByClassName("canclejobsec");
+  
+    for(let i=0;i<hireb.length;i++){
+    
+      let clickedb=hireb[i];
+      clickedb.addEventListener('click',()=>{
+        
+        cancelJobSection[i].classList.toggle('addncc');
+        console.log(cancelJobSection);
+        
+    
+    
+    
+      })
+    }*/
+
+
+
+
+
+
     // here will be a code to add profile to shortlist
     let shortlist = document.querySelectorAll(".cancelappl");
     for (let i = 0; i < shortlist.length; i++) {
       let addtoshortlist = shortlist[i];
       addtoshortlist.addEventListener("click", (e) => {
         let value =
-          addtoshortlist.parentElement.parentElement.parentElement.parentElement
-            .firstElementChild.innerHTML;
+          addtoshortlist.parentElement.parentElement.parentElement.parentElement.parentElement.firstElementChild.innerHTML;
+    
+
+           
 
         let bclicked = addtoshortlist.children[1].innerHTML;
         if (bclicked === "Add to Shortlist") {
       let jbid = sessionStorage.getItem("jobpostid");
-          
+      
 
           const formdata = new FormData();
           formdata.append("job_id", jbid);
@@ -2514,6 +2576,9 @@ let jbid = sessionStorage.getItem("jobpostid");
             .catch((err) => {
               console.log(err);
             });
+
+
+          
         } else {
         }
       });
@@ -2682,7 +2747,7 @@ let shortlist = () => {
       let candidates = document.getElementsByClassName("candidatelist")[0];
       var candidate = document.createElement("div");
       var carditems = `<div class="empty-message">
-        <div class="empty-icon">&#128533;</div>
+                   <img id="empty-icon" src="/images/empty-folder.png" alt="empty-folder">
         <div class="empty-text">Oops! No Results Found</div>
        
     </div>`;
@@ -2804,8 +2869,9 @@ let shortlist = () => {
                    </div>
                
                   <div class="bidshiresec">
+                  <div class="setoverflow">
                     
-                    <div class="hirethreebuttons">
+                     <div class="hirethreebuttons">
                         <section></section>
                         <section></section>
                         <section></section>
@@ -2826,6 +2892,8 @@ let shortlist = () => {
                         </div>
                         
                     </div>
+                    </div>
+
                     <div  class="hirepart">
                         <p id="hirepp">${payarr[0] + payarr[1] + "/hr"}</p>
                         <div  class="hirebutton">
@@ -2954,8 +3022,9 @@ let shortlist = () => {
                    </div>
                
                   <div class="bidshiresec">
+                  <div class="setoverflow">
                     
-                    <div class="hirethreebuttons">
+                     <div class="hirethreebuttons">
                         <section></section>
                         <section></section>
                         <section></section>
@@ -2976,6 +3045,8 @@ let shortlist = () => {
                         </div>
                         
                     </div>
+                    </div>
+
                     <div   class="hirepart">
                         <p id="hirepp">${payarr[0] + payarr[1] + "/hr"}</p>
                         <div class="hirebutton">
@@ -3027,16 +3098,55 @@ let shortlist = () => {
       for (let i = 0; i < shortlist.length; i++) {
         let addtoshortlist = shortlist[i];
         addtoshortlist.addEventListener("click", (e) => {
+
+          console.log("Yessssss")
           let value =
-            addtoshortlist.parentElement.parentElement.parentElement
-              .parentElement.firstElementChild.innerHTML;
+          addtoshortlist.parentElement.parentElement.parentElement.parentElement.parentElement.firstElementChild.innerHTML;
+    
 
           let bclicked = addtoshortlist.children[1].innerHTML;
           if (bclicked === "Remove") {
             let jbid = sessionStorage.getItem("jobpostid");
+              const formdata=new FormData()
+             formdata.append("job_id",jbid);
+             formdata.append("user_id",value);
+          
+          
+          
+           const options ={
+          
+              method: 'POST',
+              headers:{
+               "Acces-Control-Allow-Credentials":true,
+               "Access-Control-Allow-Origin": "https://enkaare.co",
+               "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
+               "Access-Control-Allow-Methods": "POST",
+                  withCredentials:true
+          
+              },
+             credentials: 'include',
+          
+          
+              body: formdata,
+             
+          };
+          // https://1ed2-105-231-144-76.ngrok.io/api'
+          
+          //https://half-geode-roundworm.glitch.me/api
+          
+          let f= fetch('https://yielding-dented-amusement.glitch.me/removeshortlist',options).catch(err =>{
             
+          
+          });
+          loader[0].classList.add("addedloader");
+          f.then(res=>res.json()).then(d=>{
 
-            const formdata = new FormData();
+           
+              loader[0].classList.remove("addedloader");
+              window.location.reload();
+              
+          })
+
             
           } else {
           }
@@ -3208,7 +3318,7 @@ let invites = () => {
       let candidates = document.getElementsByClassName("candidatelist")[0];
       var candidate = document.createElement("div");
       var carditems = `<div class="empty-message">
-        <div class="empty-icon">&#128533;</div>
+                   <img id="empty-icon" src="/images/empty-folder.png" alt="empty-folder">
         <div class="empty-text">Oops! No Results Found</div>
        
     </div>`;
@@ -3702,8 +3812,8 @@ function selectslots() {
           }
         });
 
-        console.log(`Start time:  ${selectedStartDateTime}`);
-        console.log(`End time:  ${selectedEndDateTime}`);
+       // console.log(`Start time:  ${selectedStartDateTime}`);
+        //console.log(`End time:  ${selectedEndDateTime}`);
       }
     } else {
       document.getElementById("timeEnd").style.border = "1px solid red";
@@ -4089,7 +4199,7 @@ let terminateinterviews = (interviewid) => {
 };
 
 let interviewasums = () => {
- let jbid = getCookie("jobpostid");
+ let jbid = sessionStorage.getItem("jobpostid");
  let formdata= new FormData();
     formdata.append("job_id",jbid);
     
@@ -4133,7 +4243,7 @@ let interviewasums = () => {
 };
 
 let shortlistsum = () => {
-  let jbid = getCookie("jobpostid");
+  let jbid = sessionStorage.getItem("jobpostid");
   let formdata= new FormData();
   formdata.append("job_id",jbid);
 
@@ -4161,6 +4271,8 @@ let shortlistsum = () => {
 
   f.then((res) => res.json())
     .then((d) => {
+
+      
       const {sum} = d;
       if (sum === 0) {
         //do nothing
@@ -4174,6 +4286,108 @@ let shortlistsum = () => {
       console.log(err);
     });
 };
+
+
+//here is the function that operates closing of jobs
+
+
+const modal = document.getElementById('cancelModal');
+const overlay = document.getElementById('overlay');
+
+function openModal() {
+  modal.style.display = 'block';
+  overlay.style.display = 'block';
+}
+
+function closeModal() {
+  modal.style.display = 'none';
+  overlay.style.display = 'none';
+}
+
+function cancelJob() {
+
+  closeModal();
+}
+
+
+
+function openSpinner() {
+  const spinnerContainer = document.createElement('div');
+  spinnerContainer.className = 'spin-container';
+
+  const spinner = document.createElement('div');
+  spinner.className = 'spinner';
+
+  spinnerContainer.appendChild(spinner);
+  modal.appendChild(spinnerContainer);
+}
+
+function closeSpinner() {
+  const spinnerContainer = document.querySelector('.spin-container');
+  spinnerContainer.parentNode.removeChild(spinnerContainer);
+}
+
+
+function canceljob(){
+  openModal()
+
+}
+function continueJob() {
+  let jbid = sessionStorage.getItem("jobpostid");
+  let formdata= new FormData();
+  formdata.append("job_id",jbid);
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept, authorization",
+      "Access-Control-Allow-Methods": "POST",
+      withCredentials: true,
+    },
+    credentials: "include",
+
+    body: formdata,
+  };
+
+  let f = fetch(
+    `${baseUrl}/deletejob`,
+    options
+  ).catch((err) => {
+    console.log(err);
+  });
+  openSpinner();
+
+  f.then(res=>res.json()).then(d=>{
+
+     if(d.result){
+      closeSpinner();
+      closeModal() 
+      sessionStorage.removeItem("jobpostid");
+      window.open('/myjoposts.html', '_blank');
+      window.close()
+
+
+     
+
+     }
+
+    
+
+  })
+
+  
+  
+ 
+}
+
+
+
+
+
+
 
 //profile load CANDIDTAE PROFILE
 let profload = () => {
@@ -4259,6 +4473,10 @@ let profload = () => {
       let experience = document.getElementById("experience");
       let aboutme = document.getElementById("abme");
       let workh = document.getElementById("workh");
+      let locationp =document.getElementsByClassName("plocation");
+      let experiencep =document.getElementsByClassName("experiencep");
+      let workh2 = document.getElementsByClassName("workh");
+      let payrate2 = document.getElementsByClassName("payrate1");
 
       id.innerHTML = userid;
       firstname.innerHTML = d[1].first_name;
@@ -4271,9 +4489,13 @@ let profload = () => {
       payrate1.innerHTML = " ";
 
       location.innerHTML = d[1].city + "," + d[1].country;
+      locationp[0].innerHTML=d[1].city + "," + d[1].country;
       experience.innerHTML = d[1].experience_in_years + " years";
+      experiencep[0].innerHTML= d[1].experience_in_years + " years";
       aboutme.innerHTML = d[1].about;
       workh.innerHTML = d[1].availability;
+      workh2[0].innerHTML = d[1].availability;
+
 
       let jobexperience = document.getElementsByClassName("experience")[0];
 
@@ -4369,10 +4591,19 @@ let postjobbutton=()=>{
   
 if(comornot==="no"){
   
-      document.getElementsByClassName("incompleteprofile")[0].classList.add("adddincompleteprofile");
+      try {
+        document.getElementsByClassName("incompleteprofile")[0].classList.add("adddincompleteprofile");
+        
+      } catch (error) {
+
+        alert("You are  not allowed to post a job until you complete your profile.");
+        
+      }
 
  
 }else{
+  sessionStorage.setItem("jobposttype", "none");
+  
   window.open("/postjob.html", "_blank")
 }
 }
@@ -4460,13 +4691,17 @@ let statename;
       let validatescontinuation=()=>{
           if(jobtype.value===""){
               jobtype.style.borderBottomColor="red";
+              alert('Please fill out all required fields');
 
           }else if(currency.value===""){
               currency.style.borderBottomColor="red";
+              alert('Please fill out all required fields');
           }else if(rate.value===""){
               rate.style.borderBottomColor="red";
+              alert('Please fill out all required fields');
           }else if(summary.value===""){
               summary.style.borderColor="red";
+              alert('Please fill out all required fields');
           }else{
               //here is all where form data is collected
               
@@ -4523,12 +4758,14 @@ let statename;
 
     if(country.value===""){
       country.style.borderBottomColor='red';
+      alert('Please fill out all required fields');
     }else
       
       if(usstate.value==="" && canadaprovince.value==="" && provstate.value===""){
           usstate.style.borderBottomColor="red";
           provstate.style.borderBottomColor="red";
           canadaprovince.style.borderBottomColor="red";
+          alert('Please fill out all required fields');
       }else if(usstate.value !=""){
           statename=usstate.value;
           validatescontinuation()
@@ -4589,7 +4826,7 @@ let statename;
 
      
          clicks=1;
-         let rt=  sessionStorage.setItem("jobposttype");
+         let rt=  sessionStorage.getItem("jobposttype");
 
      if(v==="none" || v==="similar" ||v===null){
          const formdata = new FormData();
@@ -4602,6 +4839,7 @@ let statename;
          formdata.append("benefit",bnfits.value);
          formdata.append("job_type",jobtype.value);  
          formdata.append("summary",summary.value);
+        
          formdata.append("responsb",responsibility.value);  
          formdata.append("skills",skills);
          formdata.append("c","s"); 
@@ -4672,6 +4910,7 @@ let statename;
          formdata.append("benefit",bnfits.value);
          formdata.append("job_type",jobtype.value);  
          formdata.append("summary",summary.value);
+        
          formdata.append("responsb",responsibility.value);  
          formdata.append("skills",skills);
          formdata.append("c","e");  
@@ -4767,6 +5006,7 @@ let listeancountry = () => {
 };
 
 let inputreset = () => {
+
   let usstate = document.getElementById("usstates");
   let canadaprovince = document.getElementById("canadaprovence");
   let provstate = document.getElementById("state");
@@ -4774,6 +5014,7 @@ let inputreset = () => {
   let currency = document.getElementById("currency");
   let rate = document.getElementById("rate");
   let summary = document.getElementById("jbsummary");
+   
 
   currency.style.borderBottomColor = "hsla(4,0%,0%,0.5)";
   jobtype.style.borderBottomColor = "hsla(4,0%,0%,0.5)";
@@ -4837,13 +5078,14 @@ let editpost = () => {
   var w = window.open("/postjob.html", "_system");
 };
 let editp = () => {
+  
   let loader = document.getElementsByClassName("loader");
   let jbid = sessionStorage.getItem("jobpostid");
    
 
   let postjobtitle = document.getElementById("jbfph3");
   postjobtitle.innerHTML = "Edit Job";
-
+  let country= document.getElementById("country");
   let details = document.getElementsByClassName("pjorderdetails");
   let title = document.getElementById("title");
   let company = document.getElementById("company");
@@ -4901,6 +5143,7 @@ let editp = () => {
     rate.value = payvalues[2];
     company.value = d[0].company_name;
     department.value = d[0].department;
+    country.value=d[0].country;
   });
   const sformdata = new FormData();
   sformdata.append("job_id", jbid);
@@ -4948,6 +5191,8 @@ let editp = () => {
     addskill();
     loader[0].classList.remove("addedloader");
   });
+
+  
 };
 
 // HERE IS THE FUNCTION TO CREATE NEW JOB
@@ -5364,7 +5609,7 @@ let ssavename = () => {
       body: formdata,
     };
 
-    let fetchChangeName = fetch(
+    let f = fetch(
       `${baseUrl}/changeename`,
       options
     ).catch((err) => {
@@ -5710,7 +5955,7 @@ let emailcode = () => {
                 ).catch((err) => {
                   console.log(err);
                 });
-                f.then((res) => res.json()).then((d) => {
+                fetchChangeEmail.then((res) => res.json()).then((d) => {
                   const {affectedrows} = d;
 
                   if (affectedrows) {
@@ -5771,7 +6016,7 @@ let settingdata = () => {
     body: formdata,
   };
   let fetchSetting = fetch(
-    `${baseUrl}e/esettingdata`,
+    `${baseUrl}/esettingdata`,
     options
   ).catch((err) => {
     console.log(err);
@@ -5868,3 +6113,49 @@ let tsupport = () => {
 let tsupportcancel = () => {
   document.querySelector(".contactsupport").classList.remove("addedhove");
 };
+
+
+//CODES to run mobile version
+let huberger =document.getElementsByClassName("navbutton");
+let phonenav=document.getElementsByClassName("phonenavmenu");
+let pop=()=>{
+    huberger[0].classList.toggle("active");
+   phonenav[0].classList.toggle("addedphonemenu");
+
+   let poptions = document.getElementsByClassName("poptions");
+   poptions[0].classList.remove("addpoptionsp");
+    
+}
+
+let displaypoptionsp = () => {
+  let poptions = document.getElementsByClassName("poptions");
+  poptions[0].classList.toggle("addpoptionsp");
+
+  huberger[0].classList.remove("active");
+   phonenav[0].classList.remove("addedphonemenu");
+
+};
+
+function getRidOfOverlayWindows(){
+  huberger[0].classList.remove("active");
+  phonenav[0].classList.remove("addedphonemenu");
+  let poptions = document.getElementsByClassName("poptions");
+  poptions[0].classList.remove("addpoptionsp");
+
+}
+
+const jobQuickLinks =()=>{
+  
+  const jQuickLinks= document.getElementsByClassName("jbquicklinks");
+ 
+
+  jQuickLinks[0].classList.toggle("addedjblinks");
+
+}
+
+
+
+
+
+
+

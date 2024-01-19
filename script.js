@@ -1,6 +1,19 @@
 let anime= document.getElementsByClassName("anime");
 let huberger =document.getElementsByClassName("navbutton");
 let navmenu =document.getElementsByClassName("pnavlinks");
+let head =document.getElementsByClassName("head");
+
+
+let tes =screen.width;
+    if(tes>700){
+      head[0].classList.add("addedhead");
+    }else{
+      head[0].classList.add("addedheadp");
+    }
+
+
+
+
 let pop=()=>{
     huberger[0].classList.toggle("active");
     navmenu[0].classList.toggle("active");
