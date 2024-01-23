@@ -5873,7 +5873,7 @@ let emailcode = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "http://127.0.0.1:5501",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -5894,7 +5894,7 @@ let emailcode = () => {
   fetchChangeEmail.then((res) => res.json()).then((d) => {
     loader.style.display = "none";
     email.value = "";
-    const {sent} = d;
+    const {sent,isNotCompanyEmail} = d;
     if (sent) {
       emaildis2.style.display = "none";
       emaildis3.style.display = "block";
@@ -5938,7 +5938,7 @@ let emailcode = () => {
                   method: "POST",
                   headers: {
                     "Access-Control-Allow-Credentials": true,
-                    "Access-Control-Allow-Origin": "https://enkaare.co",
+                    "Access-Control-Allow-Origin": "http://127.0.0.1:5501",
                     "Access-Control-Allow-Headers":
                       "Origin, X-Requested-With, Content-Type, Accept, authorization",
                     "Access-Control-Allow-Methods": "POST",
@@ -5988,10 +5988,18 @@ let emailcode = () => {
         });
         return code;
       }
+    }else if (isNotCompanyEmail){
+
+
+      document.querySelector(".spasserr2").innerHTML = "The provided email must be a company email!";
+      document.querySelector(".sinputc2").style.border = "1px solid red";
+
+
+
+
     }
   });
 };
-
 let cancelemailc = () => {
   window.location.reload();
 };
