@@ -201,7 +201,7 @@ form a{
     color: hsl(188,47%,20%);
 }
 form a:hover{
-    color: blue;
+    color: hsla(44,0%,100%,0.4);
 }
 .submit{
     width: 30vw;
@@ -667,7 +667,7 @@ margin-top: 4.5%;
         color: hsl(188,47%,20%);
     }
     form a:hover{
-        color: brown;
+        color:hsla(44,0%,100%,0.4);
     }
     .submit{
         font-size: 4vw;
@@ -819,10 +819,13 @@ margin-top: 4.5%;
     #country{
         margin-left: 0%;
         width: 69.5vw;
+        font-size: 3.2vw;
+        color: hsla(4,0%,0%,0.6);
 
     }
     #country:focus{
         outline: none;
+        
     }
   
    .pass1phonenumberdiv{
