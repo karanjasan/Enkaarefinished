@@ -3,12 +3,7 @@ let huberger =document.getElementsByClassName("navbutton");
 let navmenu =document.getElementsByClassName("pnavlinks");
 let head =document.getElementsByClassName("head");
 
-let tes =screen.width;
-if(tes>700){
-  head[0].classList.add("addedhead");
-}else{
-  head[0].classList.add("addedheadp");
-}
+
 
 
 
