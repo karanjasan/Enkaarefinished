@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="/employerd.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Post Job</title>
 
 
 
@@ -35,9 +36,11 @@
            
             
   <div class="pjodbody">
+    
 
-
-    <div class="allelements">
+    <div class="allelements" id="jballelements">
+      <br>
+      
        
         <h2 id="odh2"></h2>
         
@@ -76,7 +79,7 @@
     
         </div>
 
-    </div>
+    
 
    
     <div class="odmain">
@@ -109,6 +112,7 @@
 <br>
 <br>
     </div>
+  </div>
     <br>
     <br>
     <br>
@@ -148,6 +152,11 @@
 
                
                 <input id="title" type="text" placeholder="Enter job title" required>
+
+                <div class="setlocationinputsp">
+
+               
+
                 <select oninput="listeancountry();inputreset()" name="Contry" id="country" class="dbip-auto-select-country" >
                     <option value="">Country</option>
                                  <option value="Australia">Australia</option>
@@ -470,6 +479,8 @@
                                   </select>
                                   <input oninput="inputreset()" type="text" placeholder="Province/State" id="state">
                                   <input type="text" placeholder="City" id="city" required>
+
+                                </div>
                                 </div>
                                 
                                 <div id="compdepart">
@@ -500,6 +511,8 @@
 
                                     <input type="text" id="skill" placeholder="Enter required skill" >
                                      <span><input onclick="addskill()" class="jbfbutton" type="button" value="Add Skill"></span>
+
+                                     <div class="selectcurrency-brp">
                                     <select oninput="inputreset()"  name="currency" id="currency">
                                       <option value="">Select currency...</option>
                                       <option value="$">United States Dollar ($)</option>
@@ -541,8 +554,8 @@
                                         <option value="/Per week">Per week</option>
                                         <option value="/Per month">Per month</option>
                                       </select>
-
-                                      <div>
+                                    </div>
+                                      <div class="resbr">
                                         <textarea oninput="inputreset()"  name="" id="jbsummary" cols="35" rows="8" placeholder="About Job" ></textarea>
                                         <textarea name="" id="responsibility" cols="35" rows="8" placeholder="Responsibilities"></textarea>
                                       </div>

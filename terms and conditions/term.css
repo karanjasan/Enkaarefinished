@@ -116,3 +116,17 @@ scrollbar-color: #888 transparent;
     width: 1em;
     margin-left: -1em;
   }
+
+  @media (max-width: 500px) {
+    .navlinks{display: none}
+    section{max-width: 100%; 
+    margin-left: 0;
+    
+    width: 100%;}
+    h2 {
+        font-size: 3vw;
+    }
+    .innetexts{
+      font-size: 3.2vw;
+    }
+  }

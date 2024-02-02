@@ -50,6 +50,9 @@
     border: 1px solid hsl(37,48%,84%);
     height: 4vw;
 }
+.phoneprofilenav{
+    display: none;
+}
 .status p{
     font-size: 1.2vw;
     margin-left: 5%;
@@ -57,7 +60,9 @@
    
     width: 4.5vw;
 }
-
+.navbutton{
+    display: none;
+}
 
 .status button{
     height: 2.3vw;
@@ -244,10 +249,28 @@ display: block;
 }
 .iframe{
     width: 80%;
-
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    
   
     display: flex;
 
+}
+.iframe::-webkit-scrollbar {
+    width: 5px; 
+  }
+  .iframe::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border-radius: 0.7vw;
+  }
+
+
+iframe{
+    width: 100%;
+    height: 100vh;
+
+    
+    
 }
 
 
@@ -579,13 +602,10 @@ display: block;
    background-color: hsl(36,43%,94%);
    
    
-    overflow-y: scroll;
+    overflow-y: hidden;
     font-family: 'Roboto', sans-serif;
-  /*  overflow-x: hidden;
-    scrollbar-width: thin;*/
-    scrollbar-width: thin;
-    
-scrollbar-color: #888 transparent;
+    overflow: hidden;
+    height: 114vh;
     
     
    
@@ -593,21 +613,13 @@ scrollbar-color: #888 transparent;
 
 
 
-.avbody::-webkit-scrollbar {
-width: 0.4vw; 
-}
-.avbody::-webkit-scrollbar-thumb {
-background-color: #c0c0c0;
-border-radius: 0.7vw;
-}
+
 
 
 .orderinid{
     display: none;
 }
-.avbody::-webkit-scrollbar{
-    width: thin;
-}
+
 .aordersh1{
   
     margin: auto;
@@ -1043,6 +1055,9 @@ border-radius: 0.7vw;
     display: flex;
     
 }
+.searchicon{
+    display: none;
+}
 .searchbar select{
     height: 2.5vw;
     margin-top: 1vw;
@@ -1428,6 +1443,9 @@ border-radius: 0.7vw;
     background-color: white;
    
 }
+.ddetailsp{
+    display: none;
+}
 .ddp{
    
     height: 17vw;
@@ -1751,6 +1769,9 @@ border-radius: 0.7vw;
     font-family: 'Roboto', sans-serif;
     padding: 1vw;
 }
+
+
+
 .experineces{
     border-bottom:transparent;
     border-left: 1px solid hsla(4,0%,0%,0.5);
@@ -2068,6 +2089,9 @@ background-color: hsla(188,47%,20%,0.8);
     overflow-x: hidden;
     scrollbar-width: thin;  
 }
+
+
+
 #odh6{
    
     height: 1vw;
@@ -2588,10 +2612,11 @@ background-color: hsla(188,47%,20%,0.8);
    
     height: 1vw;
     width: 1vw;
+    font-size: 1.5vw;
    
    
     margin-top: 0.3vw;
-    font-size: 1vw;
+    
     color: hsla(4,0%,0%,0.7);
  
     
@@ -2667,6 +2692,9 @@ background-color: hsla(188,47%,20%,0.8);
     font-weight: 700;
     font-size: 1.3vw;
     border-radius: 0.3vw;
+    color: white;
+    background-color: hsl(207,52%,44%);
+    border: 1px solid hsl(207,52%,44%);
     /*
     color: white;
     background-color: hsl(207,52%,44%);
@@ -2721,6 +2749,7 @@ background-color: hsla(188,47%,20%,0.8);
     font-weight: 700;
     font-size: 1.1vw;
     cursor: pointer;
+
     
    
 }
@@ -2882,6 +2911,7 @@ background-color: hsla(188,47%,20%,0.8);
     margin-top: 3vw;
     background-color: hsla(4,0%,0%,0.2);
 }
+
 .semail{
     
     height: 4vw;
@@ -3154,7 +3184,7 @@ background-color: hsla(188,47%,20%,0.8);
     width: 100vw;
 }
 .innersupport{
-    border: 1px solid hsl(188,47%,20%);
+    border: 1px solid hsla(4,0%,0%,0.3);
     height: 35vw;
     width: 70vw;
     margin-top: 1vw;
@@ -3187,7 +3217,7 @@ background-color: hsla(188,47%,20%,0.8);
 .innersupport2{
    
     width: 50%;
-    background-color: hsla(45, 44%, 80%,0.8);
+    background-color: hsl(0,0%,96%);
 }
 .innersupport2 h2{
  
@@ -3200,7 +3230,7 @@ background-color: hsla(188,47%,20%,0.8);
   width: 30vw;
   margin-left: 2vw;
   margin-top: 2vw;
-  border: 2px solid black;
+  border: 1px solid hsla(4,0%,0%,0.3);
   height: 3vw;
   border-radius: 2vw;
   font-size: 1.2vw;
@@ -3211,7 +3241,7 @@ background-color: hsla(188,47%,20%,0.8);
     width: 30vw;
     margin-left: 2vw;
     margin-top: 2vw;
-    border: 2px solid black;
+    border: 1px solid hsla(4,0%,0%,0.3);
    
     font-size: 1.2vw;
 }
@@ -3248,7 +3278,2302 @@ background-color: hsla(188,47%,20%,0.8);
 
 
 
+@media (max-width:500px){
 
+    .iframe{
+        width: 100%;
+        
+    
+    }
+    .main{
+    
+        height: 100vh;
+        width: 100vw;
+        display: block; 
+    
+        
+        
+    
+    }
+    .navbar{
+        height: 32vw;
+        width: 100%;
+        background-color: white;
+        
+    }
+    .navbar #employerdlogo{
+        height: 14vw;
+        margin-left: 5%;
+        margin-top: 5vw;
+        padding-bottom: 1vw;
+    }
+    .status{
+        display: flex;
+        border: 1px solid hsl(37,48%,84%);
+        height: 10vw;
+    }
+    .status p{
+        font-size: 3.2vw;
+        margin-left: 10%;
+        margin-top: 1vw;
+       
+        width: 15vw;
+        
+        
+    }
+
+
+
+
+    .status button{
+        height: 6vw;
+        width: 25vw;
+        margin-top: 2vw;
+        margin-left: 1%;
+        font-size: 3.2vw;
+        font-weight: 600;
+       
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .navbutton{
+        display: block;
+         height: 30px;
+         background: transparent;
+         width: 30px;
+         margin-left: 5%;
+         margin-top: 1vw;
+         border-radius: 5px;
+        
+     
+        
+        }
+        
+        .nav{
+           
+            height: 2px;
+            display: block;
+            background-color : hsl(188,47%,20%);
+            width: 25px;
+            margin: 6px;
+            border-radius: 20px;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        
+        }
+ 
+         
+        .navbutton.active .nav:nth-child(2){
+         opacity: 0;
+        }
+        .navbutton.active .nav:nth-child(1){
+         transform:translateY(8px)   rotate(45deg);
+        }
+        .navbutton.active .nav:nth-child(3){
+         transform:translateY(-8px)  rotate(-45deg);
+        }
+
+        #cbeta{
+            display:  none;
+        }
+
+        .phoneprofilenav{
+            
+            height: 10vw;
+            width: 18vw;
+            display: flex;
+            margin-left: 13%;
+            
+        }
+
+        .logo-container {
+            display: flex;
+            background-color: hsl(188,47%,20%);
+            overflow: hidden;
+            border-radius: 50%;
+            
+            width: 8vw; 
+            height: 8vw; 
+            margin-top: 1vw;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #logo {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 50%;
+           margin-top: 0vw;
+        }
+        #gthanphone{
+            height: 6vw;
+            transform: rotate(90deg);
+            margin-top: 2vw;
+        }
+        #myprofile{
+            display: none;
+        }
+
+
+
+
+
+        .phonenavmenu{
+            border: 1px solid hsla(4,0%,0%,0.2);
+            width: 60%;
+           
+            position: absolute;
+            background-color: white;
+            margin-left: 4%;
+            margin-top: 1vw;
+            overflow: hidden;
+            height: 0vw;
+            opacity: 0;
+            background-color: whitesmoke;
+            border-radius: 2vw;
+            transition: 0.3s ease-in-out;
+           
+         }
+         .phonenavmenu.addedphonemenu{
+            height: 70vw;
+            opacity: 1;
+
+         }
+
+         .balance,.notification,.aorders,.mbids,.chats,.hcentre,.rules{
+            display: flex;
+            
+            height: 12vw;
+            cursor: pointer;
+          
+           
+            margin-top: 2vw;
+            
+        }
+
+        .balance img,.notification img,.aorders img,.mbids img,.abids img,.chats img, .rating img,.hcentre img,.rules img{
+            
+            margin-top: 0.4vw;
+            margin-left: 5%;
+
+            
+        }
+        #canidateimg,#mypostedjobimg,#recruiterimg,#termsimg{
+            height: 6vw;
+            margin-top: 3vw;
+        }
+
+        .notification,.rules{
+            border-bottom: 1px solid transparent ;
+        }
+      
+
+
+        .balance,.notification, .chats{
+            display: none;
+
+        }
+        .navbar img{
+            height: 5vw;
+            margin-left: 7%;
+            margin-top: 3vw;
+            padding-bottom: 1vw;
+        }
+        .profile p,.balance p,.notification p,.aorders p,.mbids p,.chats p,.hcentre p,.rules p{
+    
+            width: 90vw;
+           
+            margin-left: 5%;
+            margin-top: 4.5vw;
+            font-size: 3.2vw;
+           
+        
+            
+            
+        
+        }
+        #rb{
+            font-size: 3.2vw;
+            
+            width: 35vw;
+            margin-top: 4.5vw;
+            
+        }
+        #pb{
+            width: 30vw;
+            font-size: 3.2vw;
+            
+           
+        }
+
+        .iframe{
+            width: 100%;
+            
+        
+        }
+        .avbody{
+            
+            width: 100%;
+            height: 100.5vh;
+           
+           
+
+           
+        }
+
+
+        .aordersh1{
+  
+            margin: auto;
+            width: 93%;
+            margin-top: 5vw;
+            font-size: 5vw;
+        
+        }
+        .ordersnav .h31{
+             
+            height: 4vw;
+            margin-top: 2vw;
+            font-size: 3.2vw;
+            
+        }
+        .ordersnav .h32{
+            height: 4vw;
+            margin-top: 2vw;
+            font-size: 3.2vw;
+   
+           
+        }
+        .invitecount{
+          
+             width: 3vw;
+             height: 3vw;
+             margin-top: 1vw;
+             font-size: 2vw;
+             font-weight: 700;
+             
+             margin-left:1%;
+            
+        }
+        
+        .ordersnav{
+           
+            height: 7vw;
+            
+        
+        }
+        .searchbar{
+            height: 9vw;
+           
+        }
+
+
+
+        .searchbar select{
+            height: 5vw;
+            margin-top: 2vw;
+            width: 35vw;
+            font-size: 2.3vw;
+            border-radius: 1vw;
+            text-align: center;
+            
+         
+        }
+        .searchbar label{
+            margin-left: 2%;
+            margin-top: 3vw;
+            font-size: 2.5vw;
+            
+        }
+        .searchbar .search{
+           
+            display: none;
+        }
+        .searchicon{
+            height: 5vw;
+            margin-left: 40%;
+            margin-top: 2vw;
+            display: block;
+            
+
+        }
+        .orderslist{
+   
+  
+            margin: auto;
+            width: 93%;
+            margin-top: 2vw;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            
+            overflow-x: hidden;
+            
+            height: 58vh;
+           padding-bottom: 3vw;
+          
+           
+           
+           
+           
+        }
+
+
+
+
+        .order{
+  
+            margin: auto;
+            width: 99%;
+            height:48vw;
+            display: block;
+           
+             margin-top: 3vw;
+             border-radius: 0.3vw;
+             border: 1px solid black;
+          
+            
+        }
+        .orderhover:hover{
+           background-color: hsl(36,43%,90%);
+        }
+        .orderp1{
+            width: 100%;
+            border: 1px solid white;
+         
+            height: 17vw;
+        }
+        .orderp2{
+            width: 100%;
+            
+            height: 17vw;
+          
+        }
+        .orderp3{
+            width: 99%;
+           
+            height:10vw;
+            
+            
+        }
+        .orderp1 h3{
+            font-size: 3.5vw;
+         
+            margin-left: 2%;
+            
+            margin-top: 6vw;
+            height: 1vw;
+           
+           
+        }
+        .cname{
+         border-top: 1px solid hsla(4,0%,0%,0.5);
+         
+            height: 2vw;
+            display: flex;
+            margin-left: 2%;
+            
+            width: 86vw;
+            
+            
+        }
+        .cname .ch31{
+            height: 6vw;
+            margin-top: 0.5vw;
+            color: hsl(188,47%,20%);
+            font-size: 3.2vw;
+            padding-right: 1vw;
+            
+            
+        
+        }
+        .cname .ch32{
+            height: 2vw;
+            margin-top: 2vw;
+            
+         
+            padding-right: 0.5vw;
+        
+            margin-left: 0%;
+            font-size: 3vw;
+        
+        }
+        .cname .ch33{
+            height: 2vw;
+            margin-top: 0.5vw;
+            color: hsl(188,47%,20%);
+            font-size: 1.1vw;
+            padding-right: 1vw;
+            
+        
+        }
+        .aobids{
+          
+            display: flex;
+            height: 8vw;
+            
+            justify-content: center;
+            align-items: center;
+        }
+        .aobids .aop2{
+            font-weight: 600;
+         
+            height: 1.5vw;
+            margin-top: 1vw;
+        
+            font-size: 3vw;
+            padding-left: 0.5vw;
+        }
+        .aop1{
+            font-weight: 600;
+           
+            height: 1.5vw;
+            margin-top: 1vw; 
+            margin-left: 2.5vw;
+            font-size: 3vw;
+           
+        }
+        .jtype{
+            display: flex;
+            justify-content: center;
+           
+            height: 8vw;
+            
+            
+        }
+        .jtype img{
+            height: 5vw;
+            margin-top: 0.5vw;
+            margin-left: 1vw;
+           
+        }
+        .jtypeh4{
+         
+            height: 2vw;
+            font-size: 3.1vw;
+            margin-left: 2%;
+            margin-top: 2vw;
+           
+        
+        }
+        .ordp3p{
+           
+            font-weight: 700;
+            font-size: 1.1vw;
+            width: 10vw;
+            margin-left: 48%;
+            height: 0.5vw;
+            text-align: center;
+            color: hsla(4,0%,0%,0.5);
+          
+            margin-top: 1vw;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .orderp3 .orderbuttonp,.orderbutton{
+            height: 7vw;
+            margin-left: 2.5%;
+            width: 86vw;
+            margin-top: 0vw;
+            font-size: 3.2vw;
+            
+            border-radius: 0.3vw;
+         
+        }
+       
+        
+        /************/
+        .empty-message {
+            
+            padding: 15vw;
+            border-radius: 10px;
+           
+        }
+        #empty-icon {
+             height: 15vw;
+            
+        }
+        .empty-text {
+            font-size: 3.4vw;
+            
+        }
+
+
+
+
+        .poptions{
+            height: 30vw;
+            width: 30vw;
+            margin-left: 65%;
+            border-radius: 1vw;
+            opacity: 0;
+            display: none;
+            margin-top: 1vw;
+        
+            
+        }
+        
+        .poptions.addpoptionsp{
+            opacity: 1;
+            display: block;
+            }
+            .myprofile{
+      
+      
+                height: 7vw;
+                margin-top: 2.2vw;
+                
+                
+               
+             }
+             #myprofile:hover+#ppp{
+                 opacity: 1;
+             }
+             .myprofile p{
+                 width: 18vw;
+                 margin-left: 5%;
+                 margin-top: 1vw;
+                 font-size: 3.2vw;
+                
+                 
+                 
+             }
+             .myprofile:hover{
+                 background-color: hsl(36,43%,90%);
+             }
+             .myprofile img{
+                 height: 5vw;
+                 margin-left: 8%;
+             }        
+        
+        /*Support start here*/
+
+.contactsupport{
+    height: 0vh;
+    width: 0vw;
+    position: absolute;
+    background-color: hsla(100,100%,100%,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    overflow: hidden;
+    z-index: 9999;
+}
+.contactsupport.addedhove{
+    height: 100vh;
+    width: 100vw;
+}
+.innersupport{
+    border: 1px solid hsl(188,47%,20%);
+    height: 140vw;
+    width: 85vw;
+    margin-top: 1vw;
+    display: block;
+  
+    
+}
+.innersupport1{
+  
+    width: 100%;
+    background-color: hsl(188,47%,20%);
+    height: 50vw;
+
+}
+.innersupport1 h1{
+    color: whitesmoke;
+    
+    font-size: 5vw;
+    margin-left: 30%;
+    margin-top: 0vw;
+    padding-top: 6vw;
+
+}
+.deco{
+   
+   
+    height: 20vw;
+    margin-top: 8vw;
+    
+}
+
+.deco img{
+    height: 15vw;
+    margin-left: 42%;
+}
+.innersupport2{
+   
+    width: 100%;
+    height: 90vw;
+   
+}
+.innersupport2 h2{
+ 
+    color: black;
+    font-size: 5vw;
+    margin-left: 32%;
+    margin-top: 0vw;
+    padding-top: 5vw;
+}
+#subject{
+  width: 70vw;
+  margin-left: 6vw;
+  margin-top: 2vw;
+  border: 1px solid hsla(4,0%,0%,0.3 );
+  height: 7vw;
+  border-radius: 10vw;
+  font-size: 3.2vw;
+  text-align: center;
+  
+}
+#sumessage{
+    width: 65vw;
+    margin-left: 6vw;
+    margin-top: 5vw;
+    border: 1px solid hsla(4,0%,0%,0.3 );
+    display: block;
+    height: 40vw;
+    font-family: sans-serif;
+   
+    font-size: 3.2vw;
+    padding: 3vw;
+}
+#susubmitb{
+    border: 1px solid  hsl(188,47%,20%);
+    
+    width: 25vw;
+    height: 6vw;
+    margin-top: 4vw;
+    margin-left: 65%;
+    font-size: 3.3vw;
+    font-weight: 700;
+    background-color: hsl(188,47%,20%);
+    color: whitesmoke;
+    border-radius: 10vw;
+
+}
+#susubmitb:hover{
+    background-color: whitesmoke;
+    color: hsl(188,47%,20%);
+    border: 1px solid hsl(188,47%,20%);
+}
+
+
+.contactsupport  #suucanncel{
+    position: absolute;
+    margin-left: 75%;
+    margin-top: -130vw;
+    cursor: pointer;
+    font-size: 5vw;
+    color: white;
+}
+.contactsupport #suucanncel:hover{
+    color: red;
+}
+
+
+/*Incoplete profile */
+
+.incompleteprofile{
+
+    height: 40vw;
+    position: absolute;
+    width: 65vw;
+   
+    margin-top: -28vw;
+    border-radius: 1vw;
+    display: none;
+    margin-left: 23%;
+   
+}
+.incompleteprofile.adddincompleteprofile{
+    display: block;
+}
+
+
+
+.arrow-container {
+    display: none;
+    align-items: center;
+    animation: bounce 1.5s infinite;
+
+    width: 2vw;
+    margin-top: -0.5vw;
+}
+.arrow-containerp {
+    display: flex;
+    align-items: center;
+    animation: bounce 1.5s infinite;
+
+    width: 2vw;
+    margin-top: -0.5vw;
+   
+    margin-left: 25%;
+}
+.arrow {
+    width: 3vw;
+    height: 3vw;
+   
+   /*clip-path: polygon(0% 50%, 100% 0, 100% 100%);*/
+   clip-path: polygon(0% 0, 100% 50%, 0% 100%);
+
+    margin-top: 1vw;
+}
+
+@keyframes slide {
+    0%, 100% {
+        transform: rotate(0deg) translateX(0);
+    }
+    50% {
+        transform: rotate(0deg) translateX(20px);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.horizontal-section {
+    display: flex;
+    align-items: center;
+   
+    padding: 5px;
+    border-radius: 5px;
+
+   
+
+    
+}
+
+.item {
+   /* padding: 10px 15px;*/
+    font-size: 3.3vw;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+
+    font-weight: 700;
+    font-style: italic;
+    margin-top: 3;
+    
+    
+    
+}
+.item1{
+    margin-left: 20%;
+}
+
+.arrow1 {
+    font-size: 1.3vw;
+    margin: 0 1vw;
+}
+
+
+
+
+
+.cancel-icon {
+    display: none;
+}
+
+.cancel-iconp {
+    display: block;
+    font-size: 5vw;
+    margin-left: 1%;
+    cursor: pointer;
+    font-weight: 100;
+    color: whitesmoke;
+}
+.cancel-icon:hover{
+    color: red;
+}
+
+
+
+
+
+
+
+
+.messagepp {
+    margin: 0;
+    font-size: 3.3vw;
+    line-height: 1.5;
+    font-style: italic;
+    margin: auto;
+    width: 95%;
+    margin-top: 2vw;
+}
+
+
+/*ORDER DETAILS START HERE*/
+.odbody{
+    
+    overflow-y: scroll;
+   
+   width: 100vw;
+   
+ 
+   
+}
+.headingbutton{
+
+    margin-top: 5vw;
+    
+}
+.allelements{
+    height: 100vh;
+    
+    overflow-y: scroll;
+}
+#odh6{
+    
+  
+    width: 70%;
+    
+ 
+    margin-top: 4vw;
+    font-size: 3.2vw;
+    
+   
+
+}
+
+
+.odbutton{
+    /*  position: absolute;*/
+     margin-left: 2%;
+     margin-top: 2vw;
+     width: 22vw;
+     height: 6vw;
+     border-radius: 1vw;
+     font-size: 3.3vw;
+    
+  }
+.odpdetails{
+  
+    width: 90%;
+  
+    height: 4vw;
+   
+  
+    margin-top: 2vw;
+}
+
+.odcname{
+    padding-right: 2vw;
+}
+.odp{
+   
+    height: 4vw;
+   
+    width: 90%;
+    font-weight: 600;
+    font-size: 3.2vw;
+   
+    
+    
+}
+.poster{
+    height: 4vw;
+   
+    width: 90%;
+
+    font-size: 3.2vw;
+   
+    margin-top: 2vw;
+     
+}
+.postername{
+    color: hsl(207,52%,44%);
+    cursor: pointer;
+}
+
+
+.odcname img,.locname img{
+   height: 4vw;
+   padding-right: 0.5vw;
+}
+.odcnp, .locnp{
+   
+    
+    font-size: 3.1vw;
+    
+    
+}
+.odmain{
+    margin: auto;
+    width: 90%;
+  height: 1;
+ 
+  margin-top: 5vw;
+  
+
+}
+.payshow{
+ 
+    width: 90%;
+   
+    height: 1;
+    margin-top: 6vw;
+   
+}
+.paysec{
+    
+   
+    height: 4vw;
+   
+}
+.paysecp1{
+    
+   
+    font-size: 3.2vw;
+    width: 20vw;
+   
+    
+   
+    
+   
+}
+.paysecp2{
+  
+  
+    font-size: 3.1vw;
+    height: 3.5vw;
+    
+}
+.odmain h3{
+   
+    font-size: 3.8vw;
+    /*border: 1px solid black;*/
+    margin-top: 2vw;
+    text-align: center;
+  
+
+    
+}
+.aboutj,.tasksres{
+   
+    margin-left: 4%;
+    line-height: 4vw;
+  
+    font-size: 3.2vw;
+   
+    
+    
+}
+.skillst{
+   
+ 
+    margin-left: 1.5%;
+    margin-top: 4vw;
+   
+}
+.skillcarrier{
+ 
+    margin-left: 1vw;
+    font-weight: 600;
+    font-size: 3.1vw;
+}
+
+
+
+
+/*profile styling*/
+
+.bodyp{
+    width: 100vw;  
+ 
+     overflow-y: scroll;
+     height: 1;
+ }
+ .setp{
+     overflow-y: scroll;
+     height: 80vh;
+ }
+ .pph1{
+     margin: auto;
+     width: 93%;
+     display: flex;
+     
+     margin-top: 4vw;
+   
+     
+ }
+ 
+ 
+ .profileh1{
+    
+     width: 50%;
+     margin-top: 3vw;
+     font-size: 4vw; 
+     
+ 
+     
+ }
+ .pph1 button{
+ 
+    width: 20vw;
+    height: 5vw;
+    margin-top: 3vw;
+  
+    font-size: 3.3vw;
+    margin-left: 24%;
+    
+}
+
+
+
+ .profsec{
+     margin: auto;
+     width: 93%;
+     height: 40vw;
+  
+     margin-top: 3vw;
+     display: flex;
+ 
+ }
+ 
+ 
+ 
+ 
+ 
+ .profp {
+    
+     width: 20%;
+     height: 100%;
+ }
+ .pp{
+     margin-top: 12vw;
+     height: 12vw;
+     width: 12vw;
+     border: 1px solid hsla(188,47%,20%,0.3);
+     margin-left: 10%;
+ 
+    
+ }
+ .pdetails{
+   
+     width: 80%;
+     height: 100%;
+ }
+ .pdetails .name{
+   
+     height: 5vw;
+     display: flex;
+     margin-top: 8vw;
+     
+ }
+ .namein{
+    
+     height: 3vw;
+     display: flex;
+     width: 65vw;
+    
+     margin-left: 5%;
+ }
+ .name .nh21,.nh22,.payhr{
+     
+     height: 4vw;
+     margin-top: 0vw;
+     font-size: 3.7vw;
+    
+ }
+ 
+ 
+ .nh22{
+     margin-left: 5%;
+    
+  
+ }
+ .jtitle{
+     font-size: 3.2vw;
+     margin-left: 5%;
+    
+ }
+ .pdetails button{
+     margin-left: 5%; 
+     width: 30vw;
+     height: 6vw;
+     font-size: 3.4vw;
+     border-radius: 1vw;
+     
+     /*#1B454B*/
+ 
+ }
+ .ddetails{
+  display: none;
+    
+ }
+ 
+ 
+ .ddetailsp{
+     margin: auto;
+     display: block;
+     margin-left: 4%;
+       width: 93%;
+       height: 25vw;
+      background-color: white;
+       margin-top: 4vw;
+      
+   }
+ .ddp{
+    
+     height: 20vw;
+ 
+     border: 1px solid white;
+    
+ }
+ .ddp .avalb{
+     height: 4vw;
+     
+     display: flex;
+     margin-top: 3vw;
+     
+ }
+ #availit{
+     margin-top: 3vw;
+ }
+ .avalb h3{
+     
+     margin-top: 0vw;
+     font-size: 3.3vw;
+     margin-left: 5%;
+     width: 6vw;
+     
+ }
+ .payrate1{
+     display: none;
+ }
+ .avalb p{
+ 
+     
+     
+     margin-top: 0vw;
+     font-size: 3.2vw;
+     margin-left: 20vw;
+    
+     
+ }
+ .avalb .av{
+    
+     height: 4vw;
+     font-weight: 600;
+     background-color: green;
+     color: white;
+     border: 1px solid hsl(188,47%,20%);
+     border-radius: 1vw;
+     font-size: 3vw;
+     margin-left: 20%;
+ }
+ .contacts{
+     height: 10vw;
+    
+      
+     width: 35vw;
+     margin-left: 3.5%;
+     margin-top: 2vw;
+ }
+ .contacarrier{
+    
+     height: 2.5vw;
+     display: flex;
+ }
+ .aboutp{
+    
+     margin: auto;
+     width: 93%;
+     height: 1;
+     margin-top: 5vw;
+     display: flex;
+    
+ }
+ .about{
+  
+    
+     height: 1;
+     width: 100%;
+     background-color: white;
+ }
+ .about h3,.expe{
+   
+     text-align: center;
+     font-size: 3.6vw;
+     margin-top: 2vw;
+  
+ }
+ .expe{
+   
+     margin: auto;
+     padding-top: 2vw;
+     width: 99%;
+     border-top: 2px solid hsl(37,48%,84%);
+    
+    
+ }
+ #ab{
+     margin-top: 2.5vw;
+ }
+ .about p{
+     line-height: 4.5vw;
+     font-size: 3.2vw;
+     width: 95%;
+    
+     margin: auto;
+     color: hsla(4,0%,0%,0.8);
+     
+     margin-left: 3%;
+     
+ }
+ .experience{
+    
+     height: 1;
+     margin-top: 1vw;
+   
+ }
+ .expecarrier{
+   
+     height: 1;
+     margin-top: 4vw;
+    
+   
+ 
+ }
+ #expech3{
+    text-align: left; 
+    font-size: 3.3vw;
+    
+   
+    width: 95%;
+    
+     margin: auto;
+    
+    
+ }
+ #expech31{
+     text-align: left; 
+    font-size: 3.2vw;
+   
+   
+     margin-top: 3vw;
+ 
+ }
+ #expecp{
+     font-size: 2.8vw;
+     margin-top: 2vw;
+     
+ }
+ .expeplast{
+   padding-top: 3vw;
+
+
+     border-bottom: 2px solid hsl(37,48%,84%);
+ }
+ #langh3{
+   
+     margin: auto;
+     width: 94%;
+     margin-top: 2vw;
+    
+    
+ }
+ 
+ 
+ 
+ 
+  
+  /*here is the code to enquire about candidate*/
+  .enquire{
+    /* border: 1px solid  hsla(188,47%,20%,0.5);*/
+     height: 0vw;
+     width: 37vw;
+     /*position: absolute;*/
+     margin-left: 45.6%;
+     background-color: hsla(188,47%,20%,0.5);
+     transition: 0.7s;
+     transition-property: height;
+     overflow: hidden;
+   
+     
+  }
+  .enquire.addedenquire{
+     height: 22vw;
+  }
+  .enquire h3{
+    
+     margin-left: 10%;
+     font-family: 'Roboto', sans-serif;
+     color: whitesmoke;
+     font-size: 1.5vw;
+     line-height: 2vw;
+     
+  }
+  #anyinformation{
+     margin-left: 10%;
+     font-size: 1.2vw;
+     font-family: 'Roboto', sans-serif;
+     width: 30vw;
+     height: 11vw;
+  }
+ 
+  /*******************************************************/
+  #enquirebut{
+     margin-left: 76%;
+     width: 7vw;
+     height: 2vw;
+     font-weight: 700;
+     font-size: 1vw;
+     margin-top: 0.5vw;
+     border: 1px solid hsl(188,47%,20%);
+     border-radius: 0.3vw;
+     color: white;
+     background: hsl(188,47%,20%);
+     cursor: pointer;
+ 
+  }
+  #enquirebut:hover{
+     background-color: whitesmoke;
+     color: hsl(188,47%,20%);
+ 
+  }
+  .sedingidi{
+     position: absolute;
+     margin-left: -20%;
+     margin-top: 12vw;
+     font-size: 1.2vw;
+     color: whitesmoke;
+  }
+ 
+
+
+
+  /***************************************/
+
+
+  
+
+.profileedit{
+    z-index: 999;
+     
+ 
+ }
+ 
+ .profileedit.addedprofileedit{
+     margin-left: 0%;
+ }
+ .cancleedit{
+   
+      margin-left: 90%;
+      margin-top: 8.5vw;
+       font-size: 4.7vw;
+      
+ }
+ .cancleedit:hover{
+      color: red;
+ 
+ }
+ .editin{
+    
+     margin: auto;
+     width: 90%;
+     height: 1;
+     margin-top: 5vw;
+     
+    
+        
+     
+ }
+ .edith2{
+     font-size: 5vw;
+     margin-left: 5%;
+     margin-top: 2vw;
+    
+ }
+ .edprofilep{
+     
+     
+     height: 20vw;
+     
+ }
+ .wrapper{
+     border: 1px solid black;
+     width: 9vw;
+     height: 9vw;
+     margin-top: 5vw;
+     margin-left: 5%;
+    
+     
+ 
+ }
+ #input{
+     display: none;
+ }
+ .edprofilep label{
+     height: 6vw;
+     margin-top: 10vw;
+     width: 34vw;
+     margin-left: 12%;
+     border-radius: 1vw;
+ }
+ .edprofilep label img{
+     height: 4vw;
+ }
+ .edprofilep label p{
+    
+     font-size: 3.2vw;
+     margin-left: 4%;
+ }
+ .regu{
+     
+     margin: auto;
+     width: 90%;
+     margin-top:4vw;
+     display: block;
+    
+
+     
+ }
+ #efirstname,#etitle,#ecompanyname{
+     width: 78vw;
+     height: 7vw;
+     font-size: 3.2vw;
+     display: block;
+     border: 1px solid hsla(188,47%,20%,0.9);
+     color: hsla(4,0%,0%,0.6);
+
+     
+ }
+
+
+ #eavailability{
+    
+    margin-left: 0%;
+    width: 80vw;
+     height: 8vw;
+     font-size: 3.2vw;
+     margin-top: 4vw;
+     border: 1px solid hsla(188,47%,20%,0.9);
+    
+}
+ #epalate{
+   
+     height: 10%;
+    
+     
+ }
+ #ecountry,#eexperinence{
+    width: 48vw;
+    height: 7vw;
+     color: hsla(4,0%,0%,0.6);
+     margin-left: 0%;
+     border: 1px solid hsla(188,47%,20%,0.9);
+     font-size: 3.2vw;
+ }
+
+ #ecurrency{
+    width: 48vw;
+    height: 7vw;
+    margin-top: 4vw;
+    font-size: 3.2vw;
+    margin-left: 0%;
+
+}
+
+
+ #ecity,#epay{
+     width: 28vw;
+     height: 6vw;
+     font-size: 3.2vw;
+     margin-left: 1%;
+     margin-top: 4vw;
+ }
+
+ 
+ #esecondname{
+     width: 78vw;
+     height: 7vw;
+     margin-left: 0%;
+     font-size: 3.2vw;
+     margin-top: 4vw;
+ }
+
+ #eabout{
+     font-size: 3.2vw;
+     width: 75.8vw;
+     height: 30vw;
+     padding: 2vw;
+     border: 1px solid hsla(4,0%,0%,0.8);
+    
+ }
+
+
+ /***********************************************/
+ 
+ .profileedit button{
+     width: 20vw;
+     height: 5vw;
+     margin-left: 70%;
+     margin-top: 10vw;
+     font-size: 3.3vw;
+     border: 1px solid hsl(188,47%,20%);
+     border-radius: 1vw;
+     
+ }
+ .profileedit button:hover{
+ background-color: hsla(188,47%,20%,0.8);
+ }
+ 
+ 
+ .experineces{
+    
+    height: 76vw;
+    margin-top: 2vw;
+    display: flex;
+}
+
+
+
+.exp1{
+    
+    width: 100%;
+}
+
+
+
+.exp1 h3{
+   
+    margin-left: 4%;
+    font-size: 3.7vw;
+    width: 90%;
+}
+#ecompany,#role{
+    margin-top: 5vw;
+    width: 90%;
+    font-size: 3.2vw;
+ 
+}
+.sedates{
+    
+    width: 90%;
+    margin-left: 4%;
+    margin-top: 2.5vw;
+    height: 10vw;
+    display: flex;
+    
+}
+
+.sdp{
+   
+    margin-top: 1vw;
+    font-size: 3vw;
+    height: 1vw;
+}
+.sadindiv{
+    
+    margin-top: 1vw;
+    height: 3.5vw;
+}
+.sadindiv img{
+    height: 3vw;
+    margin-top: 0.2vw;
+    
+    
+}
+#smonthYearInput,#emonthYearInput{
+
+    width: 20vw;
+    font-size: 3.2vw;
+    
+   
+}
+.dateivalid{
+    font-size: 2vw;
+    color: red;
+    display: none;
+}
+.explocation{
+
+    width: 90%;
+    margin-left: 4%;
+     margin-top: 3vw;
+     
+
+}
+#eecountry,#eestate,#eecity{
+    width: 19.2vw;
+    font-size: 3.2vw;
+    height: 5vw;
+    border: transparent;
+    border-bottom: 1px solid hsla(4,0%,0%,0.5);
+   
+}
+
+#eesumarry{
+    width: 90%;
+    font-size: 3.2vw;
+    padding: 1vw;
+}
+.expe2{
+  
+    display: none;
+}
+
+.profileedit input{
+    border: 1px solid ;
+}
+.profileedit input:focus{
+    outline: none;
+}
+.profileedit textarea:focus{
+    outline: none;
+}
+.expepostb{
+    height: 10vw;
+    
+}
+.saveb{
+    height: 6vw;
+    margin-left: 48vw;
+    margin-top: 2vw;
+    border-radius: 1vw;
+    font-size: 3.2vw;
+    width: 30vw;
+
+}
+
+.eexperiencedisplay{
+   
+    margin: auto;
+    width: 90%;
+    margin-top: 2vw;
+}
+.eexpecarrier{
+    background-color: hsla(188,47%,20%,0.1);
+    margin: auto;
+    width: 97%;
+    padding-bottom: 0.1vw;
+}
+.eecancelb{
+    cursor: pointer;
+    position: absolute;
+    margin-left: 73%;
+    margin-top: 2vw;
+
+}
+.eecancelb:hover{
+    background-color: hsla(188,47%,20%,0.3);
+}
+#eexpech3{
+    font-size: 3.5vw;
+    padding-top: 2vw;
+    margin-left: 2% ;
+    height: 1vw;
+}
+#eexpech31{
+    font-size: 3.5vw;
+    margin-left: 2% ;
+    height: 2vw;
+    
+}
+.eexpecp{
+   
+    font-size: 3vw;
+    margin-left: 2%;
+}
+.eojectid{
+    display: none;
+}
+.profileedit button{
+    width: 20vw;
+    height: 5vw;
+    margin-left: 72%;
+    margin-top: 4vw;
+   
+    font-size: 3.3vw;
+    border-radius: 1vw;
+    
+}
+.profileedit button:hover{
+background-color: hsla(188,47%,20%,0.8);
+}
+
+
+
+
+
+
+
+/*S**********************************************************/
+/*SETTINGS*/
+.passworinputdisplay{
+    
+z-index: 999;
+    
+   
+}
+.passworinputdisplay.addedpasinput{
+    width: 100vw;
+    height: 100vh;
+    margin-left: 0%;
+    margin-top: 0%;
+}
+.authcarrier{
+    
+    height: 65vw;
+    width: 90vw;
+   
+}
+.auth1st{
+   /* border-bottom: 1px solid hsla(4,0%,0%,0.3);*/
+    height: 8vw;
+    display: flex;
+  
+}
+.sdynamicdiv1{
+    display: none;
+}
+.sdynamicdiv2{
+    display: none;
+
+}
+.sdynamicdiv3,.sdynamicdiv4,.sdynamicdiv5{
+    display: none;
+
+}
+
+
+.auth1st p{
+    
+    margin-top: 3vw;
+    font-size: 3.3vw;
+    margin-left: 2%;
+    
+  
+    width: 40.5vw;
+    
+
+}
+#scancelb{
+    cursor: pointer;
+   
+    height: 5vw;
+    width: 5vw;
+   
+   
+    margin-top: 0.3vw;
+    font-size: 6vw;
+    margin-left: 45%;
+    
+ 
+    
+}
+
+.sforsec{
+
+  
+    font-size: 3.2vw;
+    margin-top: 4vw;
+}
+.spaslabel{
+    margin-top: 5vw;
+    font-size: 3.2vw; 
+}
+.sinputc,.sinputc2{
+    height: 8vw;
+    border-radius: 0.3vw;
+    margin-top: 4vw;
+
+}
+.sinputc img{
+    height: 4.5vw;
+    margin-top: 1vw;
+    margin-left: 2%;
+
+}
+.sinputc input{
+    height: 6vw;
+    margin-top: 0.01vw;
+    width: 68vw;
+   font-size: 3.3vw;
+   text-align: center;
+   
+   
+}
+.sinputc input:focus{
+    outline: none;
+}
+#togglePassword{
+    color: hsla(4,0%,0%,0.6);
+    
+     margin-top: 1vw;
+     margin-left: 2%;
+}
+#spasserr{
+    font-size: 2.8vw;
+    height: 4vw;
+    margin-left: 3%;
+    margin-top: 3vw;
+   
+}
+.sbuttondiv{
+    border-top: 1px solid hsla(4,0%,0%,0.3);
+    height: 3.8vw;
+    margin-top: 1vw;
+}
+.sbuttondiv button{
+    width: 25vw;
+    height: 6vw;
+    margin-left: 70%;
+    margin-top: 7vw;
+    font-size: 3.3vw;
+    border-radius: 1vw;
+   
+}
+.spaslabel2{
+    margin: auto;
+    width: 93%;
+    margin-top: 4vw;
+    color: hsla(4,0%,0%,0.6);
+}
+
+.sinputc2 input{
+    height: 6vw;
+    margin-top: 0.6vw;
+    width: 80vw;
+   font-size: 3.3vw;
+   text-align: center;
+   margin-left: 2%;
+}
+
+.sbuttondiv2,.sbuttondiv4{
+    border-top: 1px solid hsla(4,0%,0%,0.3);
+    height: 20vw;
+    margin-top: 3vw;
+    
+ 
+    display: flex;
+}
+.sbuttondiv2 .sbdiv2b1{
+    width: 20vw;
+    height: 6vw;
+    margin-left: 50%;
+    margin-top: 2vw;
+    font-size: 3.1vw;
+    border-radius: 1vw;
+    margin-top: 10vw;
+    
+   
+}
+.sbuttondiv2 .sbdiv2b2{
+    width: 20vw;
+    height: 6vw;
+    margin-left: 2%;
+    margin-top: 2vw;
+    font-size: 3.1vw;
+    border-radius: 1vw;
+    margin-top: 10vw;
+    
+   
+}
+.spaslabel3{
+   
+    margin-top: 4vw;
+    color: hsla(4,0%,0%,0.6);
+    font-size: 3.2vw;
+    margin-left: 15%;
+}
+.vericodeinput{
+   
+    display: flex;
+    
+    margin-top: 15vw;
+    margin-left: 15%;
+    
+}
+.vericodeinput .verification-input{
+    border: 1px solid hsla(4,0%,0%,0.3);
+    width: 10vw;
+    height: 15vw;
+    font-size: 3.5vw;
+    text-align: center;
+    color: #449e48;
+    border-radius: 0.3vw;
+    
+    
+}
+
+
+#spasserr3{
+    font-size: 3vw;
+    color: red;
+ 
+    height: 1vw;
+    margin-left: 15%;
+    margin-top: 3vw;
+    display: block;
+}
+
+
+.loaderps {
+   
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 65vw;
+    width: 90vw;
+    background-color: hsla(188,47%,20%,0.5);
+  
+    
+}
+.inerloader {
+   
+    width: 8vw;
+    height: 8vw;
+    border-radius: 50%;
+    border: 4px solid #ccc;
+    border-top-color: hsl(188,47%,20%);
+    animation: spin 1s infinite linear;
+    margin: 0 auto;
+
+   
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+.sdynamicdiv4 #sfname,#slname{
+
+    margin-left: 4%;
+     width: 80vw;
+     margin-top: 5vw;
+     height: 6vw;
+     font-size: 3.2vw;
+     text-align: center;
+     display: block;
+}
+.sdynamicdiv4 #sfname:focus{
+    outline: none;
+}
+.sdynamicdiv4 #slname:focus{
+    outline: none;
+}
+.sbuttondiv4 button,.sbuttondiv5 button{
+    width: 25vw;
+    height: 6vw;
+    margin-left: 68%;
+    margin-top: 7vw;
+    font-weight: 700;
+    font-size: 3.3vw;
+    border-radius: 1vw;
+
+    
+}
+.sdynamicdiv5,.sspassword,.sconfirmpassword{
+    margin-left: 2.5%;
+    width: 80vw;
+   margin-top: 4vw;
+    height: 6vw;
+    font-size: 3.2vw;
+    text-align: center;
+}
+.sbuttondiv5{
+    /*border-top: 1px solid hsla(4,0%,0%,0.3);*/
+    height: 10vw;
+    margin-top: 2vw;
+    
+    width: 80vw;
+    margin-left: 0vw;
+  
+}
+.sdynamicdiv5 input:focus{
+    outline: none;
+}
+.smatch{
+   
+    height: 1vw;
+    font-size: 0.9vw;
+    color: red;
+    margin-top: 0.3vw;
+}
+.sprequirement{
+   
+    display: block;
+    width: 80vw;
+    font-size: 3vw;
+    text-align: left;
+    color: hsla(188,47%,20%,0.9);
+    margin-top: 3vw;
+    margin-left: 2.5%;
+}
+
+
+
+
+/************************/
+.settingh3{
+   border-bottom: 3px solid hsl(188,47%,20%);
+}
+.setting1,.setting2{
+    border: 1px solid hsla(188,47%,20%,0.4);
+    height: 38vw;
+    margin: auto;
+    width: 93%;
+    margin-top: 3vw;
+    background-color: hsla(4,0%,0%,0.2);
+}
+.semail{
+    
+    height: 30vw;
+    margin-top: 2.3vw;
+    display: block;
+    
+}
+.semail section{
+    border: 1px solid white;
+    width: 100%;
+}
+.setting1 h3,.setting2 h3,.diactive h3{
+   margin-left: 2%;
+    height: 2vw;
+    font-size: 3vw;
+    
+
+}
+
+
+
+
+#set1email{
+    font-size: 3.2vw;
+    text-align: center;
+   
+  
+   
+
+}
+
+.semsec2 button {
+    width: 30vw;
+    height: 5vw;
+    font-size: 3.2vw;  
+    display: none;
+
+}
+.semsec3 button{
+    margin-left: 5%;
+    width: 80vw;
+    height: 7vw;
+    font-size: 3.2vw;
+    margin-top: 2vw;  
+    border-radius: 1vw;
+
+   
+}
+
+.setting2{
+    margin-top: 6vw;
+    height: 20vw;
+}
+.addnumber{
+ 
+    height: 4vw;
+    display: flex;
+}
+
+.addnumber button{
+    width: 8vw;
+    height: 2.2vw;
+    margin-left: 73%;
+    margin-top: 1vw;
+    font-weight:700;
+    color: white;
+    background-color: hsl(207,52%,44%);
+    border: 1px solid hsl(207,52%,44%);
+    font-size: 1.1vw;
+    border-radius: 0.3vw;
+    cursor: pointer;
+}
+.numberplaceholder{
+    display: flex;
+    height: 15.9vw;
+  
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: center;
+}
+.numberplaceholder img{
+    height: 10vw;
+    margin-left: 10%;
+}
+.numberplaceholder p{
+    color: hsla(4,0%,0%,0.5 );
+    font-size: 1.2;
+}
+.settingloginset{
+    border: 1px solid hsla(188,47%,20%,0.4);
+    height: 38vw;
+    margin: auto;
+    width: 93%;
+    margin-top: 3vw;
+    background-color: hsla(4,0%,0%,0.2); 
+}
+.diactive{
+    
+    height: 10vw;
+    display: flex;
+    border: 1px solid white;
+}
+.diactive button{
+    width: 40vw;
+    margin-left: 38%;
+    height: 6vw;
+    font-size: 3.2vw;
+    margin-top: 2vw;
+   
+}
+
+.stinfirstname{
+   
+    height: 8vw;
+    margin-top: 1vw;
+    width: 100%;
+    margin-left: 0%;
+}
+.stinfirstname1{
+   
+    height: 8vw;
+    margin-left: 0%;
+   
+    width: 100%;
+    
+}
+.stinfirstname input,.stinfirstname1 input{
+    width: 80vw;
+    height: 5vw;
+    text-align: center;
+    font-size: 3.2vw;
+    margin-left: 5%;
+}
+
+.stinfirstname input:focus,.stinfirstname1 input{
+    outline: none;
+}
+.sdemain{
+    height: 27vw;
+   
+    background-color: #ffffff;
+   
+}
+.sdcarrier{
+   
+    height: 8vw;
+    width: 100%;
+    margin-top: 2vw;
+    display: flex;
+}
+.sdcarrier section{
+   
+    
+    height: 10vw;
+   
+    
+}
+.sdcarrier section:nth-child(1){
+    width: 20%;
+
+}
+.sdcarrier section:nth-child(2){
+    width: 50%;
+
+}
+.sdcarrier section:nth-child(3){
+    width: 30%;
+
+}
+.sfirstp{
+  
+    margin-top: 4vw;
+    font-size: 3.2vw;
+    color: hsla(4,0%,0%,0.6);
+    margin-left: 5%;
+}
+.sfirstp1{
+    
+    margin-top: 4vw;
+    font-size: 2.3vw;
+    margin-left: 3%;
+
+}
+
+
+/********/
+#passchange{
+    width: 20vw;
+    height: 6vw;
+    margin-left: 7%;
+    margin-top: 2vw;
+    font-size: 3.1vw;
+    border-radius: 1vw;
+    
+
+}
+
+#logoutalldevice{
+    background-color: hsl(207,52%,44%);
+    color: #ffffff;
+    border: 1px solid hsl(207,52%,44%);
+
+}
+.sessiontitles{
+   
+    height: 5vw;
+    display: flex;
+}
+.sessiontitles section p{
+   
+    margin-top: 0.5vw;
+    margin-left: 10%;
+    font-size: 3vw;
+}
+.sessioncarrier {
+ 
+    margin-top: 1vw;
+    height:5vw;
+   
+    
+}
+.sessioncarrier section{
+ 
+    width: 33.3%;
+}
+.sessioncarrier section p{
+   
+    margin-top: 0.3vw;
+    font-size: 1.5vw;
+    
+}
+.setting2{
+    display: none;
+}
+
+
+        
+}
 
 
 

@@ -1,238 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script src="/components/header.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
-    />
-    <link rel="stylesheet" href="worker.css" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <script
-      src="https://kit.fontawesome.com/3192a96bdf.js"
-      crossorigin="anonymous"
-    ></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Enkaare | Settings</title>
+<head> 
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+   <script src="/components/header.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="worker.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://kit.fontawesome.com/3192a96bdf.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Golos+Text&display=swap"
-      rel="stylesheet"
-    />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
-      rel="stylesheet"
-    />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body onload="sendb();setting();setprofile()" class="body">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+</head>
+<body onload="sendb();setting();setprofile()" class="body">
+    
+
+
     <div class="contactsupport">
-      <div class="loader1"></div>
-      <span onclick="tsupportcancel()" id="suucanncel">&#x1F5D9;</span>
-      <div class="innersupport">
-        <section class="innersupport1">
-          <h1>
-            Contact an enkaare<br />
-            recruiter
-          </h1>
-          <div class="deco">
-            <img src="/images/send-data.png" alt="" />
-          </div>
-        </section>
-        <div class="innersupport2">
-          <h2>Contact us</h2>
+        <div class="loader1"></div>
+        <span onclick="tsupportcancel()" id="suucanncel">&#x1F5D9;</span>
+        <div class="innersupport">
+            <section class="innersupport1">
+                <h1>Contact an enkaare<br> recruiter</h1>
+                <div class="deco">
+                    <img src="/images/send-data.png" alt="">
+                 
+                 
+                   
+                  
 
-          <form class="suuform" action="">
-            <input type="text" id="subject" placeholder="Subject" required />
-            <textarea
-              name=""
-              id="sumessage"
-              cols="30"
-              rows="10"
-              placeholder="Message"
-              required
-            ></textarea>
-            <input type="submit" id="susubmitb" value="Send" />
-          </form>
+                </div>
+              
+
+            </section>
+            <div class="innersupport2">
+                <h2>Contact us</h2>
+
+
+                <form class="suuform" action="">
+                    <input type="text" id="subject" placeholder="Subject" required>
+                    <textarea name="" id="sumessage" cols="30" rows="10" placeholder="Message" required></textarea>
+                    <input type="submit" id="susubmitb" value="Send">
+                </form>
+
+            </div>
+            
+
         </div>
-      </div>
     </div>
 
+
     <div class="passworinputdisplay">
-      <div class="authcarrier">
-        <div class="loaderps">
-          <div class="inerloader"></div>
-        </div>
-        <div class="auth1st">
-          <p class="changetype"></p>
-          <span onclick="settingdisplycancelb()" id="scancelb">&#x1F5D9;</span>
-        </div>
-        <!---First-->
+    
 
-        <div class="sdynamicdiv1">
-          <p class="sforsec">
-            For security reasons you need to enter <br />
-            your account password:
-          </p>
-          <p class="spaslabel">Enter your password to change email</p>
-          <div class="sinputc">
-            <img src="/images/lock - Copy.png" alt="" />
-            <input
-              oninput="activatepassnext();undo()"
-              id="spass1"
-              type="password"
-            />
-            <i class="fa fa-eye" aria-hidden="true" id="togglePassword"></i>
-          </div>
-          <span id="spasserr"></span>
-          <div class="sbuttondiv">
-            <button
-              onclick="sverifypass()"
-              class="spassnext"
-              type="button"
-              disabled
-            >
-              Next
-            </button>
-          </div>
-        </div>
 
-        <!---second-->
+        <div class="authcarrier">
+            <div class="loaderps">
+                <div class="inerloader">
+                    
+                </div>
+                
+            </div>
+            <div class="auth1st">
+                <p class="changetype"></p>
+                <span onclick="settingdisplycancelb()"  id="scancelb">&times;</span>
+                
 
-        <div class="sdynamicdiv2">
-          <p class="spaslabel2">New email</p>
-          <div class="sinputc2">
-            <input oninput="validateEmail()" type="email" id="emailInput" />
-          </div>
-          <span id="spasserr" class="spasserr2"></span>
-          <div class="sbuttondiv2">
-            <button onclick="cancelemailc()" type="button" class="sbdiv2b1">
-              Cancel
-            </button>
-            <button
-              onclick="emailcode()"
-              type="button"
-              class="sbdiv2b2"
-              disabled
-            >
-              Next
-            </button>
-          </div>
-        </div>
+            </div>
+           <!---First-->
+           
+            <div class="sdynamicdiv1">
+                <p class="sforsec">For security reasons you need to enter <br> your account password:</p>
+                <p class="spaslabel">Enter your password to change email</p>
+                <div class="sinputc">
+                    <img src="/images/lock - Copy.png" alt="">
+                    <input oninput="activatepassnext();undo()" id="spass1"  type="password">
+                    <i class="fa fa-eye" aria-hidden="true" id="togglePassword"></i>
+    
+                </div>
+                <span id="spasserr"></span>
+                <div class="sbuttondiv">
+                    <button onclick="sverifypass()" class="spassnext" type="button" disabled>Next</button>
+    
+                </div>
 
-        <!-- Third-->
+            </div>
 
-        <div class="sdynamicdiv3">
-          <p class="spaslabel3">Enter code sent to your email.</p>
-          <div class="vericodeinput">
-            <input
-              oninput="undo()"
-              type="text"
-              class="verification-input"
-              maxlength="1"
-            />
-            <input
-              oninput="undo()"
-              type="text"
-              class="verification-input"
-              maxlength="1"
-            />
-            <input
-              oninput="undo()"
-              type="text"
-              class="verification-input"
-              maxlength="1"
-            />
-            <input
-              oninput="undo()"
-              type="text"
-              class="verification-input"
-              maxlength="1"
-            />
-          </div>
-          <span id="spasserr3"></span>
-        </div>
-        <!---->
 
-        <!--namechange-->
-        <div class="sdynamicdiv4">
-          <input
-            oninput="undo()"
-            type="text"
-            id="sfname"
-            placeholder="First name"
-          />
-          <input
-            oninput="undo()"
-            type="text"
-            id="slname"
-            placeholder=" Last name"
-          />
 
-          <div class="sbuttondiv4">
-            <button onclick="ssavename()" class="spassnext" type="button">
-              Save
-            </button>
-          </div>
+<!---second-->
+
+<div class="sdynamicdiv2">
+    <p class="spaslabel2">New email</p>
+    <div class="sinputc2">
+        
+        <input oninput="validateEmail()" type="email" id="emailInput">
+        
+       
+
+    </div>
+    <span id="spasserr" class="spasserr2"></span>
+    <div class="sbuttondiv2">
+        <button onclick="cancelemailc()" type="button"  class="sbdiv2b1">Cancel</button>
+        <button onclick="emailcode()" type="button" class="sbdiv2b2" disabled>Next</button>
+
+    </div>
+
+</div>
+
+
+
+ <!-- Third-->
+
+<div class="sdynamicdiv3">
+    <p class="spaslabel3">Enter code sent to your email.</p>
+    <div class="vericodeinput">
+    <input oninput="undo()" type="text" class="verification-input" maxlength="1" />
+    <input oninput="undo()" type="text" class="verification-input" maxlength="1" />
+    <input oninput="undo()" type="text" class="verification-input" maxlength="1" />
+    <input oninput="undo()" type="text" class="verification-input" maxlength="1" />
+    </div>
+    <span id="spasserr3"></span>
+
+
+
+</div>
+<!---->
+
+<!--namechange-->
+<div class="sdynamicdiv4">
+    <input oninput="undo()" type="text" id="sfname" placeholder="First name">
+    <input oninput="undo()" type="text" id="slname" placeholder=" Last name">
+    
+    <div class="sbuttondiv4">
+        <button onclick="ssavename()"  class="spassnext" type="button" >Save</button>
+
+    </div>
+    
+</div>
+
+
+<!--Change password-->
+<div class="sdynamicdiv5">
+    <input oninput="undo()" type="password" class="sspassword" placeholder="Enter password">
+    <input oninput="undo()" type="password" class="sconfirmpassword"  placeholder="Confirm password">
+    <div class="smatch">
+        
+        
+    </div>
+    <span class="sprequirement">
+        (Must contain at least one number and one uppercase and lowercase
+        letter, and at least 8 or more characters)
+    </span>
+    <div class="sbuttondiv5">
+        <button onclick="ssavepassword()"   type="button" >Save</button>
+
+    </div>
+    
+</div>
+
+          
+<!--End-->
+
         </div>
 
-        <!--Change password-->
-        <div class="sdynamicdiv5">
-          <input
-            oninput="undo()"
-            type="password"
-            class="sspassword"
-            placeholder="Enter password"
-          />
-          <input
-            oninput="undo()"
-            type="password"
-            class="sconfirmpassword"
-            placeholder="Confirm password"
-          />
-          <div class="smatch"></div>
-          <span class="sprequirement">
-            (Must contain at least one number and one uppercase and lowercase
-            letter, and at least 8 or more characters)
-          </span>
-          <div class="sbuttondiv5">
-            <button onclick="ssavepassword()" type="button">Save</button>
-          </div>
-        </div>
 
-        <!--End-->
-      </div>
     </div>
     <div class="loader"></div>
 
+
+
+    
     <div class="main">
-      <div class="navbar">
-        <candidate-navmenu></candidate-navmenu>
-      </div>
-      <div onmouseleave="hidepoptions()" class="poptions">
-        <candidate-pview></candidate-pview>
-      </div>
+        <div class="navbar">
+            <candidate-navmenu></candidate-navmenu>
 
-      <div class="iframe">
-        <div class="avbody">
-          <h1 class="aordersh1">Settings</h1>
-          <div class="ordersnav">
-            <h3 onclick="generalsetting()" class="h31">General</h3>
-            <h3 onclick="logigset()" class="h32 settingh3">
-              Sign-in & Security
-            </h3>
-          </div>
+        </div>
+        <div onmouseleave="hidepoptions()" class="poptions">
+            <candidate-pview></candidate-pview>
+          
+        </div>
 
-          <div class="loginsecurityset" id="loginsecurityset">
-            <!-- 
+
+
+
+        <div class="iframe" >
+
+
+
+
+
+
+
+
+
+
+            
+           
+            
+            <div class="avbody">
+                <h1  class="aordersh1">
+                    Settings
+                </h1>
+                 <div class="ordersnav">
+                    <h3 onclick="generalsetting()" class="h31">General</h3>
+                    <h3 onclick="logigset()"  class="h32 settingh3">Sign-in & Security</h3>
+            
+                 </div>
+
+                
+                <div class="loginsecurityset" id="loginsecurityset">
+                    <!-- 
                     <div class="settingloginset">
                         <div class="diactive">
                             <h3>Account</h3>
@@ -310,8 +298,8 @@
 
                      /*********
                      -->
-
-            <!-- 
+                 
+                     <!-- 
                      <div class="setting1">
                        <h3>Email</h3>
                         <div class="semail">
@@ -376,26 +364,43 @@
 
 
                     -->
-          </div>
 
-          <!-- -->
 
-          <br />
-          <br />
-        </div>
+                </div>
 
-        <div class="message">
-          <div class="topchat">
-            <div class="canceldiv">
-              <section onclick="messageboxdis()" class="cancelbutton">
-                &#128473;
-              </section>
-            </div>
-            <h3 id="messageheeader">Chats!</h3>
-          </div>
 
-          <div class="messagethreads" id="messagethreads">
-            <!--
+                 <!-- -->
+                 
+                 <br>
+                 <br>
+                
+            
+               
+                
+                </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="message" >
+                <div class="topchat">
+                    <div class="canceldiv">
+                        <section onclick="messageboxdis()" class="cancelbutton">
+                            &#128473;
+                        </section>
+                    </div>
+                    <h3 id="messageheeader">Chats!</h3>
+                </div>
+ 
+
+               <div class="messagethreads" id="messagethreads">
+               <!--
                 <div class="thread">
                     <section class="imgpart">
                      
@@ -419,15 +424,30 @@
                      </section>
                 </div>
             -->
-          </div>
 
-          <div class="wholemescontainer" id="wholemescontainer">
-            <div class="messagerecep">
-              <section class="mesimg"></section>
-              <p class="mesp" id="mesp1"></p>
-            </div>
-            <div id="messagecarrier" class="messagecarrier">
-              <!-- 
+
+
+
+             
+               
+                
+               </div>
+
+
+
+               <div class="wholemescontainer" id="wholemescontainer">
+
+              
+
+                <div class="messagerecep">
+                    <section class="mesimg">
+
+                    </section>
+                    <p class="mesp" id="mesp1"></p>
+
+                </div>
+                <div id="messagecarrier" class="messagecarrier">
+                  <!-- 
                     <div class="sendmessage mainel">
                  <p class="sendmp">Im a software developer and i Im a software developer and i love what i do i cant think of something else  that would make me  </p>
                  <p class="timefmp sendstyle">5:00pm</p>
@@ -440,26 +460,34 @@
 
                            */
                            -->
-            </div>
-            <form action="" id="form">
-              <textarea
-                name=""
-                id="text"
-                cols="30"
-                rows="10"
-                placeholder=" Start typying..."
-              ></textarea>
-              <div class="sendicons">
-                <button type="submit">
-                  <img class="sendic" src="/images/paper-plane.png" alt="" />
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+                    
+                </div>
+                <form action="" id="form">
+                    <textarea name="" id="text" cols="30" rows="10" placeholder=" Start typying..."></textarea>
+                    <div class="sendicons">
+                   <button  type="submit"><img class="sendic" src="/images/paper-plane.png" alt=""></button>
 
-  <script src="/worker.js"></script>
+                    </div>
+                </form>
+                
+            </div>
+
+
+
+
+
+
+                
+            </div>
+        </div>
+     
+       
+      
+
+    </div>
+</body>
+
+<script src="/worker.js"></script>
+
+
 </html>
