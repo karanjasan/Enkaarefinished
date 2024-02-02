@@ -269,6 +269,49 @@
        <p class="innetexts"> <a href=""> 1: Employers Must Prepare Now For New California Employee Privacy Rights 2: California 
         Privacy Rights Act: What Employers Need to Know</a>
        </p>
+
+
+      </section>
+
+    </main>
+  
+   
+  </body>
+  
+  <script>
+    function toggleParagraph(classTarget) {
+      var paragraph = document.querySelector(".innetexts." + classTarget);
+
+      if (paragraph) {
+        paragraph.style.display =
+          paragraph.style.display === "none" || paragraph.style.display === ""
+            ? "block"
+            : "none";
+      }
+    }
+
+    const h2Elements = document.querySelectorAll("h2");
+    const paragraphElements = document.querySelectorAll('section > p');
+    
+    h2Elements.forEach(function (element,index) {
+      var targetClass = "toggle-" + Math.random().toString(36).substring(7);
+      element.setAttribute("data-target", targetClass);
+
+      element.addEventListener("click", function () {
+        toggleParagraph(targetClass);
+      });
+
+      // Add the targetClass to the associated paragraph
+
+      let  paragraph = paragraphElements[index+2]
+      if (paragraph) {
+        paragraph.classList.add(targetClass);
+      }
+    });
+  
+  </script>
+  </html>
+       
       
 
        

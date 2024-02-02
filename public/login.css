@@ -1,0 +1,253 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/images/blackbusines.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+   
+}
+
+form{
+    margin: auto;
+    border: 1px solid white;
+    width: 34%;
+    height: 33vw;
+    margin-top: 1vw;
+    font-family: 'Roboto', sans-serif;
+    background-color: hsla(4,0%,100%,0.3);
+   /* color: hsl(188,47%,20%);*/
+   color: black;
+}
+h2{
+    text-align: center;
+    font-size: 3vw;
+}
+
+.logoimg{
+    height: 4vw;
+    margin-left: 45%;
+    margin-top: 4vw;
+    
+}
+.fa-user{
+
+    color: black;
+    height: 100%;
+}
+.email,.pass,.fcheck,.submit{
+    background-color: transparent;
+    border-bottom: 2px solid white;
+    width: 70%;
+    margin-top: 2.5vw;
+    margin-left: 15%;
+    height: 2.5vw;
+    outline: none;
+    
+    
+}
+.invalidnot{
+    
+    text-align: center;
+    font-size: 1.2vw;
+    color: red;
+    display: none;
+}
+input:focus{
+    outline: none;
+    outline-width: 0;
+}
+.fcheck{
+    height: 1.5vw;
+    border: 1px solid transparent;
+}
+.input{
+    height: 2vw;
+    width: 20vw;
+    line-height:0cm;
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: 1.2vw;
+   
+}
+label{
+    font-size: 1vw;
+}
+.fcheck a{
+ font-size: 1vw;
+ margin-left: 25%;
+ text-decoration: none;
+ color: black;
+}
+.fcheck a:hover{
+    color: hsl(188,47%,20%);
+}
+.submit{
+ 
+ font-weight: 600;
+ font-size: 1.3vw;
+ border-radius: 15vw;
+ height: 3vw;
+ border: 1px solid hsl(40,26%,68%);
+ background-color: hsl(40,26%,68%);
+}
+.submit:hover{
+    background-color: hsl(188,47%,20%);
+}
+.signup{
+    font-size: 1vw;
+    margin-left: 25%;
+    text-decoration: none;
+    display: block;
+    font-weight: 700;
+    width: 20%;
+    margin-top: 2vw;
+    font-size: 1.1vw;
+    margin-left: 70%;
+    color: black;
+}
+.signup:hover{
+    color: hsl(188,47%,20%);
+}
+
+
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: hsla(188,47%,20%,0.3);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+   
+
+}
+.loader::after{
+    content: "";
+    width: 5vw;
+    height: 5vw;
+    border: 0.8vw solid white;
+    border-top: 0.8vw solid hsl(188,47%,20%);
+    border-radius: 50%;
+    animation: loading 0.7s ease infinite;
+    opacity: 1;
+    
+   
+}
+.loader.addedloader{
+    display: flex;
+    opacity: 1;
+}
+@keyframes loading {
+    from{transform: rotate(0turn);}
+    to{transform: rotate(1turn);}
+}
+@media (max-width:500px){
+    form{
+        margin: auto;
+       
+        width: 94%;
+        height: 143vw;
+        margin-top: 10vw;
+       color: black;
+    }
+    h2{
+        text-align: center;
+        font-size: 9vw;
+    }
+    
+    .logoimg{
+        height: 15vw;
+        margin-left: 39%;
+        margin-top: 7vw;
+        
+    }
+    .fa-user{
+    
+        color: black;
+        height: 100%;
+    }
+    .email,.pass,.fcheck,.submit{
+        background-color: transparent;
+        border-bottom: 2px solid white;
+        width: 85%;
+        margin-top: 11vw;
+        margin-left: 8%;
+        height: 9vw;
+        outline: none;
+        
+        
+    }
+    .invalidnot{
+        border: 1px solid black;
+        text-align: center;
+        font-size: 3vw;
+        color: red;
+    }
+    
+    input:focus{
+        outline: none;
+        outline-width: 0;
+       
+    }
+    .fcheck{
+        height: 5vw;
+        border: 1px solid transparent;
+    }
+    .input{
+        height: 8vw;
+        width: 68vw;
+        line-height:0cm;
+        background-color: transparent;
+        border: 1px solid transparent;
+        font-size: 4.5vw;
+       
+    }
+    label{
+        font-size: 4vw;
+    }
+    .fcheck a{
+     font-size: 4vw;
+     margin-left: 14%;
+     text-decoration: none;
+     color: black;
+    }
+    .fcheck a:hover{
+        color: hsl(188,47%,20%);
+    }
+    .submit{
+     
+     font-weight: 600;
+     font-size: 5.5vw;
+     border-radius: 15vw;
+     height: 11vw;
+     border: 1px solid hsl(40,26%,68%);
+     background-color: hsl(40,26%,68%);
+    }
+    .submit:hover{
+        background-color: hsl(188,47%,20%);
+    }
+    .signup{
+        font-size: 4vw;
+        margin-left: 25%;
+        text-decoration: none;
+        display: block;
+        font-weight: 700;
+        width: 20%;
+        margin-top: 15vw;
+        
+        margin-left: 70%;
+        color: black;
+      
+    }
+    .signup:hover{
+        color: hsl(188,47%,20%);
+    }
+}

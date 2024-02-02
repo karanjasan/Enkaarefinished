@@ -21,7 +21,7 @@ const options = {
 //   method: "POST",
 //   headers: {
 //     "Access-Control-Allow-Credentials": true,
-//     "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
+//     "Access-Control-Allow-Origin": "https://enkaare.co",
 //     "Access-Control-Allow-Headers":
 //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
 //     "Access-Control-Allow-Methods": "POST",
@@ -64,7 +64,7 @@ const getCookie = (name) => {
 
 
 function deleteCookie(name) {
-  const domain = ".enkaare.co"; // Replace with your actual domain
+  const domain = ".127.0.0.1:5500"; // Replace with your actual domain
   const pastDate = new Date(0).toUTCString();
   try {
     document.cookie = `${name}=; expires=${pastDate}; path=/; domain=${domain}`;
@@ -254,6 +254,7 @@ let logout = () => {
 
 let setprofile = () => {
   candinddateaccountstatus();
+  let phoneProfilePicture=document.querySelector("#logo");
   let namediv = document.getElementById("ppname");
   //   let firstnmae = localStorage.getItem("pfname");
   //   let secname = localStorage.getItem("psname");
@@ -286,6 +287,8 @@ let setprofile = () => {
         const imageex = "data:image/png;base64,";
         let ppimage = document.getElementsByClassName("img");
         ppimage[0].style.backgroundImage = `url('${imageex + d[0].file}')`;
+
+        phoneProfilePicture.src=`${imageex + d[0].file}`
       }
     })
     .catch((err) => {
@@ -380,7 +383,7 @@ let availableorders = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -403,7 +406,7 @@ let availableorders = () => {
       let orderlist = document.getElementsByClassName("orderslist")[0];
       var order = document.createElement("div");
       var orderitems = `<div class="empty-message">
-    <img id="empty-icon" src="/images/empty-folder.png" alt="empty-folder">
+      <img id="empty-icon" src="/images/empty-folder.png" alt="empty-folder">
     <div class="empty-text">Oops! No Results Found</div>
     `;
       order.innerHTML = orderitems;
@@ -548,7 +551,7 @@ let suminter = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -593,7 +596,7 @@ let displainterviewslots = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
+      "Access-Control-Allow-Origin": "https://enkaare.co",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -783,7 +786,7 @@ let displainterviewslots = () => {
             method: "POST",
             headers: {
               "Access-Control-Allow-Credentials": true,
-              "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
+              "Access-Control-Allow-Origin": "https://enkaare.co",
               "Access-Control-Allow-Headers":
                 "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
@@ -847,7 +850,7 @@ function invitedorders() {
        method: "POST",
       headers: {
          "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://yielding-dented-amusement.glitch.me",
+        "Access-Control-Allow-Origin": "https://enkaare.co",
        "Access-Control-Allow-Headers":
          "Origin, X-Requested-With, Content-Type, Accept, authorization",
        "Access-Control-Allow-Methods": "POST",
@@ -871,7 +874,7 @@ function invitedorders() {
       let orderlist = document.getElementsByClassName("orderslist")[0];
       var order = document.createElement("div");
       var orderitems = `<div class="empty-message">
-          <img id="empty-icon" src="/images/empty-folder.png" alt="empty-folder">
+      <img id="empty-icon" src="/images/empty-folder.png" alt="empty-folder">
           <div class="empty-text">Oops! No Results Found</div>
           `;
       order.innerHTML = orderitems;
@@ -1088,6 +1091,10 @@ let displaypoptions =()=>{
      let  experience = document.getElementById("experience");
      let aboutme = document.getElementById("abme");
      let workh = document.getElementById("workh");
+
+     let locationp =document.getElementsByClassName("plocation");
+     let experiencep =document.getElementsByClassName("experiencep");
+     let workh2 = document.getElementsByClassName("workh");
     
      id.innerHTML=userid;
      firstname.innerHTML=d[1].first_name;
@@ -1096,11 +1103,13 @@ let displaypoptions =()=>{
      payrate.innerHTML=payr[0]+payr[1]+"/h";
      payrate1.innerHTML=payr[0]+payr[1]+"/hour";
  
-    
+     locationp[0].innerHTML=d[1].city + "," + d[1].country;
+     experiencep[0].innerHTML= d[1].experience_in_years + " years";
      location.innerHTML=d[1].city+", "+d[1].country;
      experience.innerHTML=d[1].experience_in_years +" years";
      aboutme.innerHTML=d[1].about;
      workh.innerHTML=d[1].availability;
+     workh2[0].innerHTML = d[1].availability;
  
  
  
@@ -1515,6 +1524,7 @@ let displaypoptions =()=>{
         achive.value=d[1].about;
  
         years_experience.value=d[1].experience_in_years;
+        experincesarray.length = 0;
  
  
         experincesarray=experincesarray.concat(d[2]);
@@ -1650,8 +1660,8 @@ let displaypoptions =()=>{
  
         
             experincesarray.push(expeobject);
- 
-            
+
+
            ecompanyname.value="";
             ejbtitle.value="";
             startdate.value="";
@@ -2220,7 +2230,7 @@ let displaypoptions =()=>{
     let payy=orderarray[0].pay.split(",");
     jobtitle.innerHTML=orderarray[0].job_title;
    /* name.innerHTML=orderarray[0].company_name;*/
-   city.innerHTML=" "+orderarray[0].state_province+", "+orderarray[0].city;
+    city.innerHTML=" "+orderarray[0].state_province+", "+orderarray[0].city;
     time_posted.innerHTML=time;
     country.innerHTML=orderarray[0].country;
     pay_rate.innerHTML=payy[0]+payy[1]+payy[2];
@@ -2494,7 +2504,7 @@ let myapporders = () => {
       let orderlist = document.getElementsByClassName("jobsappcarrier")[0];
       var order = document.createElement("div");
       var orderitems = `<div class="empty-message">
-    <img id="empty-icon" src="/images/empty-folder.png" alt="empty-folder">
+      <img id="empty-icon" src="/images/empty-folder.png" alt="empty-folder">
     <div class="empty-text">Oops! No Results Found</div>
     `;
       order.innerHTML = orderitems;
@@ -2504,7 +2514,7 @@ let myapporders = () => {
 
       for (let i = 0; i < orderarray.length; i++) {
         let title = orderarray[i].job_title;
-        let name = orderarray[i].company_name;
+       
         let city = orderarray[i].city;
         let country = orderarray[i].country;
         let bids = orderarray[i].submits;
@@ -2531,7 +2541,7 @@ let myapporders = () => {
                
                 <h3>${title}</h3>
                 <div class="cname">
-                   <h4 class="ch31">${name}</h4> 
+                   <h4 class="ch31"></h4> 
                    <p class="ch32"> ${city},</p>
                    <p class="ch32">${country}</p>
                 </div>
@@ -3533,3 +3543,45 @@ let tsupport = () => {
 let tsupportcancel = () => {
   document.querySelector(".contactsupport").classList.remove("addedhove");
 };
+
+
+//CODES TO RUN MOBILE VERSION
+let huberger =document.getElementsByClassName("navbutton");
+let phonenav=document.getElementsByClassName("phonenavmenu");
+let pop=()=>{
+    huberger[0].classList.toggle("active");
+   phonenav[0].classList.toggle("addedphonemenu");
+
+   let poptions = document.getElementsByClassName("poptions");
+   poptions[0].classList.remove("addpoptionsp");
+    
+}
+
+let displaypoptionsp = () => {
+
+  console.log("yessss");
+  let poptions = document.getElementsByClassName("poptions");
+  poptions[0].classList.toggle("addpoptionsp");
+
+  huberger[0].classList.remove("active");
+   phonenav[0].classList.remove("addedphonemenu");
+
+};
+
+function getRidOfOverlayWindows(){
+  huberger[0].classList.remove("active");
+  phonenav[0].classList.remove("addedphonemenu");
+  let poptions = document.getElementsByClassName("poptions");
+  poptions[0].classList.remove("addpoptionsp");
+
+}
+
+const jobQuickLinks =()=>{
+  
+  const jQuickLinks= document.getElementsByClassName("jbquicklinks");
+ 
+
+  jQuickLinks[0].classList.toggle("addedjblinks");
+
+}
+

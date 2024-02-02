@@ -83,7 +83,7 @@
 
       <a href="#nonSolity">
         <p class="links">
-          Non-Solicit
+          Non-Solity
           
         </p>
       </a>
@@ -106,7 +106,7 @@
 
       <a href="#dataProcessig">
         <p class="links">
-          Data Processing Agreement; HIPAA
+          Data Processing Agreement; Hipaa
         </p>
       </a>
 
@@ -168,7 +168,6 @@
 
       <h2 id="howitWorks">1. SERVICES; HOW IT WORKS</h2>
 
-      
       <p class="innetexts">
         With Enkaare’s Client Portal you will have access to automated eligible Talent recommendations based on 
         the criteria you input into the Enkaare Client Portal. If you select a Talent through the Enkaare Client 
@@ -517,6 +516,35 @@
 
 <script>
   
+  function toggleParagraph(classTarget) {
+      var paragraph = document.querySelector(".innetexts." + classTarget);
+
+      if (paragraph) {
+        paragraph.style.display =
+          paragraph.style.display === "none" || paragraph.style.display === ""
+            ? "block"
+            : "none";
+      }
+    }
+
+    const h2Elements = document.querySelectorAll("h2");
+    const paragraphElements = document.querySelectorAll('section > p');
+    
+    h2Elements.forEach(function (element,index) {
+      var targetClass = "toggle-" + Math.random().toString(36).substring(7);
+      element.setAttribute("data-target", targetClass);
+
+      element.addEventListener("click", function () {
+        toggleParagraph(targetClass);
+      });
+
+      // Add the targetClass to the associated paragraph
+
+      let  paragraph = paragraphElements[index+2]
+      if (paragraph) {
+        paragraph.classList.add(targetClass);
+      }
+    });
 
 </script>
 </html>

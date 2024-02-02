@@ -261,6 +261,7 @@ display: block;
     display: flex;
     overflow-y: scroll;
     scrollbar-width: thin;
+   
     
 
 }
@@ -2180,8 +2181,15 @@ iframe{
     height: 1;
     margin: auto;
     width: 93%;
-    margin-top: 2vw;
+    overflow-y: scroll;
+    height: 72vh;
+    padding-bottom: 2vw;
 }
+#draft{
+    display: none;
+}
+
+
 .jobspcarrier{
     
     height: 5vw;
@@ -3306,6 +3314,9 @@ label {
         background-color: #0056b3;
     }
 
+
+
+
 /*JOB POST STYLING STARTS HER*/
 .jbody{
    
@@ -3512,6 +3523,11 @@ label {
     font-size: 1.4vw;
     border-bottom: 2px solid hsla(4,0%,0%,0.5);
 }
+
+
+
+
+
 #company{
     color: purple;
     font-weight: 700;
@@ -3530,7 +3546,7 @@ label {
 #country{
     color: hsla(4,0%,0%,0.6);
    width: 12vw;
-    margin-left: 3%;
+    margin-left: 8%;
     margin-top: 3.3vw;
     height: 2vw;
     border: transparent;
@@ -3555,7 +3571,7 @@ input:focus,select:focus{
 }
 #usstates,#canadaprovence{
     width: 10vw;
-    margin-left: 1.6vw;
+    margin-left: 2vw;
     margin-top: 3.3vw;
     height: 2vw;
     border: transparent;
@@ -3585,12 +3601,18 @@ select{
     margin-left: 2%;
 }
 #state{
-  margin-left: 1.6vw;
+  margin-left: 2vw;
+  
+
+  
 }
 #rate{
     margin-left: 2%; 
     width: 8.2vw;
     color: hsla(4,0%,0%,0.7);
+}
+.setlocationinputsp{
+    display: flex;
 }
  #currency{
     width: 17vw;
@@ -3619,6 +3641,9 @@ select{
  .jbfbutton:hover{
     background-color: hsla(188,47%,20%,0.7);
 
+ }
+ .resbr{
+    display: flex;
  }
 
  #jbsummary,#responsibility{
@@ -5501,8 +5526,12 @@ select{
     margin: auto;
     width: 93%;
     margin-top: 2vw;
+    height: 60vh;
+   
+   
     
 }
+
 
 .jobspcarrier{
     
@@ -6306,20 +6335,23 @@ select{
     
 }
 .experience{
-   
+    
     height: 1;
     margin-top: 1vw;
+  
 }
 .expecarrier{
   
     height: 1;
-    margin-top: 2vw;
+    margin-top: 4vw;
+   
   
 
 }
 #expech3{
    text-align: left; 
-   font-size: 1.3vw;
+   font-size: 3.3vw;
+   
   
    width: 95%;
    
@@ -6329,22 +6361,21 @@ select{
 }
 #expech31{
     text-align: left; 
-   font-size: 1.2vw;
+   font-size: 3.2vw;
   
-   width: 95%;
-   color:  green;
-    margin: auto;
-    margin-top: 1vw;
+  
+    margin-top: 3vw;
 
 }
 #expecp{
-    font-size: 1vw;
-    margin-top: 0vw;
+    font-size: 2.8vw;
+    margin-top: 2vw;
     
-    font-weight: 600;
-    color: hsla(4,0%,0%,0.5);
 }
 .expeplast{
+  padding-top: 3vw;
+
+
     border-bottom: 2px solid hsl(37,48%,84%);
 }
 #langh3{
@@ -6825,6 +6856,986 @@ select{
  .profileedit button:hover{
  background-color: hsla(188,47%,20%,0.8);
  }
+
+ /*SETTINGS*/
+.passworinputdisplay{
+    
+    z-index: 999;
+        
+       
+    }
+    .passworinputdisplay.addedpasinput{
+        width: 100vw;
+        height: 100vh;
+        margin-left: 0%;
+        margin-top: 0%;
+    }
+    .authcarrier{
+        
+        height: 65vw;
+        width: 90vw;
+       
+    }
+    .auth1st{
+       /* border-bottom: 1px solid hsla(4,0%,0%,0.3);*/
+        height: 8vw;
+        display: flex;
+      
+    }
+    .sdynamicdiv1{
+        display: none;
+    }
+    .sdynamicdiv2{
+        display: none;
+    
+    }
+    .sdynamicdiv3,.sdynamicdiv4,.sdynamicdiv5{
+        display: none;
+    
+    }
+    
+    
+    .auth1st p{
+        
+        margin-top: 3vw;
+        font-size: 3.3vw;
+        margin-left: 2%;
+        
+      
+        width: 40.5vw;
+        
+    
+    }
+    #scancelb{
+        cursor: pointer;
+       
+        height: 5vw;
+        width: 5vw;
+       
+       
+        margin-top: 0.3vw;
+        font-size: 6vw;
+        margin-left: 45%;
+        
+     
+        
+    }
+    
+    .sforsec{
+    
+      
+        font-size: 3.2vw;
+        margin-top: 4vw;
+    }
+    .spaslabel{
+        margin-top: 5vw;
+        font-size: 3.2vw; 
+    }
+    .sinputc,.sinputc2{
+        height: 8vw;
+        border-radius: 0.3vw;
+        margin-top: 4vw;
+    
+    }
+    .sinputc img{
+        height: 4.5vw;
+        margin-top: 1vw;
+        margin-left: 2%;
+    
+    }
+    .sinputc input{
+        height: 6vw;
+        margin-top: 0.01vw;
+        width: 68vw;
+       font-size: 3.3vw;
+       text-align: center;
+       
+       
+    }
+    .sinputc input:focus{
+        outline: none;
+    }
+    #togglePassword{
+        color: hsla(4,0%,0%,0.6);
+        
+         margin-top: 1vw;
+         margin-left: 2%;
+    }
+    #spasserr{
+        font-size: 2.8vw;
+        height: 4vw;
+        margin-left: 3%;
+        margin-top: 3vw;
+       
+    }
+    .sbuttondiv{
+        border-top: 1px solid hsla(4,0%,0%,0.3);
+        height: 3.8vw;
+        margin-top: 1vw;
+    }
+    .sbuttondiv button{
+        width: 25vw;
+        height: 6vw;
+        margin-left: 70%;
+        margin-top: 7vw;
+        font-size: 3.3vw;
+        border-radius: 1vw;
+       
+    }
+    .spaslabel2{
+        margin: auto;
+        width: 93%;
+        margin-top: 4vw;
+        color: hsla(4,0%,0%,0.6);
+    }
+    
+    .sinputc2 input{
+        height: 6vw;
+        margin-top: 0.6vw;
+        width: 80vw;
+       font-size: 3.3vw;
+       text-align: center;
+       margin-left: 2%;
+    }
+    
+    .sbuttondiv2,.sbuttondiv4{
+        border-top: 1px solid hsla(4,0%,0%,0.3);
+        height: 20vw;
+        margin-top: 3vw;
+        
+     
+        display: flex;
+    }
+    .sbuttondiv2 .sbdiv2b1{
+        width: 20vw;
+        height: 6vw;
+        margin-left: 50%;
+        margin-top: 2vw;
+        font-size: 3.1vw;
+        border-radius: 1vw;
+        margin-top: 10vw;
+        
+       
+    }
+    .sbuttondiv2 .sbdiv2b2{
+        width: 20vw;
+        height: 6vw;
+        margin-left: 2%;
+        margin-top: 2vw;
+        font-size: 3.1vw;
+        border-radius: 1vw;
+        margin-top: 10vw;
+        
+       
+    }
+    .spaslabel3{
+       
+        margin-top: 4vw;
+        color: hsla(4,0%,0%,0.6);
+        font-size: 3.2vw;
+        margin-left: 15%;
+    }
+    .vericodeinput{
+       
+        display: flex;
+        
+        margin-top: 15vw;
+        margin-left: 15%;
+        
+    }
+    .vericodeinput .verification-input{
+        border: 1px solid hsla(4,0%,0%,0.3);
+        width: 10vw;
+        height: 15vw;
+        font-size: 3.5vw;
+        text-align: center;
+        color: #449e48;
+        border-radius: 0.3vw;
+        
+        
+    }
+    
+    
+    #spasserr3{
+        font-size: 3vw;
+        color: red;
+     
+        height: 1vw;
+        margin-left: 15%;
+        margin-top: 3vw;
+        display: block;
+    }
+    
+    
+    .loaderps {
+       
+        position: absolute;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        height: 65vw;
+        width: 90vw;
+        background-color: hsla(188,47%,20%,0.5);
+      
+        
+    }
+    .inerloader {
+       
+        width: 8vw;
+        height: 8vw;
+        border-radius: 50%;
+        border: 4px solid #ccc;
+        border-top-color: hsl(188,47%,20%);
+        animation: spin 1s infinite linear;
+        margin: 0 auto;
+    
+       
+      }
+      
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    
+    
+    .sdynamicdiv4 #sfname,#slname{
+    
+        margin-left: 4%;
+         width: 80vw;
+         margin-top: 5vw;
+         height: 6vw;
+         font-size: 3.2vw;
+         text-align: center;
+         display: block;
+    }
+    .sdynamicdiv4 #sfname:focus{
+        outline: none;
+    }
+    .sdynamicdiv4 #slname:focus{
+        outline: none;
+    }
+    .sbuttondiv4 button,.sbuttondiv5 button{
+        width: 25vw;
+        height: 6vw;
+        margin-left: 68%;
+        margin-top: 7vw;
+        font-weight: 700;
+        font-size: 3.3vw;
+        border-radius: 1vw;
+    
+        
+    }
+    .sdynamicdiv5,.sspassword,.sconfirmpassword{
+        margin-left: 2.5%;
+        width: 80vw;
+       margin-top: 4vw;
+        height: 6vw;
+        font-size: 3.2vw;
+        text-align: center;
+    }
+    .sbuttondiv5{
+        /*border-top: 1px solid hsla(4,0%,0%,0.3);*/
+        height: 10vw;
+        margin-top: 2vw;
+        
+        width: 80vw;
+        margin-left: 0vw;
+      
+    }
+    .sdynamicdiv5 input:focus{
+        outline: none;
+    }
+    .smatch{
+       
+        height: 1vw;
+        font-size: 0.9vw;
+        color: red;
+        margin-top: 0.3vw;
+    }
+    .sprequirement{
+       
+        display: block;
+        width: 80vw;
+        font-size: 3vw;
+        text-align: left;
+        color: hsla(188,47%,20%,0.9);
+        margin-top: 3vw;
+        margin-left: 2.5%;
+    }
+    
+    
+    
+    
+    /************************/
+    .settingh3{
+       border-bottom: 3px solid hsl(188,47%,20%);
+    }
+    .setting1,.setting2{
+        border: 1px solid hsla(188,47%,20%,0.4);
+        height: 38vw;
+        margin: auto;
+        width: 93%;
+        margin-top: 3vw;
+        background-color: hsla(4,0%,0%,0.2);
+    }
+    .semail{
+        
+        height: 30vw;
+        margin-top: 2.3vw;
+        display: block;
+        
+    }
+    .semail section{
+        border: 1px solid white;
+        width: 100%;
+    }
+    .setting1 h3,.setting2 h3,.diactive h3{
+       margin-left: 2%;
+        height: 2vw;
+        font-size: 3vw;
+        
+    
+    }
+    
+    
+    
+    
+    #set1email{
+        font-size: 3.2vw;
+        text-align: center;
+       
+      
+       
+    
+    }
+    
+    .semsec2 button {
+        width: 30vw;
+        height: 5vw;
+        font-size: 3.2vw;  
+        display: none;
+    
+    }
+    .semsec3 button{
+        margin-left: 5%;
+        width: 80vw;
+        height: 7vw;
+        font-size: 3.2vw;
+        margin-top: 2vw;  
+        border-radius: 1vw;
+    
+       
+    }
+    
+    .setting2{
+        margin-top: 6vw;
+        height: 20vw;
+    }
+    .addnumber{
+     
+        height: 4vw;
+        display: flex;
+    }
+    
+    .addnumber button{
+        width: 8vw;
+        height: 2.2vw;
+        margin-left: 73%;
+        margin-top: 1vw;
+        font-weight:700;
+        color: white;
+        background-color: hsl(207,52%,44%);
+        border: 1px solid hsl(207,52%,44%);
+        font-size: 1.1vw;
+        border-radius: 0.3vw;
+        cursor: pointer;
+    }
+    .numberplaceholder{
+        display: flex;
+        height: 15.9vw;
+      
+        background-color: #ffffff;
+        align-items: center;
+        justify-content: center;
+    }
+    .numberplaceholder img{
+        height: 10vw;
+        margin-left: 10%;
+    }
+    .numberplaceholder p{
+        color: hsla(4,0%,0%,0.5 );
+        font-size: 1.2;
+    }
+    .settingloginset{
+        border: 1px solid hsla(188,47%,20%,0.4);
+        height: 38vw;
+        margin: auto;
+        width: 93%;
+        margin-top: 3vw;
+        background-color: hsla(4,0%,0%,0.2); 
+    }
+    .diactive{
+        
+        height: 10vw;
+        display: flex;
+        border: 1px solid white;
+    }
+    .diactive button{
+        width: 40vw;
+        margin-left: 38%;
+        height: 6vw;
+        font-size: 3.2vw;
+        margin-top: 2vw;
+       
+    }
+    
+    .stinfirstname{
+       
+        height: 8vw;
+        margin-top: 1vw;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .stinfirstname1{
+       
+        height: 8vw;
+        margin-left: 0%;
+       
+        width: 100%;
+        
+    }
+    .stinfirstname input,.stinfirstname1 input{
+        width: 80vw;
+        height: 5vw;
+        text-align: center;
+        font-size: 3.2vw;
+        margin-left: 5%;
+    }
+    
+    .stinfirstname input:focus,.stinfirstname1 input{
+        outline: none;
+    }
+    .sdemain{
+        height: 27vw;
+       
+        background-color: #ffffff;
+       
+    }
+    .sdcarrier{
+       
+        height: 8vw;
+        width: 100%;
+        margin-top: 2vw;
+        display: flex;
+    }
+    .sdcarrier section{
+       
+        
+        height: 10vw;
+       
+        
+    }
+    .sdcarrier section:nth-child(1){
+        width: 20%;
+    
+    }
+    .sdcarrier section:nth-child(2){
+        width: 50%;
+    
+    }
+    .sdcarrier section:nth-child(3){
+        width: 30%;
+    
+    }
+    .sfirstp{
+      
+        margin-top: 4vw;
+        font-size: 3.2vw;
+        color: hsla(4,0%,0%,0.6);
+        margin-left: 5%;
+    }
+    .sfirstp1{
+        
+        margin-top: 4vw;
+        font-size: 2.3vw;
+        margin-left: 3%;
+    
+    }
+    
+    
+    /********/
+    #passchange{
+        width: 20vw;
+        height: 6vw;
+        margin-left: 7%;
+        margin-top: 2vw;
+        font-size: 3.1vw;
+        border-radius: 1vw;
+        
+    
+    }
+    
+    #logoutalldevice{
+        background-color: hsl(207,52%,44%);
+        color: #ffffff;
+        border: 1px solid hsl(207,52%,44%);
+    
+    }
+    .sessiontitles{
+       
+        height: 5vw;
+        display: flex;
+    }
+    .sessiontitles section p{
+       
+        margin-top: 0.5vw;
+        margin-left: 10%;
+        font-size: 3vw;
+    }
+    .sessioncarrier {
+     
+        margin-top: 1vw;
+        height:5vw;
+       
+        
+    }
+    .sessioncarrier section{
+     
+        width: 33.3%;
+    }
+    .sessioncarrier section p{
+       
+        margin-top: 0.3vw;
+        font-size: 1.5vw;
+        
+    }
+    .setting2{
+        display: none;
+    }
+    
+    
+/*******************************************************/
+
+    
+/*JOB POST STYLING STARTS HER*/
+.jbody{
+   
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+   background-color: white;
+    font-family: 'Roboto', sans-serif;
+    overflow-y: scroll;
+    
+    height: 1;
+   
+    -ms-overflow-style: none;
+  
+    
+}
+#jballelements{
+    height: 100vh;
+}
+.pjorderdetails{
+   
+    width: 99.85vw;
+    height: 100vh;
+    position: absolute;
+  
+  
+
+   
+  
+   
+    
+   
+}
+
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: hsla(188,47%,20%,0.3);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+   
+
+}
+#loader1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: hsla(188,47%,20%,0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+.loader::after,#loader1::after{
+    content: "";
+    width: 5vw;
+    height: 5vw;
+    border: 0.8vw solid white;
+    border-top: 0.8vw solid hsl(188,47%,20%);
+    border-radius: 50%;
+    animation: loading 0.7s ease infinite;
+    opacity: 1;
+    
+   
+}
+
+
+.loader.addedloader{
+    display: flex;
+    opacity: 1;
+}
+.loader1.addedloaderyes{
+    display: flex;
+    opacity: 1; 
+}
+@keyframes loading {
+    from{transform: rotate(0turn);}
+    to{transform: rotate(1turn);}
+}
+
+.pjorderdetails.addedodetails{
+   margin-left: 0%;
+   
+
+}
+.pjodbody{
+    border: 1px solid hsla(188,47%,20%,0.5);
+    overflow-y: scroll;
+    width: 80%;
+    scrollbar-width: none;
+}
+.pjodbody::-webkit-scrollbar{
+    display: none;
+}
+
+.pjorderdetails::-webkit-scrollbar{
+    display: none;
+}
+.pjdetailsbutton{
+    
+    width: 10%;
+}
+
+.pjbutton1{
+    height: 5vw;
+    width: 15vw;
+    font-size: 3.2vw;
+    margin-top: 3vw;
+    margin-left: 10%;
+    border-radius: 1vw;
+    display: absolute;
+}
+.pjbutton2{
+    height: 5vw;
+    width: 18vw;
+    font-size: 3.2vw;
+    margin-top: 90vh;
+    margin-left: -115%;
+    border-radius: 1vw;
+    display: absolute;
+}
+
+.pjbutton1:hover,.pjbutton2:hover{
+    background-color: hsla(188,47%,20%,0.7);
+}
+.pjbutton1 img{
+    height: 2vw;
+}
+
+
+
+
+.jbmain{
+    
+    display: block;
+    
+}
+
+.jbsidebar{
+    width: 100%;
+   
+    height: 34vw;
+    background-color: hsl(188,47%,20%);
+}
+.jbsidebar img{
+   
+    height: 10vw;
+    margin-top: 5vw;
+    margin-left: 45%;
+}
+.jsdp{
+    
+  
+    width: 80%;
+    line-height: 4vw;
+    font-size: 2.8vw;
+    margin-top: 2vw;
+    letter-spacing: 0.2vw;
+    
+
+}
+.jbformpart{
+    
+    width: 100%;
+}
+.jbfph3{
+   margin-top: 3vw;
+    margin-left: 3%;
+    font-size: 3.2vw;
+   
+}
+.forminnerconte{
+
+
+  border-top: 1px solid hsl(36,43%,90%);
+    margin: auto;
+    width: 95%;
+    height: 224vw;
+    margin-top: 1vw;
+    border-bottom: 1px solid hsl(36,43%,90%);
+
+    
+}
+
+#title,#jbtype,#pjbenefits,#skill,#company,#department{
+    width: 85vw;
+    margin-left: 5%;
+    margin-top: 5vw;
+    height: 7vw;
+    /*text-align: center;*/
+    
+    font-size: 3.2vw;
+    border-bottom: 1px solid hsla(4,0%,0%,0.5);
+  
+}
+.setlocationinputsp{
+    display: flex;
+}
+
+#company{
+    color: purple;
+    font-weight: 700;
+}
+#skill{
+   width: 62vw;
+}
+#jbtype{
+    margin-top: 5vw;
+    color: hsla(188,47%,20%,0.7);
+    width: 86.5vw;
+}
+#pjbenefits,#department{
+    width: 85vw;
+}
+
+#country{
+    color: hsla(4,0%,0%,0.6);
+   width: 36vw;
+    margin-left: 5%;
+    margin-top: 5vw;
+    height: 7vw;
+    border: transparent;
+    /*text-align: center;*/
+    font-size: 3.2vw;
+    border-bottom: 1px solid hsla(4,0%,0%,0.5)
+   
+    
+}
+#compdepart{
+   margin-top: 1.5vw;
+   
+    
+ }
+input:focus,select:focus{
+    outline-width: 0vw;
+    outline: none;
+   /* outline-color: hsl(207,52%,44%);*/
+    border: 1px solid hsl(207,52%,44%);
+    /*border-top: 1px solid transparent;*/
+}
+.firstsecf{
+    display: block;
+}
+
+
+#usstates,#canadaprovence{
+    width: 20vw;
+    margin-left: 2vw;
+    margin-top: 5vw;
+    height: 7vw;
+    /*text-align: center;*/
+    font-size: 3.2vw;
+    border-bottom: 1px solid hsla(4,0%,0%,0.5);
+    display: none;
+   
+}
+#usstates{
+    width: 23vw;
+}
+#canadaprovence{
+    margin-left: 6%;
+}
+
+#state,#city,#pay,#rate{
+    width: 20vw;
+    margin-left: 4%;
+    margin-top: 4vw;
+    height: 7vw;
+    border: transparent;
+    /*text-align: center;*/
+    font-size: 3.2vw;
+    border-bottom: 1px solid hsla(4,0%,0%,0.5);
+    /*border: 1px solid black;*/
+}
+select{
+    background-color: white;
+}
+#pay{
+    width: 20vw;
+    margin-left: 2%;
+    margin-top: 4vw;
+   
+}
+#state{
+  margin-left: 2vw;
+  margin-top: 4vw;
+  width: 22vw;
+  
+}
+#rate{
+    margin-left: 2%; 
+    width: 22vw;
+    margin-top: 5vw;
+   
+}
+ #currency{
+    width: 40vw;
+    margin-left: 5%;
+    margin-top: 5vw;
+    height: 7vw;
+    /*text-align: center;*/
+    font-size: 3.2vw;
+    border-bottom: 1px solid hsla(4,0%,0%,0.5);
+    color: hsla(188,47%,20%,0.7);
+    
+ }
+
+ .jbfbutton{
+    height: 6vw;
+    width: 20vw;
+    margin-left: 2%;
+    font-weight: 700;
+    font-size: 3.1vw;
+    border-radius: 1vw;
+    
+ }
+ .selectcurrency-brp{
+    display:flex;
+    
+    margin-top: 5vw;
+ }
+ 
+ 
+ .resbr{
+    display: block;
+ }
+
+ #jbsummary,#responsibility{
+    margin-left: 5%;
+    margin-top: 4vw;
+    font-size: 3.2vw;
+    padding: 2vw;
+   /* display: block;*/
+    width: 83vw;
+    height: 30vw;
+    font-family: sans-serif;
+    border: 1px solid hsla(188,47%,20%,0.5);
+ }
+ #responsibility{
+    margin-left: 5%;
+ }
+ 
+ .skillsdiv{
+    
+    margin-top: 1vw;
+    display: block;
+ }
+ .skillsdivcar{
+    border: 1px solid hsla(4,0%,0%,0.5);
+    height: 20vw;
+    width: 86vw;
+    margin-left: 5%;
+   margin-top: 5vw;
+
+    
+ }
+ textarea{
+    font-family: 'Roboto', sans-serif;
+ }
+
+ textarea:focus{
+    outline-width: 0vw;
+    outline: none;
+    
+ }
+ .skillsdivcar::-webkit-scrollbar{
+     display: none;
+ }
+ .skillit{
+    margin-top: 1vw;
+    height: 5vw ;
+    margin-left: 1%;
+  
+    
+   
+ }
+ .skillit p{
+    font-weight: 700;
+    margin-top: 1vw;
+    font-size: 3vw;
+    color: hsla(188,47%,20%,0.5);
+    width: 79vw;
+    text-align: center;
+    
+    
+
+ }
+ .pcancel{
+    height: 1.2vw;
+    width: 1.2vw;
+    margin-top: 1.6vw;
+    
+ }
+ .pcancel:hover{
+    background-color: hsla(188,47%,20%,0.4);
+ }
+ #ffsubmit{
+    height: 6vw;
+    margin-left: 70%;
+    margin-top: 3vw;
+    width: 25vw;
+    font-weight: 700;
+    font-size: 3.2vw;
+    border-radius: 1vw;
+ }
+
+
+
 
 
 

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head> 
+    <script src="/components/header.js"></script>
+
    <script src="/components/header.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link rel="stylesheet" href="worker.css">
@@ -8,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="https://kit.fontawesome.com/3192a96bdf.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My profile</title>
 
 
 
@@ -540,133 +542,184 @@
 
 
 
-
+<!--<button onclick="profileeditbutton()">Edit</button>-->
 
 
 
             
            
             
-            <div class="bodyp">
-                <div class="pph1">
-                    <h1 class="profileh1">My profile</h1>
-                    <button onclick="profileeditbutton()">Edit</button>
-                </div>
-                <div class="profsec">
-                    <section class="profp">
-                       <div class="pp">
-                        
+<div class="bodyp">
+
+    <div class="setp">
+        
+   
+    <div class="pph1">
+        <h1 class="profileh1">My profile</h1>
+        <button onclick="profileeditbutton()">Edit</button>
+
+    </div>
+   
+    <div class="profsec">
+        
+
+        
+        <section class="profp">
+           <div class="pp">
+
+           </div>
+
+        </section>
+        <section class="pdetails">
+            <div class="name">
+               <div class="namein">
+                <h2 class="nh21" id="nh21"></h2>
+                <h2 class="nh22" id="nh22"></h2>
+               </div>
+                <h2 class="payhr" id="payrate"></h2>
+
+            </div>
+           
+                <p class="jtitle" id="jtitle"></p>
+                <button>ID:<span id="id"></span></button>
             
-                       </div>
-            
-                    </section>
-                    <section class="pdetails">
-                        <div class="name">
-                           <div class="namein">
-                            <h2 class="nh21" id="nh21"></h2>
-                            <h2 class="nh22" id="nh22"></h2>
-                           </div>
-                            <h2 class="payhr" id="payrate"></h2>
-            
-                        </div>
-                       
-                            <p class="jtitle" id="jtitle"></p>
-                            <button>ID:<span id="id"></span></button>
-                        
-            
-                    </section>
-                    <section class="ddetails">
-                        <div class="ddp">
-                          
-                            <div class="avalb" id="availit">
-                               
-                                <h3 >Availabilty:</h3>
-                                <p><span id="workh"></span> <span class="payrate" id="payrate1"> </span></p>
-                                <button class="av">Available</button>
-                            </div>
-            
-                           
-            
-                            <div class="avalb">
-                                <h3 >Location:</h3>
-                                <p id="location"></p>
-                               
-                            </div>
-            
-                            <div class="avalb">
-                                <h3>Experience:</h3>
-                                <p id="experience"></p>
-                               
-                            </div>
-                           
-                        </div>
-            
-                    </section>
-            
-                </div>
-             
-                <div class="aboutp">
-                    <div class="about">
-                        <h3 id="ab">About Me</h3>
-                        <p class="abme" id="abme"></p>
-                         
-                       
-                                <br>
-                              
-                          <h3 class="expe">
-                            Job Experience
-                          </h3>
-                          <div class="experience" id="exppp">
-                            <!--
-            
-                            <div class="expecarrier">
-                                <h3 id="expech3">Web developer</h3>
-                                <p id="expecp">April 2001-Present</p>
-                                <h3 id="expech31">Jade Energy</h3>
-                                <p class="expeplast">During my time as a web developer at Jade Energy, I gained extensive experience in 
-                                    designing and developing responsive and user-friendly
-                                     websites. I was responsible for both front-end and 
-                                     back-end development using various programming 
-                                     languages and frameworks, including HTML, CSS, 
-                                     JavaScript, and React. I worked closely with the
-                                      team to ensure that our web solutions met the 
-                                      needs of our clients and delivered a seamless 
-                                      user experience.</p>
-            
-            
-                            </div>
-            
-                            <div class="expecarrier">
-                                <h3 id="expech3">Web developer</h3>
-                                <p id="expecp">April 2001-Present</p>
-                                <h3 id="expech31">Jade Energy</h3>
-                                <p class="expeplast">During my time as a web developer at Jade Energy, I gained extensive experience in 
-                                    designing and developing responsive and user-friendly
-                                     websites. I was responsible for both front-end and 
-                                     back-end development using various programming 
-                                     languages and frameworks, including HTML, CSS, 
-                                     JavaScript, and React. I worked closely with the
-                                      team to ensure that our web solutions met the 
-                                      needs of our clients and delivered a seamless 
-                                      user experience.</p>
-            
-            
-                            </div>
-                           
-                            -->
-            
-                          </div>
-                          <br>
-                          <br>
-            
-                    </div>
+
+        </section>
+        
+        <section class="ddetails">
+            <div class="ddp">
+              
+                <div class="avalb" id="availit">
                    
-                    
-            
+                    <h3 >Availabilty:</h3>
+                    <p><span id="workh"></span> <span class="payrate" id="payrate1"> </span></p>
+                    <button class="av">Available</button>
                 </div>
-                <br><br>
+
                 
-            </div >
+
+                <div class="avalb">
+                    <h3 >Location:</h3>
+                    <p  id="location"></p>
+                   
+                </div>
+
+                <div class="avalb">
+                    <h3>Experience:</h3>
+                    <p id="experience"></p>
+                   
+                </div>
+               
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+    <section class="ddetailsp">
+        <div class="ddp">
+          
+            <div class="avalb" id="availit">
+               
+                <h3 >Availabilty:</h3>
+                <p><span class="workh"></span> <span class="payrate" class="payrate1"> </span></p>
+                <button class="av">Available</button>
+            </div>
+
+            
+
+            <div class="avalb">
+                <h3 >Location:</h3>
+                <p class="plocation" ></p>
+               
+            </div>
+
+            <div class="avalb">
+                <h3>Experience:</h3>
+                <p class="experiencep" ></p>
+               
+            </div>
+           
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+ 
+    <div class="aboutp">
+        <div class="about">
+            <h3 id="ab">About Me</h3>
+            <p class="abme" id="abme"></p>
+             
+           
+                    <br>
+                  
+              <h3 class="expe">
+                Job Experience
+              </h3>
+              <div class="experience">
+                <!--
+
+                <div class="expecarrier">
+                    <h3 id="expech3">Web developer</h3>
+                    <p id="expecp">April 2001-Present</p>
+                    <h3 id="expech31">Jade Energy</h3>
+                    <p class="expeplast">During my time as a web developer at Jade Energy, I gained extensive experience in 
+                        designing and developing responsive and user-friendly
+                         websites. I was responsible for both front-end and 
+                         back-end development using various programming 
+                         languages and frameworks, including HTML, CSS, 
+                         JavaScript, and React. I worked closely with the
+                          team to ensure that our web solutions met the 
+                          needs of our clients and delivered a seamless 
+                          user experience.</p>
+
+
+                </div>
+
+                <div class="expecarrier">
+                    <h3 id="expech3">Web developer</h3>
+                    <p id="expecp">April 2001-Present</p>
+                    <h3 id="expech31">Jade Energy</h3>
+                    <p class="expeplast">During my time as a web developer at Jade Energy, I gained extensive experience in 
+                        designing and developing responsive and user-friendly
+                         websites. I was responsible for both front-end and 
+                         back-end development using various programming 
+                         languages and frameworks, including HTML, CSS, 
+                         JavaScript, and React. I worked closely with the
+                          team to ensure that our web solutions met the 
+                          needs of our clients and delivered a seamless 
+                          user experience.</p>
+
+
+                </div>
+               
+                -->
+
+              </div>
+              <br>
+              <br>
+
+        </div>
+       
+        
+
+    </div>
+    <br><br>
+</div>
+    
+</div >
 
 
 

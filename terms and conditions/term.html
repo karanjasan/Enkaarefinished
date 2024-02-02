@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="./term.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enkaare Candidate Contractual Terms</title>
+  <title>Enkaare Candidate Contractual Terms</title>git 
   
 </head>
 <body>
@@ -127,7 +127,7 @@
       <h2 id="REPRESENTATIONSANDWARRANTIES">3.0 REPRESENTATIONS AND WARRANTIES</h2>
       <p class="innetexts"><strong>3.1</strong> You represent that you are a qualified and capable Talent Network Member, and that you will devote your best
        efforts, skill, knowledge and attention to the elected Member responsibilities. </p>
-      <p class="innetexts"><strong>3.2</strong>You represent that all information provided by you to Enkaare,its Clients, and third party vendors in respect of
+      <p class="innetexts"><strong>3.2</strong> You represent that all information provided by you to Enkaare,its Clients, and third party vendors in respect of
          your personal background, education, qualifications, experience, legal documentation, and location are accurate and truthful, and that 
          no material information relating to the aforementioned areas is withheld. You will always be honest about who’s doing the Work. 
       </p> 
@@ -282,17 +282,44 @@
         </p>
 
 
+      </section>
 
-
-    </section>
-
-  </main>
-
- 
-</body>
-
-<script>
+    </main>
   
+   
+  </body>
+  
+  <script>
+    function toggleParagraph(classTarget) {
+      var paragraph = document.querySelector(".innetexts." + classTarget);
 
-</script>
-</html>
+      if (paragraph) {
+        paragraph.style.display =
+          paragraph.style.display === "none" || paragraph.style.display === ""
+            ? "block"
+            : "none";
+      }
+    }
+
+    const h2Elements = document.querySelectorAll("h2");
+    const paragraphElements = document.querySelectorAll('section > p');
+    
+    h2Elements.forEach(function (element,index) {
+      var targetClass = "toggle-" + Math.random().toString(36).substring(7);
+      element.setAttribute("data-target", targetClass);
+
+      element.addEventListener("click", function () {
+        toggleParagraph(targetClass);
+      });
+
+      // Add the targetClass to the associated paragraph
+
+      let  paragraph = paragraphElements[index+2]
+      if (paragraph) {
+        paragraph.classList.add(targetClass);
+      }
+    });
+  
+  </script>
+  </html>
+       

@@ -547,6 +547,8 @@ let candidates = () => {
           fetchInviteJobs
             .then((res) => res.json())
             .then((d) => {
+
+              console.log(d);
               inloader.style.display = "none";
               const {already, noposted} = d;
 
@@ -6121,6 +6123,12 @@ let tsupport = () => {
 let tsupportcancel = () => {
   document.querySelector(".contactsupport").classList.remove("addedhove");
 };
+
+let termsservice= ()=>{
+
+
+}
+ 
 
 
 //CODES to run mobile version
