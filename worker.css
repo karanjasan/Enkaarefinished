@@ -652,7 +652,9 @@ iframe{
 .incompleteprofile.adddincompleteprofile{
     display: block;
 }
-
+.arrow-containerp {
+    display: none;
+}
 
 
 .arrow-container {
@@ -718,16 +720,21 @@ iframe{
     margin: 0 1vw;
 }
 
-
+.cancel-iconp{
+    display: none;
+}
 
 
 
 .cancel-icon {
-    font-size: 1vw;
-    margin-left: 50%;
+    font-size: 2vw;
+    margin-left: 90%;
     cursor: pointer;
     font-weight: 100;
     color: whitesmoke;
+    margin-top: 1vw;
+    position: absolute;
+    z-index: 999;
 }
 .cancel-icon:hover{
     color: red;
@@ -4085,8 +4092,8 @@ background-color: hsla(188,47%,20%,0.8);
 
 .cancel-iconp {
     display: block;
-    font-size: 5vw;
-    margin-left: 1%;
+    font-size: 6vw;
+    margin-left: 2%;
     cursor: pointer;
     font-weight: 100;
     color: whitesmoke;
