@@ -1,4 +1,4 @@
- body {
+body {
   font-family: 'Arial', sans-serif;
   background-color: #fff;
   color: #000;
@@ -126,5 +126,11 @@ li::before {
   }
   .innetexts{
     font-size: 3.2vw;
+    
   }
+}
+main {
+  margin-top: 1vw;
+  display: flex;
+  height: 100vh;
 }
