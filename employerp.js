@@ -374,7 +374,7 @@ let candidates = () => {
     
                   <div class="approvalr">
                     <h3 id="aprateh3">${rate}%</h3>
-                    <p>Aprroval Rate</p>
+                    <p>Approval Rate</p>
                   </div>
               </div>
               
@@ -440,7 +440,7 @@ let candidates = () => {
     
                   <div class="approvalr">
                     <h3 id="aprateh3">${rate}%</h3>
-                    <p>Aprroval Rate</p>
+                    <p>Approval Rate</p>
                   </div>
               </div>
               
@@ -463,6 +463,15 @@ let candidates = () => {
           candidates.append(candidate);
         }
       }
+
+
+      const spacer=`<div class="spacer">
+                        
+       </div>`
+
+      candidate.innerHTML = spacer;
+      candidates.append(candidate);
+
       //code to ditermine whether the profile is online or not
       let ondiv = document.getElementsByClassName("online");
       for (let i = 0; i < ondiv.length; i++) {
@@ -2309,7 +2318,7 @@ let jbid = sessionStorage.getItem("jobpostid");
 
                   <div class="approvalr">
                     <h3 id="aprateh3">${rate}%</h3>
-                    <p>Aprroval Rate</p>
+                    <p>Approval Rate</p>
                   </div>
               </div>
               
@@ -2414,7 +2423,7 @@ let jbid = sessionStorage.getItem("jobpostid");
 
                   <div class="approvalr">
                     <h3 id="aprateh3">${rate}%</h3>
-                    <p>Aprroval Rate</p>
+                    <p>Approval Rate</p>
                   </div>
               </div>
               
@@ -2853,7 +2862,7 @@ let shortlist = () => {
 
                   <div class="approvalr">
                     <h3 id="aprateh3">${rate}%</h3>
-                    <p>Aprroval Rate</p>
+                    <p>Approval Rate</p>
                   </div>
               </div>
               
@@ -3006,7 +3015,7 @@ let shortlist = () => {
 
                   <div class="approvalr">
                     <h3 id="aprateh3">${rate}%</h3>
-                    <p>Aprroval Rate</p>
+                    <p>Approval Rate</p>
                   </div>
               </div>
               
@@ -3291,7 +3300,7 @@ let invites = () => {
              
                        <div class="approvalr">
                          <h3 id="aprateh3">${rate}%</h3>
-                         <p>Aprroval Rate</p>
+                         <p>Approval Rate</p>
                        </div>
                    </div>
                    
@@ -3368,7 +3377,7 @@ let invites = () => {
           
                     <div class="approvalr">
                       <h3 id="aprateh3">${rate}%</h3>
-                      <p>Aprroval Rate</p>
+                      <p>Approval Rate</p>
                     </div>
                 </div>
                 
@@ -3436,7 +3445,7 @@ let invites = () => {
           
                     <div class="approvalr">
                       <h3 id="aprateh3">${rate}%</h3>
-                      <p>Aprroval Rate</p>
+                      <p>Approval Rate</p>
                     </div>
                 </div>
                 
