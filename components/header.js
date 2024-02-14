@@ -176,7 +176,7 @@ try {
                 </div>
 
 
-                <p>Acount status </p>
+                <p>Account status </p>
                 <button id="statusbuton"></button>
                 <span id="cbeta">Beta</span>
 

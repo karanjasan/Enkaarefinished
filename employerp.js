@@ -298,6 +298,28 @@ let setprofile = () => {
 
 //Candidates START HERE
 
+
+function processFullName(fullName) {
+  // Split the full name into individual names
+  const names = fullName.split(" ");
+  
+
+  // Extract the last name (surname)
+  const surname = names[names.length - 1];
+  
+
+  // Get the first character of each name (excluding the last name)
+  const initials = names
+    .slice(0, -1)
+    .map((name) => name[0])
+    .join("");
+
+  // Combine the surname and initials
+  const result = surname + (initials.length > 0 ? " " + initials : "");
+
+  return result;
+}
+
 let darray;
 let inviteclickedpid;
 
@@ -363,7 +385,7 @@ let candidates = () => {
     
                       <div class="js">
                         <h3 id="cadph3">${
-                          first_name + " " + second_name.slice(0, 1)
+                          processFullName(first_name + " " + second_name)
                         }</h3>
                       <p id="cadp">${isonline}</p>
                       </div>
@@ -429,7 +451,7 @@ let candidates = () => {
     
                       <div class="js">
                         <h3 id="cadph3">${
-                          first_name + " " + second_name.slice(0, 1)
+                          processFullName(first_name + " " + second_name)
                         }</h3>
                       <p id="cadp">${isonline}</p>
                       </div>
@@ -2307,7 +2329,7 @@ let jbid = sessionStorage.getItem("jobpostid");
 
                       <div class="js">
                         <h3 id="cadph3">${
-                          first_name + " " + second_name.slice(0, 1)
+                          processFullName(first_name + " " + second_name)
                         }</h3>
                       <p id="cadp">${isonline}</p>
                       </div>
@@ -2412,7 +2434,7 @@ let jbid = sessionStorage.getItem("jobpostid");
 
                       <div class="js">
                         <h3 id="cadph3">${
-                          first_name + " " + second_name.slice(0, 1)
+                          processFullName(first_name + " " + second_name)
                         }</h3>
                       <p id="cadp">${isonline}</p>
                       </div>
@@ -2851,7 +2873,7 @@ let shortlist = () => {
 
                       <div class="js">
                         <h3 id="cadph3">${
-                          first_name + " " + second_name.slice(0, 1)
+                          processFullName(first_name + " " + second_name)
                         }</h3>
                       <p id="cadp">${isonline}</p>
                       </div>
@@ -3004,7 +3026,7 @@ let shortlist = () => {
 
                       <div class="js">
                         <h3 id="cadph3">${
-                          first_name + " " + second_name.slice(0, 1)
+                          processFullName(first_name + " " + second_name)
                         }</h3>
                       <p id="cadp">${isonline}</p>
                       </div>
@@ -3366,7 +3388,7 @@ let invites = () => {
           
                         <div class="js">
                           <h3 id="cadph3">${
-                            first_name + " " + second_name.slice(0, 1)
+                            processFullName(first_name + " " + second_name)
                           }</h3>
                         <p id="cadp">${isonline}</p>
                         </div>
@@ -3434,7 +3456,7 @@ let invites = () => {
           
                         <div class="js">
                           <h3 id="cadph3">${
-                            first_name + " " + second_name.slice(0, 1)
+                            processFullName(first_name + " " + second_name)
                           }</h3>
                         <p id="cadp"></p>
                         </div>

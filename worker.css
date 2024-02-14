@@ -58,7 +58,8 @@
     margin-left: 5%;
     margin-top: 0.7vw;
    
-    width: 4.5vw;
+    width: 5vw;
+   
 }
 .navbutton{
     display: none;
@@ -66,7 +67,7 @@
 
 .status button{
     height: 2.3vw;
-    width: 8vw;
+    width: 7vw;
     margin-top: 1vw;
     margin-left: 0%;
     font-size: 1.1vw;
@@ -181,6 +182,7 @@
     height: 2vw;
    
 }
+
 
 .balance img,.notification img,.aorders img,.mbids img,.abids img,.chats img, .rating img,.hcentre img,.rules img{
     height: 1.8vw;
@@ -608,11 +610,19 @@ iframe{
     height: 114vh;
     
     
+    
    
 }
 
 
+.spacer{
+    border: 1px solid black;
+    height: 5vw;
+    margin-top: 1vw;
+    visibility: hidden;
+    opacity: 0;
 
+}
 
 
 

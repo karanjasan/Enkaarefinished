@@ -252,6 +252,29 @@ let logout = () => {
   });*/
 };
 
+
+
+
+function processFullName(fullName) {
+  // Split the full name into individual names
+  const names = fullName.split(" ");
+
+
+  // Extract the last name (surname)
+  const surname = names[names.length - 1];
+
+
+  // Get the first character of each name (excluding the last name)
+  const initials = names
+    .slice(0, -1)
+    .map((name) => name[0])
+    .join("");
+
+  // Combine the surname and initials
+  const result = surname + (initials.length > 0 ? " " + initials : "");
+
+  return result;
+}
 let setprofile = () => {
   candinddateaccountstatus();
   let phoneProfilePicture=document.querySelector("#logo");
@@ -261,7 +284,7 @@ let setprofile = () => {
   let firstnmae = getCookie("pfname");
   let secname = getCookie("psname");
 
-  namediv.innerHTML = firstnmae + "  " + secname.slice(0, 1);
+  namediv.innerHTML = processFullName(firstnmae + "  " + secname);
 
   /*infomation for profile picture notificaations and messanges*/
 
@@ -491,6 +514,15 @@ let availableorders = () => {
         orderlist.append(order);
       }
       loader[0].classList.remove("addedloader");
+
+
+      let orderlist = document.getElementsByClassName("orderslist")[0];
+      const spacer=`<div class="spacer">
+      </div>`;
+      var order = document.createElement("div");
+      order.innerHTML = spacer;
+        orderlist.append(order);
+
       //here is the code for seeorder
       let buttonclicked = document.getElementsByClassName("orderbutton");
       for (let i = 0; i < buttonclicked.length; i++) {
@@ -946,6 +978,15 @@ function invitedorders() {
       orderlist.append(order);
     }
     loader[0].classList.remove("addedloader");
+
+
+    let orderlist = document.getElementsByClassName("orderslist")[0];
+      const spacer=`<div class="spacer">
+      </div>`;
+      var order = document.createElement("div");
+      order.innerHTML = spacer;
+        orderlist.append(order);
+
     //here is the code for seeorder
     let buttonclicked = document.getElementsByClassName("orderbutton");
     for (let i = 0; i < buttonclicked.length; i++) {
@@ -1625,6 +1666,25 @@ let displaypoptions =()=>{
             wholecarrier.scroll({
                 top:0,
                 behavior:"smooth"
+            });
+
+          }else if (startdate.value > enddate.value) {
+            // Checking if end date is less than
+            satartdinavalid[1].style.display = "block";
+            dcarrier[1].style.borderBottom = "1px solid red";
+        
+            wholecarrier.scroll({
+              top: 0,
+              behavior: "smooth",
+            });
+          } else if (startdate.value == enddate.value) {
+            // checking if end date is equal to start date
+            satartdinavalid[1].style.display = "block";
+            dcarrier[1].style.borderBottom = "1px solid red";
+        
+            wholecarrier.scroll({
+              top: 0,
+              behavior: "smooth",
             });
  
           } else if(country.value===""){
