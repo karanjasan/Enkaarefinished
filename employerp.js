@@ -490,7 +490,7 @@ let candidates = () => {
       const spacer=`<div class="spacer">
                         
        </div>`
-
+       let candidates = document.getElementsByClassName("candidatelist")[0];
       candidate.innerHTML = spacer;
       candidates.append(candidate);
 
