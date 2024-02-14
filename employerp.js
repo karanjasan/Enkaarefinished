@@ -492,7 +492,7 @@ let candidates = () => {
        </div>`
        let candidates = document.getElementsByClassName("candidatelist")[0];
       candidate.innerHTML = spacer;
-      candidates.append(spacer);
+      candidates.append(candidate);
 
       //code to ditermine whether the profile is online or not
       let ondiv = document.getElementsByClassName("online");
