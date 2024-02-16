@@ -1626,156 +1626,147 @@ let displaypoptions =()=>{
  editpage[0].classList.remove("addedprofileedit");
  }
  
- let adexperience=()=>{
-    let wholecarrier=document.getElementById("expe1");
-    let ejbtitle=document.getElementById("role");
-    let ecompanyname=document.getElementById("ecompany");
-    let startdate=document.getElementById("smonthYearInput");
-    let enddate=document.getElementById("emonthYearInput");
-    let country=document.getElementById("eecountry");
-    let state=document.getElementById("eestate");
-    let city=document.getElementById("eecity");
-    let achivements=document.getElementById("eesumarry");
-    let satartdinavalid=document.getElementsByClassName("dateivalid");
-    let dcarrier=document.getElementsByClassName("sadindiv");
- 
-    
-    var monthYearPattern = /^(0[1-9]|1[0-2])\/\d{4}$/;
-    if(ecompanyname.value===""){
-       
-        ecompanyname.style.borderBottom="1px solid red"
-        
-        
-    }else  if(ejbtitle.value===""){
-        ejbtitle.style.borderBottom="1px solid red";
-    }else 
- 
-        if (!monthYearPattern.test(startdate.value)) {
-            satartdinavalid[0].style.display="block";
-            dcarrier[0].style.borderBottom="1px solid red";
-            
-            
-            wholecarrier.scroll({
-                top:0,
-                behavior:"smooth"
-            });
-          } else if (!monthYearPattern.test(enddate.value)) {
-            satartdinavalid[1].style.display="block";
-            dcarrier[1].style.borderBottom="1px solid red";
-            
-            wholecarrier.scroll({
-                top:0,
-                behavior:"smooth"
-            });
+ let adexperience = () => {
+  let wholecarrier = document.getElementById("expe1");
+  let ejbtitle = document.getElementById("role");
+  let ecompanyname = document.getElementById("ecompany");
+  let startdate = document.getElementById("smonthYearInput");
+  let enddate = document.getElementById("emonthYearInput");
+  let country = document.getElementById("eecountry");
+  let state = document.getElementById("eestate");
+  let city = document.getElementById("eecity");
+  let achivements = document.getElementById("eesumarry");
+  let satartdinavalid = document.getElementsByClassName("dateivalid");
+  let dcarrier = document.getElementsByClassName("sadindiv");
 
-          }else if (startdate.value > enddate.value) {
-            // Checking if end date is less than
-            satartdinavalid[1].style.display = "block";
-            dcarrier[1].style.borderBottom = "1px solid red";
-        
-            wholecarrier.scroll({
-              top: 0,
-              behavior: "smooth",
-            });
-          } else if (startdate.value == enddate.value) {
-            // checking if end date is equal to start date
-            satartdinavalid[1].style.display = "block";
-            dcarrier[1].style.borderBottom = "1px solid red";
-        
-            wholecarrier.scroll({
-              top: 0,
-              behavior: "smooth",
-            });
- 
-          } else if(country.value===""){
-            country.style.borderBottom="1px solid red";
-        }else if(state.value===""){
-            state.style.borderBottom="1px solid red";
-        }else if(city.value===""){
-            city.style.borderBottom="1px solid red";
-        }else if(achivements.value===""){
-            achivements.style.border="1px solid red";
-            wholecarrier.scroll({
-                top:wholecarrier.scrollHeight,
-                behavior: "smooth"
-            });
-        }else{
- 
-            var randomstring =""
-                randomstring+= Math.random();
- 
-            let expeobject={
-                experience_id:randomstring,
-                company_name:ecompanyname.value,
-                job_title:ejbtitle.value,
-                start_date:startdate.value,
-                end_date:enddate.value,
-                country:country.value,
-                state:state.value,
-                city:city.value,
-                achievement:achivements.value
-            }
- 
-            
- 
-        
-            experincesarray.push(expeobject);
+  let monthYearPattern = /^(0[1-9]|1[0-2])\/\d{4}$/;
+  // Convert date strings into Date objects
+  let startDateParts = startdate.value.split("/");
+  let endDateParts = enddate.value.split("/");
+  // console.log(
+  //   "endDateParts: ",
+  //   endDateParts,
+  //   "startDateParts: ",
+  //   startDateParts
+  // );
+  let startDate = new Date(startDateParts[1], startDateParts[0] - 1); // Month is 0-indexed
+  let endDate = new Date(endDateParts[1], endDateParts[0] - 1);
+  console.log("endDate: ", endDate, "startDate: ", startDate);
 
+  if (ecompanyname.value === "") {
+    ecompanyname.style.borderBottom = "1px solid red";
+  } else if (ejbtitle.value === "") {
+    ejbtitle.style.borderBottom = "1px solid red";
+  } else if (!monthYearPattern.test(startdate.value)) {
+    satartdinavalid[0].style.display = "block";
+    dcarrier[0].style.borderBottom = "1px solid red";
 
-           ecompanyname.value="";
-            ejbtitle.value="";
-            startdate.value="";
-            enddate.value="";
-            country.value="";
-            state.value="";
-            city.value="";
-            achivements.value="";
-         let carrier =document.getElementsByClassName("eexperiencedisplay")[0];
-         let ex=document.getElementById("eexperiencedisplay")
-    while(ex.hasChildNodes()){
-        ex.firstChild.remove()
+    wholecarrier.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else if (!monthYearPattern.test(enddate.value)) {
+    satartdinavalid[1].style.display = "block";
+    dcarrier[1].style.borderBottom = "1px solid red";
+
+    wholecarrier.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else if (startDate > endDate) {
+    // Checking if end date is less than
+    satartdinavalid[1].style.display = "block";
+    dcarrier[1].style.borderBottom = "1px solid red";
+
+    wholecarrier.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else if (startDate.getTime() === endDate.getTime()) {
+    // checking if end date is equal to start date
+    satartdinavalid[1].style.display = "block";
+    dcarrier[1].style.borderBottom = "1px solid red";
+
+    wholecarrier.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else if (country.value === "") {
+    country.style.borderBottom = "1px solid red";
+  } else if (state.value === "") {
+    state.style.borderBottom = "1px solid red";
+  } else if (city.value === "") {
+    city.style.borderBottom = "1px solid red";
+  } else if (achivements.value === "") {
+    achivements.style.border = "1px solid red";
+    wholecarrier.scroll({
+      top: wholecarrier.scrollHeight,
+      behavior: "smooth",
+    });
+  } else {
+    var randomstring = "";
+    randomstring += Math.random();
+
+    let expeobject = {
+      experience_id: randomstring,
+      company_name: ecompanyname.value,
+      job_title: ejbtitle.value,
+      start_date: startdate.value,
+      end_date: enddate.value,
+      country: country.value,
+      state: state.value,
+      city: city.value,
+      achievement: achivements.value,
+    };
+
+    experincesarray.push(expeobject);
+
+    ecompanyname.value = "";
+    ejbtitle.value = "";
+    startdate.value = "";
+    enddate.value = "";
+    country.value = "";
+    state.value = "";
+    city.value = "";
+    achivements.value = "";
+    let carrier = document.getElementsByClassName("eexperiencedisplay")[0];
+    let ex = document.getElementById("eexperiencedisplay");
+    while (ex.hasChildNodes()) {
+      ex.firstChild.remove();
     }
-         for(let i=0;i<experincesarray.length;i++){
-            let id=experincesarray[i].experience_id;
-            let compn=experincesarray[i].company_name;
-            let jbt=experincesarray[i].job_title;
-            let stdat=experincesarray[i].start_date;
-            let eddate=experincesarray[i].end_date;
-            let contry=experincesarray[i].country;
-            let state=experincesarray[i].state;
-            let city=experincesarray[i].city;
-            let achive=experincesarray[i].achievement;
-            
- 
-            let contediv=document.createElement('div');
-            let conte=`<div class="eexpecarrier">
+    for (let i = 0; i < experincesarray.length; i++) {
+      let id = experincesarray[i].experience_id;
+      let compn = experincesarray[i].company_name;
+      let jbt = experincesarray[i].job_title;
+      let stdat = experincesarray[i].start_date;
+      let eddate = experincesarray[i].end_date;
+      let contry = experincesarray[i].country;
+      let state = experincesarray[i].state;
+      let city = experincesarray[i].city;
+      let achive = experincesarray[i].achievement;
+
+      let contediv = document.createElement("div");
+      let conte = `<div class="eexpecarrier">
             <div class="eojectid">${id}</div>
             <span class="eecancelb">&#x2715;</span>
             <h3 id="eexpech3">${jbt}</h3>
             
-            <p class="eexpecp">${contry+" "+state+" "+city}</p>
-            <p class="eexpecp">${stdat+"-"+eddate}</p>
+            <p class="eexpecp">${contry + " " + state + " " + city}</p>
+            <p class="eexpecp">${stdat + "-" + eddate}</p>
             <h3 id="eexpech31">${compn}</h3>
             <p class="expeplast">${achive}</p>
                   
  
  
         </div>`;
- 
-        contediv.innerHTML=conte;
-        carrier.append(contediv);
-         }
-        
-         listeancancelB()
-         
-            
-        }
-   
-    
-       
- 
-    
- }
+
+      contediv.innerHTML = conte;
+      carrier.append(contediv);
+    }
+
+    listeancancelB();
+  }
+};
 
 // Functionlisten to cancel button on the experience windows at the bottom of the edit page
  function listeancancelB(){
