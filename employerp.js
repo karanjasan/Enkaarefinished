@@ -324,6 +324,8 @@ let darray;
 let inviteclickedpid;
 
 let candidates = () => {
+  let loader = document.getElementsByClassName("loader");
+ 
   //   let userid = localStorage.getItem("userloged");
   let userid = getCookie("userloged");
 
@@ -351,10 +353,12 @@ let candidates = () => {
       console.log(err);
     }
   );
-
+  loader[0].classList.add("addedloader");
   fetchAllCandidates
     .then((res) => res.json())
     .then((d) => {
+
+      loader[0].classList.remove("addedloader");
       for (let i = 0; i < d.length; i++) {
         if ((profileimage = d[i].profile_picture === "default")) {
           let title = d[i].professional_title;
