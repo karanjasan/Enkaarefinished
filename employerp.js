@@ -4500,8 +4500,11 @@ let profload = () => {
 
       id.innerHTML = user_id;
 
-      firstname.innerHTML = first_name;
-      secondname.innerHTML = last_name;
+      let fullName=processFullName(first_name+" "+last_name).split(" ")
+
+      firstname.innerHTML = fullName[0];
+      secondname.innerHTML = fullName[0];
+
       location.innerHTML = country;
     } else if (d.length > 2) {
       /* if(d[0].file==="noprofilepic"){
@@ -4530,13 +4533,17 @@ let profload = () => {
       let payrate2 = document.getElementsByClassName("payrate1");
 
       id.innerHTML = userid;
-      firstname.innerHTML = d[1].first_name;
-      secondname.innerHTML = d[1].last_name;
+      
+      let fullName=processFullName(d[1].first_name+" "+d[1].last_name).split(" ")
+
+      firstname.innerHTML = fullName[0];
+      secondname.innerHTML = fullName[1];
       jobtitle.innerHTML = d[1].professional_title;
-      // payrate.innerHTML=payr[1]+"/h";
+    //random text
+      
 
       payrate.innerHTML = "";
-      //  payrate1.innerHTML=payr[1]+"/hour";
+      
       payrate1.innerHTML = " ";
 
       location.innerHTML = d[1].city + "," + d[1].country;
