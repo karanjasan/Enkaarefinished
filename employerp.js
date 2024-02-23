@@ -300,26 +300,40 @@ let setprofile = () => {
 
 
 function processFullName(fullName) {
+  // Remove extra spaces within the full name
+  fullName = fullName.replace(/\s+/g, " ").trim();
+
   // Split the full name into individual names
   const names = fullName.split(" ");
-  
 
-  // Extract the last name (surname)
-  const surname = names[names.length - 1];
-  
+  // Extract the last name (firstName)
+  const firstName = names[0];
+  // removing the firstName from the array
+  names.shift();
+  // Check if all names consist only of initials
+  const allInitials = names.every((name) => name.length === 1);
+
+  // If all names consist only of initials, return the full name
+  if (allInitials) {
+    let fullNames = firstName + " " + names.join("");
+    return fullNames;
+  }
+
+  // Check if any name is only an initial or if the firstName is only an initial
+  const hasInitial =
+    names.some((name) => name.length === 1) || firstName.length === 1;
+
+  // If either the firstName or any first name is only an initial, return the full name
+  if (hasInitial) {
+    return fullName;
+  }
 
   // Get the first character of each name (excluding the last name)
-  const initials = names
-    .slice(0, -1)
-    .map((name) => name[0])
-    .join("");
-
-  // Combine the surname and initials
-  const result = surname + (initials.length > 0 ? " " + initials : "");
-
+  const initials = names.map((name) => name[0]).join("");
+  // Combine the firstName and initials
+  const result = initials.length > 0 ? firstName + " " + initials : firstName;
   return result;
 }
-
 let darray;
 let inviteclickedpid;
 
@@ -4486,8 +4500,11 @@ let profload = () => {
 
       id.innerHTML = user_id;
 
-      firstname.innerHTML = first_name;
-      secondname.innerHTML = last_name;
+      let fullName=processFullName(first_name+" "+last_name).split(" ")
+
+      firstname.innerHTML = fullName[0];
+      secondname.innerHTML = fullName[0];
+
       location.innerHTML = country;
     } else if (d.length > 2) {
       /* if(d[0].file==="noprofilepic"){
@@ -4516,13 +4533,17 @@ let profload = () => {
       let payrate2 = document.getElementsByClassName("payrate1");
 
       id.innerHTML = userid;
-      firstname.innerHTML = d[1].first_name;
-      secondname.innerHTML = d[1].last_name;
+      
+      let fullName=processFullName(d[1].first_name+" "+d[1].last_name).split(" ")
+
+      firstname.innerHTML = fullName[0];
+      secondname.innerHTML = fullName[1];
       jobtitle.innerHTML = d[1].professional_title;
-      // payrate.innerHTML=payr[1]+"/h";
+    //random text
+      
 
       payrate.innerHTML = "";
-      //  payrate1.innerHTML=payr[1]+"/hour";
+      
       payrate1.innerHTML = " ";
 
       location.innerHTML = d[1].city + "," + d[1].country;
