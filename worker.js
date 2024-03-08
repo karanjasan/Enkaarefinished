@@ -533,6 +533,7 @@ let availableorders = () => {
 
       let orderlist = document.getElementsByClassName("orderslist")[0];
       const spacer=`<div class="spacer">
+      
       </div>`;
       var order = document.createElement("div");
       order.innerHTML = spacer;
@@ -1467,10 +1468,67 @@ let displaypoptions =()=>{
  
     
     
- })
+ })};
+
+
+ let dateinput=()=>{
+  // documentation here - https://unpkg.com/flatpickr@1.6.5/index.html
+  let startDate = flatpickr("#smonthYearInput", {dateFormat: "m/Y"});
+  let endDate = flatpickr("#emonthYearInput", {dateFormat: "m/Y"});
+
+  // Ensure end date is not less than start date
+  if (startDate > endDate) {
+    endDatePicker.setDate(date);
+  }
+
+
+}
+
+
+let publicEnddate;
+let publicCurrentTime;
+
+function handleCheckboxChange(checkbox) {
+const enddateInput=document.querySelector("#emonthYearInput");
+if (checkbox.checked) {
  
- 
- }
+      // Disable the input
+      enddateInput.disabled = true;
+
+      // Change the placeholder
+      enddateInput.placeholder = "Present";
+
+      const today = new Date();
+
+      // Get the month and year
+      const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based (0 = January), so add 1
+      const year = today.getFullYear();
+      
+      // Format the date in the desired format (m/y(month/year))
+      const formattedDate = `${month}/${year}`;
+      let enddate = document.getElementById("emonthYearInput");
+      enddate.value="";
+
+      publicCurrentTime=formattedDate;
+      publicEnddate="Present";
+     
+
+
+}else{
+     // Disable the input
+     enddateInput.disabled = false;
+
+     // Change the placeholder
+     enddateInput.placeholder = "End Date";
+     publicEnddate="Something else";
+}
+};
+
+
+
+
+
+
  let profileeditbutton=()=>{
     let loader1 =document.getElementsByClassName("loader1");
     let editpage=document.getElementsByClassName("profileedit");
@@ -1654,10 +1712,19 @@ let displaypoptions =()=>{
   let satartdinavalid = document.getElementsByClassName("dateivalid");
   let dcarrier = document.getElementsByClassName("sadindiv");
 
+
+
+  
+    let endDateValue=enddate.value;
+    (publicEnddate==="Present") ? endDateValue=publicCurrentTime :endDateValue=enddate.value;
+    
+  
+
+
   let monthYearPattern = /^(0[1-9]|1[0-2])\/\d{4}$/;
   // Convert date strings into Date objects
   let startDateParts = startdate.value.split("/");
-  let endDateParts = enddate.value.split("/");
+  let endDateParts = endDateValue.split("/");
   // console.log(
   //   "endDateParts: ",
   //   endDateParts,
@@ -1666,7 +1733,10 @@ let displaypoptions =()=>{
   // );
   let startDate = new Date(startDateParts[1], startDateParts[0] - 1); // Month is 0-indexed
   let endDate = new Date(endDateParts[1], endDateParts[0] - 1);
-  console.log("endDate: ", endDate, "startDate: ", startDate);
+ 
+ 
+       
+  
 
   if (ecompanyname.value === "") {
     ecompanyname.style.borderBottom = "1px solid red";
@@ -1680,7 +1750,7 @@ let displaypoptions =()=>{
       top: 0,
       behavior: "smooth",
     });
-  } else if (!monthYearPattern.test(enddate.value)) {
+  } else if (!monthYearPattern.test(endDateValue)) {
     satartdinavalid[1].style.display = "block";
     dcarrier[1].style.borderBottom = "1px solid red";
 
@@ -1699,8 +1769,8 @@ let displaypoptions =()=>{
     });
   } else if (startDate.getTime() === endDate.getTime()) {
     // checking if end date is equal to start date
-    satartdinavalid[1].style.display = "block";
-    dcarrier[1].style.borderBottom = "1px solid red";
+    satartdinavalid[0].style.display = "block";
+    dcarrier[0].style.borderBottom = "1px solid red";
 
     wholecarrier.scroll({
       top: 0,
@@ -1708,9 +1778,7 @@ let displaypoptions =()=>{
     });
   } else if (country.value === "") {
     country.style.borderBottom = "1px solid red";
-  } else if (state.value === "") {
-    state.style.borderBottom = "1px solid red";
-  } else if (city.value === "") {
+  }  else if (city.value === "") {
     city.style.borderBottom = "1px solid red";
   } else if (achivements.value === "") {
     achivements.style.border = "1px solid red";
@@ -1722,19 +1790,27 @@ let displaypoptions =()=>{
     var randomstring = "";
     randomstring += Math.random();
 
+    let stateValue;
+    let valueForEndDate;
+
+   (state.value.trim() === "") ? stateValue=" ": stateValue=state.value;
+   (publicEnddate==="Present") ? valueForEndDate="Present": valueForEndDate=endDateValue;
+
     let expeobject = {
       experience_id: randomstring,
       company_name: ecompanyname.value,
       job_title: ejbtitle.value,
       start_date: startdate.value,
-      end_date: enddate.value,
+      end_date: valueForEndDate,
       country: country.value,
-      state: state.value,
+      state: stateValue,
       city: city.value,
       achievement: achivements.value,
     };
 
     experincesarray.push(expeobject);
+
+    console.log(experincesarray);
 
     ecompanyname.value = "";
     ejbtitle.value = "";
@@ -1744,11 +1820,26 @@ let displaypoptions =()=>{
     state.value = "";
     city.value = "";
     achivements.value = "";
+
+    const myCheckbox = document.getElementById("checkboxinput");
+
+    // Reset the checkbox
+    myCheckbox.checked = false;
+    enddate.disabled=false;
+    enddate.placeholder="End Date";
+    publicEnddate="Something else";
+
     let carrier = document.getElementsByClassName("eexperiencedisplay")[0];
     let ex = document.getElementById("eexperiencedisplay");
     while (ex.hasChildNodes()) {
       ex.firstChild.remove();
     }
+
+
+    
+
+
+
     for (let i = 0; i < experincesarray.length; i++) {
       let id = experincesarray[i].experience_id;
       let compn = experincesarray[i].company_name;
@@ -1778,11 +1869,13 @@ let displaypoptions =()=>{
       contediv.innerHTML = conte;
       carrier.append(contediv);
     }
+    const myDiv = document.getElementById('profileedit');
 
+    // Scroll the div to the bottom
+    myDiv.scrollTop = myDiv.scrollHeight;
     listeancancelB();
   }
 };
-
 // Functionlisten to cancel button on the experience windows at the bottom of the edit page
  function listeancancelB(){
   let expecancel =document.getElementsByClassName("eecancelb");

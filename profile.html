@@ -2,6 +2,23 @@
 <html lang="en">
 <head> 
     <script src="/components/header.js"></script>
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css"
+    integrity="sha512-MQXduO8IQnJVq1qmySpN87QQkiR1bZHtorbJBD0tzy7/0U9+YIC93QWHeGTEoojMVHWWNkoCp8V6OzVSYrX0oQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"
+    integrity="sha512-K/oyQtMXpxI4+K0W7H25UopjM8pzq0yrVdFdG21Fh5dBe91I40pDd9A4lzNlHPHBIP2cwZuoxaUSX0GJSObvGA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+
+
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
    <script src="/components/header.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
@@ -412,15 +429,36 @@
 
                 <input oninput="editpartinput_reset()" type="text" id="ecompany" placeholder="Company, organization, or volunteer group">
                 <input oninput="editpartinput_reset()" type="text" id="role" placeholder="Role or job title">
+
+
+                
+                <div class="workinghdev">
+                    <input onchange="handleCheckboxChange(this)" type="checkbox" name="" id="checkboxinput">
+                <label for="checkboxinput">I am currently working here.</label>
+                </div>
+
                 <div class="sedates">
+                    
+
+
+
                     <div class="sdate">
                      <p class="sdp">
                         Start date
                      </p>
                      <div class="sadindiv">
                         <img src="/images/calendar.png" alt="">
-                        <input oninput="editpartinput_reset()" type="text" id="smonthYearInput" name="monthYearInput" placeholder="MM/YYYY">
+                        <input
+                        oninput="editpartinput_reset()"
+        class="input"
+        type="text"
+        id="smonthYearInput"
+        placeholder="Start Date"
+      />
 
+                        <!--  
+                        <input oninput="editpartinput_reset()" type="text" id="smonthYearInput" name="monthYearInput" placeholder="MM/YYYY">
+-->
                      </div>
                      <span class="dateivalid">
                         Invalid date format!
@@ -434,13 +472,20 @@
                         </p>
                         <div class="sadindiv">
                            <img src="/images/calendar.png" alt="">
+
+                           <input oninput="editpartinput_reset()" type="text" id="emonthYearInput" placeholder="End Date" />
+
+                           <!--  
                            <input oninput="editpartinput_reset()" type="text" id="emonthYearInput" name="monthYearInput" placeholder="MM/YYYY" >
-   
+   -->
                         </div>
                         <span class="dateivalid">
                            Invalid date format!
                         </span>
                        </div>
+
+
+                       
 
                 </div>
 

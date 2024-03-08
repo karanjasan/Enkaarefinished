@@ -617,10 +617,11 @@ iframe{
 
 .spacer{
     border: 1px solid black;
-    height: 5vw;
+    height: 9vw;
     margin-top: 1vw;
-    visibility: hidden;
+    visibility: visible;
     opacity: 0;
+   
 
 }
 
@@ -1129,6 +1130,11 @@ iframe{
     width: 93%;
     margin-top: 1vw;
     padding-bottom: 1vw;
+    height: 73vh;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+            
+    overflow-x: hidden;
    
    
    
@@ -1834,6 +1840,16 @@ iframe{
     border-left: transparent ;
     border-right: transparent ;
 }
+.workinghdev{
+    
+    margin-top: 2.5vw;
+    margin-left: 4%;
+}
+.workinghdev label{
+    font-size: 1.2vw;
+    font-family: sans-serif;
+}
+
 .sedates{
     
     width: 89%;
@@ -4875,6 +4891,16 @@ background-color: hsla(188,47%,20%,0.8);
     width: 90%;
     font-size: 3.2vw;
  
+}
+
+.workinghdev{
+    
+    margin-top: 6vw;
+    
+}
+.workinghdev label{
+    font-size: 3.2vw;
+    font-family: sans-serif;
 }
 .sedates{
     
