@@ -8,7 +8,7 @@ const options = {
   headers: {
     "Authorization": `Bearer ${token}`,
     "Access-Control-Allow-Credentials": true,
-    "Access-Control-Allow-Origin": "https://enkaare.co",
+    "Access-Control-Allow-Origin": "https://enkaare.com",
     "Access-Control-Allow-Headers":
       "Origin, X-Requested-With, Content-Type, Accept, authorization",
     "Access-Control-Allow-Methods": "POST",
@@ -21,7 +21,7 @@ const options = {
 //   method: "POST",
 //   headers: {
 //     "Access-Control-Allow-Credentials": true,
-//     "Access-Control-Allow-Origin": "https://enkaare.co",
+//     "Access-Control-Allow-Origin": "https://enkaare.com",
 //     "Access-Control-Allow-Headers":
 //       "Origin, X-Requested-With, Content-Type, Accept, authorization",
 //     "Access-Control-Allow-Methods": "POST",
@@ -64,7 +64,7 @@ const getCookie = (name) => {
 
 
 function deleteCookie(name) {
-  const domain = ".127.0.0.1:5500"; // Replace with your actual domain
+  const domain = ".enkaare.com"; // Replace with your actual domain
   const pastDate = new Date(0).toUTCString();
   try {
     document.cookie = `${name}=; expires=${pastDate}; path=/; domain=${domain}`;
@@ -73,6 +73,9 @@ function deleteCookie(name) {
     console.error(`Error deleting cookie: ${name}`, error);
   }
 }
+
+
+
 
 
 
@@ -93,7 +96,7 @@ let updateonlinestatus=(status)=>{
     headers: {
       "Authorization": `Bearer ${token}`,
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -253,8 +256,6 @@ let logout = () => {
 };
 
 
-
-
 function processFullName(fullName) {
   // Remove extra spaces within the full name
   fullName = fullName.replace(/\s+/g, " ").trim();
@@ -290,6 +291,8 @@ function processFullName(fullName) {
   const result = initials.length > 0 ? firstName + " " + initials : firstName;
   return result;
 }
+
+
 let setprofile = () => {
   candinddateaccountstatus();
   let phoneProfilePicture=document.querySelector("#logo");
@@ -299,7 +302,8 @@ let setprofile = () => {
   let firstnmae = getCookie("pfname");
   let secname = getCookie("psname");
 
-  namediv.innerHTML = processFullName(firstnmae + "  " + secname);
+  namediv.innerHTML =processFullName(firstnmae + "  " + secname);
+ 
 
   /*infomation for profile picture notificaations and messanges*/
 
@@ -396,7 +400,7 @@ let availableorders = () => {
 
   let thelist = document.querySelector(".orderslist");
 
-  while (thelist.hasChildNodes()) {
+ while (thelist.hasChildNodes()) {
     thelist.firstChild.remove();
   }
   let all = document.querySelector("#h3all");
@@ -421,7 +425,7 @@ let availableorders = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -530,14 +534,20 @@ let availableorders = () => {
       }
       loader[0].classList.remove("addedloader");
 
-
       let orderlist = document.getElementsByClassName("orderslist")[0];
       const spacer=`<div class="spacer">
       
       </div>`;
       var order = document.createElement("div");
       order.innerHTML = spacer;
-        orderlist.append(order);
+       orderlist.append(order);
+
+
+
+
+
+
+
 
       //here is the code for seeorder
       let buttonclicked = document.getElementsByClassName("orderbutton");
@@ -556,6 +566,10 @@ let availableorders = () => {
         });
       }
     }
+
+
+
+    
   });
 };
 
@@ -599,7 +613,7 @@ let suminter = () => {
 
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -644,7 +658,7 @@ let displainterviewslots = () => {
     method: "POST",
     headers: {
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://enkaare.co",
+      "Access-Control-Allow-Origin": "https://enkaare.com",
       "Access-Control-Allow-Headers":
         "Origin, X-Requested-With, Content-Type, Accept, authorization",
       "Access-Control-Allow-Methods": "POST",
@@ -834,7 +848,7 @@ let displainterviewslots = () => {
             method: "POST",
             headers: {
               "Access-Control-Allow-Credentials": true,
-              "Access-Control-Allow-Origin": "https://enkaare.co",
+              "Access-Control-Allow-Origin": "https://enkaare.com",
               "Access-Control-Allow-Headers":
                 "Origin, X-Requested-With, Content-Type, Accept, authorization",
               "Access-Control-Allow-Methods": "POST",
@@ -898,7 +912,7 @@ function invitedorders() {
        method: "POST",
       headers: {
          "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "https://enkaare.co",
+        "Access-Control-Allow-Origin": "https://enkaare.com",
        "Access-Control-Allow-Headers":
          "Origin, X-Requested-With, Content-Type, Accept, authorization",
        "Access-Control-Allow-Methods": "POST",
@@ -995,13 +1009,14 @@ function invitedorders() {
     }
     loader[0].classList.remove("addedloader");
 
-
     let orderlist = document.getElementsByClassName("orderslist")[0];
-      const spacer=`<div class="spacer">
-      </div>`;
-      var order = document.createElement("div");
-      order.innerHTML = spacer;
-        orderlist.append(order);
+    const spacer=`<div class="spacer">
+    
+    </div>`;
+    var order = document.createElement("div");
+    order.innerHTML = spacer;
+      orderlist.append(order);
+
 
     //here is the code for seeorder
     let buttonclicked = document.getElementsByClassName("orderbutton");
@@ -1065,7 +1080,7 @@ let displaypoptions =()=>{
        method: 'POST',
        headers:{
          "Acces-Control-Allow-Credentials":true,
-         "Access-Control-Allow-Origin": "https://enkaare.co",
+         "Access-Control-Allow-Origin": "https://enkaare.com",
          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
          "Access-Control-Allow-Methods": "POST",
             withCredentials:true
@@ -1085,7 +1100,7 @@ let displaypoptions =()=>{
     
    f.then(res=>res.json()).then(d=>{
  
- 
+      console.log(d)
     
  
     
@@ -1342,7 +1357,7 @@ let displaypoptions =()=>{
  
         headers:{
          "Acces-Control-Allow-Credentials":true,
-         "Access-Control-Allow-Origin": "https://enkaare.co",
+         "Access-Control-Allow-Origin": "https://enkaare.com",
          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
          "Access-Control-Allow-Methods": "POST",
             withCredentials:true
@@ -1436,7 +1451,7 @@ let displaypoptions =()=>{
             method:'POST',
             headers:{
              "Acces-Control-Allow-Credentials":true,
-             "Access-Control-Allow-Origin": "https://enkaare.co",
+             "Access-Control-Allow-Origin": "https://enkaare.com",
              "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
              "Access-Control-Allow-Methods": "POST",
                 withCredentials:true
@@ -1471,15 +1486,15 @@ let displaypoptions =()=>{
  })};
 
 
- let dateinput=()=>{
-  // documentation here - https://unpkg.com/flatpickr@1.6.5/index.html
-  let startDate = flatpickr("#smonthYearInput", {dateFormat: "m/Y"});
-  let endDate = flatpickr("#emonthYearInput", {dateFormat: "m/Y"});
+let dateinput=()=>{
+    // documentation here - https://unpkg.com/flatpickr@1.6.5/index.html
+    let startDate = flatpickr("#smonthYearInput", {dateFormat: "m/Y"});
+    let endDate = flatpickr("#emonthYearInput", {dateFormat: "m/Y"});
 
-  // Ensure end date is not less than start date
-  if (startDate > endDate) {
-    endDatePicker.setDate(date);
-  }
+    // Ensure end date is not less than start date
+    if (startDate > endDate) {
+      endDatePicker.setDate(date);
+    }
 
 
 }
@@ -1489,47 +1504,48 @@ let publicEnddate;
 let publicCurrentTime;
 
 function handleCheckboxChange(checkbox) {
-const enddateInput=document.querySelector("#emonthYearInput");
-if (checkbox.checked) {
- 
-      // Disable the input
-      enddateInput.disabled = true;
+  const enddateInput=document.querySelector("#emonthYearInput");
+  if (checkbox.checked) {
+   
+        // Disable the input
+        enddateInput.disabled = true;
 
-      // Change the placeholder
-      enddateInput.placeholder = "Present";
+        // Change the placeholder
+        enddateInput.placeholder = "Present";
 
-      const today = new Date();
+        const today = new Date();
+  
+        // Get the month and year
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based (0 = January), so add 1
+        const year = today.getFullYear();
+        
+        // Format the date in the desired format (m/y(month/year))
+        const formattedDate = `${month}/${year}`;
+        let enddate = document.getElementById("emonthYearInput");
+        enddate.value="";
 
-      // Get the month and year
-      const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based (0 = January), so add 1
-      const year = today.getFullYear();
-      
-      // Format the date in the desired format (m/y(month/year))
-      const formattedDate = `${month}/${year}`;
-      let enddate = document.getElementById("emonthYearInput");
-      enddate.value="";
-
-      publicCurrentTime=formattedDate;
-      publicEnddate="Present";
-     
+        publicCurrentTime=formattedDate;
+        publicEnddate="Present";
+       
 
 
-}else{
-     // Disable the input
-     enddateInput.disabled = false;
+  }else{
+       // Disable the input
+       enddateInput.disabled = false;
 
-     // Change the placeholder
-     enddateInput.placeholder = "End Date";
-     publicEnddate="Something else";
-}
+       // Change the placeholder
+       enddateInput.placeholder = "End Date";
+       publicEnddate="Something else";
+  }
 };
 
 
 
 
 
-
  let profileeditbutton=()=>{
+
+  dateinput()
     let loader1 =document.getElementsByClassName("loader1");
     let editpage=document.getElementsByClassName("profileedit");
  
@@ -1545,7 +1561,7 @@ if (checkbox.checked) {
     method:"POST",
     headers:{
      "Acces-Control-Allow-Credentials":true,
-     "Access-Control-Allow-Origin": "https://enkaare.co",
+     "Access-Control-Allow-Origin": "https://enkaare.com",
      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
      "Access-Control-Allow-Methods": "POST",
         withCredentials:true
@@ -1829,6 +1845,7 @@ if (checkbox.checked) {
     enddate.placeholder="End Date";
     publicEnddate="Something else";
 
+
     let carrier = document.getElementsByClassName("eexperiencedisplay")[0];
     let ex = document.getElementById("eexperiencedisplay");
     while (ex.hasChildNodes()) {
@@ -1876,6 +1893,7 @@ if (checkbox.checked) {
     listeancancelB();
   }
 };
+
 // Functionlisten to cancel button on the experience windows at the bottom of the edit page
  function listeancancelB(){
   let expecancel =document.getElementsByClassName("eecancelb");
@@ -1934,6 +1952,9 @@ if (checkbox.checked) {
         avail.style.border="1px solid hsla(4,0%,0%,0.5)";
  
  }
+
+
+ 
  
  
     
@@ -2342,7 +2363,7 @@ if (checkbox.checked) {
         method: 'POST',
         headers:{
          "Acces-Control-Allow-Credentials":true,
-         "Access-Control-Allow-Origin": "https://enkaare.co",
+         "Access-Control-Allow-Origin": "https://enkaare.com",
          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
          "Access-Control-Allow-Methods": "POST",
             withCredentials:true
@@ -2413,7 +2434,7 @@ if (checkbox.checked) {
         method: 'POST',
         headers:{
          "Acces-Control-Allow-Credentials":true,
-         "Access-Control-Allow-Origin": "https://enkaare.co",
+         "Access-Control-Allow-Origin": "https://enkaare.com",
          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
          "Access-Control-Allow-Methods": "POST",
             withCredentials:true
@@ -2472,7 +2493,7 @@ if (checkbox.checked) {
          method:"POST",
          headers:{
              "Acces-Control-Allow-Credentials":true,
-             "Access-Control-Allow-Origin": "https://enkaare.co",
+             "Access-Control-Allow-Origin": "https://enkaare.com",
              "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
              "Access-Control-Allow-Methods": "POST",
                 withCredentials:true
@@ -2516,7 +2537,7 @@ if (checkbox.checked) {
              method:"POST",
              headers:{
                  "Acces-Control-Allow-Credentials":true,
-                 "Access-Control-Allow-Origin": "https://enkaare.co",
+                 "Access-Control-Allow-Origin": "https://enkaare.com",
                  "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
                  "Access-Control-Allow-Methods": "POST",
                     withCredentials:true
@@ -2558,7 +2579,7 @@ if (checkbox.checked) {
              method:"POST",
              headers:{
                  "Acces-Control-Allow-Credentials":true,
-                 "Access-Control-Allow-Origin": "https://enkaare.co",
+                 "Access-Control-Allow-Origin": "https://enkaare.com",
                  "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authorization",
                  "Access-Control-Allow-Methods": "POST",
                     withCredentials:true
