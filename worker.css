@@ -1070,7 +1070,7 @@ iframe{
     margin-top: 2vw;
     background-color: white;
     border-radius: 0.3vw;
-    display: flex;
+    display: none;
     
 }
 .searchicon{
@@ -3218,7 +3218,7 @@ background-color: hsla(188,47%,20%,0.8);
 }
 .innersupport{
     border: 1px solid hsla(4,0%,0%,0.3);
-    height: 35vw;
+    height: 40vw;
     width: 70vw;
     margin-top: 1vw;
     display: flex;
@@ -3259,7 +3259,7 @@ background-color: hsla(188,47%,20%,0.8);
     margin-left: 2vw;
     margin-top: 4vw;
 }
-#subject{
+#subject,#jobTitle{
   width: 30vw;
   margin-left: 2vw;
   margin-top: 2vw;
@@ -3300,9 +3300,9 @@ background-color: hsla(188,47%,20%,0.8);
 .contactsupport  #suucanncel{
     position: absolute;
     margin-left: 65%;
-    margin-top: -30vw;
+    margin-top: -35vw;
     cursor: pointer;
-    font-size: 1.1vw;
+    font-size: 1.5vw;
 }
 .contactsupport #suucanncel:hover{
     color: red;

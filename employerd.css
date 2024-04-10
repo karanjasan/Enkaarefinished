@@ -545,7 +545,7 @@ iframe{
    
     overflow: hidden;
     height: 114vh;
- 
+   
     
   
   
@@ -761,7 +761,7 @@ iframe{
     margin-top: 2vw;
     background-color: white;
     border-radius: 0.3vw;
-    display: flex;
+    display: none;
 }
 .searchbar select{
     height: 2.5vw;

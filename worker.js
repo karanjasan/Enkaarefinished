@@ -3682,12 +3682,14 @@ let tsupport = () => {
     let userid = getCookie("userloged");
     let subject = document.querySelector("#subject");
     let message = document.querySelector("#sumessage");
+    let jobtitle=document.querySelector("#jobTitle");
 
     let formdata = new FormData();
     formdata.append("user_id", userid);
     formdata.append("subject", subject.value);
     formdata.append("message", message.value);
     formdata.append("profile", whatprofile);
+    formdata.append("jobtitle",jobtitle.value);
 
     const optionWithFormData = {
       method: "POST",
